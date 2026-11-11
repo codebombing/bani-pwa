@@ -1,0 +1,19 @@
+node_modules/
+dist/
+dev-dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.local
+.env.*.local
+supabase/.temp/
+supabase/.branches/
+supabase/functions/.env
+.DS_Store
+*.log
+
+# локальные настройки превью (абсолютные пути машины)
+.claude/launch.json
+.claude/settings.local.json
+supabase/functions/.env

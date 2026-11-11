@@ -1,0 +1,11 @@
+dist
+dev-dist
+coverage
+node_modules
+package-lock.json
+supabase/.temp
+src/shared/db.types.ts
+src/astryx-themes.*
+theme.template.ts
+.claude
+*.md
