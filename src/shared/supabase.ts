@@ -16,8 +16,12 @@ export function getSupabase(): Db {
       'Не заданы VITE_SUPABASE_URL / VITE_SUPABASE_PUBLISHABLE_KEY — см. .env.example',
     );
   }
-  client = createClient<Database>(env.data.VITE_SUPABASE_URL, env.data.VITE_SUPABASE_PUBLISHABLE_KEY, {
-    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
-  });
+  client = createClient<Database>(
+    env.data.VITE_SUPABASE_URL,
+    env.data.VITE_SUPABASE_PUBLISHABLE_KEY,
+    {
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+    },
+  );
   return client;
 }

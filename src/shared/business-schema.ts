@@ -161,7 +161,11 @@ export const businessSchema = z
       /** null — день закрыт. */
       days: weekdayWindows,
       /** На сколько минут бронь может закончиться позже последнего момента начала. */
-      max_end_after_close_min: z.number().int().min(0).max(24 * 60),
+      max_end_after_close_min: z
+        .number()
+        .int()
+        .min(0)
+        .max(24 * 60),
     }),
     halls: z.array(hallSchema).min(1),
     extras: z.array(extraSchema).default([]),
