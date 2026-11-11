@@ -89,3 +89,21 @@ pgTAP (`supabase/tests/database/`, 86 тестов):
 - pgTAP-фикстуры `02` и `06` ограничены заведениями `test-%`, чтобы не зависеть от seed.
 - Проверки: `npx supabase db reset` (seed применяется), `npx supabase test db` — 215 PASS, `npm run test:integration` — 2 passed; `/` показывает «Демо-баня «Берёзка»».
 - Не сделано из этапа 4: `tenants/demo-banya/business.json` + картинки, скрипты конвейера, второе заведение demo-sauna24, Edge Functions, HTTP-тесты.
+
+## Экраны гостя + public-api (11.11.2026) — часть этапов 4 и 5 по просьбе пользователя
+Сделано:
+- Edge Function `supabase/functions/public-api` (`withSupabase({auth:'publishable'})` из `@supabase/server@1.4.1`, CORS из коробки; service role только внутри функции) + `_shared/` (`http.ts` — JSON/ошибки/коды→HTTP, `token.ts` — HMAC-токен и sha256, `schemas.ts` — Zod аргументов). Маршруты: `GET /t/:slug`, `GET /t/:slug/availability`, `POST /t/:slug/quote`, `POST /t/:slug/bookings` (booking_id генерирует функция, токен = HMAC(booking_id:key), в БД — sha256; при повторе токен вычисляется от исходного booking_id), `GET /t/:slug/bookings/:token`, `POST …/cancel`, `POST …/reschedule`. Rate limit: чтение 300/мин, токены 60/мин на IP. Секрет `BOOKING_TOKEN_SECRET` — `supabase/functions/.env` (в .gitignore), шаблон `.env.example`.
+- Дизайн-система `design-system/bani-pwa/MASTER.md`: генерация ui-ux-pro-max дважды не дала проверенного совпадения (светлая розовая палитра + «избегать dark mode») — записаны общие рекомендации на базе правил скила и темы Astryx neutral dark.
+- Фронтенд `src/features/booking/`: `api.ts` (Zod на все ответы, ApiError с кодом), `queries.ts` (TanStack Query; приватная бронь gcTime 0), `TenantTheme.tsx` (акцент заведения через `defineTheme({extends})` + контрастный `--color-on-accent`), `VenuePage` (демо-баннер, залы, «Мои брони», контакты), `BookingFlow` + `steps.tsx` (6 шагов, каждый — свой Astryx `BottomSheet`; `useStepHistory` синхронизирует шаги с history — системный Back закрывает шаг), `PriceLines` (строки серверного снимка цены), `BookingPage` (статус, детали, цена, оплачено/остаток, срок бесплатной отмены, отмена через AlertDialog), `myBookings.ts` (на устройстве — только токен и подпись). `src/shared/format.ts` (+ тесты): рубли, даты/время в timezone заведения, маска и нормализация телефона +7. Astryx `InternationalizationProvider` с каталогом `ru-RU`.
+- Состояния: loading — Skeleton, error — Banner + «Повторить», empty — EmptyState, success. Ключ идемпотентности создаётся на попытку; меняется после ответа 4xx, сохраняется при сетевой ошибке. SLOT_TAKEN на подтверждении → «Выбрать другое время» возвращает к шагу времени.
+
+Проверки (фактический результат):
+- curl: каталог 200 (без apikey 401), слоты 14, создание 201, повтор 200 с тем же токеном, бронь по токену, чужой slug 404, отмена, мусорное тело 400.
+- Браузер (375×812, dark): заведение → зал → дата (календарь ru) → слоты с серверной ценой (смешанный тариф 21–23 = 6 000 ₽) → полотенца ×2 → итог 5 600 ₽ → ошибки у пустых полей, маска телефона → подтверждение (строки расчёта, задаток 1 680 ₽) → страница брони по токену → отмена через диалог → «Бронь отменена»; системный Back закрывает шаг, оставаясь на странице.
+- `npm run typecheck && npm run lint && npm test && npm run build` — зелёные (15 unit-тестов); `npx supabase test db` — 215 PASS; `npm run test:integration` — 2 passed.
+
+Не сделано / дальше:
+- Запуск функций: `npm run dev:functions` (`supabase functions serve`) в отдельном терминале.
+- Фото залов (нужен конвейер `tenant:publish` + Storage), перенос брони в UI (API готов), ICS, push — этапы 4/7.
+- HTTP integration-тесты public-api и Playwright-сценарий гостя — этапы 4/5.
+- Разбиение бандла по маршрутам (предупреждение > 500 kB).
