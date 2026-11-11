@@ -189,6 +189,7 @@ declare
   v_notify_guest boolean := p_source = 'online';
 begin
   if p_idempotency_key is not null then
+    perform pg_advisory_xact_lock(hashtextextended(p_tenant_id::text || ':' || p_idempotency_key, 0));
     v_replay := private.idempotency_lookup(p_tenant_id, p_idempotency_key, p_request_hash);
     if v_replay is not null then
       return v_replay;
@@ -333,6 +334,10 @@ begin
      or p_token_hash is null or octet_length(p_token_hash) <> 32 then
     return private.fail('INVALID_ARGUMENT', 'Некорректный запрос');
   end if;
+
+  -- Одновременные повторы с тем же ключом выстраиваются в очередь: второй ждёт коммита
+  -- первого и получает его результат (replay), не тратя лимиты и не упираясь в EXCLUDE.
+  perform pg_advisory_xact_lock(hashtextextended(v_tenant.id::text || ':' || p_idempotency_key, 0));
 
   -- Повтор того же запроса не тратит лимиты.
   v_replay := private.idempotency_lookup(v_tenant.id, p_idempotency_key, p_request_hash);

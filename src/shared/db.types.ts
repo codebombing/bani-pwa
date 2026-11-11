@@ -649,11 +649,53 @@ isOneToOne: false
                 }
           }
           Functions: {
-            "consume_llm_budget":
+            "cancel_booking_by_token":
+{ Args: { "p_slug": string,"p_token_hash": string }; Returns: Json
+                           },
+"consume_llm_budget":
 { Args: { "p_global_daily_requests": number,"p_tenant_daily_requests": number,"p_tenant_id": string,"p_tokens": number }; Returns: boolean
                            },
 "consume_rate_limit":
 { Args: { "p_key": string,"p_limit": number,"p_window": string }; Returns: boolean
+                           },
+"get_availability":
+{ Args: { "p_date": string,"p_duration_min"?: number,"p_hall_id": string,"p_slug": string }; Returns: Json
+                           },
+"get_booking_by_token_hash":
+{ Args: { "p_slug": string,"p_token_hash": string }; Returns: Json
+                           },
+"owner_add_payment":
+{ Args: { "p_amount": number,"p_booking_id": string,"p_kind": Database["public"]['Enums']["payment_kind"],"p_method": Database["public"]['Enums']["payment_method"],"p_note"?: string,"p_received_at"?: string }; Returns: Json
+                           },
+"owner_block_hall":
+{ Args: { "p_from": string,"p_hall_id": string,"p_reason": string,"p_tenant_id": string,"p_to": string }; Returns: Json
+                           },
+"owner_cancel_booking":
+{ Args: { "p_booking_id": string,"p_reason"?: string }; Returns: Json
+                           },
+"owner_quick_booking":
+{ Args: { "p_comment"?: string,"p_customer_name": string,"p_customer_phone"?: string,"p_duration_min": number,"p_extras"?: Json,"p_guests": number,"p_hall_id": string,"p_idempotency_key"?: string,"p_manual_total"?: number,"p_source"?: Database["public"]['Enums']["booking_source"],"p_start_at": string,"p_tenant_id": string }; Returns: Json
+                           },
+"owner_reschedule_booking":
+{ Args: { "p_booking_id": string,"p_expected_version"?: number,"p_new_duration_min"?: number,"p_new_start_at": string }; Returns: Json
+                           },
+"owner_set_booking_status":
+{ Args: { "p_booking_id": string,"p_status": Database["public"]['Enums']["booking_status"] }; Returns: Json
+                           },
+"owner_stats":
+{ Args: { "p_from": string,"p_tenant_id": string,"p_to": string }; Returns: Json
+                           },
+"owner_unblock_hall":
+{ Args: { "p_block_id": string }; Returns: Json
+                           },
+"public_create_booking":
+{ Args: { "p_booking_id": string,"p_client_ip"?: string,"p_comment": string,"p_consent": boolean,"p_customer_name": string,"p_customer_phone": string,"p_duration_min": number,"p_extras": Json,"p_guests": number,"p_hall_id": string,"p_idempotency_key": string,"p_request_hash": string,"p_slug": string,"p_start_at": string,"p_token_hash": string }; Returns: Json
+                           },
+"quote_booking":
+{ Args: { "p_duration_min": number,"p_extras"?: Json,"p_guests": number,"p_hall_id": string,"p_slug": string,"p_start_at": string }; Returns: Json
+                           },
+"reschedule_booking_by_token":
+{ Args: { "p_expected_version"?: number,"p_new_duration_min"?: number,"p_new_start_at": string,"p_slug": string,"p_token_hash": string }; Returns: Json
                            }
           }
           Enums: {
