@@ -38,11 +38,13 @@ insert into public.halls (id, tenant_id, key, name, capacity_included, capacity_
   ('dddddddd-0000-0000-0000-0000000000d1', 'dddddddd-0000-0000-0000-000000000001', 'main', 'Зал', 4, 6, 40000, 120, 60, 60);
 
 insert into public.tariff_versions (id, tenant_id, hall_id, effective_from)
-select gen_random_uuid(), h.tenant_id, h.id, '2026-01-01' from public.halls h;
+select gen_random_uuid(), h.tenant_id, h.id, '2026-01-01' from public.halls h
+join public.tenants t on t.id = h.tenant_id where t.slug like 'test-%';
 
 insert into public.tariff_rules (tenant_id, tariff_version_id, day_type, from_time, to_time, price_per_hour)
 select v.tenant_id, v.id, r.day_type::public.day_type, r.f::time, r.t::time, r.p
 from public.tariff_versions v
+join public.tenants tt on tt.id = v.tenant_id and tt.slug like 'test-%'
 cross join (values ('weekday', '02:00', '22:00', 250000), ('weekday', '22:00', '02:00', 350000),
                    ('weekend', '02:00', '22:00', 320000), ('weekend', '22:00', '02:00', 350000)) r(day_type, f, t, p);
 

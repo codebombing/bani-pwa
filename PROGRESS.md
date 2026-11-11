@@ -83,3 +83,9 @@ pgTAP (`supabase/tests/database/`, 86 тестов):
 - `npm run typecheck && npm run lint && npm test && npm run build` — зелёные (типы БД перегенерированы `npm run db:types`).
 
 Следующее: этап 4 — конвейер `tenant:new/validate/publish/verify`, два demo-заведения + `seed.sql`, Edge Functions `public-api`/`owner-api` с `_shared`, HTTP integration-тесты.
+
+## Между этапами 3 и 4 — демо-данные (11.11.2026)
+- По просьбе пользователя добавлен `supabase/seed.sql` (часть этапа 4 заранее): одно заведение `demo-banya` (preview) — 2 зала, тарифы будни/выходные/ночь, 3 допа, часы 10:00–23:00 (+3 ч), 4 демо-брони на даты относительно дня `db reset` (прошедшая оплаченная, ближайшая онлайн с задатком, большой зал с чаном, ночная), блокировка на уборку. Брони создаются `private.create_booking` — цена серверная. Всё `is_demo = true`.
+- pgTAP-фикстуры `02` и `06` ограничены заведениями `test-%`, чтобы не зависеть от seed.
+- Проверки: `npx supabase db reset` (seed применяется), `npx supabase test db` — 215 PASS, `npm run test:integration` — 2 passed; `/` показывает «Демо-баня «Берёзка»».
+- Не сделано из этапа 4: `tenants/demo-banya/business.json` + картинки, скрипты конвейера, второе заведение demo-sauna24, Edge Functions, HTTP-тесты.

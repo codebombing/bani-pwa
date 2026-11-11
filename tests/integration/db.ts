@@ -82,7 +82,10 @@ export interface CreateArgs {
 }
 
 /** Вызов public_create_booking так же, как это делает Edge Function public-api. */
-export async function publicCreateBooking(client: pg.Client, a: CreateArgs): Promise<BookingResult> {
+export async function publicCreateBooking(
+  client: pg.Client,
+  a: CreateArgs,
+): Promise<BookingResult> {
   const requestHash = sha256hex(JSON.stringify([a.hallId, a.startAt, a.durationMin]));
   const { rows } = await client.query<{ result: unknown }>(
     `select public.public_create_booking($1, $2, $3, $4, $5, 2, '[]'::jsonb, 'Гость', $6, null, true,

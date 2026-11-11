@@ -72,14 +72,16 @@ select throws_ok('select * from public.tenant_members', '42501', null, 'anon: ч
 select throws_ok('select * from public.resource_occupancies', '42501', null, 'anon: занятость — permission denied');
 
 select results_eq(
-  'select slug from public.public_tenants order by slug',
+  $$select slug from public.public_tenants where slug like 'test-%' order by slug$$,
   $$values ('test-a'), ('test-b')$$,
   'anon видит preview/live, архивное скрыто'
 );
 select is((select count(*)::int from public.tenants where slug = 'test-archived'), 0,
   'anon не видит архивное заведение и в таблице');
-select is((select count(*)::int from public.public_halls), 2, 'anon видит залы только публичных заведений');
-select is((select count(*)::int from public.public_extras), 1, 'допы архивного заведения скрыты');
+select is((select count(*)::int from public.public_halls h join public.tenants t on t.id = h.tenant_id
+  where t.slug like 'test-%'), 2, 'anon видит залы только публичных заведений');
+select is((select count(*)::int from public.public_extras e join public.tenants t on t.id = e.tenant_id
+  where t.slug like 'test-%'), 1, 'допы архивного заведения скрыты');
 
 -- ---------- владелец A ----------
 reset role;
@@ -126,7 +128,8 @@ select is((select count(*)::int from public.bookings), 0, 'не-член не в
 select is((select count(*)::int from public.payments), 0, 'не-член не видит платежи');
 select is((select count(*)::int from public.tenants where status = 'archived'), 0,
   'не-член не видит архивное заведение');
-select is((select count(*)::int from public.public_tenants), 2, 'не-член видит публичный каталог');
+select is((select count(*)::int from public.public_tenants where slug like 'test-%'), 2,
+  'не-член видит публичный каталог');
 
 reset role;
 select * from finish();
