@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "slug": "demo-sauna24",
+  "name": "Демо-сауна «Круглосуточно»",
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "theme": { "accent": "#2F9E8F" },
+  "pwa": {
+    "short_name": "Сауна 24",
+    "description": "Круглосуточная сауна с бассейном"
+  },
+  "texts": {
+    "tagline": "Финская сауна с бассейном — круглые сутки",
+    "description": "Сауна, бассейн с противотоком, караоке в комнате отдыха. Работаем без выходных и перерывов.",
+    "booking_note": "Простыни и тапочки можно взять у нас."
+  },
+  "contacts": {
+    "phone": "+7 900 000-00-24",
+    "telegram": "demo_sauna24",
+    "address": "Москва, Ночная улица, 24",
+    "coords": { "lat": 55.7601, "lng": 37.6187 }
+  },
+  "legal": {
+    "operator_name": "ООО «Демо Сауна»",
+    "privacy_policy_url": "https://example.com/privacy-sauna"
+  },
+  "policy": {
+    "deposit_percent": 50,
+    "free_cancellation_hours": 12,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": { "start_from": "00:00", "start_to": "24:00" },
+      "tue": { "start_from": "00:00", "start_to": "24:00" },
+      "wed": { "start_from": "00:00", "start_to": "24:00" },
+      "thu": { "start_from": "00:00", "start_to": "24:00" },
+      "fri": { "start_from": "00:00", "start_to": "24:00" },
+      "sat": { "start_from": "00:00", "start_to": "24:00" },
+      "sun": { "start_from": "00:00", "start_to": "24:00" }
+    },
+    "max_end_after_close_min": 0
+  },
+  "halls": [
+    {
+      "key": "pool",
+      "name": "Сауна с бассейном",
+      "description": "Финская сауна, бассейн 4×3 м, комната отдыха с караоке.",
+      "capacity_included": 4,
+      "capacity_max": 8,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 30,
+      "buffer_min": 30,
+      "photos": ["halls/pool/1.jpg", "halls/pool/2.jpg"],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            { "day_type": "weekday", "from": "08:00", "to": "24:00", "price_per_hour_rub": 1800 },
+            { "day_type": "weekday", "from": "00:00", "to": "08:00", "price_per_hour_rub": 2000 },
+            { "day_type": "weekend", "from": "08:00", "to": "24:00", "price_per_hour_rub": 2400 },
+            { "day_type": "weekend", "from": "00:00", "to": "08:00", "price_per_hour_rub": 2000 }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": [
+    { "key": "karaoke", "name": "Караоке", "price_rub": 1000, "unit": "per_booking", "max_qty": 1 },
+    {
+      "key": "sheets",
+      "name": "Простыня",
+      "description": "На одного гостя",
+      "price_rub": 150,
+      "unit": "per_guest",
+      "max_qty": 8
+    }
+  ],
+  "exceptions": []
+}

@@ -24,7 +24,13 @@
     "db:types": "supabase gen types typescript --local > src/shared/db.types.ts",
     "test:integration": "vitest run --config vitest.integration.config.ts",
     "dev:functions": "supabase functions serve",
-    "owner:invite": "tsx scripts/owner/invite.ts"
+    "owner:invite": "tsx scripts/owner/invite.ts",
+    "tenant:new": "tsx scripts/tenant/new.ts",
+    "tenant:validate": "tsx scripts/tenant/validate.ts",
+    "tenant:publish": "tsx scripts/tenant/publish.ts",
+    "tenant:verify": "tsx scripts/tenant/verify.ts",
+    "tenant:placeholders": "tsx scripts/tenant/placeholders.ts",
+    "tenant:seed": "tsx scripts/tenant/seed.ts"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.13",
@@ -58,6 +64,7 @@
     "jsdom": "^31.0.0",
     "pg": "^8.23.1",
     "prettier": "^3.10.0",
+    "sharp": "^0.35.5",
     "supabase": "^3.1.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",

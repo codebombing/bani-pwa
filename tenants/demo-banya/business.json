@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "slug": "demo-banya",
+  "name": "Демо-баня «Берёзка»",
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "theme": { "accent": "#D9822B" },
+  "pwa": {
+    "short_name": "Берёзка",
+    "description": "Бронирование бани"
+  },
+  "texts": {
+    "tagline": "Русская баня на дровах в двух залах",
+    "description": "Парные на дровах, купель, комната отдыха. Веники и полотенца — на месте.",
+    "booking_note": "Возьмите сменную обувь. Задаток 30 % — после подтверждения."
+  },
+  "contacts": {
+    "phone": "+7 900 000-00-00",
+    "telegram": "demo_banya",
+    "address": "Москва, Банный переулок, 1",
+    "coords": { "lat": 55.7558, "lng": 37.6173 }
+  },
+  "legal": {
+    "operator_name": "ИП Демо Демо Демович",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 30,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": { "start_from": "10:00", "start_to": "23:00" },
+      "tue": { "start_from": "10:00", "start_to": "23:00" },
+      "wed": { "start_from": "10:00", "start_to": "23:00" },
+      "thu": { "start_from": "10:00", "start_to": "23:00" },
+      "fri": { "start_from": "10:00", "start_to": "23:00" },
+      "sat": { "start_from": "10:00", "start_to": "23:00" },
+      "sun": { "start_from": "10:00", "start_to": "23:00" }
+    },
+    "max_end_after_close_min": 180
+  },
+  "halls": [
+    {
+      "key": "small",
+      "name": "Малый зал",
+      "description": "Русская парная на дровах, комната отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 400,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 60,
+      "photos": ["halls/small/1.jpg", "halls/small/2.jpg"],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            { "day_type": "weekday", "from": "02:00", "to": "22:00", "price_per_hour_rub": 2500 },
+            { "day_type": "weekday", "from": "22:00", "to": "02:00", "price_per_hour_rub": 3500 },
+            { "day_type": "weekend", "from": "02:00", "to": "22:00", "price_per_hour_rub": 3200 },
+            { "day_type": "weekend", "from": "22:00", "to": "02:00", "price_per_hour_rub": 3500 }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "big",
+      "name": "Большой зал",
+      "description": "Парная, купель, бильярд.",
+      "capacity_included": 8,
+      "capacity_max": 14,
+      "extra_guest_price_rub": 500,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 180,
+      "slot_step_min": 60,
+      "buffer_min": 60,
+      "photos": ["halls/big/1.jpg", "halls/big/2.jpg"],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            { "day_type": "weekday", "from": "02:00", "to": "22:00", "price_per_hour_rub": 4000 },
+            { "day_type": "weekday", "from": "22:00", "to": "02:00", "price_per_hour_rub": 5500 },
+            { "day_type": "weekend", "from": "02:00", "to": "22:00", "price_per_hour_rub": 5000 },
+            { "day_type": "weekend", "from": "22:00", "to": "02:00", "price_per_hour_rub": 5500 }
+          ]
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "key": "venik",
+      "name": "Веник дубовый",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 5
+    },
+    {
+      "key": "towels",
+      "name": "Комплект полотенец",
+      "description": "На одного гостя",
+      "price_rub": 300,
+      "unit": "per_guest",
+      "max_qty": 14
+    },
+    {
+      "key": "chan",
+      "name": "Чан на дровах",
+      "price_rub": 3000,
+      "unit": "per_booking",
+      "max_qty": 1
+    }
+  ],
+  "exceptions": [
+    { "kind": "day_type", "date": "2027-01-01", "day_type": "holiday", "note": "Новый год" }
+  ]
+}
