@@ -39,7 +39,7 @@ runMain(async () => {
     throw new CliError('Шаблон business.json не проходит схему — исправьте tenants/_template');
   const images = await writePlaceholders(slug, loaded.business);
 
-  ok(`Создано tenants/${slug}/ (business.json и ${images.length} картинок-заглушек)`);
+  ok(`Создано tenants/${slug}/ (business.json и заглушки картинок: ${images.length})`);
   console.log(
     `  1. Заполните tenants/${slug}/business.json: название, контакты, залы, тарифы, часы.`,
   );

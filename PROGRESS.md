@@ -124,3 +124,6 @@ pgTAP (`supabase/tests/database/`, 86 тестов):
 
 Не проверено в браузере: закрытие/открытие зала и выход (пользователь в этот момент сам работал на странице). SQL `owner_block_hall`/`owner_unblock_hall` покрыты pgTAP (06).
 Не сделано: недельный вид календаря, свайп по дням (есть кнопки ‹ ›), Playwright-сценарий «гость бронирует → владелец видит → задаток → статистика», push владельцу.
+
+## Этап 4. Конвейер и API (12.11.2026) — в процессе
+В процессе: сделаны admin_publish_tenant (+ pgTAP 07, всего 247 PASS), tenant:new/validate/publish/verify/seed/placeholders, demo-banya и demo-sauna24 из business.json (seed генерируется из них), Storage tenant-assets, оболочки dist/s/<slug>/. Следующий шаг: HTTP integration-тесты public-api (retry → тот же токен, чужой токен → 404, owner A → tenant B запрещено, rate limit).
