@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import type { PushSubscriptionBody } from '../../shared/push';
 import { getSupabase } from '../../shared/supabase';
 import { availabilitySchema, bookingSchema, quoteSchema, snapshotSchema } from '../booking/api';
 
@@ -329,6 +330,16 @@ export const ownerApi = {
 
   async unblock(blockId: string) {
     const { data, error } = await getSupabase().rpc('owner_unblock_hall', { p_block_id: blockId });
+    return unwrap(z.object({ ok: z.literal(true) }), data, error);
+  },
+
+  async pushSubscribe(tenantId: string, sub: PushSubscriptionBody) {
+    const { data, error } = await getSupabase().rpc('owner_push_subscribe', {
+      p_tenant_id: tenantId,
+      p_endpoint: sub.endpoint,
+      p_p256dh: sub.keys.p256dh,
+      p_auth: sub.keys.auth,
+    });
     return unwrap(z.object({ ok: z.literal(true) }), data, error);
   },
 

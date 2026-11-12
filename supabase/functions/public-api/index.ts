@@ -8,6 +8,7 @@
 //   GET  /public-api/t/:slug/bookings/:token                 бронь по токену
 //   POST /public-api/t/:slug/bookings/:token/cancel          отмена
 //   POST /public-api/t/:slug/bookings/:token/reschedule      перенос
+//   POST /public-api/t/:slug/bookings/:token/push            подписка на уведомления по брони
 //   GET  /public-api/t/:slug/bookings/:token.ics             событие для календаря (без apikey:
 //                                                            обычная ссылка; пропуск — сам токен)
 import '@supabase/functions-js/edge-runtime.d.ts';
@@ -18,6 +19,7 @@ import { bookingIcs } from '../_shared/ics.ts';
 import {
   availabilityQuerySchema,
   createBookingBodySchema,
+  pushBodySchema,
   quoteBodySchema,
   rescheduleBodySchema,
   slugSchema,
@@ -247,6 +249,18 @@ async function route(req: Request, ctx: Ctx): Promise<Response> {
       const { data, error } = await ctx.supabaseAdmin.rpc('cancel_booking_by_token', {
         p_slug: slug,
         p_token_hash,
+      });
+      if (error) throw error;
+      return fromRpc(data);
+    }
+    if (action === 'push' && req.method === 'POST') {
+      const b = parse(pushBodySchema, await readJson(req));
+      const { data, error } = await ctx.supabaseAdmin.rpc('public_push_subscribe', {
+        p_slug: slug,
+        p_token_hash,
+        p_endpoint: b.endpoint,
+        p_p256dh: b.keys.p256dh,
+        p_auth: b.keys.auth,
       });
       if (error) throw error;
       return fromRpc(data);

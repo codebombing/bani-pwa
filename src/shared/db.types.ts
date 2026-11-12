@@ -649,7 +649,10 @@ isOneToOne: false
                 }
           }
           Functions: {
-            "cancel_booking_by_token":
+            "admin_publish_tenant":
+{ Args: { "p_config": Json,"p_config_hash": string,"p_live"?: boolean,"p_published_by"?: string }; Returns: Json
+                           },
+"cancel_booking_by_token":
 { Args: { "p_slug": string,"p_token_hash": string }; Returns: Json
                            },
 "consume_llm_budget":
@@ -673,6 +676,12 @@ isOneToOne: false
 "owner_cancel_booking":
 { Args: { "p_booking_id": string,"p_reason"?: string }; Returns: Json
                            },
+"owner_push_subscribe":
+{ Args: { "p_auth": string,"p_endpoint": string,"p_p256dh": string,"p_tenant_id": string }; Returns: Json
+                           },
+"owner_push_unsubscribe":
+{ Args: { "p_endpoint": string,"p_tenant_id": string }; Returns: Json
+                           },
 "owner_quick_booking":
 { Args: { "p_comment"?: string,"p_customer_name": string,"p_customer_phone"?: string,"p_duration_min": number,"p_extras"?: Json,"p_guests": number,"p_hall_id": string,"p_idempotency_key"?: string,"p_manual_total"?: number,"p_source"?: Database["public"]['Enums']["booking_source"],"p_start_at": string,"p_tenant_id": string }; Returns: Json
                            },
@@ -691,11 +700,20 @@ isOneToOne: false
 "public_create_booking":
 { Args: { "p_booking_id": string,"p_client_ip"?: string,"p_comment": string,"p_consent": boolean,"p_customer_name": string,"p_customer_phone": string,"p_duration_min": number,"p_extras": Json,"p_guests": number,"p_hall_id": string,"p_idempotency_key": string,"p_request_hash": string,"p_slug": string,"p_start_at": string,"p_token_hash": string }; Returns: Json
                            },
+"public_push_subscribe":
+{ Args: { "p_auth": string,"p_endpoint": string,"p_p256dh": string,"p_slug": string,"p_token_hash": string }; Returns: Json
+                           },
 "quote_booking":
 { Args: { "p_duration_min": number,"p_extras"?: Json,"p_guests": number,"p_hall_id": string,"p_slug": string,"p_start_at": string }; Returns: Json
                            },
 "reschedule_booking_by_token":
 { Args: { "p_expected_version"?: number,"p_new_duration_min"?: number,"p_new_start_at": string,"p_slug": string,"p_token_hash": string }; Returns: Json
+                           },
+"worker_claim_jobs":
+{ Args: { "p_lease"?: string,"p_limit"?: number }; Returns: Json
+                           },
+"worker_complete_job":
+{ Args: { "p_error"?: string,"p_gone_endpoints"?: (string)[],"p_job_id": string,"p_ok": boolean }; Returns: undefined
                            }
           }
           Enums: {

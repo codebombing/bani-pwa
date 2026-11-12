@@ -168,6 +168,15 @@ async function verifyShell(c: Check, base: string, slug: string, name: string) {
       `${slug}: ${icon.src} — HTTP ${r.status}, размер ${meta ? `${meta.width}x${meta.height}` : '?'}`,
     );
   }
+  const sw = await fetch(`${base}${scope}sw.js`);
+  const swText = sw.ok ? await sw.text() : '';
+  c.expect(
+    sw.ok &&
+      (sw.headers.get('content-type') ?? '').includes('javascript') &&
+      swText.includes('bani-'),
+    `${slug}: ${scope}sw.js (scope заведения)`,
+    `${slug}: ${scope}sw.js — HTTP ${sw.status}`,
+  );
   for (const deep of [scope, `${scope}hall/any`, `${scope}owner/`, `${scope}b/some-token`]) {
     const r = await fetch(`${base}${deep}`);
     const html = await r.text();

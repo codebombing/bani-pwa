@@ -11,6 +11,7 @@ import { TenantTheme } from '../booking/TenantTheme';
 import { signOut, useSession } from './auth';
 import { BookingsPage } from './BookingsPage';
 import { CalendarPage } from './CalendarPage';
+import { useTenantServiceWorker } from '../../shared/push';
 import { LoginPage } from './LoginPage';
 import { MorePage } from './MorePage';
 import { ownerApi, ownerErrorMessage } from './ownerApi';
@@ -31,6 +32,7 @@ function Loading() {
 /** Кабинет владельца /s/:slug/owner/*. Вход по magic link, членство проверяется в БД. */
 export function OwnerApp() {
   const { slug = '' } = useParams();
+  useTenantServiceWorker(slug);
   const session = useSession();
   const queryClient = useQueryClient();
   const userId = session?.user.id ?? null;

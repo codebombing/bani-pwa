@@ -16,10 +16,19 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   projects: [{ name: 'mobile-chromium', use: { ...devices['Pixel 7'] } }],
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
-    reuseExistingServer: true,
-    timeout: 60_000,
-  },
+  webServer: [
+    {
+      command: 'npm run dev',
+      url: 'http://localhost:5173',
+      reuseExistingServer: true,
+      timeout: 60_000,
+    },
+    // Собранный dist/ с оболочками заведений (нужны npm run build && npm run demo:publish).
+    {
+      command: 'npm run serve:dist',
+      url: 'http://localhost:8788/s/demo-banya/',
+      reuseExistingServer: true,
+      timeout: 30_000,
+    },
+  ],
 });

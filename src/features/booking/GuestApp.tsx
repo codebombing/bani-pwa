@@ -6,6 +6,7 @@ import { VStack } from '@astryxdesign/core/VStack';
 import { useEffect } from 'react';
 import { Route, Routes, useParams } from 'react-router';
 
+import { useTenantServiceWorker } from '../../shared/push';
 import { ApiError, errorMessage } from './api';
 import { BookingPage } from './BookingPage';
 import { useCatalog } from './queries';
@@ -16,6 +17,7 @@ import { VenuePage } from './VenuePage';
 export function GuestApp() {
   const { slug = '' } = useParams();
   const catalog = useCatalog(slug);
+  useTenantServiceWorker(slug);
 
   useEffect(() => {
     if (catalog.data) document.title = `${catalog.data.tenant.name} — бронирование`;

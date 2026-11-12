@@ -3,7 +3,7 @@
  * manifest.webmanifest (id/start_url/scope = /s/<slug>/), иконки. JS/CSS общие для всех
  * заведений (dist/assets). Service worker со scope заведения — этап 7.
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 import sharp from 'sharp';
@@ -14,6 +14,18 @@ import { ICON, ICON_MASKABLE } from './images';
 
 /** Цвет фона приложения (тёмная тема) — им же заливаются iOS-иконка и splash. */
 export const APP_BACKGROUND = '#1c1a19';
+
+/** Cloudflare Pages: HTML, sw.js и манифесты заведений не кэшируются, хэшированная статика — навсегда. */
+export const HEADERS = `# Сгенерировано tenant:publish.
+/s/*
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+`;
 
 export const REDIRECTS = `# Сгенерировано tenant:publish. Глубокие ссылки заведения → его оболочка.
 /s/:slug/*  /s/:slug/index.html  200
@@ -125,9 +137,17 @@ export async function buildShell(
     htmlFor(readFileSync(baseFile, 'utf8'), slug, b, configVersion),
   );
   writeFileSync(path.join(DIST_DIR, '_redirects'), REDIRECTS);
+  writeFileSync(path.join(DIST_DIR, '_headers'), HEADERS);
+
+  // Service worker заведения: тот же sw.js, но scope /s/<slug>/ — свои кэши и подписки.
+  const sw = path.join(DIST_DIR, 'sw.js');
+  if (!existsSync(sw)) throw new CliError('Нет dist/sw.js — пересоберите: npm run build');
+  copyFileSync(sw, path.join(out, 'sw.js'));
+  if (existsSync(`${sw}.map`)) copyFileSync(`${sw}.map`, path.join(out, 'sw.js.map'));
 
   return [
     'index.html',
+    'sw.js',
     'manifest.webmanifest',
     'icons/icon-192.png',
     'icons/icon-512.png',

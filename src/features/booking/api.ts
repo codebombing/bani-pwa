@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { readPublicEnv } from '../../shared/env';
+import type { PushSubscriptionBody } from '../../shared/push';
 
 /** Клиент Edge Function public-api. Все ответы проходят Zod; цену считает только сервер. */
 
@@ -279,6 +280,16 @@ export const publicApi = {
     request(slug, `/bookings/${encodeURIComponent(token)}/cancel`, bookingSchema, {
       method: 'POST',
     }),
+  pushSubscribe: (slug: string, token: string, body: PushSubscriptionBody) =>
+    request(
+      slug,
+      `/bookings/${encodeURIComponent(token)}/push`,
+      z.object({ ok: z.literal(true) }),
+      {
+        method: 'POST',
+        body,
+      },
+    ),
   reschedule: (
     slug: string,
     token: string,

@@ -17,6 +17,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
 import { addDays, formatRangeInTz, todayInTz, zonedTimeToUtc } from '../../shared/format';
+import { PushToggle } from '../../shared/PushToggle';
 import { signOut } from './auth';
 import { ownerApi, ownerErrorMessage } from './ownerApi';
 import { ownerKey, refreshOwnerData, useOwner } from './ownerContext';
@@ -145,6 +146,19 @@ export function MorePage() {
           </List>
         )}
       </VStack>
+
+      <Card padding={4}>
+        <VStack gap={3}>
+          <Heading level={2}>Уведомления</Heading>
+          <Text color="secondary">О новых бронях, переносах и отменах — на это устройство.</Text>
+          <PushToggle
+            slug={tenant.slug}
+            label="Включить уведомления"
+            description="Новые брони, переносы и отмены будут приходить на это устройство."
+            save={(sub) => ownerApi.pushSubscribe(tenant.id, sub)}
+          />
+        </VStack>
+      </Card>
 
       <Card padding={4}>
         <VStack gap={3}>

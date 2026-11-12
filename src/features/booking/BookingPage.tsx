@@ -15,6 +15,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { formatDateTimeInTz, formatRangeInTz, formatRub } from '../../shared/format';
+import { PushToggle } from '../../shared/PushToggle';
 import {
   ApiError,
   bookingIcsUrl,
@@ -166,6 +167,15 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
             onClick={() => setConfirmCancel(true)}
           />
         </VStack>
+      )}
+
+      {canCancel && (
+        <PushToggle
+          slug={tenant.slug}
+          label="Напоминать о брони"
+          description="Пришлём напоминание за сутки и за 2 часа, а также сообщим о переносе или отмене."
+          save={(sub) => publicApi.pushSubscribe(tenant.slug, token, sub)}
+        />
       )}
 
       {b.status !== 'cancelled' &&

@@ -65,7 +65,10 @@ function resolveFile(root: string, urlPath: string): string | null {
   return null;
 }
 
-export async function startStaticServer(root: string): Promise<{ url: string; server: Server }> {
+export async function startStaticServer(
+  root: string,
+  listenPort = 0,
+): Promise<{ url: string; server: Server }> {
   const rules = parseRedirects(path.join(root, '_redirects'));
   const server = createServer((req, res) => {
     const urlPath = new URL(req.url ?? '/', 'http://x').pathname;
@@ -94,7 +97,7 @@ export async function startStaticServer(root: string): Promise<{ url: string; se
       .writeHead(200, { 'content-type': TYPES[path.extname(file)] ?? 'application/octet-stream' })
       .end(readFileSync(file));
   });
-  await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+  await new Promise<void>((resolve) => server.listen(listenPort, '127.0.0.1', resolve));
   const { port } = server.address() as AddressInfo;
   return { url: `http://127.0.0.1:${port}`, server };
 }

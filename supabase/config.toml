@@ -436,3 +436,10 @@ entrypoint = "./functions/public-api/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/public-api/*.html" ]
+
+[functions.notify-worker]
+enabled = true
+# Доступ проверяет сама функция: withSupabase({ auth: 'secret' }) — вызывает только pg_cron.
+verify_jwt = false
+import_map = "./functions/notify-worker/deno.json"
+entrypoint = "./functions/notify-worker/index.ts"
