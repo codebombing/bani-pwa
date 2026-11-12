@@ -279,4 +279,13 @@ export const publicApi = {
     request(slug, `/bookings/${encodeURIComponent(token)}/cancel`, bookingSchema, {
       method: 'POST',
     }),
+  reschedule: (
+    slug: string,
+    token: string,
+    body: { start_at: string; duration_min: number; expected_version: number },
+  ) =>
+    request(slug, `/bookings/${encodeURIComponent(token)}/reschedule`, bookingSchema, {
+      method: 'POST',
+      body,
+    }),
 };

@@ -15,9 +15,18 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { formatDateTimeInTz, formatRangeInTz, formatRub } from '../../shared/format';
-import { ApiError, bookingIcsUrl, errorMessage, publicApi, type Booking, type Tenant } from './api';
+import {
+  ApiError,
+  bookingIcsUrl,
+  errorMessage,
+  publicApi,
+  type Booking,
+  type Hall,
+  type Tenant,
+} from './api';
 import { rememberBooking } from './myBookings';
 import { PriceLines } from './PriceLines';
+import { RescheduleSheet } from './RescheduleSheet';
 import { bookingKeys, useBooking } from './queries';
 
 const STATUS: Record<
@@ -31,11 +40,12 @@ const STATUS: Record<
   no_show: { title: 'Визит не состоялся', variant: 'neutral' },
 };
 
-export function BookingPage({ tenant }: { tenant: Tenant }) {
+export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }) {
   const { token = '' } = useParams();
   const booking = useBooking(tenant.slug, token);
   const queryClient = useQueryClient();
   const [confirmCancel, setConfirmCancel] = useState(false);
+  const [moving, setMoving] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   const cancel = useMutation({
@@ -147,6 +157,9 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
               ? `Бесплатная отмена до ${formatDateTimeInTz(b.free_cancellation_until, b.timezone)}.`
               : 'Срок бесплатной отмены прошёл: задаток может не вернуться.'}
           </Text>
+          {halls.some((h) => h.id === b.hall_id) && (
+            <Button variant="secondary" label="Перенести" onClick={() => setMoving(true)} />
+          )}
           <Button
             variant="destructive"
             label="Отменить бронь"
@@ -177,6 +190,16 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
           Сохраните эту страницу — по ссылке бронь можно открыть с любого устройства.
         </Text>
       </VStack>
+
+      {moving && halls.find((h) => h.id === b.hall_id) && (
+        <RescheduleSheet
+          slug={tenant.slug}
+          token={token}
+          booking={b}
+          hall={halls.find((h) => h.id === b.hall_id) as Hall}
+          onClose={() => setMoving(false)}
+        />
+      )}
 
       <AlertDialog
         isOpen={confirmCancel}

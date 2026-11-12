@@ -58,7 +58,10 @@ export function GuestApp() {
     <TenantTheme slug={slug} accent={catalog.data.tenant.theme.accent}>
       <Routes>
         <Route index element={<VenuePage catalog={catalog.data} />} />
-        <Route path="b/:token" element={<BookingPage tenant={catalog.data.tenant} />} />
+        <Route
+          path="b/:token"
+          element={<BookingPage tenant={catalog.data.tenant} halls={catalog.data.halls} />}
+        />
         <Route
           path="*"
           element={
