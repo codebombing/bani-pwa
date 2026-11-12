@@ -6,7 +6,11 @@ import { VStack } from '@astryxdesign/core/VStack';
 import { formatDuration, formatRub } from '../../shared/format';
 import type { Snapshot } from './api';
 
-const DAY_TYPE: Record<string, string> = { weekday: 'будни', weekend: 'выходные', holiday: 'праздник' };
+const DAY_TYPE: Record<string, string> = {
+  weekday: 'будни',
+  weekend: 'выходные',
+  holiday: 'праздник',
+};
 
 function Row({ label, amount, strong }: { label: string; amount: number; strong?: boolean }) {
   return (
@@ -22,7 +26,15 @@ function Row({ label, amount, strong }: { label: string; amount: number; strong?
 }
 
 /** Строки расчёта из серверного снимка цены: аренда по тарифам, доп. гости, допы, итог, задаток. */
-export function PriceLines({ snapshot, total, deposit }: { snapshot: Snapshot; total: number; deposit?: number }) {
+export function PriceLines({
+  snapshot,
+  total,
+  deposit,
+}: {
+  snapshot: Snapshot;
+  total: number;
+  deposit?: number;
+}) {
   return (
     <VStack gap={2}>
       {snapshot.rent.map((line) => (
@@ -33,7 +45,10 @@ export function PriceLines({ snapshot, total, deposit }: { snapshot: Snapshot; t
         />
       ))}
       {snapshot.extra_guests && snapshot.extra_guests.amount > 0 && (
-        <Row label={`Доп. гости: ${snapshot.extra_guests.count}`} amount={snapshot.extra_guests.amount} />
+        <Row
+          label={`Доп. гости: ${snapshot.extra_guests.count}`}
+          amount={snapshot.extra_guests.amount}
+        />
       )}
       {snapshot.extras.map((e) => (
         <Row key={e.name} label={`${e.name}${e.qty > 1 ? ` × ${e.qty}` : ''}`} amount={e.amount} />

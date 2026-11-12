@@ -20,7 +20,10 @@ import { rememberBooking } from './myBookings';
 import { PriceLines } from './PriceLines';
 import { bookingKeys, useBooking } from './queries';
 
-const STATUS: Record<Booking['status'], { title: string; variant: 'success' | 'warning' | 'error' | 'neutral' }> = {
+const STATUS: Record<
+  Booking['status'],
+  { title: string; variant: 'success' | 'warning' | 'error' | 'neutral' }
+> = {
   pending: { title: 'Бронь ожидает подтверждения', variant: 'warning' },
   confirmed: { title: 'Бронь подтверждена', variant: 'success' },
   completed: { title: 'Визит состоялся', variant: 'neutral' },
@@ -93,7 +96,13 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={640}>
-      {b.is_demo && <Banner status="info" title="Демо-бронь" description="Тестовые данные заведения в демо-режиме." />}
+      {b.is_demo && (
+        <Banner
+          status="info"
+          title="Демо-бронь"
+          description="Тестовые данные заведения в демо-режиме."
+        />
+      )}
 
       <VStack gap={2}>
         <HStack gap={2} vAlign="center">
@@ -124,7 +133,11 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
       </VStack>
 
       {cancel.isError && (
-        <Banner status="error" title="Не удалось отменить" description={errorMessage(cancel.error)} />
+        <Banner
+          status="error"
+          title="Не удалось отменить"
+          description={errorMessage(cancel.error)}
+        />
       )}
 
       {canCancel && (
@@ -134,7 +147,11 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
               ? `Бесплатная отмена до ${formatDateTimeInTz(b.free_cancellation_until, b.timezone)}.`
               : 'Срок бесплатной отмены прошёл: задаток может не вернуться.'}
           </Text>
-          <Button variant="destructive" label="Отменить бронь" onClick={() => setConfirmCancel(true)} />
+          <Button
+            variant="destructive"
+            label="Отменить бронь"
+            onClick={() => setConfirmCancel(true)}
+          />
         </VStack>
       )}
 
@@ -145,7 +162,9 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
           </Link>
         )}
         <Link href={`/s/${tenant.slug}/`}>Ко всем залам</Link>
-        <Text color="secondary">Сохраните эту страницу — по ссылке бронь можно открыть с любого устройства.</Text>
+        <Text color="secondary">
+          Сохраните эту страницу — по ссылке бронь можно открыть с любого устройства.
+        </Text>
       </VStack>
 
       <AlertDialog

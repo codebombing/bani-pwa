@@ -24,12 +24,15 @@ import { bookingToken, sha256Hex, TOKEN_RE, tokenHashBytea } from '../_shared/to
 type Ctx = Parameters<Parameters<typeof withSupabase>[1]>[1];
 
 type SafeParser<T> = {
-  safeParse(v: unknown): { success: true; data: T } | { success: false; error: { issues: unknown[] } };
+  safeParse(
+    v: unknown,
+  ): { success: true; data: T } | { success: false; error: { issues: unknown[] } };
 };
 
 function parse<T>(schema: SafeParser<T>, value: unknown): T {
   const r = schema.safeParse(value);
-  if (!r.success) throw new HttpError('VALIDATION_ERROR', 'Некорректные данные запроса', r.error.issues);
+  if (!r.success)
+    throw new HttpError('VALIDATION_ERROR', 'Некорректные данные запроса', r.error.issues);
   return r.data;
 }
 
@@ -41,25 +44,32 @@ async function rateLimit(ctx: Ctx, key: string, limit: number, window: string) {
     p_window: window,
   });
   if (error) throw error;
-  if (data !== true) throw new HttpError('RATE_LIMITED', 'Слишком много запросов, попробуйте позже');
+  if (data !== true)
+    throw new HttpError('RATE_LIMITED', 'Слишком много запросов, попробуйте позже');
 }
 
 async function tenantInfo(ctx: Ctx, slug: string): Promise<Response> {
   const db = ctx.supabase; // anon: публичные представления под RLS
   const { data: tenant, error } = await db
     .from('public_tenants')
-    .select('id, slug, name, timezone, status, theme, texts, contacts, legal, pwa, deposit_percent, free_cancellation_hours')
+    .select(
+      'id, slug, name, timezone, status, theme, texts, contacts, legal, pwa, deposit_percent, free_cancellation_hours',
+    )
     .eq('slug', slug)
     .maybeSingle();
   if (error) throw error;
   if (!tenant) return fail('TENANT_NOT_FOUND', 'Заведение не найдено');
 
   const [halls, extras] = await Promise.all([
-    db.from('public_halls')
-      .select('id, key, name, description, capacity_included, capacity_max, extra_guest_price, extra_guest_unit, min_duration_min, slot_step_min, photos, sort')
+    db
+      .from('public_halls')
+      .select(
+        'id, key, name, description, capacity_included, capacity_max, extra_guest_price, extra_guest_unit, min_duration_min, slot_step_min, photos, sort',
+      )
       .eq('tenant_id', tenant.id)
       .order('sort'),
-    db.from('public_extras')
+    db
+      .from('public_extras')
       .select('id, key, name, description, price, unit, max_qty, sort')
       .eq('tenant_id', tenant.id)
       .order('sort'),
@@ -81,9 +91,14 @@ async function createBooking(req: Request, ctx: Ctx, slug: string): Promise<Resp
   // Хэш тела без ключа: повтор с тем же ключом и другим телом → IDEMPOTENCY_CONFLICT.
   const requestHash = await sha256Hex(
     JSON.stringify([
-      body.hall_id, body.start_at, body.duration_min, body.guests,
+      body.hall_id,
+      body.start_at,
+      body.duration_min,
+      body.guests,
       [...body.extras].sort((a, b) => a.extra_id.localeCompare(b.extra_id)),
-      body.customer_name, body.customer_phone, body.comment ?? null,
+      body.customer_name,
+      body.customer_phone,
+      body.comment ?? null,
     ]),
   );
   const token = await bookingToken(bookingId, body.idempotency_key);
@@ -109,10 +124,14 @@ async function createBooking(req: Request, ctx: Ctx, slug: string): Promise<Resp
   if (!data?.ok) return fromRpc(data);
 
   // При повторе бронь создана раньше с другим booking_id — токен вычисляется от него.
-  const finalToken = data.booking_id === bookingId
-    ? token
-    : await bookingToken(data.booking_id, body.idempotency_key);
-  return json({ ok: true, replay: data.replay === true, token: finalToken, booking: data }, data.replay ? 200 : 201);
+  const finalToken =
+    data.booking_id === bookingId
+      ? token
+      : await bookingToken(data.booking_id, body.idempotency_key);
+  return json(
+    { ok: true, replay: data.replay === true, token: finalToken, booking: data },
+    data.replay ? 200 : 201,
+  );
 }
 
 async function route(req: Request, ctx: Ctx): Promise<Response> {
@@ -173,12 +192,18 @@ async function route(req: Request, ctx: Ctx): Promise<Response> {
 
     if (!action) {
       if (req.method !== 'GET') return fail('METHOD_NOT_ALLOWED', 'Только GET');
-      const { data, error } = await ctx.supabaseAdmin.rpc('get_booking_by_token_hash', { p_slug: slug, p_token_hash });
+      const { data, error } = await ctx.supabaseAdmin.rpc('get_booking_by_token_hash', {
+        p_slug: slug,
+        p_token_hash,
+      });
       if (error) throw error;
       return fromRpc(data);
     }
     if (action === 'cancel' && req.method === 'POST') {
-      const { data, error } = await ctx.supabaseAdmin.rpc('cancel_booking_by_token', { p_slug: slug, p_token_hash });
+      const { data, error } = await ctx.supabaseAdmin.rpc('cancel_booking_by_token', {
+        p_slug: slug,
+        p_token_hash,
+      });
       if (error) throw error;
       return fromRpc(data);
     }

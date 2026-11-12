@@ -23,7 +23,8 @@
     "db:test": "supabase test db",
     "db:types": "supabase gen types typescript --local > src/shared/db.types.ts",
     "test:integration": "vitest run --config vitest.integration.config.ts",
-    "dev:functions": "supabase functions serve"
+    "dev:functions": "supabase functions serve",
+    "owner:invite": "tsx scripts/owner/invite.ts"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.13",

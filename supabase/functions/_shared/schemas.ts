@@ -1,7 +1,11 @@
 // Zod-схемы аргументов публичного API. Клиент не передаёт цену, tenant_id и время окончания.
 import { z } from 'zod';
 
-export const slugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).min(3).max(40);
+export const slugSchema = z
+  .string()
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+  .min(3)
+  .max(40);
 
 const extrasSchema = z
   .array(z.object({ extra_id: z.uuid(), qty: z.number().int().min(1).max(99) }))

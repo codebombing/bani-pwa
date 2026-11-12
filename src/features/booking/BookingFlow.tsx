@@ -184,7 +184,11 @@ export function BookingFlow({ catalog, initialHallId, onClosed }: Props) {
                 flow.backTo('time');
               }}
               onCreated={(token, booking) => {
-                rememberBooking(slug, { token, start_at: booking.start_at, hall_name: booking.hall_name });
+                rememberBooking(slug, {
+                  token,
+                  start_at: booking.start_at,
+                  hall_name: booking.hall_name,
+                });
                 void queryClient.invalidateQueries({ queryKey: bookingKeys.availability(slug) });
                 flow.close(() => navigate(`/s/${slug}/b/${token}`));
               }}

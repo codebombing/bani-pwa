@@ -1,7 +1,5 @@
 import { createBrowserRouter } from 'react-router';
 
-import { GuestApp } from '../features/booking/GuestApp';
-import { OwnerApp } from '../features/owner/OwnerApp';
 import { RootLayout } from './RootLayout';
 import { DevIndexPage } from './routes/DevIndexPage';
 import { NotFoundPage } from './routes/NotFoundPage';
@@ -18,8 +16,15 @@ export const router = createBrowserRouter([
     errorElement: <RouteErrorPage />,
     children: [
       { index: true, element: <DevIndexPage /> },
-      { path: 's/:slug/owner/*', element: <OwnerApp /> },
-      { path: 's/:slug/*', element: <GuestApp /> },
+      // Отдельные чанки: гость не загружает код кабинета, и наоборот.
+      {
+        path: 's/:slug/owner/*',
+        lazy: async () => ({ Component: (await import('../features/owner/OwnerApp')).OwnerApp }),
+      },
+      {
+        path: 's/:slug/*',
+        lazy: async () => ({ Component: (await import('../features/booking/GuestApp')).GuestApp }),
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

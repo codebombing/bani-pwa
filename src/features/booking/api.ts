@@ -45,7 +45,10 @@ export const tenantSchema = z.object({
     telegram: z.string().optional(),
     address: z.string().optional(),
   }),
-  legal: z.object({ operator_name: z.string().optional(), privacy_policy_url: z.string().optional() }),
+  legal: z.object({
+    operator_name: z.string().optional(),
+    privacy_policy_url: z.string().optional(),
+  }),
   deposit_percent: z.number().int(),
   free_cancellation_hours: z.number().int(),
 });

@@ -38,7 +38,10 @@ export function GuestApp() {
     return (
       <VStack as="main" padding={6} maxWidth={640}>
         {notFound ? (
-          <EmptyState title="Заведение не найдено" description="Проверьте ссылку — возможно, в ней опечатка." />
+          <EmptyState
+            title="Заведение не найдено"
+            description="Проверьте ссылку — возможно, в ней опечатка."
+          />
         ) : (
           <Banner
             status="error"

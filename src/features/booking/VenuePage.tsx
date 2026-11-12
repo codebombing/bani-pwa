@@ -41,7 +41,13 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         {tenant.contacts.address && <Text color="secondary">{tenant.contacts.address}</Text>}
       </VStack>
 
-      <Button variant="primary" size="lg" label="Забронировать" width="100%" onClick={() => start()} />
+      <Button
+        variant="primary"
+        size="lg"
+        label="Забронировать"
+        width="100%"
+        onClick={() => start()}
+      />
 
       {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
 
@@ -60,7 +66,11 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
                   {`Сверх ${hall.capacity_included} гостей — ${formatRub(hall.extra_guest_price)} за человека${hall.extra_guest_unit === 'per_hour' ? ' в час' : ''}`}
                 </Text>
               )}
-              <Button variant="secondary" label={`Выбрать «${hall.name}»`} onClick={() => start(hall.id)} />
+              <Button
+                variant="secondary"
+                label={`Выбрать «${hall.name}»`}
+                onClick={() => start(hall.id)}
+              />
             </VStack>
           </Card>
         ))}
@@ -85,7 +95,9 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
       <VStack gap={2}>
         <Heading level={2}>Контакты</Heading>
         {tenant.contacts.phone && (
-          <Link href={`tel:${tenant.contacts.phone.replace(/[^+\d]/g, '')}`}>{tenant.contacts.phone}</Link>
+          <Link href={`tel:${tenant.contacts.phone.replace(/[^+\d]/g, '')}`}>
+            {tenant.contacts.phone}
+          </Link>
         )}
         {tenant.contacts.telegram && (
           <Link href={`https://t.me/${tenant.contacts.telegram}`} isExternalLink>

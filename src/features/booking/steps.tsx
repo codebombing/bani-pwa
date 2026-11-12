@@ -229,7 +229,13 @@ export function GuestsStep({
   onNext: () => void;
 }) {
   const quoteInput = useMemo(
-    () => ({ hall_id: hall.id, start_at: slot.start_at, duration_min: duration, guests, extras: toChoices(chosen) }),
+    () => ({
+      hall_id: hall.id,
+      start_at: slot.start_at,
+      duration_min: duration,
+      guests,
+      extras: toChoices(chosen),
+    }),
     [hall.id, slot.start_at, duration, guests, chosen],
   );
   const quote = useQuote(slug, quoteInput);
@@ -290,7 +296,10 @@ export function GuestsStep({
                     step={1}
                     size="sm"
                     onChange={(n) =>
-                      onChange(guests, { ...chosen, [e.id]: Math.max(1, Math.min(maxQty(e), Math.round(n))) })
+                      onChange(guests, {
+                        ...chosen,
+                        [e.id]: Math.max(1, Math.min(maxQty(e), Math.round(n))),
+                      })
                     }
                   />
                 )}
@@ -301,7 +310,11 @@ export function GuestsStep({
       )}
 
       {quote.isError ? (
-        <Banner status="error" title="Не удалось посчитать цену" description={errorMessage(quote.error)} />
+        <Banner
+          status="error"
+          title="Не удалось посчитать цену"
+          description={errorMessage(quote.error)}
+        />
       ) : (
         <HStack justify="between" vAlign="center">
           <Text weight="semibold">Итого</Text>
@@ -435,7 +448,15 @@ export function ConfirmStep({
   const choices = toChoices(draft.extras);
   const quote = useQuote(
     tenant.slug,
-    slot ? { hall_id: hall.id, start_at: slot.start_at, duration_min: duration, guests: draft.guests, extras: choices } : null,
+    slot
+      ? {
+          hall_id: hall.id,
+          start_at: slot.start_at,
+          duration_min: duration,
+          guests: draft.guests,
+          extras: choices,
+        }
+      : null,
   );
   // Один ключ на попытку: повтор после сбоя сети вернёт ту же бронь, а не создаст вторую.
   const idempotencyKey = useRef(crypto.randomUUID());
@@ -480,7 +501,9 @@ export function ConfirmStep({
     <VStack gap={4}>
       <MetadataList>
         <MetadataListItem label="Зал">{hall.name}</MetadataListItem>
-        <MetadataListItem label="Когда">{formatRangeInTz(slot.start_at, slot.end_at, tenant.timezone)}</MetadataListItem>
+        <MetadataListItem label="Когда">
+          {formatRangeInTz(slot.start_at, slot.end_at, tenant.timezone)}
+        </MetadataListItem>
         <MetadataListItem label="Гостей">{String(draft.guests)}</MetadataListItem>
         {extraNames && <MetadataListItem label="Допы">{extraNames}</MetadataListItem>}
         <MetadataListItem label="Контакт">{`${draft.contacts.name.trim()}, ${formatRuPhoneInput(draft.contacts.phone)}`}</MetadataListItem>
@@ -496,7 +519,11 @@ export function ConfirmStep({
         />
       )}
       {quote.data && (
-        <PriceLines snapshot={quote.data.snapshot} total={quote.data.total} deposit={quote.data.deposit_amount} />
+        <PriceLines
+          snapshot={quote.data.snapshot}
+          total={quote.data.total}
+          deposit={quote.data.deposit_amount}
+        />
       )}
 
       {tenant.texts.booking_note && <Text color="secondary">{tenant.texts.booking_note}</Text>}

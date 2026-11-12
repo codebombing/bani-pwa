@@ -22,7 +22,15 @@ function onAccentColor(accent: string): string {
 }
 
 /** Тема заведения: базовая тёмная neutral + акцент из business.json (на рантайме). */
-export function TenantTheme({ slug, accent, children }: { slug: string; accent?: string; children: ReactNode }) {
+export function TenantTheme({
+  slug,
+  accent,
+  children,
+}: {
+  slug: string;
+  accent?: string;
+  children: ReactNode;
+}) {
   const base = themes[defaultThemeSlug];
   const theme = useMemo(() => {
     if (!accent || !HEX_RE.test(accent)) return base;

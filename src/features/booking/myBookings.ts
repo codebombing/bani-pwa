@@ -15,7 +15,9 @@ const key = (slug: string) => `bani:${slug}:my-bookings`;
 
 export function readMyBookings(slug: string): MyBooking[] {
   try {
-    const parsed = z.array(itemSchema).safeParse(JSON.parse(localStorage.getItem(key(slug)) ?? '[]'));
+    const parsed = z
+      .array(itemSchema)
+      .safeParse(JSON.parse(localStorage.getItem(key(slug)) ?? '[]'));
     return parsed.success ? parsed.data : [];
   } catch {
     return [];

@@ -1,4 +1,7 @@
-import { InternationalizationProvider, type ProviderMessagesByLocale } from '@astryxdesign/core/i18n';
+import {
+  InternationalizationProvider,
+  type ProviderMessagesByLocale,
+} from '@astryxdesign/core/i18n';
 import ruRU from '@astryxdesign/core/locales/ru-RU.json';
 import { Theme } from '@astryxdesign/core/theme';
 import { QueryClientProvider } from '@tanstack/react-query';

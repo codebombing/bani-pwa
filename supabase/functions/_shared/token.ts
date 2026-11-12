@@ -18,7 +18,9 @@ function hex(bytes: Uint8Array): string {
 function tokenSecret(): string {
   const secret = Deno.env.get('BOOKING_TOKEN_SECRET');
   if (!secret || secret.length < 32) {
-    throw new Error('BOOKING_TOKEN_SECRET не задан (≥ 32 символов) — см. supabase/functions/.env.example');
+    throw new Error(
+      'BOOKING_TOKEN_SECRET не задан (≥ 32 символов) — см. supabase/functions/.env.example',
+    );
   }
   return secret;
 }
@@ -31,7 +33,11 @@ export async function bookingToken(bookingId: string, idempotencyKey: string): P
     false,
     ['sign'],
   );
-  const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(`${bookingId}:${idempotencyKey}`));
+  const sig = await crypto.subtle.sign(
+    'HMAC',
+    key,
+    encoder.encode(`${bookingId}:${idempotencyKey}`),
+  );
   return base64url(new Uint8Array(sig));
 }
 

@@ -16,6 +16,50 @@ export function todayInTz(timeZone: string, now: Date = new Date()): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone }).format(now);
 }
 
+/** Смещение timezone относительно UTC (минуты) в момент `at`. */
+function tzOffsetMinutes(at: Date, timeZone: string): number {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hourCycle: 'h23',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }).formatToParts(at);
+  const get = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? 0);
+  const asUtc = Date.UTC(
+    get('year'),
+    get('month') - 1,
+    get('day'),
+    get('hour'),
+    get('minute'),
+    get('second'),
+  );
+  return Math.round((asUtc - at.getTime()) / 60_000);
+}
+
+/**
+ * Момент (UTC) локального времени `HH:MM` даты `isoDate` в timezone заведения.
+ * Учитывает переход на летнее/зимнее время (двухшаговая поправка смещения).
+ */
+export function zonedTimeToUtc(isoDate: string, time: string, timeZone: string): Date {
+  const [y, m, d] = isoDate.split('-').map(Number);
+  const [hh, mm] = time.split(':').map(Number);
+  const naive = Date.UTC(y ?? 1970, (m ?? 1) - 1, d ?? 1, hh ?? 0, mm ?? 0);
+  const first = naive - tzOffsetMinutes(new Date(naive), timeZone) * 60_000;
+  return new Date(naive - tzOffsetMinutes(new Date(first), timeZone) * 60_000);
+}
+
+/** Локальные сутки даты в timezone заведения как полуинтервал [from, to) в UTC. */
+export function zonedDayRange(isoDate: string, timeZone: string): { from: Date; to: Date } {
+  return {
+    from: zonedTimeToUtc(isoDate, '00:00', timeZone),
+    to: zonedTimeToUtc(addDays(isoDate, 1), '00:00', timeZone),
+  };
+}
+
 /** YYYY-MM-DD + n дней (календарная арифметика без часовых поясов). */
 export function addDays(isoDate: string, days: number): string {
   const d = new Date(`${isoDate}T00:00:00Z`);
@@ -35,9 +79,11 @@ export function formatDateLong(isoDate: string): string {
 
 /** «13 ноября» для локальной даты YYYY-MM-DD. */
 export function formatDayMonth(isoDate: string): string {
-  return new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', timeZone: 'UTC' }).format(
-    new Date(`${isoDate}T00:00:00Z`),
-  );
+  return new Intl.DateTimeFormat('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    timeZone: 'UTC',
+  }).format(new Date(`${isoDate}T00:00:00Z`));
 }
 
 /** Локальная дата YYYY-MM-DD момента в timezone заведения. */
@@ -76,7 +122,8 @@ export function formatRangeInTz(startIso: string, endIso: string, timeZone: stri
   }).format(new Date(startIso));
   const endDay = dateInTz(endIso, timeZone);
   const end = formatTimeInTz(endIso, timeZone);
-  const endLabel = dateInTz(startIso, timeZone) === endDay ? end : `${end} (${formatDayMonth(endDay)})`;
+  const endLabel =
+    dateInTz(startIso, timeZone) === endDay ? end : `${end} (${formatDayMonth(endDay)})`;
   return `${day}, ${formatTimeInTz(startIso, timeZone)}–${endLabel}`;
 }
 
