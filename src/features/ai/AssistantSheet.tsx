@@ -1,3 +1,4 @@
+import { Avatar } from '@astryxdesign/core/Avatar';
 import { BottomSheet } from '@astryxdesign/core/BottomSheet';
 import { Button } from '@astryxdesign/core/Button';
 import {
@@ -10,22 +11,58 @@ import { HStack } from '@astryxdesign/core/HStack';
 import { Text } from '@astryxdesign/core/Text';
 import { VStack } from '@astryxdesign/core/VStack';
 import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { AiReply, ChatTurn } from './aiApi';
+import banshikUrl from './banshik.svg';
+
+const NAME = 'Банщик';
+
+// Шапка и поле ввода прилипают к краям шторки, лента прокручивается между ними.
+const STICKY_TOP = {
+  position: 'sticky',
+  top: 0,
+  zIndex: 1,
+  paddingBlock: 'var(--spacing-2, 8px)',
+  background: 'var(--color-background-popover)',
+} as const;
+const STICKY_BOTTOM = {
+  position: 'sticky',
+  bottom: 0,
+  zIndex: 1,
+  paddingBlock: 'var(--spacing-2, 8px)',
+  background: 'var(--color-background-popover)',
+} as const;
+
+const GREETING = {
+  guest:
+    'Привет! Я Банщик 🌿 Соберётесь попариться — подскажу, когда свободно, сколько стоит, и помогу записаться в пару касаний.',
+  owner:
+    'Привет! Я Банщик. Расскажу, кто сегодня придёт, сколько заработали и что ожидается, найду бронь по имени или телефону.',
+} as const;
 
 const SUGGESTIONS = {
   guest: [
-    'Что свободно завтра?',
+    'Что свободно завтра вечером?',
     'Сколько стоит в субботу в 18:00 на 3 часа?',
     'Когда у меня бронь?',
   ],
   owner: ['Кто сегодня придёт?', 'Сколько заработали за неделю?', 'Сколько денег ожидается?'],
 } as const;
 
+function Lines({ text }: { text: string }) {
+  return (
+    <VStack gap={1}>
+      {text.split('\n').map((line, j) => (
+        <Text key={j}>{line}</Text>
+      ))}
+    </VStack>
+  );
+}
+
 /**
- * Чат с ассистентом в BottomSheet. Ассистент только читает данные: бронировать гость
- * продолжает обычной кнопкой (onBook), а без LLM ответы строятся по данным сервера.
+ * Чат с помощником в BottomSheet: шапка с аватаром, прокручиваемая лента над полем ввода.
+ * Помощник только читает данные: бронирует гость обычной кнопкой (onBook).
  */
 export function AssistantSheet({
   mode,
@@ -40,6 +77,7 @@ export function AssistantSheet({
 }) {
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const [lastReply, setLastReply] = useState<AiReply | null>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const send = useMutation({
     mutationFn: ask,
     onSuccess: (reply) => {
@@ -47,6 +85,11 @@ export function AssistantSheet({
       setTurns((t) => [...t, { role: 'assistant', content: reply.answer }]);
     },
   });
+
+  // Новое сообщение — лента прокручивается вниз.
+  useEffect(() => {
+    listRef.current?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }, [turns.length, send.isPending]);
 
   const submit = (text: string) => {
     const content = text.trim();
@@ -56,75 +99,103 @@ export function AssistantSheet({
     send.mutate(next);
   };
 
+  const bot = (key: string, body: React.ReactNode, ghost = false) => (
+    <ChatMessage
+      key={key}
+      sender="assistant"
+      avatar={<Avatar src={banshikUrl} name={NAME} size="sm" />}
+    >
+      <ChatMessageBubble variant={ghost ? 'ghost' : 'filled'}>{body}</ChatMessageBubble>
+    </ChatMessage>
+  );
+
   return (
     <BottomSheet
       isOpen
       onOpenChange={(open) => {
         if (!open) onClose();
       }}
-      label="Помощник"
-      height="70dvh"
+      label="Помощник Банщик"
+      height="75dvh"
     >
-      <VStack gap={3} height="100%">
-        <HStack gap={2} vAlign="center" justify="between">
-          <Text weight="semibold">Помощник</Text>
+      <VStack gap={3}>
+        <HStack gap={2} vAlign="center" justify="between" style={STICKY_TOP}>
+          <HStack gap={2} vAlign="center">
+            <Avatar src={banshikUrl} name={NAME} size="lg" />
+            <VStack gap={0}>
+              <Text weight="semibold">{NAME}</Text>
+              <Text color="secondary">{send.isPending ? 'думает…' : 'на связи'}</Text>
+            </VStack>
+          </HStack>
           <Button variant="ghost" size="sm" label="Закрыть" onClick={onClose} />
         </HStack>
 
-        {turns.length === 0 ? (
-          <VStack gap={2}>
-            <Text color="secondary">
-              {mode === 'guest'
-                ? 'Спросите про свободное время и цены. Забронировать можно в пару нажатий кнопкой «Забронировать».'
-                : 'Спросите про брони, деньги и загрузку. Помощник только читает данные.'}
-            </Text>
-            {SUGGESTIONS[mode].map((s) => (
-              <Button key={s} variant="secondary" size="sm" label={s} onClick={() => submit(s)} />
-            ))}
-          </VStack>
-        ) : (
-          <ChatMessageList align="top" density="compact" isStreaming={send.isPending}>
-            {[
-              ...turns.map((t, i) => (
-                <ChatMessage key={i} sender={t.role}>
+        {/* Лента с фиксированной высотой: прокручивается сама, поле ввода всегда видно. */}
+        <ChatMessageList
+          ref={listRef}
+          align="top"
+          density="compact"
+          isStreaming={send.isPending}
+          style={{ scrollMarginBottom: 160 }}
+        >
+          {[
+            bot('greeting', <Text>{GREETING[mode]}</Text>),
+            ...turns.map((t, i) =>
+              t.role === 'assistant' ? (
+                bot(String(i), <Lines text={t.content} />)
+              ) : (
+                <ChatMessage key={i} sender="user">
                   <ChatMessageBubble>
-                    <VStack gap={1}>
-                      {t.content.split('\n').map((line, j) => (
-                        <Text key={j}>{line}</Text>
-                      ))}
-                    </VStack>
+                    <Lines text={t.content} />
                   </ChatMessageBubble>
                 </ChatMessage>
-              )),
-              ...(send.isPending
-                ? [
-                    <ChatMessage key="pending" sender="assistant">
-                      <ChatMessageBubble variant="ghost">Смотрю…</ChatMessageBubble>
-                    </ChatMessage>,
-                  ]
-                : []),
-              ...(send.isError
-                ? [
-                    <ChatMessage key="error" sender="system">
-                      <ChatMessageBubble variant="ghost">
-                        {send.error instanceof Error ? send.error.message : 'Не получилось'}
-                      </ChatMessageBubble>
-                    </ChatMessage>,
-                  ]
-                : []),
-            ]}
-          </ChatMessageList>
-        )}
+              ),
+            ),
+            ...(turns.length === 0
+              ? [
+                  <VStack key="suggestions" gap={2}>
+                    {SUGGESTIONS[mode].map((s) => (
+                      <Button
+                        key={s}
+                        variant="secondary"
+                        size="sm"
+                        label={s}
+                        onClick={() => submit(s)}
+                      />
+                    ))}
+                  </VStack>,
+                ]
+              : []),
+            ...(send.isPending ? [bot('pending', 'Смотрю…', true)] : []),
+            ...(send.isError
+              ? [
+                  bot(
+                    'error',
+                    send.error instanceof Error
+                      ? send.error.message
+                      : 'Не получилось, попробуйте ещё раз',
+                    true,
+                  ),
+                ]
+              : []),
+          ]}
+        </ChatMessageList>
 
-        {lastReply && !lastReply.llm && lastReply.reason !== 'not_configured' && (
-          <Text color="secondary">
-            Подробный ассистент сейчас недоступен — показываю данные напрямую.
-          </Text>
-        )}
-        {mode === 'guest' && onBook && turns.length > 0 && (
-          <Button variant="primary" label="Забронировать" onClick={onBook} />
-        )}
-        <ChatComposer placeholder="Ваш вопрос…" isDisabled={send.isPending} onSubmit={submit} />
+        <VStack gap={2} style={STICKY_BOTTOM}>
+          {lastReply && !lastReply.llm && lastReply.reason !== 'not_configured' && (
+            <Text color="secondary">
+              Подробный помощник сейчас недоступен — показываю данные напрямую.
+            </Text>
+          )}
+          {mode === 'guest' && onBook && turns.length > 0 && (
+            <Button variant="secondary" size="sm" label="Записаться" onClick={onBook} />
+          )}
+          <ChatComposer
+            placeholder="Спросите Банщика…"
+            isDisabled={send.isPending}
+            onSubmit={submit}
+          />
+        </VStack>
       </VStack>
     </BottomSheet>
   );

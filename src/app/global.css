@@ -41,7 +41,7 @@ html[data-assistant='open'] #root {
   filter: blur(6px) brightness(0.7);
 }
 
-/* Кнопка помощника: мягкое «дыхание» раз в несколько секунд, не отвлекает. */
+/* Кнопка помощника: круглая, всегда тихо «дышит» — заметна, но не отвлекает. */
 .assistant-fab {
   position: fixed;
   right: max(16px, env(safe-area-inset-right));
@@ -49,26 +49,36 @@ html[data-assistant='open'] #root {
   z-index: 40;
   border-radius: 999px;
 }
-.assistant-fab::after {
+.assistant-fab button {
+  position: relative;
+  z-index: 1;
+  border-radius: 999px;
+  width: 56px;
+  height: 56px;
+}
+.assistant-fab::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 55%, transparent);
-  animation: assistant-breathe 4s ease-out infinite;
+  background: var(--color-accent);
+  opacity: 0;
+  animation: assistant-pulse 2.8s ease-out infinite;
   pointer-events: none;
 }
-@keyframes assistant-breathe {
-  0%,
-  60% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 50%, transparent);
+@keyframes assistant-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
   }
+  70%,
   100% {
-    box-shadow: 0 0 0 14px transparent;
+    transform: scale(1.55);
+    opacity: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .assistant-fab::after {
+  .assistant-fab::before {
     animation: none;
   }
   #root {
@@ -79,4 +89,24 @@ html[data-assistant='open'] #root {
 /* В кабинете кнопка помощника — над нижней навигацией. */
 html[data-area='owner'] .assistant-fab {
   bottom: calc(max(20px, env(safe-area-inset-bottom) + 12px) + 64px);
+}
+
+/* Кнопка брони внизу: появляется, когда шапка с фото ушла за экран. */
+.sticky-book {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left));
+  right: calc(max(16px, env(safe-area-inset-right)) + 72px);
+  bottom: max(20px, calc(env(safe-area-inset-bottom) + 12px));
+  z-index: 30;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.sticky-book[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }

@@ -65,7 +65,15 @@ export function GuestApp() {
   return (
     <TenantTheme slug={slug} accent={catalog.data.tenant.theme.accent}>
       <Routes>
-        <Route index element={<VenuePage key={location.search} catalog={catalog.data} />} />
+        <Route
+          index
+          element={
+            <VenuePage
+              key={String((location.state as { book?: number } | null)?.book ?? 'venue')}
+              catalog={catalog.data}
+            />
+          }
+        />
         <Route
           path="b/:token"
           element={<BookingPage tenant={catalog.data.tenant} halls={catalog.data.halls} />}
@@ -85,7 +93,7 @@ export function GuestApp() {
       <AssistantFab
         mode="guest"
         ask={(turns) => askGuest(slug, token, turns)}
-        onBook={() => void navigate(`/s/${slug}/?book=1`)}
+        onBook={() => void navigate(`/s/${slug}/`, { state: { book: Date.now() } })}
       />
     </TenantTheme>
   );

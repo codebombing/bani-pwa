@@ -107,6 +107,7 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={640}>
+      <Button variant="ghost" size="sm" label={`← ${tenant.name}`} href={`/s/${tenant.slug}/`} />
       {b.is_demo && (
         <Banner
           status="info"
@@ -195,7 +196,13 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
             {`Позвонить: ${tenant.contacts.phone}`}
           </Link>
         )}
-        <Link href={`/s/${tenant.slug}/`}>Ко всем залам</Link>
+        <Button
+          variant={b.status === 'cancelled' || b.status === 'completed' ? 'primary' : 'secondary'}
+          size="lg"
+          width="100%"
+          label={b.status === 'cancelled' ? 'Выбрать другое время' : 'На главную'}
+          href={`/s/${tenant.slug}/`}
+        />
         <Text color="secondary">
           Сохраните эту страницу — по ссылке бронь можно открыть с любого устройства.
         </Text>

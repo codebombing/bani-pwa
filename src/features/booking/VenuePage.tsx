@@ -8,8 +8,8 @@ import { List } from '@astryxdesign/core/List';
 import { Overlay } from '@astryxdesign/core/Overlay';
 import { Text } from '@astryxdesign/core/Text';
 import { VStack } from '@astryxdesign/core/VStack';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router';
 
 import { formatDateTimeInTz, formatDuration, formatRub } from '../../shared/format';
 import { assetUrl, type Catalog } from './api';
@@ -27,34 +27,49 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
   const heroUrl = tenant.theme.hero ? assetUrl(tenant, tenant.theme.hero) : null;
   const logoUrl = tenant.theme.logo ? assetUrl(tenant, tenant.theme.logo) : null;
 
-  // «Забронировать» из чата помощника: /s/<slug>/?book=1 открывает бронь
-  // (GuestApp пересоздаёт страницу по query, поэтому начальное состояние читается здесь).
-  const [params, setParams] = useSearchParams();
-  const [flow, setFlow] = useState<FlowStart | null>(() =>
-    params.get('book') === '1' ? { key: 0 } : null,
-  );
+  // «Записаться» из чата помощника: navigate(…, { state: { book } }) открывает бронь
+  // (GuestApp пересоздаёт страницу по state.book).
+  const bookRequest = (useLocation().state as { book?: number } | null)?.book;
+  const [flow, setFlow] = useState<FlowStart | null>(() => (bookRequest ? { key: 0 } : null));
   const start = (hallId?: string) => setFlow({ key: Date.now(), hallId });
+
+  // Пока шапка с фото на экране, кнопка в ней спокойная (стекло); пролистали —
+  // снизу появляется чёткая «Забронировать».
+  const heroRef = useRef<HTMLDivElement>(null);
+  const [heroVisible, setHeroVisible] = useState(true);
   useEffect(() => {
-    if (params.get('book') === '1') setParams({}, { replace: true });
-  }, [params, setParams]);
+    const el = heroRef.current;
+    if (!el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([e]) => setHeroVisible(e?.isIntersecting ?? true), {
+      threshold: 0.25,
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={640}>
       <Overlay
+        ref={heroRef}
         position="bottom"
         align="start"
         content={
           <VStack gap={2} padding={1}>
             {logoUrl && <img src={logoUrl} alt="" width={48} height={48} />}
             <Heading level={1}>{tenant.name}</Heading>
-            {tenant.texts.tagline && <Text>{tenant.texts.tagline}</Text>}
+            {tenant.texts.tagline && (
+              <Text size="lg" weight="semibold">
+                {tenant.texts.tagline}
+              </Text>
+            )}
+            {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
             <Text color="secondary">
               {[tenant.contacts.address, tenant.status === 'preview' ? 'демо-режим' : null]
                 .filter(Boolean)
                 .join(' · ')}
             </Text>
             <Button
-              variant="primary"
+              variant="secondary"
               size="lg"
               label="Забронировать"
               width="100%"
@@ -63,7 +78,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
           </VStack>
         }
       >
-        <AspectRatio ratio={4 / 5} fit="cover" style={{ borderRadius: 'var(--radius-lg, 20px)' }}>
+        <AspectRatio ratio={2 / 3} fit="cover" style={{ borderRadius: 'var(--radius-lg, 20px)' }}>
           {heroUrl ? (
             <img src={heroUrl} alt="" width={1080} height={1350} fetchPriority="high" />
           ) : (
@@ -72,7 +87,15 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         </AspectRatio>
       </Overlay>
 
-      {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
+      <aside className="sticky-book" data-visible={!heroVisible && !flow} aria-hidden={heroVisible}>
+        <Button
+          variant="primary"
+          size="lg"
+          label="Забронировать"
+          width="100%"
+          onClick={() => start()}
+        />
+      </aside>
 
       <VStack gap={3}>
         <Heading level={2}>Залы</Heading>

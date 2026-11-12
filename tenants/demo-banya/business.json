@@ -15,8 +15,8 @@
     "description": "Бронирование бани"
   },
   "texts": {
-    "tagline": "Русская баня на дровах в двух залах",
-    "description": "Парные на дровах, купель, комната отдыха. Веники и полотенца — на месте.",
+    "tagline": "Настоящий русский пар на берёзовых дровах",
+    "description": "Два зала только для вашей компании: жаркая парная, ледяная купель и уютная комната отдыха. Веники, полотенца и чай уже ждут — приезжайте отдыхать, остальное на нас.",
     "booking_note": "Возьмите сменную обувь. Задаток 30 % — после подтверждения."
   },
   "contacts": {
@@ -82,11 +82,7 @@
       "min_duration_min": 120,
       "slot_step_min": 60,
       "buffer_min": 60,
-      "photos": [
-        "halls/small/1.jpg",
-        "halls/small/2.jpg",
-        "halls/small/3.jpg"
-      ],
+      "photos": ["halls/small/1.jpg", "halls/small/2.jpg", "halls/small/3.jpg"],
       "tariffs": [
         {
           "effective_from": "2026-01-01",
@@ -130,11 +126,7 @@
       "min_duration_min": 180,
       "slot_step_min": 60,
       "buffer_min": 60,
-      "photos": [
-        "halls/big/1.jpg",
-        "halls/big/2.jpg",
-        "halls/big/3.jpg"
-      ],
+      "photos": ["halls/big/1.jpg", "halls/big/2.jpg", "halls/big/3.jpg"],
       "tariffs": [
         {
           "effective_from": "2026-01-01",

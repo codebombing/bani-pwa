@@ -27,9 +27,9 @@ function onAccentColor(accent: string): string {
  */
 const WARM: Record<string, [string, string]> = {
   '--color-background-body': ['#140B07', '#140B07'],
-  '--color-background-surface': ['rgba(30,18,11,0.55)', 'rgba(30,18,11,0.55)'],
+  '--color-background-surface': ['#24160E', '#24160E'],
   '--color-background-card': ['rgba(52,32,20,0.55)', 'rgba(52,32,20,0.55)'],
-  '--color-background-popover': ['rgba(34,21,13,0.94)', 'rgba(34,21,13,0.94)'],
+  '--color-background-popover': ['#2A1A10', '#2A1A10'],
   '--color-background-muted': ['rgba(255,226,198,0.08)', 'rgba(255,226,198,0.08)'],
   '--color-border': ['rgba(255,226,198,0.14)', 'rgba(255,226,198,0.14)'],
   '--color-border-emphasized': ['rgba(255,226,198,0.28)', 'rgba(255,226,198,0.28)'],
