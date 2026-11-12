@@ -4,9 +4,11 @@ import { EmptyState } from '@astryxdesign/core/EmptyState';
 import { Skeleton } from '@astryxdesign/core/Skeleton';
 import { VStack } from '@astryxdesign/core/VStack';
 import { useEffect } from 'react';
-import { Route, Routes, useParams } from 'react-router';
+import { Route, Routes, useLocation, useNavigate, useParams } from 'react-router';
 
 import { useTenantServiceWorker } from '../../shared/push';
+import { askGuest } from '../ai/aiApi';
+import { AssistantFab } from '../ai/AssistantFab';
 import { ApiError, errorMessage } from './api';
 import { BookingPage } from './BookingPage';
 import { useCatalog } from './queries';
@@ -18,6 +20,10 @@ export function GuestApp() {
   const { slug = '' } = useParams();
   const catalog = useCatalog(slug);
   useTenantServiceWorker(slug);
+  const navigate = useNavigate();
+  // На странице брони помощник знает её токен и может рассказать о ней.
+  const location = useLocation();
+  const token = /\/b\/([A-Za-z0-9_-]{43})/.exec(location.pathname)?.[1] ?? null;
 
   useEffect(() => {
     if (catalog.data) document.title = `${catalog.data.tenant.name} — бронирование`;
@@ -59,7 +65,7 @@ export function GuestApp() {
   return (
     <TenantTheme slug={slug} accent={catalog.data.tenant.theme.accent}>
       <Routes>
-        <Route index element={<VenuePage catalog={catalog.data} />} />
+        <Route index element={<VenuePage key={location.search} catalog={catalog.data} />} />
         <Route
           path="b/:token"
           element={<BookingPage tenant={catalog.data.tenant} halls={catalog.data.halls} />}
@@ -76,6 +82,11 @@ export function GuestApp() {
           }
         />
       </Routes>
+      <AssistantFab
+        mode="guest"
+        ask={(turns) => askGuest(slug, token, turns)}
+        onBook={() => void navigate(`/s/${slug}/?book=1`)}
+      />
     </TenantTheme>
   );
 }

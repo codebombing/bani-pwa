@@ -127,6 +127,9 @@ export const businessSchema = z
     currency: z.literal('RUB').default('RUB'),
     theme: z.object({
       accent: z.string().regex(HEX_RE, 'Цвет в формате #RRGGBB'),
+      /** Главное фото первого экрана и логотип (пути относительно images/). */
+      hero: z.string().min(1).optional(),
+      logo: z.string().min(1).optional(),
     }),
     pwa: z.object({
       short_name: z.string().min(1).max(12),

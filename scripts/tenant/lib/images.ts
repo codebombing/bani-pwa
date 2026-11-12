@@ -22,6 +22,8 @@ const MAX_PHOTO_BYTES = 3 * 1024 * 1024;
 export function usedImages(slug: string, business: Business): string[] {
   const list = new Set<string>([ICON, ICON_MASKABLE]);
   if (existsSync(path.join(imagesDir(slug), LOGO))) list.add(LOGO);
+  if (business.theme.hero) list.add(business.theme.hero);
+  if (business.theme.logo) list.add(business.theme.logo);
   for (const hall of business.halls) for (const p of hall.photos) list.add(p);
   return [...list].sort();
 }
@@ -63,6 +65,13 @@ export async function checkImages(slug: string, business: Business): Promise<Fin
     ...(await checkIcon(path.join(dir, ICON), ICON, false)),
     ...(await checkIcon(path.join(dir, ICON_MASKABLE), ICON_MASKABLE, true)),
   ];
+
+  for (const key of ['hero', 'logo'] as const) {
+    const rel = business.theme[key];
+    if (rel && (!safeRelative(rel) || !existsSync(path.join(dir, rel)))) {
+      findings.push({ level: 'error', message: `theme.${key}: нет файла images/${rel}` });
+    }
+  }
 
   for (const [i, hall] of business.halls.entries()) {
     const where = `halls.${i} («${hall.name}»)`;

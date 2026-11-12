@@ -3,7 +3,7 @@ html,
 body,
 #root {
   min-height: 100%;
-  background: var(--color-background-body, var(--color-background-surface));
+  background: #140b07;
   color: var(--color-text-primary);
 }
 
@@ -11,4 +11,72 @@ body {
   /* Безопасные зоны iPhone (вырез, home indicator). */
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
     env(safe-area-inset-left);
+}
+
+/* Тёплый фото-фон: картинка уже размыта и затемнена при подготовке (public/bg) —
+   телефону не нужно размывать на лету. Кабинет — свой, более спокойный фон. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgb(20 11 7 / 0.35), rgb(20 11 7 / 0.85)),
+    url('/bg/guest.jpg') center / cover no-repeat,
+    #140b07;
+}
+html[data-area='owner'] body::before {
+  background:
+    linear-gradient(180deg, rgb(20 11 7 / 0.55), rgb(20 11 7 / 0.9)),
+    url('/bg/owner.jpg') center / cover no-repeat,
+    #140b07;
+}
+#root {
+  background: transparent;
+  transition: filter 0.25s ease;
+}
+
+/* Открыт помощник: всё под ним размывается. */
+html[data-assistant='open'] #root {
+  filter: blur(6px) brightness(0.7);
+}
+
+/* Кнопка помощника: мягкое «дыхание» раз в несколько секунд, не отвлекает. */
+.assistant-fab {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(20px, calc(env(safe-area-inset-bottom) + 12px));
+  z-index: 40;
+  border-radius: 999px;
+}
+.assistant-fab::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 55%, transparent);
+  animation: assistant-breathe 4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes assistant-breathe {
+  0%,
+  60% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 50%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .assistant-fab::after {
+    animation: none;
+  }
+  #root {
+    transition: none;
+  }
+}
+
+/* В кабинете кнопка помощника — над нижней навигацией. */
+html[data-area='owner'] .assistant-fab {
+  bottom: calc(max(20px, env(safe-area-inset-bottom) + 12px) + 64px);
 }

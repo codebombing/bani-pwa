@@ -1,18 +1,17 @@
 import { AspectRatio } from '@astryxdesign/core/AspectRatio';
-import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { Item } from '@astryxdesign/core/Item';
 import { Link } from '@astryxdesign/core/Link';
 import { List } from '@astryxdesign/core/List';
+import { Overlay } from '@astryxdesign/core/Overlay';
 import { Text } from '@astryxdesign/core/Text';
 import { VStack } from '@astryxdesign/core/VStack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router';
 
 import { formatDateTimeInTz, formatDuration, formatRub } from '../../shared/format';
-import { askGuest } from '../ai/aiApi';
-import { LazyAssistant } from '../ai/LazyAssistant';
 import { assetUrl, type Catalog } from './api';
 import { BookingFlow } from './BookingFlow';
 import { readMyBookings } from './myBookings';
@@ -24,51 +23,54 @@ interface FlowStart {
 
 export function VenuePage({ catalog }: { catalog: Catalog }) {
   const { tenant, halls } = catalog;
-  const [flow, setFlow] = useState<FlowStart | null>(null);
-  const [assistant, setAssistant] = useState(false);
   const myBookings = readMyBookings(tenant.slug);
+  const heroUrl = tenant.theme.hero ? assetUrl(tenant, tenant.theme.hero) : null;
+  const logoUrl = tenant.theme.logo ? assetUrl(tenant, tenant.theme.logo) : null;
+
+  // «Забронировать» из чата помощника: /s/<slug>/?book=1 открывает бронь
+  // (GuestApp пересоздаёт страницу по query, поэтому начальное состояние читается здесь).
+  const [params, setParams] = useSearchParams();
+  const [flow, setFlow] = useState<FlowStart | null>(() =>
+    params.get('book') === '1' ? { key: 0 } : null,
+  );
   const start = (hallId?: string) => setFlow({ key: Date.now(), hallId });
+  useEffect(() => {
+    if (params.get('book') === '1') setParams({}, { replace: true });
+  }, [params, setParams]);
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={640}>
-      {tenant.status === 'preview' && (
-        <Banner
-          status="info"
-          title="Демо-режим"
-          description="Брони тестовые: уведомления не отправляются, данные помечены как демо."
-        />
-      )}
-
-      <VStack gap={2}>
-        <Heading level={1}>{tenant.name}</Heading>
-        {tenant.texts.tagline && <Text color="secondary">{tenant.texts.tagline}</Text>}
-        {tenant.contacts.address && <Text color="secondary">{tenant.contacts.address}</Text>}
-      </VStack>
-
-      <Button
-        variant="primary"
-        size="lg"
-        label="Забронировать"
-        width="100%"
-        onClick={() => start()}
-      />
-      <Button
-        variant="secondary"
-        label="Спросить помощника: время и цены"
-        width="100%"
-        onClick={() => setAssistant(true)}
-      />
-      {assistant && (
-        <LazyAssistant
-          mode="guest"
-          ask={(turns) => askGuest(tenant.slug, null, turns)}
-          onBook={() => {
-            setAssistant(false);
-            start();
-          }}
-          onClose={() => setAssistant(false)}
-        />
-      )}
+      <Overlay
+        position="bottom"
+        align="start"
+        content={
+          <VStack gap={2} padding={1}>
+            {logoUrl && <img src={logoUrl} alt="" width={48} height={48} />}
+            <Heading level={1}>{tenant.name}</Heading>
+            {tenant.texts.tagline && <Text>{tenant.texts.tagline}</Text>}
+            <Text color="secondary">
+              {[tenant.contacts.address, tenant.status === 'preview' ? 'демо-режим' : null]
+                .filter(Boolean)
+                .join(' · ')}
+            </Text>
+            <Button
+              variant="primary"
+              size="lg"
+              label="Забронировать"
+              width="100%"
+              onClick={() => start()}
+            />
+          </VStack>
+        }
+      >
+        <AspectRatio ratio={4 / 5} fit="cover" style={{ borderRadius: 'var(--radius-lg, 20px)' }}>
+          {heroUrl ? (
+            <img src={heroUrl} alt="" width={1080} height={1350} fetchPriority="high" />
+          ) : (
+            <img src="/bg/guest.jpg" alt="" width={720} height={1280} />
+          )}
+        </AspectRatio>
+      </Overlay>
 
       {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
 

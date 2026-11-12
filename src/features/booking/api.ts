@@ -35,7 +35,11 @@ export const tenantSchema = z.object({
   name: z.string(),
   timezone: z.string(),
   status: z.enum(['preview', 'live', 'archived']),
-  theme: z.object({ accent: z.string().optional() }),
+  theme: z.object({
+    accent: z.string().optional(),
+    hero: z.string().optional(),
+    logo: z.string().optional(),
+  }),
   texts: z.object({
     tagline: z.string().optional(),
     description: z.string().optional(),

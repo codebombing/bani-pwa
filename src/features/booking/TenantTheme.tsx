@@ -21,7 +21,27 @@ function onAccentColor(accent: string): string {
   return contrastBlack >= contrastWhite ? '#000000' : '#FFFFFF';
 }
 
-/** Тема заведения: базовая тёмная neutral + акцент из business.json (на рантайме). */
+/**
+ * Тёплая тёмная палитра всех заведений: полупрозрачные («стеклянные») поверхности поверх
+ * размытого фото-фона (body::before в global.css). Значения [светлая, тёмная]; используется тёмная.
+ */
+const WARM: Record<string, [string, string]> = {
+  '--color-background-body': ['#140B07', '#140B07'],
+  '--color-background-surface': ['rgba(30,18,11,0.55)', 'rgba(30,18,11,0.55)'],
+  '--color-background-card': ['rgba(52,32,20,0.55)', 'rgba(52,32,20,0.55)'],
+  '--color-background-popover': ['rgba(34,21,13,0.94)', 'rgba(34,21,13,0.94)'],
+  '--color-background-muted': ['rgba(255,226,198,0.08)', 'rgba(255,226,198,0.08)'],
+  '--color-border': ['rgba(255,226,198,0.14)', 'rgba(255,226,198,0.14)'],
+  '--color-border-emphasized': ['rgba(255,226,198,0.28)', 'rgba(255,226,198,0.28)'],
+  '--color-text-primary': ['#FFF4E8', '#FFF4E8'],
+  '--color-text-secondary': ['rgba(255,236,218,0.68)', 'rgba(255,236,218,0.68)'],
+  '--color-icon-primary': ['#FFF4E8', '#FFF4E8'],
+  '--color-icon-secondary': ['rgba(255,236,218,0.68)', 'rgba(255,236,218,0.68)'],
+};
+
+const DEFAULT_ACCENT = '#E0782F';
+
+/** Тема заведения: тёплая тёмная основа + акцент из business.json (на рантайме). */
 export function TenantTheme({
   slug,
   accent,
@@ -33,13 +53,15 @@ export function TenantTheme({
 }) {
   const base = themes[defaultThemeSlug];
   const theme = useMemo(() => {
-    if (!accent || !HEX_RE.test(accent)) return base;
+    const a = accent && HEX_RE.test(accent) ? accent : DEFAULT_ACCENT;
     return defineTheme({
       name: `tenant-${slug}`,
       extends: base,
       tokens: {
-        '--color-accent': [accent, accent],
-        '--color-on-accent': [onAccentColor(accent), onAccentColor(accent)],
+        ...WARM,
+        '--color-accent': [a, a],
+        '--color-text-accent': [a, a],
+        '--color-on-accent': [onAccentColor(a), onAccentColor(a)],
       },
     });
   }, [base, slug, accent]);

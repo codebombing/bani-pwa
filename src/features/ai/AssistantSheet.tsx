@@ -63,7 +63,7 @@ export function AssistantSheet({
         if (!open) onClose();
       }}
       label="Помощник"
-      height="tall"
+      height="70dvh"
     >
       <VStack gap={3} height="100%">
         <HStack gap={2} vAlign="center" justify="between">

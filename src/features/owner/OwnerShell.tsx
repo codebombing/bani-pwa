@@ -1,9 +1,11 @@
 import { Layout, LayoutContent, LayoutFooter } from '@astryxdesign/core/Layout';
 import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
 import { VStack } from '@astryxdesign/core/VStack';
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
+import { askOwner } from '../ai/aiApi';
+import { AssistantFab } from '../ai/AssistantFab';
 import { useOwner } from './ownerContext';
 
 // Короткие подписи без иконок: на 375 px длинные («Календарь», «Статистика») обрезаются.
@@ -26,6 +28,14 @@ export function OwnerShell({ children }: { children: ReactNode }) {
       .replace(/^\/|\/$/g, '')
       .split('/')[0] ?? '';
   const active = TABS.some((t) => t.value === current) ? current : '';
+
+  // Кабинет — свой, более спокойный фон (global.css, html[data-area='owner']).
+  useEffect(() => {
+    document.documentElement.dataset.area = 'owner';
+    return () => {
+      delete document.documentElement.dataset.area;
+    };
+  }, []);
 
   return (
     <VStack height="100dvh">
@@ -52,6 +62,7 @@ export function OwnerShell({ children }: { children: ReactNode }) {
           </LayoutFooter>
         }
       />
+      <AssistantFab mode="owner" ask={(turns) => askOwner(tenant.slug, turns)} />
     </VStack>
   );
 }

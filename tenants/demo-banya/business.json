@@ -5,7 +5,11 @@
   "timezone": "Europe/Moscow",
   "locale": "ru-RU",
   "currency": "RUB",
-  "theme": { "accent": "#D9822B" },
+  "theme": {
+    "accent": "#D9822B",
+    "hero": "hero.jpg",
+    "logo": "logo.png"
+  },
   "pwa": {
     "short_name": "Берёзка",
     "description": "Бронирование бани"
@@ -19,7 +23,10 @@
     "phone": "+7 900 000-00-00",
     "telegram": "demo_banya",
     "address": "Москва, Банный переулок, 1",
-    "coords": { "lat": 55.7558, "lng": 37.6173 }
+    "coords": {
+      "lat": 55.7558,
+      "lng": 37.6173
+    }
   },
   "legal": {
     "operator_name": "ИП Демо Демо Демович",
@@ -32,13 +39,34 @@
   },
   "working_hours": {
     "days": {
-      "mon": { "start_from": "10:00", "start_to": "23:00" },
-      "tue": { "start_from": "10:00", "start_to": "23:00" },
-      "wed": { "start_from": "10:00", "start_to": "23:00" },
-      "thu": { "start_from": "10:00", "start_to": "23:00" },
-      "fri": { "start_from": "10:00", "start_to": "23:00" },
-      "sat": { "start_from": "10:00", "start_to": "23:00" },
-      "sun": { "start_from": "10:00", "start_to": "23:00" }
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "23:00"
+      }
     },
     "max_end_after_close_min": 180
   },
@@ -54,15 +82,39 @@
       "min_duration_min": 120,
       "slot_step_min": 60,
       "buffer_min": 60,
-      "photos": ["halls/small/1.jpg", "halls/small/2.jpg"],
+      "photos": [
+        "halls/small/1.jpg",
+        "halls/small/2.jpg",
+        "halls/small/3.jpg"
+      ],
       "tariffs": [
         {
           "effective_from": "2026-01-01",
           "rules": [
-            { "day_type": "weekday", "from": "02:00", "to": "22:00", "price_per_hour_rub": 2500 },
-            { "day_type": "weekday", "from": "22:00", "to": "02:00", "price_per_hour_rub": 3500 },
-            { "day_type": "weekend", "from": "02:00", "to": "22:00", "price_per_hour_rub": 3200 },
-            { "day_type": "weekend", "from": "22:00", "to": "02:00", "price_per_hour_rub": 3500 }
+            {
+              "day_type": "weekday",
+              "from": "02:00",
+              "to": "22:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekday",
+              "from": "22:00",
+              "to": "02:00",
+              "price_per_hour_rub": 3500
+            },
+            {
+              "day_type": "weekend",
+              "from": "02:00",
+              "to": "22:00",
+              "price_per_hour_rub": 3200
+            },
+            {
+              "day_type": "weekend",
+              "from": "22:00",
+              "to": "02:00",
+              "price_per_hour_rub": 3500
+            }
           ]
         }
       ]
@@ -78,15 +130,39 @@
       "min_duration_min": 180,
       "slot_step_min": 60,
       "buffer_min": 60,
-      "photos": ["halls/big/1.jpg", "halls/big/2.jpg"],
+      "photos": [
+        "halls/big/1.jpg",
+        "halls/big/2.jpg",
+        "halls/big/3.jpg"
+      ],
       "tariffs": [
         {
           "effective_from": "2026-01-01",
           "rules": [
-            { "day_type": "weekday", "from": "02:00", "to": "22:00", "price_per_hour_rub": 4000 },
-            { "day_type": "weekday", "from": "22:00", "to": "02:00", "price_per_hour_rub": 5500 },
-            { "day_type": "weekend", "from": "02:00", "to": "22:00", "price_per_hour_rub": 5000 },
-            { "day_type": "weekend", "from": "22:00", "to": "02:00", "price_per_hour_rub": 5500 }
+            {
+              "day_type": "weekday",
+              "from": "02:00",
+              "to": "22:00",
+              "price_per_hour_rub": 4000
+            },
+            {
+              "day_type": "weekday",
+              "from": "22:00",
+              "to": "02:00",
+              "price_per_hour_rub": 5500
+            },
+            {
+              "day_type": "weekend",
+              "from": "02:00",
+              "to": "22:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "22:00",
+              "to": "02:00",
+              "price_per_hour_rub": 5500
+            }
           ]
         }
       ]
@@ -117,6 +193,11 @@
     }
   ],
   "exceptions": [
-    { "kind": "day_type", "date": "2027-01-01", "day_type": "holiday", "note": "Новый год" }
+    {
+      "kind": "day_type",
+      "date": "2027-01-01",
+      "day_type": "holiday",
+      "note": "Новый год"
+    }
   ]
 }
