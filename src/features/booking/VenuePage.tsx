@@ -1,3 +1,4 @@
+import { AspectRatio } from '@astryxdesign/core/AspectRatio';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -10,7 +11,7 @@ import { VStack } from '@astryxdesign/core/VStack';
 import { useState } from 'react';
 
 import { formatDateTimeInTz, formatDuration, formatRub } from '../../shared/format';
-import type { Catalog } from './api';
+import { assetUrl, type Catalog } from './api';
 import { BookingFlow } from './BookingFlow';
 import { readMyBookings } from './myBookings';
 
@@ -56,6 +57,18 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         {halls.map((hall) => (
           <Card key={hall.id} padding={4}>
             <VStack gap={2}>
+              {hall.photos[0] && assetUrl(tenant, hall.photos[0]) && (
+                <AspectRatio ratio={16 / 10} fit="cover">
+                  <img
+                    src={assetUrl(tenant, hall.photos[0]) ?? undefined}
+                    alt={`Зал «${hall.name}»`}
+                    width={1280}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </AspectRatio>
+              )}
               <Heading level={3}>{hall.name}</Heading>
               {hall.description && <Text color="secondary">{hall.description}</Text>}
               <Text>

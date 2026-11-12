@@ -125,5 +125,25 @@ pgTAP (`supabase/tests/database/`, 86 тестов):
 Не проверено в браузере: закрытие/открытие зала и выход (пользователь в этот момент сам работал на странице). SQL `owner_block_hall`/`owner_unblock_hall` покрыты pgTAP (06).
 Не сделано: недельный вид календаря, свайп по дням (есть кнопки ‹ ›), Playwright-сценарий «гость бронирует → владелец видит → задаток → статистика», push владельцу.
 
-## Этап 4. Конвейер и API (12.11.2026) — в процессе
-В процессе: сделаны admin_publish_tenant (+ pgTAP 07, всего 247 PASS), tenant:new/validate/publish/verify/seed/placeholders, demo-banya и demo-sauna24 из business.json (seed генерируется из них), Storage tenant-assets, оболочки dist/s/<slug>/. Следующий шаг: HTTP integration-тесты public-api (retry → тот же токен, чужой токен → 404, owner A → tenant B запрещено, rate limit).
+## Этап 4. Конвейер и API (12.11.2026) — готово
+Сделано:
+- Миграция `tenant_publish`: `public.admin_publish_tenant(config, hash, live, by)` — только service role; одной транзакцией заведение, часы, исключения, залы (upsert по key, id сохраняются), версии тарифа (по effective_from), допы, новая версия конфига. Брони, платежи, блокировки и члены не трогаются. Использованную в бронях версию тарифа нельзя изменить или удалить (ошибка с подсказкой «добавьте новую версию»). Зал/доп, убранный из конфига, скрывается (is_active = false), предупреждение о его будущих бронях. `--live` только при наличии владельца. Одинаковый хэш → версия не растёт. Бакет Storage `tenant-assets` (публичное чтение, запись только service role).
+- Скрипты `scripts/tenant/`: `tenant:new` (из `_template` + заглушки картинок), `tenant:validate` (Zod + бизнес-проверки + картинки: иконки 512 PNG, maskable без прозрачности, фото ≥ 800×450 jpg/webp ≤ 3 МБ, неиспользуемые файлы; заглушки example.com/«Демо»/000-00-00 мешают `--live`), `tenant:publish` (validate → БД → Storage `<tenant_id>/config/…` с удалением устаревших только в config/ → оболочка `dist/s/<slug>/`: index.html с названием/иконками/og, manifest id/start_url/scope = `/s/<slug>/`, иконки 192/512/maskable/apple-touch; `dist/_redirects`; `--all`, `--no-shell`), `tenant:verify` (БД и хэш, public-api, availability по каждому залу, фото в Storage, manifest и размеры иконок, глубокие ссылки → HTML с названием; соседние оболочки; без `--base-url` — локальный сервер над dist с правилами `_redirects`), `tenant:seed` (`--check`), `tenant:placeholders`. `npm run demo:publish`, `npm run check:all`.
+- Демо: `tenants/demo-banya` и `tenants/demo-sauna24` (круглосуточно, шаг 30 мин, другой акцент) с картинками-заглушками. Каталог в `supabase/seed.sql` генерируется из их business.json вызовом той же функции; брони seed (6 шт., в т. ч. 2 у сауны) ищут залы по slug+key. Хэш seed = хэш publish, поэтому publish после reset не создаёт новую версию.
+- public-api: `GET /t/:slug/bookings/:token.ics` (RFC 5545: экранирование, перенос строк по 75 октетов, SEQUENCE = version, напоминание за 2 ч, отмена → STATUS:CANCELLED). Открывается обычной ссылкой без apikey (`withSupabase({auth:'none'})` только для этого маршрута; пропуск — токен, rate limit как у токенов). Каталог отдаёт `config_version`.
+- Гость: фото первого снимка зала (`AspectRatio` 16:10, lazy, `?v=<config_version>`), «Добавить в календарь» с честной подписью.
+- Отступление от плана: отдельной `owner-api` нет — кабинет читает под RLS и меняет через RPC `owner_*` с проверкой членства в SQL; граница проверена HTTP-тестом. Чужая бронь для владельца отвечает NOT_FOUND (не раскрывает существование), чужая статистика — FORBIDDEN.
+
+Проверки (фактический результат):
+- `npm run check:all` — exit 0 (typecheck, lint, 16 unit, build, seed --check, validate обоих демо: 0 ошибок).
+- `npm run demo:publish` → `npm run tenant:verify -- demo-banya demo-sauna24` — «всё в порядке» (БД = текущий хэш, API, availability, 6+4 фото, manifest, иконки 192/512/maskable, 4 глубокие ссылки на каждое заведение). Негатив: удалённый manifest соседа → verify demo-banya падает «проверок не прошло: 1».
+- Полный путь нового заведения: `tenant:new test-pipeline` → validate (0 ошибок) → `publish --live` отклонён из-за заглушек → publish (preview, версия 1) → verify ✔. Тестовое заведение затем убрано.
+- `npx supabase test db` — 247 PASS (+32 в `07_tenant_publish`).
+- `npm run test:integration` — 9 passed: повтор создания → 200, replay, тот же токен и booking_id; тот же ключ с другим телом → 409; свой токен 200, выдуманный 404, токен A по адресу B → 404 и не отменяет; 61-й запрос по токенам с одного IP → 429, другой IP не задет; ICS без apikey 200 text/calendar, корректный DTSTART, строки ≤ 75 октетов, выдуманный токен 404, остальное API без apikey 401; владелец A не видит брони B, отмена чужой → NOT_FOUND, статистика чужого → FORBIDDEN, своя работает; anon не читает bookings.
+- Браузер (375×812): у сауны свой акцент и фото зала; на странице брони ссылка .ics отдаёт событие 15:00 МСК (12:00Z).
+
+Как работать с новым заведением: `npm run tenant:new -- <slug> --name "…"` → заполнить business.json и картинки → `tenant:validate` → `npm run build && npm run tenant:publish -- <slug>` → `owner:invite` → `tenant:publish -- <slug> --live`. После `npx supabase db reset` — `npm run build && npm run demo:publish` (Storage очищается вместе с БД).
+
+Не сделано / дальше:
+- Service worker со scope заведения, startup images, `_headers` — этап 7; проверка `_redirects` на настоящем Cloudflare Pages / wrangler — этап 7 (см. ACCEPTANCE.md).
+- Картинки демо — заглушки; настоящие фото присылает заведение.

@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { formatDateTimeInTz, formatRangeInTz, formatRub } from '../../shared/format';
-import { ApiError, errorMessage, publicApi, type Booking, type Tenant } from './api';
+import { ApiError, bookingIcsUrl, errorMessage, publicApi, type Booking, type Tenant } from './api';
 import { rememberBooking } from './myBookings';
 import { PriceLines } from './PriceLines';
 import { bookingKeys, useBooking } from './queries';
@@ -154,6 +154,17 @@ export function BookingPage({ tenant }: { tenant: Tenant }) {
           />
         </VStack>
       )}
+
+      {b.status !== 'cancelled' &&
+        b.status !== 'completed' &&
+        bookingIcsUrl(tenant.slug, token) && (
+          <VStack gap={1}>
+            <Link href={bookingIcsUrl(tenant.slug, token) ?? undefined}>Добавить в календарь</Link>
+            <Text color="secondary">
+              Откроется файл события — проверьте, что оно появилось в приложении «Календарь».
+            </Text>
+          </VStack>
+        )}
 
       <VStack gap={2}>
         {tenant.contacts.phone && (

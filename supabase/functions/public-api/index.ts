@@ -8,10 +8,13 @@
 //   GET  /public-api/t/:slug/bookings/:token                 бронь по токену
 //   POST /public-api/t/:slug/bookings/:token/cancel          отмена
 //   POST /public-api/t/:slug/bookings/:token/reschedule      перенос
+//   GET  /public-api/t/:slug/bookings/:token.ics             событие для календаря (без apikey:
+//                                                            обычная ссылка; пропуск — сам токен)
 import '@supabase/functions-js/edge-runtime.d.ts';
 import { withSupabase } from '@supabase/server';
 
 import { clientIp, fail, fromRpc, HttpError, json, readJson } from '../_shared/http.ts';
+import { bookingIcs } from '../_shared/ics.ts';
 import {
   availabilityQuerySchema,
   createBookingBodySchema,
@@ -53,7 +56,7 @@ async function tenantInfo(ctx: Ctx, slug: string): Promise<Response> {
   const { data: tenant, error } = await db
     .from('public_tenants')
     .select(
-      'id, slug, name, timezone, status, theme, texts, contacts, legal, pwa, deposit_percent, free_cancellation_hours',
+      'id, slug, name, timezone, status, config_version, theme, texts, contacts, legal, pwa, deposit_percent, free_cancellation_hours',
     )
     .eq('slug', slug)
     .maybeSingle();
@@ -131,6 +134,47 @@ async function createBooking(req: Request, ctx: Ctx, slug: string): Promise<Resp
   return json(
     { ok: true, replay: data.replay === true, token: finalToken, booking: data },
     data.replay ? 200 : 201,
+  );
+}
+
+const ICS_PATH_RE = /\/public-api\/t\/([a-z0-9-]+)\/bookings\/([A-Za-z0-9_-]{43})\.ics$/;
+
+/** .ics по токену: ссылку открывает календарь/браузер без заголовков, поэтому без apikey. */
+async function bookingIcsResponse(req: Request, ctx: Ctx): Promise<Response> {
+  const m = ICS_PATH_RE.exec(new URL(req.url).pathname);
+  if (!m?.[1] || !m[2]) return fail('ROUTE_NOT_FOUND', 'Неизвестный адрес');
+  const slug = parse(slugSchema, m[1]);
+  await rateLimit(ctx, `token:ip:${clientIp(req) ?? 'unknown'}`, 60, '1 minute');
+
+  const { data, error } = await ctx.supabaseAdmin.rpc('get_booking_by_token_hash', {
+    p_slug: slug,
+    p_token_hash: await tokenHashBytea(m[2]),
+  });
+  if (error) throw error;
+  if (!data?.ok) return fromRpc(data);
+
+  const { data: tenant, error: tErr } = await ctx.supabaseAdmin
+    .from('public_tenants')
+    .select('name, contacts')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (tErr) throw tErr;
+  const contacts = (tenant?.contacts ?? {}) as { address?: string; phone?: string };
+
+  return new Response(
+    bookingIcs(data, {
+      name: tenant?.name ?? slug,
+      address: contacts.address,
+      phone: contacts.phone,
+    }),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'text/calendar; charset=utf-8',
+        'content-disposition': 'attachment; filename="booking.ics"',
+        'cache-control': 'no-store',
+      },
+    },
   );
 }
 
@@ -224,14 +268,22 @@ async function route(req: Request, ctx: Ctx): Promise<Response> {
   return fail('ROUTE_NOT_FOUND', 'Неизвестный адрес');
 }
 
-export default {
-  fetch: withSupabase({ auth: 'publishable' }, async (req, ctx) => {
+function guarded(handler: (req: Request, ctx: Ctx) => Promise<Response>) {
+  return async (req: Request, ctx: Ctx): Promise<Response> => {
     try {
-      return await route(req, ctx);
+      return await handler(req, ctx);
     } catch (e) {
       if (e instanceof HttpError) return fail(e.code, e.message, e.details);
       console.error('public-api error', e);
       return fail('SERVER_ERROR', 'Ошибка сервера, попробуйте ещё раз');
     }
-  }),
+  };
+}
+
+const api = withSupabase({ auth: 'publishable' }, guarded(route));
+const ics = withSupabase({ auth: 'none' }, guarded(bookingIcsResponse));
+
+export default {
+  fetch: (req: Request) =>
+    req.method === 'GET' && ICS_PATH_RE.test(new URL(req.url).pathname) ? ics(req) : api(req),
 };

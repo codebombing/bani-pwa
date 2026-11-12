@@ -51,6 +51,8 @@ export const tenantSchema = z.object({
   }),
   deposit_percent: z.number().int(),
   free_cancellation_hours: z.number().int(),
+  /** Версия опубликованного конфига: ?v= у картинок обходит кэш после tenant:publish. */
+  config_version: z.number().int().default(0),
 });
 
 export const catalogSchema = z.object({
@@ -190,6 +192,24 @@ export class ApiError extends Error {
   ) {
     super(message);
   }
+}
+
+/** Публичная картинка заведения из Storage (tenant-assets/<tenant_id>/config/<path>). */
+export function assetUrl(
+  tenant: { id: string; config_version: number },
+  path: string,
+): string | null {
+  const env = readPublicEnv();
+  if (!env.success) return null;
+  const clean = path.split('/').map(encodeURIComponent).join('/');
+  return `${env.data.VITE_SUPABASE_URL}/storage/v1/object/public/tenant-assets/${tenant.id}/config/${clean}?v=${tenant.config_version}`;
+}
+
+/** Ссылка на .ics брони: открывается без заголовков, пропуск — сам токен. */
+export function bookingIcsUrl(slug: string, token: string): string | null {
+  const env = readPublicEnv();
+  if (!env.success) return null;
+  return `${env.data.VITE_SUPABASE_URL}/functions/v1/public-api/t/${encodeURIComponent(slug)}/bookings/${encodeURIComponent(token)}.ics`;
 }
 
 function baseUrl(slug: string): { url: string; key: string } {
