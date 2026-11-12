@@ -18,6 +18,8 @@ import { useState } from 'react';
 
 import { addDays, formatRangeInTz, todayInTz, zonedTimeToUtc } from '../../shared/format';
 import { PushToggle } from '../../shared/PushToggle';
+import { askOwner } from '../ai/aiApi';
+import { LazyAssistant } from '../ai/LazyAssistant';
 import { signOut } from './auth';
 import { ownerApi, ownerErrorMessage } from './ownerApi';
 import { ownerKey, refreshOwnerData, useOwner } from './ownerContext';
@@ -59,10 +61,24 @@ export function MorePage() {
     onSuccess: () => void refresh(),
   });
   const logout = useMutation({ mutationFn: () => signOut(queryClient) });
+  const [assistant, setAssistant] = useState(false);
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={720}>
       <Heading level={1}>Ещё</Heading>
+
+      <Button
+        variant="secondary"
+        label="Помощник: брони и деньги"
+        onClick={() => setAssistant(true)}
+      />
+      {assistant && (
+        <LazyAssistant
+          mode="owner"
+          ask={(turns) => askOwner(tenant.slug, turns)}
+          onClose={() => setAssistant(false)}
+        />
+      )}
 
       <Card padding={4}>
         <VStack gap={3}>

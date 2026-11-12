@@ -11,6 +11,8 @@ import { VStack } from '@astryxdesign/core/VStack';
 import { useState } from 'react';
 
 import { formatDateTimeInTz, formatDuration, formatRub } from '../../shared/format';
+import { askGuest } from '../ai/aiApi';
+import { LazyAssistant } from '../ai/LazyAssistant';
 import { assetUrl, type Catalog } from './api';
 import { BookingFlow } from './BookingFlow';
 import { readMyBookings } from './myBookings';
@@ -23,6 +25,7 @@ interface FlowStart {
 export function VenuePage({ catalog }: { catalog: Catalog }) {
   const { tenant, halls } = catalog;
   const [flow, setFlow] = useState<FlowStart | null>(null);
+  const [assistant, setAssistant] = useState(false);
   const myBookings = readMyBookings(tenant.slug);
   const start = (hallId?: string) => setFlow({ key: Date.now(), hallId });
 
@@ -49,6 +52,23 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         width="100%"
         onClick={() => start()}
       />
+      <Button
+        variant="secondary"
+        label="Спросить помощника: время и цены"
+        width="100%"
+        onClick={() => setAssistant(true)}
+      />
+      {assistant && (
+        <LazyAssistant
+          mode="guest"
+          ask={(turns) => askGuest(tenant.slug, null, turns)}
+          onBook={() => {
+            setAssistant(false);
+            start();
+          }}
+          onClose={() => setAssistant(false)}
+        />
+      )}
 
       {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
 

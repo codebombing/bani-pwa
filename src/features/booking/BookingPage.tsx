@@ -16,6 +16,8 @@ import { useParams } from 'react-router';
 
 import { formatDateTimeInTz, formatRangeInTz, formatRub } from '../../shared/format';
 import { PushToggle } from '../../shared/PushToggle';
+import { askGuest } from '../ai/aiApi';
+import { LazyAssistant } from '../ai/LazyAssistant';
 import {
   ApiError,
   bookingIcsUrl,
@@ -47,6 +49,7 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
   const queryClient = useQueryClient();
   const [confirmCancel, setConfirmCancel] = useState(false);
   const [moving, setMoving] = useState(false);
+  const [assistant, setAssistant] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   const cancel = useMutation({
@@ -196,10 +199,19 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
           </Link>
         )}
         <Link href={`/s/${tenant.slug}/`}>Ко всем залам</Link>
+        <Button variant="ghost" label="Спросить помощника" onClick={() => setAssistant(true)} />
         <Text color="secondary">
           Сохраните эту страницу — по ссылке бронь можно открыть с любого устройства.
         </Text>
       </VStack>
+
+      {assistant && (
+        <LazyAssistant
+          mode="guest"
+          ask={(turns) => askGuest(tenant.slug, token, turns)}
+          onClose={() => setAssistant(false)}
+        />
+      )}
 
       {moving && halls.find((h) => h.id === b.hall_id) && (
         <RescheduleSheet
