@@ -159,3 +159,26 @@ pgTAP (`supabase/tests/database/`, 86 тестов):
 - typecheck, lint — зелёные.
 
 Сознательно не делалось (низкий приоритет по договорённости с пользователем): недельный вид календаря владельца и свайп по дням (есть кнопки ‹ ›). Push гостю/владельцу — этап 7.
+
+## Этап 7. PWA-изоляция, push, ICS (12.11.2026) — готово
+Сделано:
+- Service worker (`src/sw.ts`) один на сборку, `tenant:publish` кладёт его в `dist/s/<slug>/sw.js`; scope `/s/<slug>/`, slug берётся из адреса SW. Кэши `bani-<slug>-static-v1` (precache), `bani-<slug>-public-v1` (каталог `public-api/t/<slug>` и картинки, SWR), `bani-<slug>-pages-v1` (HTML гостя, NetworkFirst). Брони по токену, кабинет, REST и Auth не перехватываются — только сеть. При активации чистятся только свои старые кэши. Push: показ уведомления с иконкой заведения, клик открывает адрес внутри scope заведения.
+- Регистрация SW — `useTenantServiceWorker` в GuestApp/OwnerApp (только в сборке). `dist/_headers`: `/s/*`, `/index.html`, `/sw.js` — no-cache, `/assets/*` — immutable.
+- Outbox → push: миграция `notify_worker` — `worker_claim_jobs` (FOR UPDATE SKIP LOCKED, lease 2 мин, протухший lease захватывается снова; устаревшая версия/неактивная бронь → skipped, не live → simulated, нет подписок → skipped), `worker_complete_job` (sent; ошибка → backoff 1/2/4/8 мин, после 5 попыток failed; 404/410 удаляют подписку), `public_push_subscribe` (по токену), `owner_push_subscribe/unsubscribe` (членство, auth.uid()), `private.invoke_notify_worker` + `cron.schedule('notify-worker', '* * * * *')` через pg_net; адрес и ключ — в Vault (`npm run notify:setup-local` для локального стека), без них задание ничего не делает.
+- Edge Function `notify-worker` (`withSupabase({auth:'secret'})`, `npm:web-push@3.6.7`, VAPID из `supabase/functions/.env`): тексты для гостя (подтверждение, перенос, отмена, напоминания за 24 ч и 2 ч) и владельца (новая бронь, перенос, отмена).
+- public-api: `POST /t/:slug/bookings/:token/push` (Zod: https-endpoint, ключи).
+- UI: `PushToggle` — «Напоминать о брони» на странице брони гостя и «Включить уведомления» в «Ещё» владельца. На iPhone в Safari вместо кнопки — инструкция «На экран Домой»; если уведомления запрещены — подсказка; без поддержки — ничего не обещаем.
+- `npm run serve:dist` — локальный статический хостинг dist/ на :8788 с правилами `_redirects`.
+- VAPID-ключи сгенерированы локально: приватный — в `supabase/functions/.env`, публичный — `VITE_VAPID_PUBLIC_KEY` в `.env` (оба gitignored); в `.env.example` добавлена переменная.
+
+Проверки (фактический результат):
+- `npm run check:all` — exit 0; `npm run demo:publish` → `tenant:verify` обоих — «всё в порядке» (включая `/s/<slug>/sw.js`).
+- `npx supabase test db` — 270 PASS (+23 в `08_outbox`: dedupe, lease, повторный захват, sent/backoff/failed, удаление мёртвой подписки, перенос гасит старые и ставит новые задачи версии 2, устаревшая версия → STALE_BOOKING, отмена гасит напоминания, preview → simulated, чужой не подписывается, authenticated не захватывает).
+- `npm run test:integration` — 11 passed: воркер без ключа → 401; гость подписывается по токену (200), http-endpoint → 400; воркер захватывает задачу, реально вызывает web-push (push-сервис .invalid) → failed ≥ 1, задача pending, attempts 1, ошибка записана.
+- `npm run test:e2e` — 2 passed: сценарий гость → владелец и `pwa.spec.ts` на собранном dist: у demo-banya и demo-sauna24 отдельные SW со scope своего заведения, кэши только `bani-<slug>-*`, каталог закэширован, броней по токену/REST/Auth в кэше нет.
+- Цепочка pg_cron: `npm run notify:setup-local` → `select private.invoke_notify_worker()` → pg_net → Kong → notify-worker → ответ 200, задача демо-заведения (preview) → `simulated`.
+
+Не проверено / не сделано (см. ACCEPTANCE.md):
+- Доставка настоящего push на телефон (нужен HTTPS-хост и реальный браузер/push-сервис); встроенный браузер приложения Claude не регистрирует SW — проверка SW сделана в Playwright Chromium.
+- `npx wrangler pages dev dist` и Lighthouse PWA — не запускались (вместо wrangler — `serve:dist`/`tenant:verify` с теми же правилами).
+- Startup images для iOS не генерируются (нужен набор точных размеров под устройства; низкая ценность сейчас).

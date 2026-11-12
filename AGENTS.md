@@ -25,7 +25,8 @@
 ## Команды (заполнить по мере появления)
 - `npm run dev` · `npm run typecheck` · `npm run lint` · `npm test` · `npm run test:integration` · `npm run test:e2e` · `npm run check:all`
 - `supabase start` · `supabase db reset` · `supabase test db` · `supabase functions serve`
-- `npm run tenant:new|validate|publish|verify -- <slug>` · `npm run owner:invite -- <slug> <email>`
+- `npm run tenant:new|validate|publish|verify|seed|placeholders -- <slug>` · `npm run demo:publish` · `npm run owner:invite -- <slug> <email>`
+- `npm run serve:dist` (dist/ на :8788 с `_redirects`) · `npm run notify:setup-local` (Vault для pg_cron → notify-worker)
 
 <!-- ASTRYX:START -->
 Astryx v0.7.13 · 174 components

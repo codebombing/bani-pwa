@@ -34,7 +34,8 @@
     "demo:publish": "tsx scripts/tenant/publish.ts demo-banya demo-sauna24",
     "check:all": "npm run typecheck && npm run lint && npm test && npm run build && npm run tenant:seed -- --check && npm run tenant:validate -- demo-banya demo-sauna24",
     "test:e2e": "playwright test",
-    "serve:dist": "tsx scripts/tenant/serve.ts"
+    "serve:dist": "tsx scripts/tenant/serve.ts",
+    "notify:setup-local": "tsx scripts/notify/setup-local.ts"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.13",
