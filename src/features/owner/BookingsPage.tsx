@@ -33,15 +33,26 @@ export function BookingsPage() {
     queryFn: async () => {
       const now = Date.now();
       if (filter === 'upcoming') {
-        return ownerApi.bookings(tenant.id, new Date(now - 6 * 3_600_000), new Date(now + 120 * DAY));
+        return ownerApi.bookings(
+          tenant.id,
+          new Date(now - 6 * 3_600_000),
+          new Date(now + 120 * DAY),
+        );
       }
       if (filter === 'past') {
-        return ownerApi.bookings(tenant.id, new Date(now - 90 * DAY), new Date(now), { ascending: false });
+        return ownerApi.bookings(tenant.id, new Date(now - 90 * DAY), new Date(now), {
+          ascending: false,
+        });
       }
-      const all = await ownerApi.bookings(tenant.id, new Date(now - 90 * DAY), new Date(now + 120 * DAY), {
-        includeCancelled: true,
-        ascending: false,
-      });
+      const all = await ownerApi.bookings(
+        tenant.id,
+        new Date(now - 90 * DAY),
+        new Date(now + 120 * DAY),
+        {
+          includeCancelled: true,
+          ascending: false,
+        },
+      );
       return all.filter((b) => b.status === 'cancelled');
     },
   });
@@ -61,7 +72,12 @@ export function BookingsPage() {
   return (
     <VStack as="main" padding={4} gap={4} maxWidth={720}>
       <Heading level={1}>Брони</Heading>
-      <SegmentedControl label="Какие брони показать" layout="fill" value={filter} onChange={(v) => setFilter(v as Filter)}>
+      <SegmentedControl
+        label="Какие брони показать"
+        layout="fill"
+        value={filter}
+        onChange={(v) => setFilter(v as Filter)}
+      >
         <SegmentedControlItem value="upcoming" label="Предстоящие" />
         <SegmentedControlItem value="past" label="Прошедшие" />
         <SegmentedControlItem value="cancelled" label="Отменённые" />
@@ -84,8 +100,16 @@ export function BookingsPage() {
       )}
       {list.isSuccess && groups.length === 0 && (
         <EmptyState
-          title={filter === 'upcoming' ? 'Предстоящих броней нет' : filter === 'past' ? 'За 90 дней броней нет' : 'Отменённых броней нет'}
-          description={filter === 'upcoming' ? 'Новые брони появятся здесь и в календаре.' : undefined}
+          title={
+            filter === 'upcoming'
+              ? 'Предстоящих броней нет'
+              : filter === 'past'
+                ? 'За 90 дней броней нет'
+                : 'Отменённых броней нет'
+          }
+          description={
+            filter === 'upcoming' ? 'Новые брони появятся здесь и в календаре.' : undefined
+          }
         />
       )}
       {groups.map(([day, items]) => (
@@ -101,7 +125,9 @@ export function BookingsPage() {
                   description={`${hallName(b.hall_id)} · ${guestsLabel(b.guests)} · ${formatRub(b.total_amount)}${
                     paid > 0 ? ` · оплачено ${formatRub(paid)}` : ''
                   }`}
-                  startContent={<StatusDot variant={STATUS_VARIANT[b.status]} label={STATUS_LABEL[b.status]} />}
+                  startContent={
+                    <StatusDot variant={STATUS_VARIANT[b.status]} label={STATUS_LABEL[b.status]} />
+                  }
                   endContent={<Text color="secondary">{STATUS_LABEL[b.status]}</Text>}
                   onClick={() => setOpenId(b.id)}
                 />
@@ -111,7 +137,13 @@ export function BookingsPage() {
         </VStack>
       ))}
 
-      {opened && <OwnerBookingSheet booking={opened} hallName={hallName(opened.hall_id)} onClose={() => setOpenId(null)} />}
+      {opened && (
+        <OwnerBookingSheet
+          booking={opened}
+          hallName={hallName(opened.hall_id)}
+          onClose={() => setOpenId(null)}
+        />
+      )}
     </VStack>
   );
 }

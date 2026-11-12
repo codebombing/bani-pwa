@@ -17,16 +17,16 @@ export function LoginPage({ slug, tenantName }: { slug: string; tenantName?: str
   const [email, setEmail] = useState('');
   const [touched, setTouched] = useState(false);
   const send = useMutation({ mutationFn: () => sendMagicLink(email, slug) });
-  const emailError = EMAIL_RE.test(email.trim()) ? null : 'Введите почту, например owner@example.ru';
+  const emailError = EMAIL_RE.test(email.trim())
+    ? null
+    : 'Введите почту, например owner@example.ru';
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={480}>
       <VStack gap={2}>
         <Text color="secondary">{tenantName ?? 'Кабинет владельца'}</Text>
         <Heading level={1}>Вход в кабинет</Heading>
-        <Text color="secondary">
-          Пришлём ссылку для входа на почту владельца. Пароль не нужен.
-        </Text>
+        <Text color="secondary">Пришлём ссылку для входа на почту владельца. Пароль не нужен.</Text>
       </VStack>
 
       {send.isSuccess ? (
@@ -59,7 +59,11 @@ export function LoginPage({ slug, tenantName }: { slug: string; tenantName?: str
             status={touched && emailError ? { type: 'error', message: emailError } : undefined}
           />
           {send.isError && (
-            <Banner status="error" title="Не отправлено" description={ownerErrorMessage(send.error)} />
+            <Banner
+              status="error"
+              title="Не отправлено"
+              description={ownerErrorMessage(send.error)}
+            />
           )}
           <Button
             variant="primary"

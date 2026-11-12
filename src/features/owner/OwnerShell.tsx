@@ -20,7 +20,11 @@ export function OwnerShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const base = `/s/${tenant.slug}/owner`;
-  const current = pathname.replace(base, '').replace(/^\/|\/$/g, '').split('/')[0] ?? '';
+  const current =
+    pathname
+      .replace(base, '')
+      .replace(/^\/|\/$/g, '')
+      .split('/')[0] ?? '';
   const active = TABS.some((t) => t.value === current) ? current : '';
 
   return (

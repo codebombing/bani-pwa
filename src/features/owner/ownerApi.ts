@@ -278,7 +278,12 @@ export const ownerApi = {
     return unwrap(bookingSchema, data, error);
   },
 
-  async reschedule(bookingId: string, startAt: string, durationMin: number, expectedVersion: number) {
+  async reschedule(
+    bookingId: string,
+    startAt: string,
+    durationMin: number,
+    expectedVersion: number,
+  ) {
     const { data, error } = await getSupabase().rpc('owner_reschedule_booking', {
       p_booking_id: bookingId,
       p_new_start_at: startAt,

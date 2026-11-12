@@ -85,7 +85,14 @@ export function CalendarPage() {
           onClick={() => setDate(addDays(date, 1))}
         />
       </HStack>
-      {date !== today && <Button variant="secondary" size="sm" label="К сегодняшнему дню" onClick={() => setDate(today)} />}
+      {date !== today && (
+        <Button
+          variant="secondary"
+          size="sm"
+          label="К сегодняшнему дню"
+          onClick={() => setDate(today)}
+        />
+      )}
 
       {error && (
         <Banner
@@ -129,7 +136,12 @@ export function CalendarPage() {
                         description={`${guestsLabel(b.guests)} · ${formatRub(b.total_amount)}${
                           paid > 0 ? ` · оплачено ${formatRub(paid)}` : ''
                         }`}
-                        startContent={<StatusDot variant={STATUS_VARIANT[b.status]} label={STATUS_LABEL[b.status]} />}
+                        startContent={
+                          <StatusDot
+                            variant={STATUS_VARIANT[b.status]}
+                            label={STATUS_LABEL[b.status]}
+                          />
+                        }
                         endContent={<Text color="secondary">{STATUS_LABEL[b.status]}</Text>}
                         onClick={() => setOpenId(b.id)}
                       />
@@ -173,7 +185,13 @@ export function CalendarPage() {
         );
       })}
 
-      {quick && <QuickBookingSheet hall={quick.hall} startAt={quick.startAt} onClose={() => setQuick(null)} />}
+      {quick && (
+        <QuickBookingSheet
+          hall={quick.hall}
+          startAt={quick.startAt}
+          onClose={() => setQuick(null)}
+        />
+      )}
       {opened && (
         <OwnerBookingSheet
           booking={opened}

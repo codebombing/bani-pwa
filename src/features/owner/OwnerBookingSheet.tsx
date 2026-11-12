@@ -26,7 +26,11 @@ import { guestsLabel, SOURCE_LABEL, STATUS_LABEL } from './labels';
 
 type PayKind = 'deposit' | 'payment' | 'refund';
 type Method = 'cash' | 'transfer' | 'card';
-const PAY_LABEL: Record<PayKind, string> = { deposit: 'задаток', payment: 'оплату', refund: 'возврат' };
+const PAY_LABEL: Record<PayKind, string> = {
+  deposit: 'задаток',
+  payment: 'оплату',
+  refund: 'возврат',
+};
 
 /** Детали брони и действия владельца. */
 export function OwnerBookingSheet({
@@ -45,10 +49,16 @@ export function OwnerBookingSheet({
   const left = Math.max(0, b.total_amount - paid);
   const deposit = b.price_snapshot.deposit_amount ?? 0;
   const isActive = b.status === 'confirmed' || b.status === 'pending';
-  const duration = Math.round((new Date(b.end_at).getTime() - new Date(b.start_at).getTime()) / 60_000);
+  const duration = Math.round(
+    (new Date(b.end_at).getTime() - new Date(b.start_at).getTime()) / 60_000,
+  );
 
-  const [payKind, setPayKind] = useState<PayKind>(paid === 0 && deposit > 0 ? 'deposit' : 'payment');
-  const [amountRub, setAmountRub] = useState(Math.round((paid === 0 && deposit > 0 ? deposit : left) / 100));
+  const [payKind, setPayKind] = useState<PayKind>(
+    paid === 0 && deposit > 0 ? 'deposit' : 'payment',
+  );
+  const [amountRub, setAmountRub] = useState(
+    Math.round((paid === 0 && deposit > 0 ? deposit : left) / 100),
+  );
   const [method, setMethod] = useState<Method>('transfer');
   const [moving, setMoving] = useState(false);
   const [moveDate, setMoveDate] = useState(dateInTz(b.start_at, tz));
@@ -111,7 +121,11 @@ export function OwnerBookingSheet({
         <MetadataList>
           <MetadataListItem label="Гости">{guestsLabel(b.guests)}</MetadataListItem>
           <MetadataListItem label="Телефон">
-            {b.customer_phone ? <Link href={`tel:${b.customer_phone}`}>{b.customer_phone}</Link> : 'не указан'}
+            {b.customer_phone ? (
+              <Link href={`tel:${b.customer_phone}`}>{b.customer_phone}</Link>
+            ) : (
+              'не указан'
+            )}
           </MetadataListItem>
           <MetadataListItem label="Источник">{SOURCE_LABEL[b.source]}</MetadataListItem>
           {b.comment && <MetadataListItem label="Комментарий">{b.comment}</MetadataListItem>}
@@ -120,7 +134,13 @@ export function OwnerBookingSheet({
         <PriceLines snapshot={b.price_snapshot} total={b.total_amount} deposit={deposit} />
         <Text weight="semibold">{`Получено ${formatRub(paid)} · осталось ${formatRub(left)}`}</Text>
 
-        {actionError && <Banner status="error" title="Не получилось" description={ownerErrorMessage(actionError)} />}
+        {actionError && (
+          <Banner
+            status="error"
+            title="Не получилось"
+            description={ownerErrorMessage(actionError)}
+          />
+        )}
 
         {b.status !== 'cancelled' && (
           <VStack gap={3}>
@@ -143,7 +163,12 @@ export function OwnerBookingSheet({
               step={100}
               onChange={(n) => setAmountRub(Math.max(0, Math.round(n)))}
             />
-            <SegmentedControl label="Способ" layout="fill" value={method} onChange={(v) => setMethod(v as Method)}>
+            <SegmentedControl
+              label="Способ"
+              layout="fill"
+              value={method}
+              onChange={(v) => setMethod(v as Method)}
+            >
               <SegmentedControlItem value="transfer" label="Перевод" />
               <SegmentedControlItem value="cash" label="Наличные" />
               <SegmentedControlItem value="card" label="Карта" />
@@ -177,7 +202,11 @@ export function OwnerBookingSheet({
                   isLoading={status.isPending && status.variables === 'no_show'}
                   onClick={() => status.mutate('no_show')}
                 />
-                <Button variant="secondary" label="Перенести" onClick={() => setMoving((m) => !m)} />
+                <Button
+                  variant="secondary"
+                  label="Перенести"
+                  onClick={() => setMoving((m) => !m)}
+                />
               </HStack>
             ) : (
               <Button
@@ -206,9 +235,15 @@ export function OwnerBookingSheet({
             {slots.isPending ? (
               <Skeleton height={120} />
             ) : slots.isError ? (
-              <Banner status="error" title="Не удалось загрузить время" description={ownerErrorMessage(slots.error)} />
+              <Banner
+                status="error"
+                title="Не удалось загрузить время"
+                description={ownerErrorMessage(slots.error)}
+              />
             ) : slots.data.slots.length === 0 ? (
-              <Text color="secondary">{slots.data.closed ? 'В этот день закрыто' : 'Свободного времени нет'}</Text>
+              <Text color="secondary">
+                {slots.data.closed ? 'В этот день закрыто' : 'Свободного времени нет'}
+              </Text>
             ) : (
               <List hasDividers>
                 {slots.data.slots.map((s) => (
@@ -227,7 +262,11 @@ export function OwnerBookingSheet({
         {isActive && (
           <VStack gap={2}>
             <Divider />
-            <Button variant="destructive" label="Отменить бронь" onClick={() => setConfirmCancel(true)} />
+            <Button
+              variant="destructive"
+              label="Отменить бронь"
+              onClick={() => setConfirmCancel(true)}
+            />
           </VStack>
         )}
       </VStack>

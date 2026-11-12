@@ -28,6 +28,12 @@ export const ownerKey = (tenantId: string, ...rest: unknown[]) =>
  */
 export async function refreshOwnerData(queryClient: QueryClient, tenantId: string): Promise<void> {
   const isSlots = (key: readonly unknown[]) => key.includes('free') || key.includes('move');
-  void queryClient.invalidateQueries({ queryKey: ownerKey(tenantId), predicate: (q) => isSlots(q.queryKey) });
-  await queryClient.invalidateQueries({ queryKey: ownerKey(tenantId), predicate: (q) => !isSlots(q.queryKey) });
+  void queryClient.invalidateQueries({
+    queryKey: ownerKey(tenantId),
+    predicate: (q) => isSlots(q.queryKey),
+  });
+  await queryClient.invalidateQueries({
+    queryKey: ownerKey(tenantId),
+    predicate: (q) => !isSlots(q.queryKey),
+  });
 }

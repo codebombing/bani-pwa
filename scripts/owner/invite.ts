@@ -34,10 +34,7 @@ function parseArgs(argv: string[]) {
   });
 }
 
-async function findUserId(
-  admin: SupabaseClient,
-  email: string,
-): Promise<string | null> {
+async function findUserId(admin: SupabaseClient, email: string): Promise<string | null> {
   for (let page = 1; page <= 50; page += 1) {
     const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 200 });
     if (error) throw error;
@@ -82,7 +79,9 @@ async function main() {
 
 main().catch((e: unknown) => {
   if (e instanceof z.ZodError) {
-    console.error(`✖ ${e.issues.map((i) => `${i.path.join('.') || 'аргумент'}: ${i.message}`).join('; ')}`);
+    console.error(
+      `✖ ${e.issues.map((i) => `${i.path.join('.') || 'аргумент'}: ${i.message}`).join('; ')}`,
+    );
     console.error('  Использование: npm run owner:invite -- <slug> <email> [--role owner|staff]');
   } else {
     console.error(`✖ ${e instanceof Error ? e.message : String(e)}`);

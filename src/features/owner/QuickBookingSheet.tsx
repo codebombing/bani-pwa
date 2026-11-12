@@ -80,7 +80,10 @@ export function QuickBookingSheet({
     },
   });
 
-  const durations = Array.from({ length: 5 }, (_, i) => hall.min_duration_min + i * hall.slot_step_min);
+  const durations = Array.from(
+    { length: 5 },
+    (_, i) => hall.min_duration_min + i * hall.slot_step_min,
+  );
 
   return (
     <BottomSheet
@@ -143,7 +146,9 @@ export function QuickBookingSheet({
           isOptional
           placeholder="+7 900 000-00-00"
           onChange={(v) => setPhone(formatRuPhoneInput(v))}
-          status={phoneInvalid ? { type: 'error', message: 'Номер из 10 цифр после +7' } : undefined}
+          status={
+            phoneInvalid ? { type: 'error', message: 'Номер из 10 цифр после +7' } : undefined
+          }
         />
 
         <HStack justify="between" vAlign="center">
@@ -159,13 +164,25 @@ export function QuickBookingSheet({
           )}
         </HStack>
         {quote.data && !quote.data.available && (
-          <Banner status="warning" title="Пересекается с другой бронью или уборкой" description="Уменьшите длительность." />
+          <Banner
+            status="warning"
+            title="Пересекается с другой бронью или уборкой"
+            description="Уменьшите длительность."
+          />
         )}
         {quote.isError && (
-          <Banner status="error" title="Так забронировать нельзя" description={ownerErrorMessage(quote.error)} />
+          <Banner
+            status="error"
+            title="Так забронировать нельзя"
+            description={ownerErrorMessage(quote.error)}
+          />
         )}
         {save.isError && (
-          <Banner status="error" title="Бронь не сохранена" description={ownerErrorMessage(save.error)} />
+          <Banner
+            status="error"
+            title="Бронь не сохранена"
+            description={ownerErrorMessage(save.error)}
+          />
         )}
 
         <Button

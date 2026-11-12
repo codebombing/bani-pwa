@@ -46,7 +46,12 @@ export function StatsPage() {
   return (
     <VStack as="main" padding={4} gap={4} maxWidth={720}>
       <Heading level={1}>Отчёт</Heading>
-      <SegmentedControl label="Период" layout="fill" value={period} onChange={(v) => setPeriod(v as Period)}>
+      <SegmentedControl
+        label="Период"
+        layout="fill"
+        value={period}
+        onChange={(v) => setPeriod(v as Period)}
+      >
         <SegmentedControlItem value="today" label="День" />
         <SegmentedControlItem value="week" label="7 дней" />
         <SegmentedControlItem value="month" label="Месяц" />
@@ -77,12 +82,15 @@ export function StatsPage() {
               </MetadataListItem>
             </MetadataList>
             <Text color="secondary">
-              «Ожидается» — стоимость будущих броней минус уже полученное по ним. Это ещё не выручка.
+              «Ожидается» — стоимость будущих броней минус уже полученное по ним. Это ещё не
+              выручка.
             </Text>
           </Card>
           <Card padding={4}>
             <MetadataList title="Брони и визиты">
-              <MetadataListItem label="Брони созданы">{String(stats.data.bookings_created)}</MetadataListItem>
+              <MetadataListItem label="Брони созданы">
+                {String(stats.data.bookings_created)}
+              </MetadataListItem>
               <MetadataListItem label="Визиты состоялись">
                 {`${stats.data.visits_completed} на ${formatRub(stats.data.visits_amount)}`}
               </MetadataListItem>
