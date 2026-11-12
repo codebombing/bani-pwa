@@ -32,10 +32,11 @@
     "tenant:placeholders": "tsx scripts/tenant/placeholders.ts",
     "tenant:seed": "tsx scripts/tenant/seed.ts",
     "demo:publish": "tsx scripts/tenant/publish.ts demo-banya demo-sauna24",
-    "check:all": "npm run typecheck && npm run lint && npm test && npm run build && npm run tenant:seed -- --check && npm run tenant:validate -- demo-banya demo-sauna24",
+    "check:all": "npm run check:fast && npm run build && npm run demo:publish && npm run tenant:seed -- --check && npm run tenant:validate -- demo-banya demo-sauna24 && supabase test db && npm run test:integration && npm run test:e2e && npm run tenant:verify -- demo-banya demo-sauna24",
     "test:e2e": "playwright test",
     "serve:dist": "tsx scripts/tenant/serve.ts",
-    "notify:setup-local": "tsx scripts/notify/setup-local.ts"
+    "notify:setup-local": "tsx scripts/notify/setup-local.ts",
+    "check:fast": "npm run typecheck && npm run lint && npm test"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.13",

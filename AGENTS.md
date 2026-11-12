@@ -23,7 +23,8 @@
 - Изменения броней — только через SQL-функции; клиент не передаёт цену, tenant_id и время окончания.
 
 ## Команды (заполнить по мере появления)
-- `npm run dev` · `npm run typecheck` · `npm run lint` · `npm test` · `npm run test:integration` · `npm run test:e2e` · `npm run check:all`
+- `npm run dev` · `npm run typecheck` · `npm run lint` · `npm test` · `npm run test:integration` · `npm run test:e2e` · `npm run check:fast` · `npm run check:all` (полный, нужен стек)
+- Документы: `SETUP.md` (запуск, переменные, cron), `CLONE-IN-6-MINUTES.md` (новое заведение), `ACCEPTANCE.md` (приёмка)
 - `supabase start` · `supabase db reset` · `supabase test db` · `supabase functions serve`
 - `npm run tenant:new|validate|publish|verify|seed|placeholders -- <slug>` · `npm run demo:publish` · `npm run owner:invite -- <slug> <email>`
 - `npm run serve:dist` (dist/ на :8788 с `_redirects`) · `npm run notify:setup-local` (Vault для pg_cron → notify-worker)

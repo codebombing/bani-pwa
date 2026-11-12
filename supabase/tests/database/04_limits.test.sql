@@ -21,6 +21,8 @@ select throws_ok(
 );
 
 -- ---------- бюджет LLM: заведение 2/сутки, глобально 3/сутки ----------
+-- Тест не зависит от реального расхода за сегодня (откатывается вместе с транзакцией).
+delete from public.llm_usage_global where day = (now() at time zone 'UTC')::date;
 select is(public.consume_llm_budget('aaaaaaaa-0000-0000-0000-000000000001', 100, 2, 3), true, 'A: 1-й запрос');
 select is(public.consume_llm_budget('aaaaaaaa-0000-0000-0000-000000000001', 100, 2, 3), true, 'A: 2-й запрос');
 select is(public.consume_llm_budget('aaaaaaaa-0000-0000-0000-000000000001', 100, 2, 3), false,
