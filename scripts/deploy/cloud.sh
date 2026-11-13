@@ -16,6 +16,12 @@ step "1/8 Привязка к проекту $REF (спросит пароль �
 $SB link --project-ref "$REF"
 
 step "2/8 Миграции + демо-данные (seed)"
+if [[ -z "${SUPABASE_DB_PASSWORD:-}" ]]; then
+  # Пароль базы вводишь ты; он живёт только в этом процессе и никуда не записывается.
+  read -rsp "Пароль базы Supabase (символы не видны): " SUPABASE_DB_PASSWORD
+  echo
+  export SUPABASE_DB_PASSWORD
+fi
 $SB db push --remote --include-seed --yes
 
 step "3/8 Ключи проекта → $ENV_FILE"
