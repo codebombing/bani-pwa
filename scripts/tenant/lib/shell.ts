@@ -27,6 +27,21 @@ export const HEADERS = `# Сгенерировано tenant:publish.
   Cache-Control: public, max-age=31536000, immutable
 `;
 
+/** Те же правила для Vercel: сначала существующий файл, затем оболочка заведения. */
+export const VERCEL = {
+  cleanUrls: false,
+  trailingSlash: true,
+  rewrites: [{ source: '/s/:slug/:path*', destination: '/s/:slug/index.html' }],
+  headers: [
+    { source: '/s/(.*)', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
+    { source: '/sw.js', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
+    {
+      source: '/assets/(.*)',
+      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+    },
+  ],
+};
+
 export const REDIRECTS = `# Сгенерировано tenant:publish. Глубокие ссылки заведения → его оболочка.
 /s/:slug/*  /s/:slug/index.html  200
 `;
@@ -138,6 +153,7 @@ export async function buildShell(
   );
   writeFileSync(path.join(DIST_DIR, '_redirects'), REDIRECTS);
   writeFileSync(path.join(DIST_DIR, '_headers'), HEADERS);
+  writeFileSync(path.join(DIST_DIR, 'vercel.json'), `${JSON.stringify(VERCEL, null, 2)}\n`);
 
   // Service worker заведения: тот же sw.js, но scope /s/<slug>/ — свои кэши и подписки.
   const sw = path.join(DIST_DIR, 'sw.js');

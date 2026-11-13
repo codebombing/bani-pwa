@@ -17,7 +17,9 @@ export const tenantDir = (slug: string) => path.join(TENANTS_DIR, slug);
 export const imagesDir = (slug: string) => path.join(tenantDir(slug), 'images');
 export const shellDir = (slug: string) => path.join(DIST_DIR, 's', slug);
 
-if (existsSync(path.join(ROOT, '.env'))) process.loadEnvFile(path.join(ROOT, '.env'));
+// ENV_FILE=.env.cloud.local — работать с облачным проектом; по умолчанию локальный .env.
+const ENV_FILE = path.join(ROOT, process.env.ENV_FILE ?? '.env');
+if (existsSync(ENV_FILE)) process.loadEnvFile(ENV_FILE);
 
 /** Все папки заведений, кроме _template. */
 export function allTenantSlugs(): string[] {

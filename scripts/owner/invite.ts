@@ -11,7 +11,8 @@ import { existsSync } from 'node:fs';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { z } from 'zod';
 
-if (existsSync('.env')) process.loadEnvFile('.env');
+const ENV_FILE = process.env.ENV_FILE ?? '.env'; // ENV_FILE=.env.cloud.local — облачный проект
+if (existsSync(ENV_FILE)) process.loadEnvFile(ENV_FILE);
 
 const argsSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug: латиница, цифры и дефисы'),
