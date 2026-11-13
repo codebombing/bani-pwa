@@ -6,9 +6,9 @@ import { Text } from '@astryxdesign/core/Text';
 import { TextInput } from '@astryxdesign/core/TextInput';
 import { VStack } from '@astryxdesign/core/VStack';
 import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { sendMagicLink } from './auth';
+import { sendMagicLink, verifyLinkToken } from './auth';
 import { ownerErrorMessage } from './ownerApi';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,6 +27,18 @@ export function LoginPage({ slug, tenantName }: { slug: string; tenantName?: str
       : 'Не удалось войти по ссылке. Запросите новую.';
   });
   const send = useMutation({ mutationFn: () => sendMagicLink(email, slug) });
+
+  // Ссылка от owner:link: /owner/#token_hash=…&type=magiclink — входим здесь, в браузере.
+  const [tokenHash] = useState(() => {
+    const h = new URLSearchParams(window.location.hash.slice(1)).get('token_hash');
+    if (h) window.history.replaceState(null, '', window.location.pathname);
+    return h;
+  });
+  const verify = useMutation({ mutationFn: (hash: string) => verifyLinkToken(hash) });
+  useEffect(() => {
+    if (tokenHash) verify.mutate(tokenHash);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- один раз на открытие ссылки
+  }, [tokenHash]);
   const emailError = EMAIL_RE.test(email.trim())
     ? null
     : 'Введите почту, например owner@example.ru';
@@ -39,6 +51,14 @@ export function LoginPage({ slug, tenantName }: { slug: string; tenantName?: str
         <Text color="secondary">Пришлём ссылку для входа на почту владельца. Пароль не нужен.</Text>
       </VStack>
 
+      {verify.isPending && <Banner status="info" title="Входим…" description="Проверяем ссылку." />}
+      {verify.isError && (
+        <Banner
+          status="warning"
+          title="Вход не выполнен"
+          description="Ссылка устарела или уже использована. Попросите новую у администратора."
+        />
+      )}
       {linkError && !send.isSuccess && (
         <Banner status="warning" title="Вход не выполнен" description={linkError} />
       )}

@@ -70,7 +70,10 @@ async function main() {
   console.log(
     `✔ Ссылка входа для ${args.email} (${member.role}, «${tenant.name}»), ~1 час, одноразовая:`,
   );
-  console.log(`\n${data.properties.action_link}\n`);
+  // Ссылка ведёт на сам сайт, токен — в #hash: превью мессенджеров его не «потратят»,
+  // вход выполняет страница в браузере (verifyOtp).
+  const siteLink = `${redirectTo}#token_hash=${data.properties.hashed_token}&type=magiclink`;
+  console.log(`\n${siteLink}\n`);
   console.log('  Новая ссылка отменяет предыдущую. Не публикуйте её — по ней входят в кабинет.');
 }
 

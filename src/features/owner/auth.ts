@@ -42,6 +42,15 @@ export async function sendMagicLink(email: string, slug: string): Promise<void> 
   }
 }
 
+/** Вход по ссылке от owner:link (token_hash в #hash). */
+export async function verifyLinkToken(tokenHash: string): Promise<void> {
+  const { error } = await getSupabase().auth.verifyOtp({
+    token_hash: tokenHash,
+    type: 'magiclink',
+  });
+  if (error) throw new Error(error.message);
+}
+
 /** Выход: сессия, кэш запросов и приватные данные кабинета удаляются с устройства. */
 export async function signOut(queryClient: QueryClient): Promise<void> {
   await getSupabase().auth.signOut({ scope: 'local' });
