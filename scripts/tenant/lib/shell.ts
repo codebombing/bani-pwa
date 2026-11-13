@@ -31,7 +31,7 @@ export const HEADERS = `# Сгенерировано tenant:publish.
 export const VERCEL = {
   cleanUrls: false,
   trailingSlash: true,
-  rewrites: [{ source: '/s/:slug/:path*', destination: '/s/:slug/index.html' }],
+  rewrites: [{ source: '/s/:slug/(.*)', destination: '/s/:slug/index.html' }],
   headers: [
     { source: '/s/(.*)', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
     { source: '/sw.js', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },

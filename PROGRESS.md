@@ -227,3 +227,10 @@ pgTAP (`supabase/tests/database/`, 86 тестов):
 Проверки: typecheck, lint, 38 unit, validate, seed (версия 4), build + demo:publish, test:e2e 2 passed (вкладки кабинета находятся по названию), test:integration 16 passed; браузер 375×812: шапка, цена, веник.
 
 - 13.11.2026: шапка заведения — фото фоном блока по высоте содержимого (без пустой полосы сверху); кнопки выше: md 46 px, lg 52 px, остальные кликабельные ≥ 44 px (global.css). Проверки: 38 unit, build, e2e 2 passed, браузер 375×812.
+
+## Тестовый деплой в облако (13.11.2026)
+- Supabase Cloud: проект bani-pwa-test (hwppclalwmfzolsfsuwn, eu-north-1) — миграции + seed, функции public-api/notify-worker/ai-chat, секреты (токены броней, VAPID). Сайт: Vercel https://bani-pwa-test.vercel.app (`vercel.json` генерирует tenant:publish).
+- `scripts/deploy/cloud.sh <ref>` (запускает пользователь: пароль БД). Подключение к БД через пул на порту 6543 — порт 5432 у провайдера обрывается.
+- Auth: Site URL и redirect `https://bani-pwa-test.vercel.app/**`, регистрация выключена; владелец обеих демо — почта владельца аккаунта Supabase (встроенная почта Supabase шлёт только участникам организации).
+- Проверка: `ENV_FILE=.env.cloud.local npm run tenant:verify -- demo-banya demo-sauna24 --base-url https://bani-pwa-test.vercel.app` — всё в порядке (после замены правила на `/s/:slug/(.*)`).
+- Не проверено: адрес и ключ notify-worker в Vault облака (скрипт мог прерваться до шага 6), вход по ссылке из письма, push на телефоне.
