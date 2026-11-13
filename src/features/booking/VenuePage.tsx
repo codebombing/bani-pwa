@@ -6,7 +6,6 @@ import { HStack } from '@astryxdesign/core/HStack';
 import { Item } from '@astryxdesign/core/Item';
 import { Link } from '@astryxdesign/core/Link';
 import { List } from '@astryxdesign/core/List';
-import { Overlay } from '@astryxdesign/core/Overlay';
 import { Text } from '@astryxdesign/core/Text';
 import { VStack } from '@astryxdesign/core/VStack';
 import { useState } from 'react';
@@ -36,43 +35,38 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={640}>
-      <Overlay
-        position="bottom"
-        align="start"
-        content={
-          <VStack gap={2} padding={1}>
-            <Heading level={1}>
-              <Wordmark name={tenant.name} wordmark={tenant.theme.wordmark} />
-            </Heading>
-            {tenant.texts.tagline && (
-              <Text size="lg" weight="semibold">
-                {tenant.texts.tagline}
-              </Text>
-            )}
-            {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
-            <Text color="secondary">
-              {[tenant.contacts.address, tenant.status === 'preview' ? 'демо-режим' : null]
-                .filter(Boolean)
-                .join(' · ')}
-            </Text>
-            <Button
-              variant="secondary"
-              size="lg"
-              label="Забронировать"
-              width="100%"
-              onClick={() => start()}
-            />
-          </VStack>
-        }
+      <VStack
+        gap={2}
+        padding={4}
+        style={{
+          borderRadius: 'var(--radius-lg, 20px)',
+          overflow: 'hidden',
+          paddingTop: 'var(--spacing-6, 24px)',
+          background: `linear-gradient(180deg, rgb(20 11 7 / 0.35) 0%, rgb(20 11 7 / 0.7) 45%, rgb(20 11 7 / 0.92) 100%), url('${heroUrl ?? '/bg/guest.jpg'}') center / cover no-repeat`,
+        }}
       >
-        <AspectRatio ratio={2 / 3} fit="cover" style={{ borderRadius: 'var(--radius-lg, 20px)' }}>
-          {heroUrl ? (
-            <img src={heroUrl} alt="" width={1080} height={1350} fetchPriority="high" />
-          ) : (
-            <img src="/bg/guest.jpg" alt="" width={720} height={1280} />
-          )}
-        </AspectRatio>
-      </Overlay>
+        <Heading level={1}>
+          <Wordmark name={tenant.name} wordmark={tenant.theme.wordmark} />
+        </Heading>
+        {tenant.texts.tagline && (
+          <Text size="lg" weight="semibold">
+            {tenant.texts.tagline}
+          </Text>
+        )}
+        {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
+        <Text color="secondary">
+          {[tenant.contacts.address, tenant.status === 'preview' ? 'демо-режим' : null]
+            .filter(Boolean)
+            .join(' · ')}
+        </Text>
+        <Button
+          variant="secondary"
+          size="lg"
+          label="Забронировать"
+          width="100%"
+          onClick={() => start()}
+        />
+      </VStack>
 
       <VStack gap={3}>
         <Heading level={2}>Залы</Heading>

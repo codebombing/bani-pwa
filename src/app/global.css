@@ -114,3 +114,15 @@ html[data-assistant='open'] #root {
 html[data-area='owner'] .assistant-fab {
   bottom: calc(max(20px, env(safe-area-inset-bottom) + 12px) + 64px);
 }
+
+/* Кнопки под палец: выше стандартных размеров Astryx (правила вне cascade layer побеждают). */
+button[data-astryx-pressable]:not(.astryx-calendar-day) {
+  min-height: 44px;
+}
+.astryx-button[data-size='md'] {
+  min-height: 46px;
+}
+.astryx-button[data-size='lg'] {
+  min-height: 52px;
+  font-size: 1.0625rem;
+}
