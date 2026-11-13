@@ -16,10 +16,10 @@ step "1/8 Привязка к проекту $REF (спросит пароль �
 $SB link --project-ref "$REF"
 
 step "2/8 Миграции + демо-данные (seed)"
-$SB db push --include-seed --yes
+$SB db push --remote --include-seed --yes
 
 step "3/8 Ключи проекта → $ENV_FILE"
-KEYS_JSON="$($SB projects api-keys --project-ref "$REF" --reveal --output json)"
+KEYS_JSON="$($SB projects api-keys --remote="$REF" --reveal --output json)"
 read -r PUBLISHABLE SECRET < <(python3 - "$KEYS_JSON" <<'PY'
 import json, sys
 keys = json.loads(sys.argv[1])
@@ -69,13 +69,13 @@ VAPID_PUBLIC_KEY=$VAPID_PUBLIC
 VAPID_PRIVATE_KEY=$VAPID_PRIVATE
 VAPID_SUBJECT=mailto:admin@bani.local
 EOF
-$SB secrets set --env-file "$SECRETS_FILE"
+$SB secrets set --env-file "$SECRETS_FILE" --yes
 
 step "5/8 Edge Functions"
-$SB functions deploy public-api notify-worker ai-chat --use-api
+$SB functions deploy public-api notify-worker ai-chat --use-api --yes
 
 step "6/8 Cron уведомлений: адрес и ключ в Vault"
-$SB db query --remote "
+$SB db query --remote --yes "
   delete from vault.secrets where name in ('notify_worker_url', 'notify_worker_key');
   select vault.create_secret('https://$REF.supabase.co/functions/v1/notify-worker', 'notify_worker_url');
   select vault.create_secret('$SECRET', 'notify_worker_key');
