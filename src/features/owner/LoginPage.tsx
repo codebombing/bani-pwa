@@ -16,6 +16,16 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function LoginPage({ slug, tenantName }: { slug: string; tenantName?: string }) {
   const [email, setEmail] = useState('');
   const [touched, setTouched] = useState(false);
+  // Ссылка из письма устарела/уже использована: Supabase возвращает ошибку в #hash.
+  const [linkError] = useState(() => {
+    const hash = new URLSearchParams(window.location.hash.slice(1));
+    const code = hash.get('error_code') ?? hash.get('error');
+    if (!code) return null;
+    window.history.replaceState(null, '', window.location.pathname);
+    return code === 'otp_expired'
+      ? 'Ссылка устарела или уже использована. Запросите новую — работает только последняя ссылка из писем.'
+      : 'Не удалось войти по ссылке. Запросите новую.';
+  });
   const send = useMutation({ mutationFn: () => sendMagicLink(email, slug) });
   const emailError = EMAIL_RE.test(email.trim())
     ? null
@@ -29,12 +39,16 @@ export function LoginPage({ slug, tenantName }: { slug: string; tenantName?: str
         <Text color="secondary">Пришлём ссылку для входа на почту владельца. Пароль не нужен.</Text>
       </VStack>
 
+      {linkError && !send.isSuccess && (
+        <Banner status="warning" title="Вход не выполнен" description={linkError} />
+      )}
+
       {send.isSuccess ? (
         <VStack gap={3}>
           <Banner
             status="success"
             title="Ссылка отправлена"
-            description={`Если ${email.trim()} есть среди владельцев, письмо придёт в течение минуты. Откройте ссылку на этом устройстве.`}
+            description={`Если ${email.trim()} есть среди владельцев, письмо придёт в течение минуты. Откройте самую свежую ссылку на этом же устройстве — она одноразовая.`}
           />
           {import.meta.env.DEV && (
             <Link href="http://127.0.0.1:54324" isExternalLink>
