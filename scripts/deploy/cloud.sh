@@ -22,7 +22,15 @@ if [[ -z "${SUPABASE_DB_PASSWORD:-}" ]]; then
   echo
   export SUPABASE_DB_PASSWORD
 fi
-$SB db push --remote --include-seed --yes
+# Порт 5432 пула у некоторых провайдеров обрывается — подключаемся через 6543 (TLS).
+POOLER_HOST="$(sed -E 's#^.*@([^:/]+).*$#\1#' supabase/.temp/pooler-url)"
+DB_URL="$(python3 - "$REF" "$SUPABASE_DB_PASSWORD" "$POOLER_HOST" <<'PY'
+import sys, urllib.parse as u
+ref, pw, host = sys.argv[1:4]
+print(f"postgresql://postgres.{ref}:{u.quote(pw, safe='')}@{host}:6543/postgres")
+PY
+)"
+$SB db push --db-url "$DB_URL" --include-seed --yes
 
 step "3/8 Ключи проекта → $ENV_FILE"
 KEYS_JSON="$($SB projects api-keys --remote="$REF" --reveal --output json)"
@@ -81,7 +89,7 @@ step "5/8 Edge Functions"
 $SB functions deploy public-api notify-worker ai-chat --use-api --yes
 
 step "6/8 Cron уведомлений: адрес и ключ в Vault"
-$SB db query --remote --yes "
+$SB db query --db-url "$DB_URL" "
   delete from vault.secrets where name in ('notify_worker_url', 'notify_worker_key');
   select vault.create_secret('https://$REF.supabase.co/functions/v1/notify-worker', 'notify_worker_url');
   select vault.create_secret('$SECRET', 'notify_worker_key');
