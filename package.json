@@ -36,7 +36,8 @@
     "test:e2e": "playwright test",
     "serve:dist": "tsx scripts/tenant/serve.ts",
     "notify:setup-local": "tsx scripts/notify/setup-local.ts",
-    "check:fast": "npm run typecheck && npm run lint && npm test"
+    "check:fast": "npm run typecheck && npm run lint && npm test",
+    "owner:link": "tsx scripts/owner/link.ts"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.13",
