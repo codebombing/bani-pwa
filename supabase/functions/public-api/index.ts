@@ -82,8 +82,25 @@ async function tenantInfo(ctx: Ctx, slug: string): Promise<Response> {
   if (halls.error) throw halls.error;
   if (extras.error) throw extras.error;
 
+  // «от N ₽/ч» на карточке зала: минимум по действующей версии тарифа.
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: tenant.timezone }).format(new Date());
+  const { data: versions, error: vErr } = await ctx.supabaseAdmin
+    .from('tariff_versions')
+    .select('hall_id, effective_from, tariff_rules(price_per_hour)')
+    .eq('tenant_id', tenant.id)
+    .lte('effective_from', today)
+    .order('effective_from', { ascending: false });
+  if (vErr) throw vErr;
+  const priceFrom = new Map<string, number>();
+  for (const v of versions ?? []) {
+    if (priceFrom.has(v.hall_id)) continue; // первая — самая свежая действующая
+    const prices = (v.tariff_rules ?? []).map((r: { price_per_hour: number }) => r.price_per_hour);
+    if (prices.length) priceFrom.set(v.hall_id, Math.min(...prices));
+  }
+  const hallsWithPrice = halls.data.map((h) => ({ ...h, price_from: priceFrom.get(h.id) ?? null }));
+
   return json(
-    { ok: true, tenant, halls: halls.data, extras: extras.data },
+    { ok: true, tenant, halls: hallsWithPrice, extras: extras.data },
     200,
     // Публичный каталог можно кэшировать недолго.
     { 'cache-control': 'public, max-age=60' },

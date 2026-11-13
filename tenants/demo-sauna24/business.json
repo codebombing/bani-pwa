@@ -8,7 +8,12 @@
   "theme": {
     "accent": "#D99A3E",
     "hero": "hero.jpg",
-    "logo": "logo.png"
+    "logo": "logo.png",
+    "wordmark": {
+      "top": "Сауна",
+      "main": "24 часа",
+      "sub": "с бассейном и караоке"
+    }
   },
   "pwa": {
     "short_name": "Сауна 24",

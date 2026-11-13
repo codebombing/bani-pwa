@@ -2,18 +2,20 @@ import { AspectRatio } from '@astryxdesign/core/AspectRatio';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
+import { HStack } from '@astryxdesign/core/HStack';
 import { Item } from '@astryxdesign/core/Item';
 import { Link } from '@astryxdesign/core/Link';
 import { List } from '@astryxdesign/core/List';
 import { Overlay } from '@astryxdesign/core/Overlay';
 import { Text } from '@astryxdesign/core/Text';
 import { VStack } from '@astryxdesign/core/VStack';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router';
 
 import { formatDateTimeInTz, formatDuration, formatRub } from '../../shared/format';
 import { assetUrl, type Catalog } from './api';
 import { BookingFlow } from './BookingFlow';
+import { Wordmark } from './Wordmark';
 import { readMyBookings } from './myBookings';
 
 interface FlowStart {
@@ -25,7 +27,6 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
   const { tenant, halls } = catalog;
   const myBookings = readMyBookings(tenant.slug);
   const heroUrl = tenant.theme.hero ? assetUrl(tenant, tenant.theme.hero) : null;
-  const logoUrl = tenant.theme.logo ? assetUrl(tenant, tenant.theme.logo) : null;
 
   // «Записаться» из чата помощника: navigate(…, { state: { book } }) открывает бронь
   // (GuestApp пересоздаёт страницу по state.book).
@@ -33,30 +34,16 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
   const [flow, setFlow] = useState<FlowStart | null>(() => (bookRequest ? { key: 0 } : null));
   const start = (hallId?: string) => setFlow({ key: Date.now(), hallId });
 
-  // Пока шапка с фото на экране, кнопка в ней спокойная (стекло); пролистали —
-  // снизу появляется чёткая «Забронировать».
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [heroVisible, setHeroVisible] = useState(true);
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el || !('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver(([e]) => setHeroVisible(e?.isIntersecting ?? true), {
-      threshold: 0.25,
-    });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={640}>
       <Overlay
-        ref={heroRef}
         position="bottom"
         align="start"
         content={
           <VStack gap={2} padding={1}>
-            {logoUrl && <img src={logoUrl} alt="" width={48} height={48} />}
-            <Heading level={1}>{tenant.name}</Heading>
+            <Heading level={1}>
+              <Wordmark name={tenant.name} wordmark={tenant.theme.wordmark} />
+            </Heading>
             {tenant.texts.tagline && (
               <Text size="lg" weight="semibold">
                 {tenant.texts.tagline}
@@ -87,34 +74,36 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         </AspectRatio>
       </Overlay>
 
-      <aside className="sticky-book" data-visible={!heroVisible && !flow} aria-hidden={heroVisible}>
-        <Button
-          variant="primary"
-          size="lg"
-          label="Забронировать"
-          width="100%"
-          onClick={() => start()}
-        />
-      </aside>
-
       <VStack gap={3}>
         <Heading level={2}>Залы</Heading>
         {halls.map((hall) => (
-          <Card key={hall.id} padding={4}>
-            <VStack gap={2}>
-              {hall.photos[0] && assetUrl(tenant, hall.photos[0]) && (
-                <AspectRatio ratio={16 / 10} fit="cover">
-                  <img
-                    src={assetUrl(tenant, hall.photos[0]) ?? undefined}
-                    alt={`Зал «${hall.name}»`}
-                    width={1280}
-                    height={800}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </AspectRatio>
-              )}
-              <Heading level={3}>{hall.name}</Heading>
+          <Card key={hall.id} padding={0}>
+            {hall.photos[0] && assetUrl(tenant, hall.photos[0]) && (
+              <AspectRatio
+                ratio={16 / 10}
+                fit="cover"
+                style={{ borderRadius: 'var(--radius-lg, 16px) var(--radius-lg, 16px) 0 0' }}
+              >
+                <img
+                  src={assetUrl(tenant, hall.photos[0]) ?? undefined}
+                  alt={`Зал «${hall.name}»`}
+                  width={1280}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </AspectRatio>
+            )}
+            <VStack gap={2} padding={4}>
+              <HStack gap={2} justify="between" vAlign="center">
+                <Heading level={3}>{hall.name}</Heading>
+                {hall.price_from !== null && (
+                  <Text
+                    weight="semibold"
+                    color="accent"
+                  >{`от ${formatRub(hall.price_from)}/ч`}</Text>
+                )}
+              </HStack>
               {hall.description && <Text color="secondary">{hall.description}</Text>}
               <Text>
                 {`До ${hall.capacity_max} гостей, ${hall.capacity_included} включено в цену · от ${formatDuration(hall.min_duration_min)}`}

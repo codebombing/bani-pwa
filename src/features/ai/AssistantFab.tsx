@@ -5,11 +5,32 @@ import { useEffect, useState, type SVGProps } from 'react';
 import type { AiReply, ChatTurn } from './aiApi';
 import { LazyAssistant } from './LazyAssistant';
 
-function SparkIcon(props: SVGProps<SVGSVGElement>) {
+/** Берёзовый веник; класс venik-swing — периодический «взмах» (global.css). */
+function VenikIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9z" />
-      <path d="M19 15l.9 2.1 2.1.9-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" opacity=".75" />
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <g className="venik-swing">
+        <path d="M4.5 20.5 L10 13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+        <g fill="currentColor">
+          <ellipse cx="14" cy="8.5" rx="5.2" ry="7" transform="rotate(38 14 8.5)" />
+          <ellipse
+            cx="10.6"
+            cy="9.4"
+            rx="2.4"
+            ry="4"
+            transform="rotate(12 10.6 9.4)"
+            opacity=".75"
+          />
+          <ellipse
+            cx="16.6"
+            cy="12.6"
+            rx="2.4"
+            ry="4"
+            transform="rotate(64 16.6 12.6)"
+            opacity=".75"
+          />
+        </g>
+      </g>
     </svg>
   );
 }
@@ -45,7 +66,7 @@ export function AssistantFab({
           <IconButton
             label={mode === 'guest' ? 'Помощник: время и цены' : 'Помощник: брони и деньги'}
             tooltip="Помощник"
-            icon={<Icon icon={SparkIcon} />}
+            icon={<Icon icon={VenikIcon} />}
             variant="primary"
             size="lg"
             elevation="med"

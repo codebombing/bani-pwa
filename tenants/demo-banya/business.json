@@ -8,7 +8,12 @@
   "theme": {
     "accent": "#D9822B",
     "hero": "hero.jpg",
-    "logo": "logo.png"
+    "logo": "logo.png",
+    "wordmark": {
+      "top": "Демо-баня",
+      "main": "Берёзка",
+      "sub": "русская баня на дровах"
+    }
   },
   "pwa": {
     "short_name": "Берёзка",

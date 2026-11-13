@@ -17,6 +17,8 @@ export const hallSchema = z.object({
   min_duration_min: z.number().int(),
   slot_step_min: z.number().int(),
   photos: z.array(z.string()),
+  /** Минимальная цена часа по действующему тарифу (копейки). */
+  price_from: z.number().int().nullable().default(null),
 });
 
 export const extraSchema = z.object({
@@ -39,6 +41,9 @@ export const tenantSchema = z.object({
     accent: z.string().optional(),
     hero: z.string().optional(),
     logo: z.string().optional(),
+    wordmark: z
+      .object({ top: z.string().optional(), main: z.string(), sub: z.string().optional() })
+      .optional(),
   }),
   texts: z.object({
     tagline: z.string().optional(),

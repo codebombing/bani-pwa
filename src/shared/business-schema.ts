@@ -130,6 +130,14 @@ export const businessSchema = z
       /** Главное фото первого экрана и логотип (пути относительно images/). */
       hero: z.string().min(1).optional(),
       logo: z.string().min(1).optional(),
+      /** Надпись-логотип в шапке: верхняя строка, крупное название, подпись. */
+      wordmark: z
+        .object({
+          top: z.string().max(24).optional(),
+          main: z.string().min(1).max(20),
+          sub: z.string().max(40).optional(),
+        })
+        .optional(),
     }),
     pwa: z.object({
       short_name: z.string().min(1).max(12),
