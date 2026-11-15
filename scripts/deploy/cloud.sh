@@ -89,13 +89,13 @@ step "5/8 Edge Functions"
 $SB functions deploy public-api notify-worker ai-chat --use-api --yes
 
 step "6/8 Cron уведомлений: адрес и ключ в Vault"
-$SB db query --db-url "$DB_URL" "
+$SB db query --db-url "$DB_URL" --yes "
   delete from vault.secrets where name in ('notify_worker_url', 'notify_worker_key');
   select vault.create_secret('https://$REF.supabase.co/functions/v1/notify-worker', 'notify_worker_url');
   select vault.create_secret('$SECRET', 'notify_worker_key');
 " > /dev/null
 # Проверка: cron будит воркер (последние запуски и ответы pg_net).
-$SB db query --db-url "$DB_URL" "
+$SB db query --db-url "$DB_URL" --read-only "
   select status, left(return_message, 120) as message, start_time from cron.job_run_details
   where jobid = (select jobid from cron.job where jobname = 'notify-worker')
   order by start_time desc limit 3;
@@ -109,7 +109,8 @@ npx vite build --mode cloud
 ENV_FILE="$ENV_FILE" npm run -s tenant:publish -- --all
 
 step "8/8 Выкладка на Vercel"
-URL="$(npx -y vercel@65.15.0 deploy dist --prod --yes --name "$VERCEL_NAME" 2>/dev/null | tail -1)"
+npx -y vercel@65.15.0 deploy dist --prod --yes --name "$VERCEL_NAME" > /dev/null
+URL="https://$VERCEL_NAME.vercel.app"
 echo "SITE_URL=$URL" >> "$ENV_FILE"
 
 printf '\n\033[1;32m✔ Готово\033[0m\n  Сайт: %s/s/demo-banya/\n  Кабинет: %s/s/demo-banya/owner/\n' "$URL" "$URL"
