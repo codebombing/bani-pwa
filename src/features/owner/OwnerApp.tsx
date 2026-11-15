@@ -17,7 +17,6 @@ import { SettingsPage } from "./SettingsPage";
 import { ownerApi, ownerErrorMessage } from "./ownerApi";
 import { OwnerContext, type OwnerCtx } from "./ownerContext";
 import { OwnerShell } from "./OwnerShell";
-import { StatsPage } from "./StatsPage";
 
 function Loading() {
   return (
@@ -122,7 +121,6 @@ export function OwnerApp() {
             <Route index element={<BookingsPage />} />
             <Route path="bookings" element={<BookingsPage />} />
             <Route path="calendar" element={<CalendarPage />} />
-            <Route path="stats" element={<StatsPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="*" element={<BookingsPage />} />
           </Routes>

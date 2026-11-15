@@ -159,7 +159,7 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
           <Text color="secondary">
             {freeCancel
               ? `Бесплатная отмена до ${formatDateTimeInTz(b.free_cancellation_until, b.timezone)}.`
-              : "Срок бесплатной отмены прошёл: задаток может не вернуться."}
+              : "Срок бесплатной отмены прошёл — предупредите заведение по телефону."}
           </Text>
           {halls.some((h) => h.id === b.hall_id) && (
             <Button variant="secondary" label="Перенести" onClick={() => setMoving(true)} />
@@ -227,7 +227,7 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
         description={
           freeCancel
             ? "Время освободится для других гостей."
-            : "Срок бесплатной отмены прошёл — задаток может не вернуться."
+            : "Срок бесплатной отмены прошёл — предупредите заведение по телефону."
         }
         actionLabel="Отменить бронь"
         cancelLabel="Не отменять"

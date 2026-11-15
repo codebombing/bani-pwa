@@ -10,7 +10,7 @@ import { Skeleton } from "@astryxdesign/core/Skeleton";
 import { StatusDot } from "@astryxdesign/core/StatusDot";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useSearchParams } from "react-router";
 
@@ -23,14 +23,13 @@ import {
   zonedDayRange,
 } from "../../shared/format";
 import { OwnerBookingSheet } from "./OwnerBookingSheet";
-import { ownerApi, ownerErrorMessage, paidAmount, type OwnerHall } from "./ownerApi";
+import { ownerApi, ownerErrorMessage } from "./ownerApi";
 import { ownerKey, useOwner } from "./ownerContext";
-import { QuickBookingSheet } from "./QuickBookingSheet";
-import { guestsLabel, STATUS_LABEL, STATUS_VARIANT } from "./labels";
+import { bookingKind, guestsLabel, KIND_DOT } from "./labels";
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
-/** Календарь дня по залам: брони, блокировки и свободные моменты начала (тап → быстрая бронь). */
+/** Календарь дня по залам: брони и блокировки. */
 export function CalendarPage() {
   const { tenant, halls } = useOwner();
   const tz = tenant.timezone;
@@ -41,7 +40,6 @@ export function CalendarPage() {
   const setDate = (d: string) => setParams(d === today ? {} : { d });
   const range = zonedDayRange(date, tz);
 
-  const [quick, setQuick] = useState<{ hall: OwnerHall; startAt: string } | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
 
   const bookings = useQuery({
@@ -52,13 +50,6 @@ export function CalendarPage() {
     queryKey: ownerKey(tenant.id, "day", date, "blocks"),
     queryFn: () => ownerApi.blocks(tenant.id, range.from, range.to),
   });
-  const free = useQueries({
-    queries: halls.map((h) => ({
-      queryKey: ownerKey(tenant.id, "day", date, "free", h.id),
-      queryFn: () => ownerApi.availability(tenant.slug, h.id, date, h.min_duration_min),
-    })),
-  });
-
   const opened = bookings.data?.find((b) => b.id === openId) ?? null;
   const loading = bookings.isPending || blocks.isPending;
   const error = bookings.error ?? blocks.error;
@@ -111,11 +102,9 @@ export function CalendarPage() {
         />
       )}
 
-      {halls.map((hall, i) => {
+      {halls.map((hall) => {
         const hallBookings = (bookings.data ?? []).filter((b) => b.hall_id === hall.id);
         const hallBlocks = (blocks.data ?? []).filter((b) => b.hallId === hall.id);
-        const slots = free[i]?.data?.slots ?? [];
-        const closed = free[i]?.data?.closed === true;
         return (
           <Card key={hall.id} padding={4}>
             <VStack gap={3}>
@@ -128,21 +117,20 @@ export function CalendarPage() {
               ) : (
                 <List hasDividers>
                   {hallBookings.map((b) => {
-                    const paid = paidAmount(b);
+                    const kind = bookingKind(b);
+                    const time = `${formatTimeInTz(b.start_at, tz)}–${formatTimeInTz(b.end_at, tz)} · ${b.customer_name}`;
                     return (
                       <Item
                         key={b.id}
-                        label={`${formatTimeInTz(b.start_at, tz)}–${formatTimeInTz(b.end_at, tz)} · ${b.customer_name}`}
-                        description={`${guestsLabel(b.guests)} · ${formatRub(b.total_amount)}${
-                          paid > 0 ? ` · оплачено ${formatRub(paid)}` : ""
-                        }`}
-                        startContent={
-                          <StatusDot
-                            variant={STATUS_VARIANT[b.status]}
-                            label={STATUS_LABEL[b.status]}
-                          />
+                        label={
+                          kind === "past" ? (
+                            <Text color="secondary">{time}</Text>
+                          ) : (
+                            <Text weight={kind === "new" ? "semibold" : undefined}>{time}</Text>
+                          )
                         }
-                        endContent={<Text color="secondary">{STATUS_LABEL[b.status]}</Text>}
+                        description={`${guestsLabel(b.guests)} · ${formatRub(b.total_amount)}`}
+                        startContent={<StatusDot {...KIND_DOT[kind]} />}
                         onClick={() => setOpenId(b.id)}
                       />
                     );
@@ -157,41 +145,11 @@ export function CalendarPage() {
                   ))}
                 </List>
               )}
-
-              <VStack gap={2}>
-                <Text weight="semibold">Свободно — нажмите время, чтобы записать гостя</Text>
-                {free[i]?.isPending ? (
-                  <Skeleton height={36} />
-                ) : closed ? (
-                  <Text color="secondary">В этот день закрыто</Text>
-                ) : slots.length === 0 ? (
-                  <Text color="secondary">Свободного времени нет</Text>
-                ) : (
-                  <HStack gap={2} wrap="wrap">
-                    {slots.map((s) => (
-                      <Button
-                        key={s.start_at}
-                        size="sm"
-                        variant="secondary"
-                        label={s.local_start}
-                        onClick={() => setQuick({ hall, startAt: s.start_at })}
-                      />
-                    ))}
-                  </HStack>
-                )}
-              </VStack>
             </VStack>
           </Card>
         );
       })}
 
-      {quick && (
-        <QuickBookingSheet
-          hall={quick.hall}
-          startAt={quick.startAt}
-          onClose={() => setQuick(null)}
-        />
-      )}
       {opened && (
         <OwnerBookingSheet
           booking={opened}

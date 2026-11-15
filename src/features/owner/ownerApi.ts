@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import type { PushSubscriptionBody } from "../../shared/push";
 import { getSupabase } from "../../shared/supabase";
-import { availabilitySchema, bookingSchema, quoteSchema, snapshotSchema } from "../booking/api";
+import { availabilitySchema, bookingSchema, snapshotSchema } from "../booking/api";
 
 /**
  * Данные кабинета владельца. Чтение — напрямую из БД под RLS (видны только свои заведения),
@@ -52,8 +52,6 @@ export const ownerTenantSchema = z.object({
   timezone: z.string(),
   status: z.enum(["preview", "live", "archived"]),
   theme: z.object({ accent: z.string().optional() }),
-  deposit_percent: z.number().int(),
-  deposit_enabled: z.boolean(),
 });
 
 export const ownerHallSchema = z.object({
@@ -64,13 +62,6 @@ export const ownerHallSchema = z.object({
   capacity_included: z.number().int(),
   capacity_max: z.number().int(),
   sort: z.number().int(),
-});
-
-const paymentSchema = z.object({
-  kind: z.enum(["deposit", "payment", "refund"]),
-  amount: z.number().int(),
-  method: z.enum(["cash", "transfer", "card", "online"]),
-  received_at: z.string(),
 });
 
 export const ownerBookingSchema = z.object({
@@ -90,7 +81,6 @@ export const ownerBookingSchema = z.object({
   is_demo: z.boolean(),
   created_at: z.string(),
   seen_at: z.string().nullable(),
-  payments: z.array(paymentSchema),
 });
 
 const blockRefSchema = z.object({ id: z.uuid(), reason: z.string() });
@@ -101,35 +91,9 @@ const blockRowSchema = z.object({
   hall_blocks: z.union([blockRefSchema, z.array(blockRefSchema), z.null()]),
 });
 
-export const statsSchema = z.object({
-  bookings_created: z.number().int(),
-  visits_completed: z.number().int(),
-  visits_amount: z.number().int(),
-  money_received: z.number().int(),
-  deposits_received: z.number().int(),
-  refunds: z.number().int(),
-  expected_amount: z.number().int(),
-  expected_bookings: z.number().int(),
-  cancellations: z.number().int(),
-  no_shows: z.number().int(),
-  occupancy_pct: z.number(),
-  occupied_hours: z.number(),
-  available_hours: z.number(),
-  by_hall: z.array(
-    z.object({
-      hall_id: z.uuid(),
-      hall_name: z.string(),
-      occupancy_pct: z.number(),
-      occupied_hours: z.number(),
-    }),
-  ),
-});
-
-export type Method = "cash" | "transfer" | "card";
 export type OwnerTenant = z.infer<typeof ownerTenantSchema>;
 export type OwnerHall = z.infer<typeof ownerHallSchema>;
 export type OwnerBooking = z.infer<typeof ownerBookingSchema>;
-export type Stats = z.infer<typeof statsSchema>;
 export interface HallBlock {
   occupancyId: string;
   blockId: string;
@@ -140,13 +104,13 @@ export interface HallBlock {
 }
 
 const BOOKING_COLUMNS =
-  "id, hall_id, start_at, end_at, guests, status, source, customer_name, customer_phone, comment, total_amount, price_snapshot, version, is_demo, created_at, seen_at, payments(kind, amount, method, received_at)";
+  "id, hall_id, start_at, end_at, guests, status, source, customer_name, customer_phone, comment, total_amount, price_snapshot, version, is_demo, created_at, seen_at";
 
 export const ownerApi = {
   async tenant(slug: string): Promise<OwnerTenant | null> {
     const { data, error } = await getSupabase()
       .from("public_tenants")
-      .select("id, slug, name, timezone, status, theme, deposit_percent, deposit_enabled")
+      .select("id, slug, name, timezone, status, theme")
       .eq("slug", slug)
       .maybeSingle();
     if (error) throw new OwnerError("DB", error.message);
@@ -175,23 +139,22 @@ export const ownerApi = {
     return z.array(ownerHallSchema).parse(data);
   },
 
-  /** Брони с началом в [from, to). */
+  /** Неотменённые брони с началом в [from, to). */
   async bookings(
     tenantId: string,
     from: Date,
     to: Date,
-    opts: { includeCancelled?: boolean; ascending?: boolean } = {},
+    opts: { ascending?: boolean } = {},
   ): Promise<OwnerBooking[]> {
-    let q = getSupabase()
+    const { data, error } = await getSupabase()
       .from("bookings")
       .select(BOOKING_COLUMNS)
       .eq("tenant_id", tenantId)
       .gte("start_at", from.toISOString())
       .lt("start_at", to.toISOString())
+      .neq("status", "cancelled")
       .order("start_at", { ascending: opts.ascending ?? true })
       .limit(500);
-    if (!opts.includeCancelled) q = q.neq("status", "cancelled");
-    const { data, error } = await q;
     if (error) throw new OwnerError("DB", error.message);
     return z.array(ownerBookingSchema).parse(data);
   },
@@ -235,46 +198,6 @@ export const ownerApi = {
     return unwrap(availabilitySchema, data, error);
   },
 
-  async quote(slug: string, hallId: string, startAt: string, durationMin: number, guests: number) {
-    const { data, error } = await getSupabase().rpc("quote_booking", {
-      p_slug: slug,
-      p_hall_id: hallId,
-      p_start_at: startAt,
-      p_duration_min: durationMin,
-      p_guests: guests,
-      p_extras: [],
-    });
-    return unwrap(quoteSchema, data, error);
-  },
-
-  async quickBooking(args: {
-    tenantId: string;
-    hallId: string;
-    startAt: string;
-    durationMin: number;
-    guests: number;
-    name: string;
-    phone: string | null;
-    source: "phone" | "messenger" | "walk_in";
-    comment: string | null;
-    idempotencyKey: string;
-  }) {
-    const { data, error } = await getSupabase().rpc("owner_quick_booking", {
-      p_tenant_id: args.tenantId,
-      p_hall_id: args.hallId,
-      p_start_at: args.startAt,
-      p_duration_min: args.durationMin,
-      p_guests: args.guests,
-      p_customer_name: args.name,
-      p_customer_phone: args.phone ?? undefined,
-      p_source: args.source,
-      p_comment: args.comment ?? undefined,
-      p_extras: [],
-      p_idempotency_key: args.idempotencyKey,
-    });
-    return unwrap(bookingSchema, data, error);
-  },
-
   async cancel(bookingId: string) {
     const { data, error } = await getSupabase().rpc("owner_cancel_booking", {
       p_booking_id: bookingId,
@@ -297,34 +220,6 @@ export const ownerApi = {
     return unwrap(bookingSchema, data, error);
   },
 
-  async setStatus(bookingId: string, status: "confirmed" | "completed" | "no_show") {
-    const { data, error } = await getSupabase().rpc("owner_set_booking_status", {
-      p_booking_id: bookingId,
-      p_status: status,
-    });
-    return unwrap(bookingSchema, data, error);
-  },
-
-  async addPayment(bookingId: string, amountKopecks: number, method: Method) {
-    const { data, error } = await getSupabase().rpc("owner_add_payment", {
-      p_booking_id: bookingId,
-      p_kind: "payment",
-      p_amount: amountKopecks,
-      p_method: method,
-    });
-    return unwrap(bookingSchema, data, error);
-  },
-
-  /** Задаток — одна отметка на бронь; null снимает отметку. */
-  async setDeposit(bookingId: string, amountKopecks: number | null, method: Method) {
-    const { data, error } = await getSupabase().rpc("owner_set_deposit", {
-      p_booking_id: bookingId,
-      p_amount: amountKopecks ?? 0,
-      p_method: method,
-    });
-    return unwrap(bookingSchema, data, error);
-  },
-
   async deleteBooking(bookingId: string) {
     const { data, error } = await getSupabase().rpc("owner_delete_booking", {
       p_booking_id: bookingId,
@@ -343,17 +238,10 @@ export const ownerApi = {
       .from("bookings")
       .select("id", { count: "exact", head: true })
       .eq("tenant_id", tenantId)
-      .is("seen_at", null);
+      .is("seen_at", null)
+      .neq("status", "cancelled");
     if (error) throw new OwnerError("DB", error.message);
     return count ?? 0;
-  },
-
-  async setDepositEnabled(tenantId: string, enabled: boolean) {
-    const { data, error } = await getSupabase().rpc("owner_set_deposit_enabled", {
-      p_tenant_id: tenantId,
-      p_enabled: enabled,
-    });
-    return unwrap(z.object({ ok: z.literal(true) }), data, error);
   },
 
   async blockHall(tenantId: string, hallId: string, from: Date, to: Date, reason: string) {
@@ -381,17 +269,4 @@ export const ownerApi = {
     });
     return unwrap(z.object({ ok: z.literal(true) }), data, error);
   },
-
-  async stats(tenantId: string, from: string, to: string) {
-    const { data, error } = await getSupabase().rpc("owner_stats", {
-      p_tenant_id: tenantId,
-      p_from: from,
-      p_to: to,
-    });
-    return unwrap(statsSchema, data, error);
-  },
 };
-
-export function paidAmount(b: OwnerBooking): number {
-  return b.payments.reduce((sum, p) => sum + (p.kind === "refund" ? -p.amount : p.amount), 0);
-}

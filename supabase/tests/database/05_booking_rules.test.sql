@@ -172,7 +172,7 @@ select is(
 select is(
   (select (price_snapshot ->> 'deposit_amount')::bigint from public.bookings
    where hall_id = 'aaaaaaaa-0000-0000-0000-0000000000a1' and start_at = '2027-01-20 12:00+03'),
-  312000::bigint, 'задаток 30 % в снимке');
+  0::bigint, 'задаток выключен — в снимке 0');
 select is(tests.book('test-banya', 'aaaaaaaa-0000-0000-0000-0000000000a1', '2027-01-20 16:00+03', 120, 4,
   '[{"extra_id":"aaaaaaaa-0000-0000-0000-0000000000e2","qty":5}]') ->> 'error',
   'INVALID_EXTRA_QTY', 'полотенец «за гостя» не больше числа гостей');

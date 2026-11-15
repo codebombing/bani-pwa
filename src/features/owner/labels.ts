@@ -1,22 +1,25 @@
 import type { OwnerBooking } from "./ownerApi";
 
-export const STATUS_LABEL: Record<OwnerBooking["status"], string> = {
-  pending: "ждёт подтверждения",
-  confirmed: "ожидаем",
-  completed: "пришли",
-  cancelled: "отменена",
-  no_show: "не пришли",
-};
+/** В кабинете бронь различается только цветом: новая (не открывали), предстоит, прошла. */
+export type BookingKind = "new" | "upcoming" | "past";
 
-export const STATUS_VARIANT: Record<
-  OwnerBooking["status"],
-  "success" | "warning" | "error" | "neutral" | "accent"
+export function bookingKind(
+  b: Pick<OwnerBooking, "end_at" | "seen_at" | "status">,
+  now = Date.now(),
+): BookingKind {
+  if (b.status === "completed" || b.status === "no_show" || Date.parse(b.end_at) <= now) {
+    return "past";
+  }
+  return b.seen_at ? "upcoming" : "new";
+}
+
+export const KIND_DOT: Record<
+  BookingKind,
+  { variant: "accent" | "success" | "neutral"; label: string }
 > = {
-  pending: "warning",
-  confirmed: "accent",
-  completed: "success",
-  cancelled: "error",
-  no_show: "neutral",
+  new: { variant: "accent", label: "новая" },
+  upcoming: { variant: "success", label: "предстоит" },
+  past: { variant: "neutral", label: "прошла" },
 };
 
 export const SOURCE_LABEL: Record<OwnerBooking["source"], string> = {

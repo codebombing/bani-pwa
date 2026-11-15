@@ -1,6 +1,6 @@
 /**
- * Сквозной сценарий этапов 5–6: гость бронирует → владелец входит → видит бронь →
- * отмечает задаток → отчёт: «получено» = задаток, «ожидается» = остаток.
+ * Сквозной сценарий: гость бронирует (без задатка) → владелец входит → видит новую бронь →
+ * открывает (больше не новая; денег и статусов визита нет) → отменяет — бронь пропадает.
  * Временное заведение публикуется той же функцией, что tenant:publish, и удаляется в конце.
  */
 import { randomUUID } from "node:crypto";
@@ -8,7 +8,6 @@ import { readFileSync } from "node:fs";
 
 import { expect, type Page, test } from "@playwright/test";
 
-import { formatRub } from "../../src/shared/format";
 import { connect } from "../integration/db";
 import { adminClient } from "../integration/http";
 
@@ -62,7 +61,7 @@ test.afterAll(async () => {
   if (userId) await admin.auth.admin.deleteUser(userId);
 });
 
-test("гость бронирует, владелец отмечает задаток, отчёт сходится", async ({ page }) => {
+test("гость бронирует, владелец видит новую бронь и отменяет её", async ({ page }) => {
   // ---------- Гость ----------
   await page.goto(`/s/${slug}/`);
   await expect(page.getByRole("heading", { level: 1, name: "E2E-сауна" })).toBeVisible();
@@ -103,16 +102,14 @@ test("гость бронирует, владелец отмечает зада�
   await expect(page.getByRole("link", { name: "Добавить в календарь" })).toBeVisible();
 
   const db = await connect();
-  const { rows } = await db.query<{ total: string; deposit: string }>(
-    `select total_amount as total, (price_snapshot ->> 'deposit_amount') as deposit
+  const { rows } = await db.query<{ deposit: string }>(
+    `select (price_snapshot ->> 'deposit_amount') as deposit
      from public.bookings where tenant_id = $1`,
     [tenantId],
   );
   await db.end();
   expect(rows).toHaveLength(1);
-  const total = Number(rows[0]?.total);
-  const deposit = Number(rows[0]?.deposit);
-  expect(deposit).toBeGreaterThan(0);
+  expect(Number(rows[0]?.deposit)).toBe(0);
 
   // ---------- Владелец ----------
   const link = await admin.auth.admin.generateLink({
@@ -122,24 +119,21 @@ test("гость бронирует, владелец отмечает зада�
   });
   if (link.error) throw link.error;
   await page.goto(link.data.properties.action_link);
-  // Онлайн-бронь ещё не открывали — на «Бронях» красная точка.
+  // Онлайн-бронь ещё не открывали — на «Бронях» красная точка, в меню нет «Отчёта».
   await expect(page.getByRole("button", { name: "Брони, есть новые" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Отчёт" })).toHaveCount(0);
   await page
     .getByText(/E2E Гость/)
     .first()
     .click();
-  await page.getByRole("switch", { name: /Задаток получен/ }).click();
-  await expect
-    .poll(async () => pageText(page))
-    .toContain(norm(`осталось ${formatRub(total - deposit)}`));
-  await page.getByRole("button", { name: "Закрыть" }).click();
+  const sheet = page.getByRole("dialog");
+  await expect(sheet.getByRole("heading", { name: "E2E Гость" })).toBeVisible();
+  await expect(sheet.getByText("Деньги")).toHaveCount(0);
+  await expect(sheet.getByText("Пришли")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Брони", exact: true })).toBeVisible();
 
-  await page.getByRole("button", { name: "Отчёт" }).click();
-  await page.getByRole("radio", { name: "Вперёд" }).click();
-  await expect
-    .poll(async () => pageText(page))
-    .toContain(norm(`${formatRub(deposit)} (задатки ${formatRub(deposit)}`));
-  await expect
-    .poll(async () => pageText(page))
-    .toContain(norm(`${formatRub(total - deposit)} по 1 будущим броням`));
+  await sheet.getByRole("button", { name: "Отменить бронь" }).click();
+  await page.getByRole("alertdialog").getByRole("button", { name: "Отменить бронь" }).click();
+  await expect(page.getByText(/E2E Гость/)).toHaveCount(0);
+  await expect.poll(async () => pageText(page)).toContain(norm("Броней пока нет"));
 });

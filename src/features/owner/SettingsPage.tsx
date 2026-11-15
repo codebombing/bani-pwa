@@ -10,7 +10,6 @@ import { List } from "@astryxdesign/core/List";
 import { MetadataList, MetadataListItem } from "@astryxdesign/core/MetadataList";
 import { Selector } from "@astryxdesign/core/Selector";
 import { Skeleton } from "@astryxdesign/core/Skeleton";
-import { Switch } from "@astryxdesign/core/Switch";
 import { Text } from "@astryxdesign/core/Text";
 import { TextInput } from "@astryxdesign/core/TextInput";
 import { VStack } from "@astryxdesign/core/VStack";
@@ -28,7 +27,7 @@ const TIMES = Array.from({ length: 49 }, (_, i) => {
   return `${h}:${i % 2 ? "30" : "00"}`;
 });
 
-/** Настройки: задаток, блокировка зала, уведомления, ссылка для гостей, выход. */
+/** Настройки: блокировка зала, уведомления, ссылка для гостей, выход. */
 export function SettingsPage() {
   const { tenant, halls, email, role } = useOwner();
   const tz = tenant.timezone;
@@ -60,40 +59,9 @@ export function SettingsPage() {
     onSuccess: () => void refresh(),
   });
   const logout = useMutation({ mutationFn: () => signOut(queryClient) });
-  const depositToggle = useMutation({
-    mutationFn: (enabled: boolean) => ownerApi.setDepositEnabled(tenant.id, enabled),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["public", tenant.slug] }),
-  });
-
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={720}>
       <Heading level={1}>Настройки</Heading>
-
-      <Card padding={4}>
-        <VStack gap={3}>
-          <Heading level={2}>Задаток</Heading>
-          <Switch
-            label="Брать задаток"
-            description={
-              tenant.deposit_enabled
-                ? `Гости видят задаток ${tenant.deposit_percent} % при бронировании, в брони можно отметить, что он получен.`
-                : "Задаток выключен: гости его не видят, в кабинете отметок задатка нет."
-            }
-            value={tenant.deposit_enabled}
-            isLoading={depositToggle.isPending}
-            isDisabled={role !== "owner"}
-            disabledMessage="Меняет только владелец"
-            onChange={(on) => depositToggle.mutate(on)}
-          />
-          {depositToggle.isError && (
-            <Banner
-              status="error"
-              title="Не удалось сохранить"
-              description={ownerErrorMessage(depositToggle.error)}
-            />
-          )}
-        </VStack>
-      </Card>
 
       <Card padding={4}>
         <VStack gap={3}>

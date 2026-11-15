@@ -12,7 +12,6 @@ import { Item } from "@astryxdesign/core/Item";
 import { Link } from "@astryxdesign/core/Link";
 import { List } from "@astryxdesign/core/List";
 import { MetadataList, MetadataListItem } from "@astryxdesign/core/MetadataList";
-import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
 import { Skeleton } from "@astryxdesign/core/Skeleton";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
@@ -21,13 +20,12 @@ import { useEffect, useState } from "react";
 
 import { dateInTz, formatRangeInTz, formatRub, todayInTz } from "../../shared/format";
 import { PriceLines } from "../booking/PriceLines";
-import { ownerApi, ownerErrorMessage, paidAmount, type OwnerBooking } from "./ownerApi";
+import { ownerApi, ownerErrorMessage, type OwnerBooking } from "./ownerApi";
 import { ownerKey, refreshOwnerData, useOwner } from "./ownerContext";
-import { guestsLabel, SOURCE_LABEL, STATUS_LABEL } from "./labels";
+import { bookingKind, guestsLabel, SOURCE_LABEL } from "./labels";
 import { TrashIcon } from "./icons";
-import { PaymentForm } from "./PaymentForm";
 
-/** Детали брони и действия владельца. */
+/** Детали брони; предстоящую можно перенести, отменить или удалить, прошедшая — только просмотр. */
 export function OwnerBookingSheet({
   booking: b,
   hallName,
@@ -40,15 +38,12 @@ export function OwnerBookingSheet({
   const { tenant, halls } = useOwner();
   const tz = tenant.timezone;
   const queryClient = useQueryClient();
-  const paid = paidAmount(b);
-  const left = Math.max(0, b.total_amount - paid);
-  const deposit = tenant.deposit_enabled ? (b.price_snapshot.deposit_amount ?? 0) : 0;
-  const isActive = b.status === "confirmed" || b.status === "pending";
+  const isActive =
+    (b.status === "confirmed" || b.status === "pending") && bookingKind(b) !== "past";
   const duration = Math.round(
     (new Date(b.end_at).getTime() - new Date(b.start_at).getTime()) / 60_000,
   );
 
-  const [payError, setPayError] = useState<unknown>(null);
   const [moving, setMoving] = useState(false);
   const [moveDate, setMoveDate] = useState(dateInTz(b.start_at, tz));
   const [confirmCancel, setConfirmCancel] = useState(false);
@@ -56,14 +51,6 @@ export function OwnerBookingSheet({
 
   const refresh = () => refreshOwnerData(queryClient, tenant.id);
 
-  const status = useMutation({
-    mutationFn: (s: "confirmed" | "completed" | "no_show") => ownerApi.setStatus(b.id, s),
-    // Ждём обновления всех списков и возвращаемся к ним — статус уже виден.
-    onSuccess: async () => {
-      await refresh();
-      onClose();
-    },
-  });
   const seen = useMutation({ mutationFn: () => ownerApi.markSeen(b.id), onSuccess: refresh });
   const markSeen = seen.mutate;
   // Открыли новую бронь — она больше не «новая».
@@ -100,7 +87,7 @@ export function OwnerBookingSheet({
     enabled: moving && halls.some((h) => h.id === b.hall_id),
   });
 
-  const actionError = payError ?? status.error ?? move.error ?? cancel.error ?? remove.error;
+  const actionError = move.error ?? cancel.error ?? remove.error;
 
   return (
     <BottomSheet
@@ -113,15 +100,17 @@ export function OwnerBookingSheet({
     >
       <VStack gap={5}>
         <HStack justify="between" vAlign="center">
-          <Text color="secondary">{`${hallName} · ${STATUS_LABEL[b.status]}`}</Text>
+          <Text color="secondary">{isActive ? hallName : `${hallName} · прошла`}</Text>
           <HStack gap={1} vAlign="center">
-            <IconButton
-              variant="ghost"
-              label="Удалить бронь"
-              tooltip="Удалить бронь"
-              icon={<Icon icon={TrashIcon} />}
-              onClick={() => setConfirmDelete(true)}
-            />
+            {isActive && (
+              <IconButton
+                variant="ghost"
+                label="Удалить бронь"
+                tooltip="Удалить бронь"
+                icon={<Icon icon={TrashIcon} />}
+                onClick={() => setConfirmDelete(true)}
+              />
+            )}
             <Button variant="ghost" size="sm" label="Закрыть" onClick={onClose} />
           </HStack>
         </HStack>
@@ -143,8 +132,7 @@ export function OwnerBookingSheet({
           {b.comment && <MetadataListItem label="Комментарий">{b.comment}</MetadataListItem>}
         </MetadataList>
 
-        <PriceLines snapshot={b.price_snapshot} total={b.total_amount} deposit={deposit} />
-        <Text weight="semibold">{`Получено ${formatRub(paid)} · осталось ${formatRub(left)}`}</Text>
+        <PriceLines snapshot={b.price_snapshot} total={b.total_amount} />
 
         {actionError && (
           <Banner
@@ -154,41 +142,8 @@ export function OwnerBookingSheet({
           />
         )}
 
-        {b.status !== "cancelled" && (
-          <VStack gap={3}>
-            <Divider />
-            <Heading level={3}>Деньги</Heading>
-            <PaymentForm
-              key={b.payments.map((p) => p.amount).join()}
-              booking={b}
-              depositEnabled={tenant.deposit_enabled}
-              onSaved={async () => {
-                setPayError(null);
-                await refresh();
-              }}
-              onError={setPayError}
-            />
-          </VStack>
-        )}
-
-        {b.status !== "cancelled" && (
-          <VStack gap={3}>
-            <Divider />
-            <Heading level={3}>Визит</Heading>
-            <SegmentedControl
-              label="Статус визита"
-              layout="fill"
-              value={b.status === "pending" ? "confirmed" : b.status}
-              onChange={(v) => status.mutate(v as "confirmed" | "completed" | "no_show")}
-            >
-              <SegmentedControlItem value="confirmed" label="Ожидаем" />
-              <SegmentedControlItem value="completed" label="Пришли" />
-              <SegmentedControlItem value="no_show" label="Не пришли" />
-            </SegmentedControl>
-            {isActive && (
-              <Button variant="secondary" label="Перенести" onClick={() => setMoving((m) => !m)} />
-            )}
-          </VStack>
+        {isActive && (
+          <Button variant="secondary" label="Перенести" onClick={() => setMoving((m) => !m)} />
         )}
 
         {moving && (
@@ -257,7 +212,7 @@ export function OwnerBookingSheet({
         isOpen={confirmDelete}
         onOpenChange={setConfirmDelete}
         title="Удалить бронь навсегда?"
-        description={`${b.customer_name}, ${formatRangeInTz(b.start_at, b.end_at, tz)}. Бронь и все её платежи пропадут, отчёт и статистика пересчитаются. Вернуть будет нельзя.`}
+        description={`${b.customer_name}, ${formatRangeInTz(b.start_at, b.end_at, tz)}. Бронь пропадёт из списка и графика. Вернуть будет нельзя.`}
         actionLabel="Удалить"
         cancelLabel="Не удалять"
         isActionLoading={remove.isPending}
