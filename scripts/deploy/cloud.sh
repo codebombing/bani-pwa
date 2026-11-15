@@ -89,18 +89,20 @@ step "5/8 Edge Functions"
 $SB functions deploy public-api notify-worker ai-chat --use-api --yes
 
 step "6/8 Cron уведомлений: адрес и ключ в Vault"
-$SB db query --db-url "$DB_URL" --yes "
-  delete from vault.secrets where name in ('notify_worker_url', 'notify_worker_key');
-  select vault.create_secret('https://$REF.supabase.co/functions/v1/notify-worker', 'notify_worker_url');
-  select vault.create_secret('$SECRET', 'notify_worker_key');
-" > /dev/null
+# Пул на 6543 принимает одну SQL-команду на запрос — поэтому по одной.
+$SB db query --db-url "$DB_URL" --yes \
+  "delete from vault.secrets where name in ('notify_worker_url', 'notify_worker_key')" > /dev/null
+$SB db query --db-url "$DB_URL" --yes \
+  "select vault.create_secret('https://$REF.supabase.co/functions/v1/notify-worker', 'notify_worker_url'), vault.create_secret('$SECRET', 'notify_worker_key')" > /dev/null
 # Проверка: cron будит воркер (последние запуски и ответы pg_net).
 $SB db query --db-url "$DB_URL" --read-only "
   select status, left(return_message, 120) as message, start_time from cron.job_run_details
   where jobid = (select jobid from cron.job where jobname = 'notify-worker')
-  order by start_time desc limit 3;
+  order by start_time desc limit 3
+" || true
+$SB db query --db-url "$DB_URL" --read-only "
   select status_code, left(coalesce(error_msg, content::text), 120) as answer, created
-  from net._http_response order by created desc limit 3;
+  from net._http_response order by created desc limit 3
 " || true
 
 step "7/8 Сборка с облачными адресами и публикация демо-заведений"
