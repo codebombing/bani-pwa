@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "marfinskie-bani",
+  "name": "Марфинские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Марфинские",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Марфинские",
+    "description": "Бронь залов Марфинских бань"
+  },
+  "texts": {
+    "tagline": "Три зала в Марфино — круглосуточно, без выходных",
+    "description": "Русская баня с купелью и гейзером, финская сауна с бассейном и уютный зал для двоих с джакузи. Инфракрасная сауна, бильярд, караоке, камин и комната отдыха. Веники, полотенца, простыни, тапочки и чай — на месте.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 384-76-70",
+    "whatsapp": "+79853847670",
+    "address": "Москва, Гостиничный проезд, 6 к2",
+    "coords": {
+      "lat": 55.844382,
+      "lng": 37.576725
+    }
+  },
+  "halls": [
+    {
+      "key": "russian",
+      "name": "Русская баня с бильярдом",
+      "description": "Русская парная, купель с гейзером, бильярд. Веники.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russian/1.jpg",
+        "halls/russian/2.jpg",
+        "halls/russian/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "finnish",
+      "name": "Финская сауна с бассейном",
+      "description": "Финская парная, бассейн с чистой водой, гейзер.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finnish/1.jpg",
+        "halls/finnish/2.jpg",
+        "halls/finnish/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "couple",
+      "name": "Зал для двоих с джакузи",
+      "description": "Зал для двоих с джакузи. Аренда от 3 часов.",
+      "capacity_included": 2,
+      "capacity_max": 2,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 180,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/couple/1.jpg",
+        "halls/couple/2.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1834
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1834
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

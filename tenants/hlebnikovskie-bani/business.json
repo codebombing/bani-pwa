@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ООО «Золотой колос»",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "hlebnikovskie-bani",
+  "name": "Хлебниковские бани",
+  "theme": {
+    "accent": "#B5793F",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Банный клуб",
+      "main": "Хлебниковские",
+      "sub": "у Таганки · 24/7"
+    }
+  },
+  "pwa": {
+    "short_name": "Хлебн. бани",
+    "description": "Бронь залов Хлебниковских бань"
+  },
+  "texts": {
+    "tagline": "Два зала у Таганки — круглосуточно",
+    "description": "Финская парная, бассейн с гидромассажем, танцпол, бильярд, караоке, кальян и камин. Комната отдыха, кафе. Веники, полотенца, простыни, тапочки и чай — на месте.",
+    "booking_note": "Оплата наличными или переводом."
+  },
+  "contacts": {
+    "phone": "+7 967 101-83-31",
+    "whatsapp": "+79671018331",
+    "address": "Москва, Хлебников переулок, 2/5 ст2",
+    "coords": {
+      "lat": 55.747325,
+      "lng": 37.674376
+    }
+  },
+  "halls": [
+    {
+      "key": "small",
+      "name": "Малый зал",
+      "description": "Финская парная, бассейн с гидромассажем, комната отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 8,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/small/1.jpg",
+        "halls/small/2.jpg",
+        "halls/small/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "big",
+      "name": "Большой зал",
+      "description": "Финская парная, бассейн с гидромассажем, танцпол, бильярд, караоке, камин.",
+      "capacity_included": 6,
+      "capacity_max": 20,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/big/1.jpg",
+        "halls/big/2.jpg",
+        "halls/big/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
