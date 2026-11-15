@@ -1,14 +1,14 @@
-import { Button } from "@astryxdesign/core/Button";
-import { NumberInput } from "@astryxdesign/core/NumberInput";
-import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
-import { Switch } from "@astryxdesign/core/Switch";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { Button } from '@astryxdesign/core/Button';
+import { NumberInput } from '@astryxdesign/core/NumberInput';
+import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
+import { Switch } from '@astryxdesign/core/Switch';
+import { Text } from '@astryxdesign/core/Text';
+import { VStack } from '@astryxdesign/core/VStack';
+import { useMutation } from '@tanstack/react-query';
+import { useState } from 'react';
 
-import { formatRub } from "../../shared/format";
-import { ownerApi, type Method, type OwnerBooking } from "./ownerApi";
+import { formatRub } from '../../shared/format';
+import { ownerApi, type Method, type OwnerBooking } from './ownerApi';
 
 /**
  * Деньги по брони. Задаток — одна отметка «получен / не получен» (переключатель),
@@ -27,15 +27,15 @@ export function PaymentForm({
   onError: (e: unknown) => void;
 }) {
   const depositPaid = b.payments
-    .filter((p) => p.kind === "deposit")
+    .filter((p) => p.kind === 'deposit')
     .reduce((s, p) => s + p.amount, 0);
-  const paid = b.payments.reduce((s, p) => s + (p.kind === "refund" ? -p.amount : p.amount), 0);
+  const paid = b.payments.reduce((s, p) => s + (p.kind === 'refund' ? -p.amount : p.amount), 0);
   const left = Math.max(0, b.total_amount - paid);
   const depositDefault = b.price_snapshot.deposit_amount ?? 0;
 
   const [depositRub, setDepositRub] = useState(Math.round(depositDefault / 100));
   const [amountRub, setAmountRub] = useState(Math.round(left / 100));
-  const [method, setMethod] = useState<Method>("transfer");
+  const [method, setMethod] = useState<Method>('transfer');
 
   const deposit = useMutation({
     mutationFn: (amount: number | null) => ownerApi.setDeposit(b.id, amount, method),
@@ -70,12 +70,12 @@ export function PaymentForm({
         <VStack gap={2}>
           <Switch
             label={
-              depositPaid > 0 ? `Задаток получен: ${formatRub(depositPaid)}` : "Задаток получен"
+              depositPaid > 0 ? `Задаток получен: ${formatRub(depositPaid)}` : 'Задаток получен'
             }
             description={
               depositPaid > 0
-                ? "Выключите, если отметили по ошибке"
-                : "Включите, когда гость оставил задаток"
+                ? 'Выключите, если отметили по ошибке'
+                : 'Включите, когда гость оставил задаток'
             }
             value={depositPaid > 0}
             isLoading={deposit.isPending}
@@ -91,7 +91,7 @@ export function PaymentForm({
               onChange={(n) => setDepositRub(Math.max(0, Math.round(n)))}
               status={
                 depositTooMuch
-                  ? { type: "error", message: `Не больше ${formatRub(b.total_amount)}` }
+                  ? { type: 'error', message: `Не больше ${formatRub(b.total_amount)}` }
                   : undefined
               }
             />
@@ -111,7 +111,7 @@ export function PaymentForm({
             onChange={(n) => setAmountRub(Math.max(0, Math.round(n)))}
             status={
               tooMuch
-                ? { type: "error", message: `Не больше ${formatRub(left)} (осталось)` }
+                ? { type: 'error', message: `Не больше ${formatRub(left)} (осталось)` }
                 : undefined
             }
           />
