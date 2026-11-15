@@ -10,8 +10,6 @@ import { Item } from '@astryxdesign/core/Item';
 import { Link } from '@astryxdesign/core/Link';
 import { List } from '@astryxdesign/core/List';
 import { MetadataList, MetadataListItem } from '@astryxdesign/core/MetadataList';
-import { NumberInput } from '@astryxdesign/core/NumberInput';
-import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
 import { Skeleton } from '@astryxdesign/core/Skeleton';
 import { Text } from '@astryxdesign/core/Text';
 import { VStack } from '@astryxdesign/core/VStack';
@@ -23,14 +21,7 @@ import { PriceLines } from '../booking/PriceLines';
 import { ownerApi, ownerErrorMessage, paidAmount, type OwnerBooking } from './ownerApi';
 import { ownerKey, refreshOwnerData, useOwner } from './ownerContext';
 import { guestsLabel, SOURCE_LABEL, STATUS_LABEL } from './labels';
-
-type PayKind = 'deposit' | 'payment' | 'refund';
-type Method = 'cash' | 'transfer' | 'card';
-const PAY_LABEL: Record<PayKind, string> = {
-  deposit: 'задаток',
-  payment: 'оплату',
-  refund: 'возврат',
-};
+import { PaymentForm } from './PaymentForm';
 
 /** Детали брони и действия владельца. */
 export function OwnerBookingSheet({
@@ -53,27 +44,20 @@ export function OwnerBookingSheet({
     (new Date(b.end_at).getTime() - new Date(b.start_at).getTime()) / 60_000,
   );
 
-  const [payKind, setPayKind] = useState<PayKind>(
-    paid === 0 && deposit > 0 ? 'deposit' : 'payment',
-  );
-  const [amountRub, setAmountRub] = useState(
-    Math.round((paid === 0 && deposit > 0 ? deposit : left) / 100),
-  );
-  const [method, setMethod] = useState<Method>('transfer');
+  const [payError, setPayError] = useState<unknown>(null);
   const [moving, setMoving] = useState(false);
   const [moveDate, setMoveDate] = useState(dateInTz(b.start_at, tz));
   const [confirmCancel, setConfirmCancel] = useState(false);
 
   const refresh = () => refreshOwnerData(queryClient, tenant.id);
 
-  const pay = useMutation({
-    mutationFn: () => ownerApi.addPayment(b.id, payKind, Math.round(amountRub * 100), method),
-    // Кнопка остаётся в загрузке, пока календарь и суммы не обновятся.
-    onSuccess: () => refresh(),
-  });
   const status = useMutation({
     mutationFn: (s: 'confirmed' | 'completed' | 'no_show') => ownerApi.setStatus(b.id, s),
-    onSuccess: () => refresh(),
+    // Ждём обновления всех списков и возвращаемся к ним — статус уже виден.
+    onSuccess: async () => {
+      await refresh();
+      onClose();
+    },
   });
   const cancel = useMutation({
     mutationFn: () => ownerApi.cancel(b.id),
@@ -97,7 +81,7 @@ export function OwnerBookingSheet({
     enabled: moving && halls.some((h) => h.id === b.hall_id),
   });
 
-  const actionError = pay.error ?? status.error ?? move.error ?? cancel.error;
+  const actionError = payError ?? status.error ?? move.error ?? cancel.error;
 
   return (
     <BottomSheet
@@ -146,41 +130,18 @@ export function OwnerBookingSheet({
           <VStack gap={3}>
             <Divider />
             <Heading level={3}>Деньги</Heading>
-            <SegmentedControl
-              label="Тип платежа"
-              layout="fill"
-              value={payKind}
-              onChange={(v) => setPayKind(v as PayKind)}
-            >
-              <SegmentedControlItem value="deposit" label="Задаток" />
-              <SegmentedControlItem value="payment" label="Оплата" />
-              <SegmentedControlItem value="refund" label="Возврат" />
-            </SegmentedControl>
-            <NumberInput
-              label="Сумма, ₽"
-              value={amountRub}
-              min={1}
-              step={100}
-              onChange={(n) => setAmountRub(Math.max(0, Math.round(n)))}
+            <PaymentForm
+              key={paid}
+              bookingId={b.id}
+              paid={paid}
+              left={left}
+              deposit={deposit}
+              onSaved={async () => {
+                setPayError(null);
+                await refresh();
+              }}
+              onError={setPayError}
             />
-            <SegmentedControl
-              label="Способ"
-              layout="fill"
-              value={method}
-              onChange={(v) => setMethod(v as Method)}
-            >
-              <SegmentedControlItem value="transfer" label="Перевод" />
-              <SegmentedControlItem value="cash" label="Наличные" />
-              <SegmentedControlItem value="card" label="Карта" />
-            </SegmentedControl>
-            <Button
-              variant="primary"
-              label={`Отметить ${PAY_LABEL[payKind]}`}
-              isLoading={pay.isPending}
-              isDisabled={amountRub <= 0}
-              onClick={() => pay.mutate()}
-            />
-            {pay.isSuccess && <Text color="secondary">Платёж записан.</Text>}
           </VStack>
         )}
 

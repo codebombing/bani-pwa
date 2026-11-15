@@ -32,8 +32,11 @@ export async function refreshOwnerData(queryClient: QueryClient, tenantId: strin
     queryKey: ownerKey(tenantId),
     predicate: (q) => isSlots(q.queryKey),
   });
+  // refetchType 'all': списки других вкладок (Брони/График/Отчёт) тоже перезагружаются
+  // сразу, а не показывают старый статус при переключении.
   await queryClient.invalidateQueries({
     queryKey: ownerKey(tenantId),
     predicate: (q) => !isSlots(q.queryKey),
+    refetchType: 'all',
   });
 }
