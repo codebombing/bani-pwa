@@ -1,18 +1,18 @@
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Icon } from '@astryxdesign/core/Icon';
-import { Item } from '@astryxdesign/core/Item';
-import { List } from '@astryxdesign/core/List';
-import { Skeleton } from '@astryxdesign/core/Skeleton';
-import { StatusDot } from '@astryxdesign/core/StatusDot';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useQueries, useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { Banner } from "@astryxdesign/core/Banner";
+import { Button } from "@astryxdesign/core/Button";
+import { Card } from "@astryxdesign/core/Card";
+import { Heading } from "@astryxdesign/core/Heading";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Icon } from "@astryxdesign/core/Icon";
+import { Item } from "@astryxdesign/core/Item";
+import { List } from "@astryxdesign/core/List";
+import { Skeleton } from "@astryxdesign/core/Skeleton";
+import { StatusDot } from "@astryxdesign/core/StatusDot";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { useSearchParams } from "react-router";
 
 import {
   addDays,
@@ -21,12 +21,12 @@ import {
   formatTimeInTz,
   todayInTz,
   zonedDayRange,
-} from '../../shared/format';
-import { OwnerBookingSheet } from './OwnerBookingSheet';
-import { ownerApi, ownerErrorMessage, paidAmount, type OwnerHall } from './ownerApi';
-import { ownerKey, useOwner } from './ownerContext';
-import { QuickBookingSheet } from './QuickBookingSheet';
-import { guestsLabel, STATUS_LABEL, STATUS_VARIANT } from './labels';
+} from "../../shared/format";
+import { OwnerBookingSheet } from "./OwnerBookingSheet";
+import { ownerApi, ownerErrorMessage, paidAmount, type OwnerHall } from "./ownerApi";
+import { ownerKey, useOwner } from "./ownerContext";
+import { QuickBookingSheet } from "./QuickBookingSheet";
+import { guestsLabel, STATUS_LABEL, STATUS_VARIANT } from "./labels";
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -36,7 +36,7 @@ export function CalendarPage() {
   const tz = tenant.timezone;
   const today = todayInTz(tz);
   const [params, setParams] = useSearchParams();
-  const raw = params.get('d');
+  const raw = params.get("d");
   const date = raw && DATE_RE.test(raw) ? raw : today;
   const setDate = (d: string) => setParams(d === today ? {} : { d });
   const range = zonedDayRange(date, tz);
@@ -45,16 +45,16 @@ export function CalendarPage() {
   const [openId, setOpenId] = useState<string | null>(null);
 
   const bookings = useQuery({
-    queryKey: ownerKey(tenant.id, 'day', date, 'bookings'),
+    queryKey: ownerKey(tenant.id, "day", date, "bookings"),
     queryFn: () => ownerApi.bookings(tenant.id, range.from, range.to),
   });
   const blocks = useQuery({
-    queryKey: ownerKey(tenant.id, 'day', date, 'blocks'),
+    queryKey: ownerKey(tenant.id, "day", date, "blocks"),
     queryFn: () => ownerApi.blocks(tenant.id, range.from, range.to),
   });
   const free = useQueries({
     queries: halls.map((h) => ({
-      queryKey: ownerKey(tenant.id, 'day', date, 'free', h.id),
+      queryKey: ownerKey(tenant.id, "day", date, "free", h.id),
       queryFn: () => ownerApi.availability(tenant.slug, h.id, date, h.min_duration_min),
     })),
   });
@@ -74,7 +74,7 @@ export function CalendarPage() {
           onClick={() => setDate(addDays(date, -1))}
         />
         <VStack gap={0.5} hAlign="center">
-          <Heading level={1}>{date === today ? 'Сегодня' : formatDateLong(date)}</Heading>
+          <Heading level={1}>{date === today ? "Сегодня" : formatDateLong(date)}</Heading>
           {date === today && <Text color="secondary">{formatDateLong(date)}</Text>}
         </VStack>
         <Button
@@ -134,7 +134,7 @@ export function CalendarPage() {
                         key={b.id}
                         label={`${formatTimeInTz(b.start_at, tz)}–${formatTimeInTz(b.end_at, tz)} · ${b.customer_name}`}
                         description={`${guestsLabel(b.guests)} · ${formatRub(b.total_amount)}${
-                          paid > 0 ? ` · оплачено ${formatRub(paid)}` : ''
+                          paid > 0 ? ` · оплачено ${formatRub(paid)}` : ""
                         }`}
                         startContent={
                           <StatusDot
@@ -195,7 +195,7 @@ export function CalendarPage() {
       {opened && (
         <OwnerBookingSheet
           booking={opened}
-          hallName={halls.find((h) => h.id === opened.hall_id)?.name ?? 'Зал'}
+          hallName={halls.find((h) => h.id === opened.hall_id)?.name ?? "Зал"}
           onClose={() => setOpenId(null)}
         />
       )}

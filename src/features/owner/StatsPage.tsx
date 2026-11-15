@@ -1,32 +1,32 @@
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { MetadataList, MetadataListItem } from '@astryxdesign/core/MetadataList';
-import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
-import { Skeleton } from '@astryxdesign/core/Skeleton';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { Banner } from "@astryxdesign/core/Banner";
+import { Button } from "@astryxdesign/core/Button";
+import { Card } from "@astryxdesign/core/Card";
+import { Heading } from "@astryxdesign/core/Heading";
+import { MetadataList, MetadataListItem } from "@astryxdesign/core/MetadataList";
+import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
+import { Skeleton } from "@astryxdesign/core/Skeleton";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
-import { addDays, formatDayMonth, formatRub, todayInTz } from '../../shared/format';
-import { ownerApi, ownerErrorMessage } from './ownerApi';
-import { ownerKey, useOwner } from './ownerContext';
+import { addDays, formatDayMonth, formatRub, todayInTz } from "../../shared/format";
+import { ownerApi, ownerErrorMessage } from "./ownerApi";
+import { ownerKey, useOwner } from "./ownerContext";
 
-type Period = 'today' | 'week' | 'month' | 'ahead';
+type Period = "today" | "week" | "month" | "ahead";
 
 function periodRange(period: Period, today: string): [string, string] {
   switch (period) {
-    case 'today':
+    case "today":
       return [today, today];
-    case 'week':
+    case "week":
       return [addDays(today, -6), today];
-    case 'month': {
+    case "month": {
       const first = `${today.slice(0, 8)}01`;
-      return [first, addDays(addDays(first, 32).slice(0, 8) + '01', -1)];
+      return [first, addDays(addDays(first, 32).slice(0, 8) + "01", -1)];
     }
-    case 'ahead':
+    case "ahead":
       return [today, addDays(today, 30)];
   }
 }
@@ -34,12 +34,12 @@ function periodRange(period: Period, today: string): [string, string] {
 /** Статистика из owner_stats (SQL): те же цифры и период, что получит AI. */
 export function StatsPage() {
   const { tenant } = useOwner();
-  const [period, setPeriod] = useState<Period>('month');
+  const [period, setPeriod] = useState<Period>("month");
   const today = todayInTz(tenant.timezone);
   const [from, to] = periodRange(period, today);
 
   const stats = useQuery({
-    queryKey: ownerKey(tenant.id, 'stats', from, to),
+    queryKey: ownerKey(tenant.id, "stats", from, to),
     queryFn: () => ownerApi.stats(tenant.id, from, to),
   });
 
@@ -74,7 +74,7 @@ export function StatsPage() {
             <MetadataList title="Деньги">
               <MetadataListItem label="Получено">
                 {`${formatRub(stats.data.money_received)} (задатки ${formatRub(stats.data.deposits_received)}${
-                  stats.data.refunds > 0 ? `, возвраты ${formatRub(stats.data.refunds)}` : ''
+                  stats.data.refunds > 0 ? `, возвраты ${formatRub(stats.data.refunds)}` : ""
                 })`}
               </MetadataListItem>
               <MetadataListItem label="Ожидается">

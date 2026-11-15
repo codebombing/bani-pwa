@@ -109,14 +109,14 @@ isOneToOne: false
                   ]
                 },"bookings": {
                   Row: {
-                    "cancelled_at": string | null,"comment": string | null,"consent_at": string | null,"created_at": string,"created_by": string | null,"customer_name": string,"customer_phone": string | null,"end_at": string,"guests": number,"hall_id": string,"id": string,"is_demo": boolean,"price_snapshot": NonNullable<Json>,"source": Database["public"]['Enums']["booking_source"],"start_at": string,"status": Database["public"]['Enums']["booking_status"],"tariff_version_id": string | null,"tenant_id": string,"total_amount": number,"updated_at": string,"version": number
+                    "cancelled_at": string | null,"comment": string | null,"consent_at": string | null,"created_at": string,"created_by": string | null,"customer_name": string,"customer_phone": string | null,"end_at": string,"guests": number,"hall_id": string,"id": string,"is_demo": boolean,"price_snapshot": NonNullable<Json>,"seen_at": string | null,"source": Database["public"]['Enums']["booking_source"],"start_at": string,"status": Database["public"]['Enums']["booking_status"],"tariff_version_id": string | null,"tenant_id": string,"total_amount": number,"updated_at": string,"version": number
                   }
                   ComputedFields: never
                   Insert: {
-                    "cancelled_at"?: string | null,"comment"?: string | null,"consent_at"?: string | null,"created_at"?: string,"created_by"?: string | null,"customer_name": string,"customer_phone"?: string | null,"end_at": string,"guests": number,"hall_id": string,"id"?: string,"is_demo"?: boolean,"price_snapshot"?: NonNullable<Json>,"source": Database["public"]['Enums']["booking_source"],"start_at": string,"status"?: Database["public"]['Enums']["booking_status"],"tariff_version_id"?: string | null,"tenant_id": string,"total_amount": number,"updated_at"?: string,"version"?: number
+                    "cancelled_at"?: string | null,"comment"?: string | null,"consent_at"?: string | null,"created_at"?: string,"created_by"?: string | null,"customer_name": string,"customer_phone"?: string | null,"end_at": string,"guests": number,"hall_id": string,"id"?: string,"is_demo"?: boolean,"price_snapshot"?: NonNullable<Json>,"seen_at"?: string | null,"source": Database["public"]['Enums']["booking_source"],"start_at": string,"status"?: Database["public"]['Enums']["booking_status"],"tariff_version_id"?: string | null,"tenant_id": string,"total_amount": number,"updated_at"?: string,"version"?: number
                   }
                   Update: {
-                    "cancelled_at"?: string | null,"comment"?: string | null,"consent_at"?: string | null,"created_at"?: string,"created_by"?: string | null,"customer_name"?: string,"customer_phone"?: string | null,"end_at"?: string,"guests"?: number,"hall_id"?: string,"id"?: string,"is_demo"?: boolean,"price_snapshot"?: NonNullable<Json>,"source"?: Database["public"]['Enums']["booking_source"],"start_at"?: string,"status"?: Database["public"]['Enums']["booking_status"],"tariff_version_id"?: string | null,"tenant_id"?: string,"total_amount"?: number,"updated_at"?: string,"version"?: number
+                    "cancelled_at"?: string | null,"comment"?: string | null,"consent_at"?: string | null,"created_at"?: string,"created_by"?: string | null,"customer_name"?: string,"customer_phone"?: string | null,"end_at"?: string,"guests"?: number,"hall_id"?: string,"id"?: string,"is_demo"?: boolean,"price_snapshot"?: NonNullable<Json>,"seen_at"?: string | null,"source"?: Database["public"]['Enums']["booking_source"],"start_at"?: string,"status"?: Database["public"]['Enums']["booking_status"],"tariff_version_id"?: string | null,"tenant_id"?: string,"total_amount"?: number,"updated_at"?: string,"version"?: number
                   }
                   Relationships: [
                     {
@@ -539,14 +539,14 @@ isOneToOne: false
                   ]
                 },"tenants": {
                   Row: {
-                    "config_version": number,"contacts": NonNullable<Json>,"created_at": string,"deposit_percent": number,"free_cancellation_hours": number,"id": string,"legal": NonNullable<Json>,"max_end_after_close_min": number,"name": string,"pwa": NonNullable<Json>,"reschedule_pricing": string,"slug": string,"status": Database["public"]['Enums']["tenant_status"],"texts": NonNullable<Json>,"theme": NonNullable<Json>,"timezone": string,"updated_at": string
+                    "config_version": number,"contacts": NonNullable<Json>,"created_at": string,"deposit_enabled": boolean,"deposit_percent": number,"deposit_percent_setting": number,"free_cancellation_hours": number,"id": string,"legal": NonNullable<Json>,"max_end_after_close_min": number,"name": string,"pwa": NonNullable<Json>,"reschedule_pricing": string,"slug": string,"status": Database["public"]['Enums']["tenant_status"],"texts": NonNullable<Json>,"theme": NonNullable<Json>,"timezone": string,"updated_at": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "config_version"?: number,"contacts"?: NonNullable<Json>,"created_at"?: string,"deposit_percent"?: number,"free_cancellation_hours"?: number,"id"?: string,"legal"?: NonNullable<Json>,"max_end_after_close_min"?: number,"name": string,"pwa"?: NonNullable<Json>,"reschedule_pricing"?: string,"slug": string,"status"?: Database["public"]['Enums']["tenant_status"],"texts"?: NonNullable<Json>,"theme"?: NonNullable<Json>,"timezone"?: string,"updated_at"?: string
+                    "config_version"?: number,"contacts"?: NonNullable<Json>,"created_at"?: string,"deposit_enabled"?: boolean,"deposit_percent"?: number,"deposit_percent_setting"?: number,"free_cancellation_hours"?: number,"id"?: string,"legal"?: NonNullable<Json>,"max_end_after_close_min"?: number,"name": string,"pwa"?: NonNullable<Json>,"reschedule_pricing"?: string,"slug": string,"status"?: Database["public"]['Enums']["tenant_status"],"texts"?: NonNullable<Json>,"theme"?: NonNullable<Json>,"timezone"?: string,"updated_at"?: string
                   }
                   Update: {
-                    "config_version"?: number,"contacts"?: NonNullable<Json>,"created_at"?: string,"deposit_percent"?: number,"free_cancellation_hours"?: number,"id"?: string,"legal"?: NonNullable<Json>,"max_end_after_close_min"?: number,"name"?: string,"pwa"?: NonNullable<Json>,"reschedule_pricing"?: string,"slug"?: string,"status"?: Database["public"]['Enums']["tenant_status"],"texts"?: NonNullable<Json>,"theme"?: NonNullable<Json>,"timezone"?: string,"updated_at"?: string
+                    "config_version"?: number,"contacts"?: NonNullable<Json>,"created_at"?: string,"deposit_enabled"?: boolean,"deposit_percent"?: number,"deposit_percent_setting"?: number,"free_cancellation_hours"?: number,"id"?: string,"legal"?: NonNullable<Json>,"max_end_after_close_min"?: number,"name"?: string,"pwa"?: NonNullable<Json>,"reschedule_pricing"?: string,"slug"?: string,"status"?: Database["public"]['Enums']["tenant_status"],"texts"?: NonNullable<Json>,"theme"?: NonNullable<Json>,"timezone"?: string,"updated_at"?: string
                   }
                   Relationships: [
                     
@@ -634,14 +634,14 @@ isOneToOne: false
                   ]
                 },"public_tenants": {
                   Row: {
-                    "config_version": number,"contacts": NonNullable<Json>,"deposit_percent": number,"free_cancellation_hours": number,"id": string,"legal": NonNullable<Json>,"name": string,"pwa": NonNullable<Json>,"slug": string,"status": Database["public"]['Enums']["tenant_status"],"texts": NonNullable<Json>,"theme": NonNullable<Json>,"timezone": string
+                    "config_version": number,"contacts": NonNullable<Json>,"deposit_enabled": boolean,"deposit_percent": number,"free_cancellation_hours": number,"id": string,"legal": NonNullable<Json>,"name": string,"pwa": NonNullable<Json>,"slug": string,"status": Database["public"]['Enums']["tenant_status"],"texts": NonNullable<Json>,"theme": NonNullable<Json>,"timezone": string
                   }
                   ComputedFields: never
                   Insert: {
-                           "config_version"?: number | null,"contacts"?: Json | null,"deposit_percent"?: number | null,"free_cancellation_hours"?: number | null,"id"?: string | null,"legal"?: Json | null,"name"?: string | null,"pwa"?: Json | null,"slug"?: string | null,"status"?: Database["public"]['Enums']["tenant_status"] | null,"texts"?: Json | null,"theme"?: Json | null,"timezone"?: string | null
+                           "config_version"?: number | null,"contacts"?: Json | null,"deposit_enabled"?: boolean | null,"deposit_percent"?: number | null,"free_cancellation_hours"?: number | null,"id"?: string | null,"legal"?: Json | null,"name"?: string | null,"pwa"?: Json | null,"slug"?: string | null,"status"?: Database["public"]['Enums']["tenant_status"] | null,"texts"?: Json | null,"theme"?: Json | null,"timezone"?: string | null
                          }
                         Update: {
-                           "config_version"?: number | null,"contacts"?: Json | null,"deposit_percent"?: number | null,"free_cancellation_hours"?: number | null,"id"?: string | null,"legal"?: Json | null,"name"?: string | null,"pwa"?: Json | null,"slug"?: string | null,"status"?: Database["public"]['Enums']["tenant_status"] | null,"texts"?: Json | null,"theme"?: Json | null,"timezone"?: string | null
+                           "config_version"?: number | null,"contacts"?: Json | null,"deposit_enabled"?: boolean | null,"deposit_percent"?: number | null,"free_cancellation_hours"?: number | null,"id"?: string | null,"legal"?: Json | null,"name"?: string | null,"pwa"?: Json | null,"slug"?: string | null,"status"?: Database["public"]['Enums']["tenant_status"] | null,"texts"?: Json | null,"theme"?: Json | null,"timezone"?: string | null
                          }
                         Relationships: [
                     
@@ -676,6 +676,12 @@ isOneToOne: false
 "owner_cancel_booking":
 { Args: { "p_booking_id": string,"p_reason"?: string }; Returns: Json
                            },
+"owner_delete_booking":
+{ Args: { "p_booking_id": string }; Returns: Json
+                           },
+"owner_mark_seen":
+{ Args: { "p_booking_id": string }; Returns: Json
+                           },
 "owner_push_subscribe":
 { Args: { "p_auth": string,"p_endpoint": string,"p_p256dh": string,"p_tenant_id": string }; Returns: Json
                            },
@@ -690,6 +696,12 @@ isOneToOne: false
                            },
 "owner_set_booking_status":
 { Args: { "p_booking_id": string,"p_status": Database["public"]['Enums']["booking_status"] }; Returns: Json
+                           },
+"owner_set_deposit":
+{ Args: { "p_amount": number,"p_booking_id": string,"p_method"?: Database["public"]['Enums']["payment_method"] }; Returns: Json
+                           },
+"owner_set_deposit_enabled":
+{ Args: { "p_enabled": boolean,"p_tenant_id": string }; Returns: Json
                            },
 "owner_stats":
 { Args: { "p_from": string,"p_tenant_id": string,"p_to": string }; Returns: Json

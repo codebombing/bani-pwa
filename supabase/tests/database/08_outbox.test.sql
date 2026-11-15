@@ -1,6 +1,6 @@
 -- Этап 7: outbox уведомлений и воркер.
 -- Дедупликация, захват и lease, повторный захват протухшего, результат и backoff, failed,
--- перенос перепланирует, отмена гасит, устаревшая версия → skipped, preview → simulated,
+-- перенос перепланирует, отмена гасит, устаревшая версия → skipped, preview → гостю simulated,
 -- подписки владельца только для своего заведения, воркер — только service role.
 begin;
 create extension if not exists pgtap with schema extensions;
@@ -120,11 +120,12 @@ select is(private.cancel_booking((select id from ids where name = 'booking'), 'g
 select is((select count(*)::int from jobs where kind in ('reminder_24h', 'reminder_2h') and status = 'pending'), 0,
   'после отмены напоминаний нет');
 
--- ---------- preview → simulated ----------
+-- ---------- preview: гостю simulated, владельцу отправляем ----------
 update public.tenants set status = 'preview' where id = '0b0b0b0b-0000-0000-0000-000000000001';
-select is(jsonb_array_length(public.worker_claim_jobs(50, '2 minutes')), 0, 'preview: воркеру нечего отправлять');
-select is((select count(*)::int from jobs where kind = 'booking_cancelled' and status = 'simulated'), 2,
-  'preview: уведомления об отмене (владельцу и гостю) помечены simulated');
+select is((select jsonb_agg(j ->> 'recipient') from jsonb_array_elements(public.worker_claim_jobs(50, '2 minutes')) j),
+  '["owner"]'::jsonb, 'preview: воркер отправляет только владельцу (его устройства)');
+select is((select count(*)::int from jobs where kind = 'booking_cancelled' and status = 'simulated'), 1,
+  'preview: уведомление об отмене гостю помечено simulated');
 
 -- ---------- Доступ ----------
 set local role authenticated;

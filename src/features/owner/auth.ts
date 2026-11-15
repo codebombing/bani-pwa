@@ -1,8 +1,8 @@
-import type { Session } from '@supabase/supabase-js';
-import type { QueryClient } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
+import type { Session } from "@supabase/supabase-js";
+import type { QueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
-import { getSupabase } from '../../shared/supabase';
+import { getSupabase } from "../../shared/supabase";
 
 /** Сессия владельца: undefined — ещё загружается, null — не вошёл. */
 export function useSession(): Session | null | undefined {
@@ -36,8 +36,8 @@ export async function sendMagicLink(email: string, slug: string): Promise<void> 
     if (/signups? not allowed|user not found/i.test(error.message)) return;
     throw new Error(
       /rate limit/i.test(error.message)
-        ? 'Слишком часто. Подождите минуту и попробуйте снова.'
-        : 'Не удалось отправить ссылку. Попробуйте ещё раз.',
+        ? "Слишком часто. Подождите минуту и попробуйте снова."
+        : "Не удалось отправить ссылку. Попробуйте ещё раз.",
     );
   }
 }
@@ -46,18 +46,18 @@ export async function sendMagicLink(email: string, slug: string): Promise<void> 
 export async function verifyLinkToken(tokenHash: string): Promise<void> {
   const { error } = await getSupabase().auth.verifyOtp({
     token_hash: tokenHash,
-    type: 'magiclink',
+    type: "magiclink",
   });
   if (error) throw new Error(error.message);
 }
 
 /** Выход: сессия, кэш запросов и приватные данные кабинета удаляются с устройства. */
 export async function signOut(queryClient: QueryClient): Promise<void> {
-  await getSupabase().auth.signOut({ scope: 'local' });
+  await getSupabase().auth.signOut({ scope: "local" });
   queryClient.clear();
   try {
     for (const key of Object.keys(sessionStorage)) {
-      if (key.startsWith('bani:owner:')) sessionStorage.removeItem(key);
+      if (key.startsWith("bani:owner:")) sessionStorage.removeItem(key);
     }
   } catch {
     // sessionStorage недоступен — нечего чистить.

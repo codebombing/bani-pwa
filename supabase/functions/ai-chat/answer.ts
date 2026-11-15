@@ -64,7 +64,7 @@ export function answerFromTool(tool: string | null, result: Any, mode: Mode, tz:
     }
     case 'quote':
       return result.available
-        ? `${result.hall}, ${day(result.date)} с ${result.time} на ${hours(result.duration_min)}, гостей ${result.guests}: ${rub(result.total)}, задаток ${rub(result.deposit)}.`
+        ? `${result.hall}, ${day(result.date)} с ${result.time} на ${hours(result.duration_min)}, гостей ${result.guests}: ${rub(result.total)}${result.deposit > 0 ? `, задаток ${rub(result.deposit)}` : ''}.`
         : `${result.hall}, ${day(result.date)} с ${result.time}: это время занято или недоступно. Стоимость была бы ${rub(result.total)}.`;
     case 'get_my_booking':
       return `Ваша бронь: ${result.hall}, ${at(result.start_at, tz)}, гостей ${result.guests}. Статус: ${STATUS[result.status] ?? result.status}. Стоимость ${rub(result.total)}, оплачено ${rub(result.paid)}.`;

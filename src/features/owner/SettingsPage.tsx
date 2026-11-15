@@ -1,52 +1,53 @@
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Calendar, type ISODateString } from '@astryxdesign/core/Calendar';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Item } from '@astryxdesign/core/Item';
-import { Link } from '@astryxdesign/core/Link';
-import { List } from '@astryxdesign/core/List';
-import { MetadataList, MetadataListItem } from '@astryxdesign/core/MetadataList';
-import { Selector } from '@astryxdesign/core/Selector';
-import { Skeleton } from '@astryxdesign/core/Skeleton';
-import { Text } from '@astryxdesign/core/Text';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { Banner } from "@astryxdesign/core/Banner";
+import { Button } from "@astryxdesign/core/Button";
+import { Calendar, type ISODateString } from "@astryxdesign/core/Calendar";
+import { Card } from "@astryxdesign/core/Card";
+import { Heading } from "@astryxdesign/core/Heading";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Item } from "@astryxdesign/core/Item";
+import { Link } from "@astryxdesign/core/Link";
+import { List } from "@astryxdesign/core/List";
+import { MetadataList, MetadataListItem } from "@astryxdesign/core/MetadataList";
+import { Selector } from "@astryxdesign/core/Selector";
+import { Skeleton } from "@astryxdesign/core/Skeleton";
+import { Switch } from "@astryxdesign/core/Switch";
+import { Text } from "@astryxdesign/core/Text";
+import { TextInput } from "@astryxdesign/core/TextInput";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
-import { addDays, formatRangeInTz, todayInTz, zonedTimeToUtc } from '../../shared/format';
-import { PushToggle } from '../../shared/PushToggle';
-import { signOut } from './auth';
-import { ownerApi, ownerErrorMessage } from './ownerApi';
-import { ownerKey, refreshOwnerData, useOwner } from './ownerContext';
+import { addDays, formatRangeInTz, todayInTz, zonedTimeToUtc } from "../../shared/format";
+import { PushToggle } from "../../shared/PushToggle";
+import { signOut } from "./auth";
+import { ownerApi, ownerErrorMessage } from "./ownerApi";
+import { ownerKey, refreshOwnerData, useOwner } from "./ownerContext";
 
 const TIMES = Array.from({ length: 49 }, (_, i) => {
-  const h = String(Math.floor(i / 2)).padStart(2, '0');
-  return `${h}:${i % 2 ? '30' : '00'}`;
+  const h = String(Math.floor(i / 2)).padStart(2, "0");
+  return `${h}:${i % 2 ? "30" : "00"}`;
 });
 
-/** «Ещё»: блокировка зала, активные блокировки, ссылка для гостей, выход. */
-export function MorePage() {
+/** Настройки: задаток, блокировка зала, уведомления, ссылка для гостей, выход. */
+export function SettingsPage() {
   const { tenant, halls, email, role } = useOwner();
   const tz = tenant.timezone;
   const queryClient = useQueryClient();
   const today = todayInTz(tz);
 
-  const [hallId, setHallId] = useState(halls[0]?.id ?? '');
+  const [hallId, setHallId] = useState(halls[0]?.id ?? "");
   const [date, setDate] = useState(today);
-  const [from, setFrom] = useState('10:00');
-  const [to, setTo] = useState('14:00');
-  const [reason, setReason] = useState('Уборка');
+  const [from, setFrom] = useState("10:00");
+  const [to, setTo] = useState("14:00");
+  const [reason, setReason] = useState("Уборка");
 
   const fromDate = zonedTimeToUtc(date, from, tz);
   const toDate =
-    to === '24:00' ? zonedTimeToUtc(addDays(date, 1), '00:00', tz) : zonedTimeToUtc(date, to, tz);
-  const rangeError = toDate <= fromDate ? 'Конец должен быть позже начала' : null;
+    to === "24:00" ? zonedTimeToUtc(addDays(date, 1), "00:00", tz) : zonedTimeToUtc(date, to, tz);
+  const rangeError = toDate <= fromDate ? "Конец должен быть позже начала" : null;
 
   const blocks = useQuery({
-    queryKey: ownerKey(tenant.id, 'blocks-upcoming'),
+    queryKey: ownerKey(tenant.id, "blocks-upcoming"),
     queryFn: () => ownerApi.blocks(tenant.id, new Date(), new Date(Date.now() + 90 * 86_400_000)),
   });
   const refresh = () => refreshOwnerData(queryClient, tenant.id);
@@ -59,10 +60,40 @@ export function MorePage() {
     onSuccess: () => void refresh(),
   });
   const logout = useMutation({ mutationFn: () => signOut(queryClient) });
+  const depositToggle = useMutation({
+    mutationFn: (enabled: boolean) => ownerApi.setDepositEnabled(tenant.id, enabled),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["public", tenant.slug] }),
+  });
 
   return (
     <VStack as="main" padding={4} gap={6} maxWidth={720}>
-      <Heading level={1}>Ещё</Heading>
+      <Heading level={1}>Настройки</Heading>
+
+      <Card padding={4}>
+        <VStack gap={3}>
+          <Heading level={2}>Задаток</Heading>
+          <Switch
+            label="Брать задаток"
+            description={
+              tenant.deposit_enabled
+                ? `Гости видят задаток ${tenant.deposit_percent} % при бронировании, в брони можно отметить, что он получен.`
+                : "Задаток выключен: гости его не видят, в кабинете отметок задатка нет."
+            }
+            value={tenant.deposit_enabled}
+            isLoading={depositToggle.isPending}
+            isDisabled={role !== "owner"}
+            disabledMessage="Меняет только владелец"
+            onChange={(on) => depositToggle.mutate(on)}
+          />
+          {depositToggle.isError && (
+            <Banner
+              status="error"
+              title="Не удалось сохранить"
+              description={ownerErrorMessage(depositToggle.error)}
+            />
+          )}
+        </VStack>
+      </Card>
 
       <Card padding={4}>
         <VStack gap={3}>
@@ -83,7 +114,7 @@ export function MorePage() {
             weekStartsOn="mon"
             hasVariableRowCount
             onChange={(v: unknown) => {
-              if (typeof v === 'string') setDate(v);
+              if (typeof v === "string") setDate(v);
             }}
           />
           <HStack gap={3}>
@@ -106,7 +137,7 @@ export function MorePage() {
             variant="primary"
             label="Закрыть зал на это время"
             isLoading={block.isPending}
-            isDisabled={!hallId || !!rangeError || reason.trim() === ''}
+            isDisabled={!hallId || !!rangeError || reason.trim() === ""}
             onClick={() => block.mutate()}
           />
         </VStack>
@@ -130,7 +161,7 @@ export function MorePage() {
             {blocks.data.map((bl) => (
               <Item
                 key={bl.occupancyId}
-                label={`${halls.find((h) => h.id === bl.hallId)?.name ?? 'Зал'} · ${bl.reason}`}
+                label={`${halls.find((h) => h.id === bl.hallId)?.name ?? "Зал"} · ${bl.reason}`}
                 description={formatRangeInTz(bl.from, bl.to, tz)}
                 endContent={
                   <Button
@@ -166,7 +197,7 @@ export function MorePage() {
             <MetadataListItem label="Заведение">{tenant.name}</MetadataListItem>
             <MetadataListItem label="Вы вошли как">{email}</MetadataListItem>
             <MetadataListItem label="Роль">
-              {role === 'owner' ? 'владелец' : 'персонал'}
+              {role === "owner" ? "владелец" : "персонал"}
             </MetadataListItem>
           </MetadataList>
           <Link href={`/s/${tenant.slug}/`}>Страница для гостей</Link>

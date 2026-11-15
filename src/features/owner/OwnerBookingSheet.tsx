@@ -1,27 +1,31 @@
-import { AlertDialog } from '@astryxdesign/core/AlertDialog';
-import { Banner } from '@astryxdesign/core/Banner';
-import { BottomSheet } from '@astryxdesign/core/BottomSheet';
-import { Button } from '@astryxdesign/core/Button';
-import { Calendar, type ISODateString } from '@astryxdesign/core/Calendar';
-import { Divider } from '@astryxdesign/core/Divider';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Item } from '@astryxdesign/core/Item';
-import { Link } from '@astryxdesign/core/Link';
-import { List } from '@astryxdesign/core/List';
-import { MetadataList, MetadataListItem } from '@astryxdesign/core/MetadataList';
-import { Skeleton } from '@astryxdesign/core/Skeleton';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { AlertDialog } from "@astryxdesign/core/AlertDialog";
+import { Banner } from "@astryxdesign/core/Banner";
+import { BottomSheet } from "@astryxdesign/core/BottomSheet";
+import { Button } from "@astryxdesign/core/Button";
+import { Calendar, type ISODateString } from "@astryxdesign/core/Calendar";
+import { Divider } from "@astryxdesign/core/Divider";
+import { Heading } from "@astryxdesign/core/Heading";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Icon } from "@astryxdesign/core/Icon";
+import { IconButton } from "@astryxdesign/core/IconButton";
+import { Item } from "@astryxdesign/core/Item";
+import { Link } from "@astryxdesign/core/Link";
+import { List } from "@astryxdesign/core/List";
+import { MetadataList, MetadataListItem } from "@astryxdesign/core/MetadataList";
+import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
+import { Skeleton } from "@astryxdesign/core/Skeleton";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
-import { dateInTz, formatRangeInTz, formatRub, todayInTz } from '../../shared/format';
-import { PriceLines } from '../booking/PriceLines';
-import { ownerApi, ownerErrorMessage, paidAmount, type OwnerBooking } from './ownerApi';
-import { ownerKey, refreshOwnerData, useOwner } from './ownerContext';
-import { guestsLabel, SOURCE_LABEL, STATUS_LABEL } from './labels';
-import { PaymentForm } from './PaymentForm';
+import { dateInTz, formatRangeInTz, formatRub, todayInTz } from "../../shared/format";
+import { PriceLines } from "../booking/PriceLines";
+import { ownerApi, ownerErrorMessage, paidAmount, type OwnerBooking } from "./ownerApi";
+import { ownerKey, refreshOwnerData, useOwner } from "./ownerContext";
+import { guestsLabel, SOURCE_LABEL, STATUS_LABEL } from "./labels";
+import { TrashIcon } from "./icons";
+import { PaymentForm } from "./PaymentForm";
 
 /** Детали брони и действия владельца. */
 export function OwnerBookingSheet({
@@ -38,8 +42,8 @@ export function OwnerBookingSheet({
   const queryClient = useQueryClient();
   const paid = paidAmount(b);
   const left = Math.max(0, b.total_amount - paid);
-  const deposit = b.price_snapshot.deposit_amount ?? 0;
-  const isActive = b.status === 'confirmed' || b.status === 'pending';
+  const deposit = tenant.deposit_enabled ? (b.price_snapshot.deposit_amount ?? 0) : 0;
+  const isActive = b.status === "confirmed" || b.status === "pending";
   const duration = Math.round(
     (new Date(b.end_at).getTime() - new Date(b.start_at).getTime()) / 60_000,
   );
@@ -48,14 +52,29 @@ export function OwnerBookingSheet({
   const [moving, setMoving] = useState(false);
   const [moveDate, setMoveDate] = useState(dateInTz(b.start_at, tz));
   const [confirmCancel, setConfirmCancel] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const refresh = () => refreshOwnerData(queryClient, tenant.id);
 
   const status = useMutation({
-    mutationFn: (s: 'confirmed' | 'completed' | 'no_show') => ownerApi.setStatus(b.id, s),
+    mutationFn: (s: "confirmed" | "completed" | "no_show") => ownerApi.setStatus(b.id, s),
     // Ждём обновления всех списков и возвращаемся к ним — статус уже виден.
     onSuccess: async () => {
       await refresh();
+      onClose();
+    },
+  });
+  const seen = useMutation({ mutationFn: () => ownerApi.markSeen(b.id), onSuccess: refresh });
+  const markSeen = seen.mutate;
+  // Открыли новую бронь — она больше не «новая».
+  useEffect(() => {
+    if (!b.seen_at) markSeen();
+  }, [b.seen_at, markSeen]);
+  const remove = useMutation({
+    mutationFn: () => ownerApi.deleteBooking(b.id),
+    onSuccess: async () => {
+      await refresh();
+      setConfirmDelete(false);
       onClose();
     },
   });
@@ -76,12 +95,12 @@ export function OwnerBookingSheet({
     },
   });
   const slots = useQuery({
-    queryKey: ownerKey(tenant.id, 'move', b.id, moveDate, duration),
+    queryKey: ownerKey(tenant.id, "move", b.id, moveDate, duration),
     queryFn: () => ownerApi.availability(tenant.slug, b.hall_id, moveDate, duration),
     enabled: moving && halls.some((h) => h.id === b.hall_id),
   });
 
-  const actionError = payError ?? status.error ?? move.error ?? cancel.error;
+  const actionError = payError ?? status.error ?? move.error ?? cancel.error ?? remove.error;
 
   return (
     <BottomSheet
@@ -95,7 +114,16 @@ export function OwnerBookingSheet({
       <VStack gap={5}>
         <HStack justify="between" vAlign="center">
           <Text color="secondary">{`${hallName} · ${STATUS_LABEL[b.status]}`}</Text>
-          <Button variant="ghost" size="sm" label="Закрыть" onClick={onClose} />
+          <HStack gap={1} vAlign="center">
+            <IconButton
+              variant="ghost"
+              label="Удалить бронь"
+              tooltip="Удалить бронь"
+              icon={<Icon icon={TrashIcon} />}
+              onClick={() => setConfirmDelete(true)}
+            />
+            <Button variant="ghost" size="sm" label="Закрыть" onClick={onClose} />
+          </HStack>
         </HStack>
         <VStack gap={1}>
           <Heading level={2}>{b.customer_name}</Heading>
@@ -108,7 +136,7 @@ export function OwnerBookingSheet({
             {b.customer_phone ? (
               <Link href={`tel:${b.customer_phone}`}>{b.customer_phone}</Link>
             ) : (
-              'не указан'
+              "не указан"
             )}
           </MetadataListItem>
           <MetadataListItem label="Источник">{SOURCE_LABEL[b.source]}</MetadataListItem>
@@ -126,16 +154,14 @@ export function OwnerBookingSheet({
           />
         )}
 
-        {b.status !== 'cancelled' && (
+        {b.status !== "cancelled" && (
           <VStack gap={3}>
             <Divider />
             <Heading level={3}>Деньги</Heading>
             <PaymentForm
-              key={paid}
-              bookingId={b.id}
-              paid={paid}
-              left={left}
-              deposit={deposit}
+              key={b.payments.map((p) => p.amount).join()}
+              booking={b}
+              depositEnabled={tenant.deposit_enabled}
               onSaved={async () => {
                 setPayError(null);
                 await refresh();
@@ -145,37 +171,22 @@ export function OwnerBookingSheet({
           </VStack>
         )}
 
-        {b.status !== 'cancelled' && (
+        {b.status !== "cancelled" && (
           <VStack gap={3}>
             <Divider />
             <Heading level={3}>Визит</Heading>
-            {isActive ? (
-              <HStack gap={2} wrap="wrap">
-                <Button
-                  variant="secondary"
-                  label="Гости пришли"
-                  isLoading={status.isPending && status.variables === 'completed'}
-                  onClick={() => status.mutate('completed')}
-                />
-                <Button
-                  variant="secondary"
-                  label="Не пришли"
-                  isLoading={status.isPending && status.variables === 'no_show'}
-                  onClick={() => status.mutate('no_show')}
-                />
-                <Button
-                  variant="secondary"
-                  label="Перенести"
-                  onClick={() => setMoving((m) => !m)}
-                />
-              </HStack>
-            ) : (
-              <Button
-                variant="secondary"
-                label="Вернуть в подтверждённые"
-                isLoading={status.isPending}
-                onClick={() => status.mutate('confirmed')}
-              />
+            <SegmentedControl
+              label="Статус визита"
+              layout="fill"
+              value={b.status === "pending" ? "confirmed" : b.status}
+              onChange={(v) => status.mutate(v as "confirmed" | "completed" | "no_show")}
+            >
+              <SegmentedControlItem value="confirmed" label="Ожидаем" />
+              <SegmentedControlItem value="completed" label="Пришли" />
+              <SegmentedControlItem value="no_show" label="Не пришли" />
+            </SegmentedControl>
+            {isActive && (
+              <Button variant="secondary" label="Перенести" onClick={() => setMoving((m) => !m)} />
             )}
           </VStack>
         )}
@@ -190,7 +201,7 @@ export function OwnerBookingSheet({
               weekStartsOn="mon"
               hasVariableRowCount
               onChange={(v: unknown) => {
-                if (typeof v === 'string') setMoveDate(v);
+                if (typeof v === "string") setMoveDate(v);
               }}
             />
             {slots.isPending ? (
@@ -203,7 +214,7 @@ export function OwnerBookingSheet({
               />
             ) : slots.data.slots.length === 0 ? (
               <Text color="secondary">
-                {slots.data.closed ? 'В этот день закрыто' : 'Свободного времени нет'}
+                {slots.data.closed ? "В этот день закрыто" : "Свободного времени нет"}
               </Text>
             ) : (
               <List hasDividers>
@@ -241,6 +252,16 @@ export function OwnerBookingSheet({
         cancelLabel="Не отменять"
         isActionLoading={cancel.isPending}
         onAction={() => cancel.mutate()}
+      />
+      <AlertDialog
+        isOpen={confirmDelete}
+        onOpenChange={setConfirmDelete}
+        title="Удалить бронь навсегда?"
+        description={`${b.customer_name}, ${formatRangeInTz(b.start_at, b.end_at, tz)}. Бронь и все её платежи пропадут, отчёт и статистика пересчитаются. Вернуть будет нельзя.`}
+        actionLabel="Удалить"
+        cancelLabel="Не удалять"
+        isActionLoading={remove.isPending}
+        onAction={() => remove.mutate()}
       />
     </BottomSheet>
   );

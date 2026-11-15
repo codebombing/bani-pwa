@@ -1,30 +1,30 @@
-import type { OwnerBooking } from './ownerApi';
+import type { OwnerBooking } from "./ownerApi";
 
-export const STATUS_LABEL: Record<OwnerBooking['status'], string> = {
-  pending: 'ждёт подтверждения',
-  confirmed: 'подтверждена',
-  completed: 'гости пришли',
-  cancelled: 'отменена',
-  no_show: 'не пришли',
+export const STATUS_LABEL: Record<OwnerBooking["status"], string> = {
+  pending: "ждёт подтверждения",
+  confirmed: "ожидаем",
+  completed: "пришли",
+  cancelled: "отменена",
+  no_show: "не пришли",
 };
 
 export const STATUS_VARIANT: Record<
-  OwnerBooking['status'],
-  'success' | 'warning' | 'error' | 'neutral' | 'accent'
+  OwnerBooking["status"],
+  "success" | "warning" | "error" | "neutral" | "accent"
 > = {
-  pending: 'warning',
-  confirmed: 'accent',
-  completed: 'success',
-  cancelled: 'error',
-  no_show: 'neutral',
+  pending: "warning",
+  confirmed: "accent",
+  completed: "success",
+  cancelled: "error",
+  no_show: "neutral",
 };
 
-export const SOURCE_LABEL: Record<OwnerBooking['source'], string> = {
-  online: 'онлайн',
-  phone: 'по телефону',
-  messenger: 'мессенджер',
-  walk_in: 'на месте',
-  owner: 'владелец',
+export const SOURCE_LABEL: Record<OwnerBooking["source"], string> = {
+  online: "онлайн",
+  phone: "по телефону",
+  messenger: "мессенджер",
+  walk_in: "на месте",
+  owner: "владелец",
 };
 
 export function guestsLabel(n: number): string {

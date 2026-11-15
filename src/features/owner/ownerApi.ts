@@ -1,8 +1,8 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import type { PushSubscriptionBody } from '../../shared/push';
-import { getSupabase } from '../../shared/supabase';
-import { availabilitySchema, bookingSchema, quoteSchema, snapshotSchema } from '../booking/api';
+import type { PushSubscriptionBody } from "../../shared/push";
+import { getSupabase } from "../../shared/supabase";
+import { availabilitySchema, bookingSchema, quoteSchema, snapshotSchema } from "../booking/api";
 
 /**
  * Данные кабинета владельца. Чтение — напрямую из БД под RLS (видны только свои заведения),
@@ -19,23 +19,23 @@ export class OwnerError extends Error {
 }
 
 export function ownerErrorMessage(error: unknown): string {
-  return error instanceof Error ? error.message : 'Что-то пошло не так, попробуйте ещё раз';
+  return error instanceof Error ? error.message : "Что-то пошло не так, попробуйте ещё раз";
 }
 
 const rpcFailSchema = z.object({ ok: z.literal(false), error: z.string(), message: z.string() });
 
 function unwrap<T>(schema: z.ZodType<T>, data: unknown, error: { message: string } | null): T {
-  if (error) throw new OwnerError('DB', error.message);
+  if (error) throw new OwnerError("DB", error.message);
   const fail = rpcFailSchema.safeParse(data);
   if (fail.success) throw new OwnerError(fail.data.error, fail.data.message);
   const parsed = schema.safeParse(data);
-  if (!parsed.success) throw new OwnerError('BAD_RESPONSE', 'Неожиданный ответ сервера');
+  if (!parsed.success) throw new OwnerError("BAD_RESPONSE", "Неожиданный ответ сервера");
   return parsed.data;
 }
 
 /** PostgREST отдаёт границы tstzrange как «2026-11-16 07:00:00+00» — приводим к ISO. */
 export function pgTimestampToIso(value: string): string {
-  const iso = value.trim().replace(' ', 'T');
+  const iso = value.trim().replace(" ", "T");
   return /[+-]\d{2}$/.test(iso) ? `${iso}:00` : iso;
 }
 
@@ -50,9 +50,10 @@ export const ownerTenantSchema = z.object({
   slug: z.string(),
   name: z.string(),
   timezone: z.string(),
-  status: z.enum(['preview', 'live', 'archived']),
+  status: z.enum(["preview", "live", "archived"]),
   theme: z.object({ accent: z.string().optional() }),
   deposit_percent: z.number().int(),
+  deposit_enabled: z.boolean(),
 });
 
 export const ownerHallSchema = z.object({
@@ -66,9 +67,9 @@ export const ownerHallSchema = z.object({
 });
 
 const paymentSchema = z.object({
-  kind: z.enum(['deposit', 'payment', 'refund']),
+  kind: z.enum(["deposit", "payment", "refund"]),
   amount: z.number().int(),
-  method: z.enum(['cash', 'transfer', 'card', 'online']),
+  method: z.enum(["cash", "transfer", "card", "online"]),
   received_at: z.string(),
 });
 
@@ -78,8 +79,8 @@ export const ownerBookingSchema = z.object({
   start_at: z.string(),
   end_at: z.string(),
   guests: z.number().int(),
-  status: z.enum(['pending', 'confirmed', 'completed', 'cancelled', 'no_show']),
-  source: z.enum(['online', 'phone', 'messenger', 'walk_in', 'owner']),
+  status: z.enum(["pending", "confirmed", "completed", "cancelled", "no_show"]),
+  source: z.enum(["online", "phone", "messenger", "walk_in", "owner"]),
   customer_name: z.string(),
   customer_phone: z.string().nullable(),
   comment: z.string().nullable(),
@@ -88,6 +89,7 @@ export const ownerBookingSchema = z.object({
   version: z.number().int(),
   is_demo: z.boolean(),
   created_at: z.string(),
+  seen_at: z.string().nullable(),
   payments: z.array(paymentSchema),
 });
 
@@ -123,6 +125,7 @@ export const statsSchema = z.object({
   ),
 });
 
+export type Method = "cash" | "transfer" | "card";
 export type OwnerTenant = z.infer<typeof ownerTenantSchema>;
 export type OwnerHall = z.infer<typeof ownerHallSchema>;
 export type OwnerBooking = z.infer<typeof ownerBookingSchema>;
@@ -137,38 +140,38 @@ export interface HallBlock {
 }
 
 const BOOKING_COLUMNS =
-  'id, hall_id, start_at, end_at, guests, status, source, customer_name, customer_phone, comment, total_amount, price_snapshot, version, is_demo, created_at, payments(kind, amount, method, received_at)';
+  "id, hall_id, start_at, end_at, guests, status, source, customer_name, customer_phone, comment, total_amount, price_snapshot, version, is_demo, created_at, seen_at, payments(kind, amount, method, received_at)";
 
 export const ownerApi = {
   async tenant(slug: string): Promise<OwnerTenant | null> {
     const { data, error } = await getSupabase()
-      .from('public_tenants')
-      .select('id, slug, name, timezone, status, theme, deposit_percent')
-      .eq('slug', slug)
+      .from("public_tenants")
+      .select("id, slug, name, timezone, status, theme, deposit_percent, deposit_enabled")
+      .eq("slug", slug)
       .maybeSingle();
-    if (error) throw new OwnerError('DB', error.message);
+    if (error) throw new OwnerError("DB", error.message);
     return data ? ownerTenantSchema.parse(data) : null;
   },
 
-  async role(tenantId: string, userId: string): Promise<'owner' | 'staff' | null> {
+  async role(tenantId: string, userId: string): Promise<"owner" | "staff" | null> {
     const { data, error } = await getSupabase()
-      .from('tenant_members')
-      .select('role')
-      .eq('tenant_id', tenantId)
-      .eq('user_id', userId)
+      .from("tenant_members")
+      .select("role")
+      .eq("tenant_id", tenantId)
+      .eq("user_id", userId)
       .maybeSingle();
-    if (error) throw new OwnerError('DB', error.message);
+    if (error) throw new OwnerError("DB", error.message);
     return data?.role ?? null;
   },
 
   async halls(tenantId: string): Promise<OwnerHall[]> {
     const { data, error } = await getSupabase()
-      .from('halls')
-      .select('id, name, min_duration_min, slot_step_min, capacity_included, capacity_max, sort')
-      .eq('tenant_id', tenantId)
-      .eq('is_active', true)
-      .order('sort');
-    if (error) throw new OwnerError('DB', error.message);
+      .from("halls")
+      .select("id, name, min_duration_min, slot_step_min, capacity_included, capacity_max, sort")
+      .eq("tenant_id", tenantId)
+      .eq("is_active", true)
+      .order("sort");
+    if (error) throw new OwnerError("DB", error.message);
     return z.array(ownerHallSchema).parse(data);
   },
 
@@ -180,29 +183,29 @@ export const ownerApi = {
     opts: { includeCancelled?: boolean; ascending?: boolean } = {},
   ): Promise<OwnerBooking[]> {
     let q = getSupabase()
-      .from('bookings')
+      .from("bookings")
       .select(BOOKING_COLUMNS)
-      .eq('tenant_id', tenantId)
-      .gte('start_at', from.toISOString())
-      .lt('start_at', to.toISOString())
-      .order('start_at', { ascending: opts.ascending ?? true })
+      .eq("tenant_id", tenantId)
+      .gte("start_at", from.toISOString())
+      .lt("start_at", to.toISOString())
+      .order("start_at", { ascending: opts.ascending ?? true })
       .limit(500);
-    if (!opts.includeCancelled) q = q.neq('status', 'cancelled');
+    if (!opts.includeCancelled) q = q.neq("status", "cancelled");
     const { data, error } = await q;
-    if (error) throw new OwnerError('DB', error.message);
+    if (error) throw new OwnerError("DB", error.message);
     return z.array(ownerBookingSchema).parse(data);
   },
 
   /** Активные блокировки залов, пересекающие [from, to). */
   async blocks(tenantId: string, from: Date, to: Date): Promise<HallBlock[]> {
     const { data, error } = await getSupabase()
-      .from('resource_occupancies')
-      .select('id, hall_id, occupied, hall_blocks(id, reason)')
-      .eq('tenant_id', tenantId)
-      .eq('kind', 'block')
-      .eq('active', true)
-      .overlaps('occupied', `[${from.toISOString()},${to.toISOString()})`);
-    if (error) throw new OwnerError('DB', error.message);
+      .from("resource_occupancies")
+      .select("id, hall_id, occupied, hall_blocks(id, reason)")
+      .eq("tenant_id", tenantId)
+      .eq("kind", "block")
+      .eq("active", true)
+      .overlaps("occupied", `[${from.toISOString()},${to.toISOString()})`);
+    if (error) throw new OwnerError("DB", error.message);
     return z
       .array(blockRowSchema)
       .parse(data)
@@ -223,7 +226,7 @@ export const ownerApi = {
   },
 
   async availability(slug: string, hallId: string, date: string, durationMin: number) {
-    const { data, error } = await getSupabase().rpc('get_availability', {
+    const { data, error } = await getSupabase().rpc("get_availability", {
       p_slug: slug,
       p_hall_id: hallId,
       p_date: date,
@@ -233,7 +236,7 @@ export const ownerApi = {
   },
 
   async quote(slug: string, hallId: string, startAt: string, durationMin: number, guests: number) {
-    const { data, error } = await getSupabase().rpc('quote_booking', {
+    const { data, error } = await getSupabase().rpc("quote_booking", {
       p_slug: slug,
       p_hall_id: hallId,
       p_start_at: startAt,
@@ -252,11 +255,11 @@ export const ownerApi = {
     guests: number;
     name: string;
     phone: string | null;
-    source: 'phone' | 'messenger' | 'walk_in';
+    source: "phone" | "messenger" | "walk_in";
     comment: string | null;
     idempotencyKey: string;
   }) {
-    const { data, error } = await getSupabase().rpc('owner_quick_booking', {
+    const { data, error } = await getSupabase().rpc("owner_quick_booking", {
       p_tenant_id: args.tenantId,
       p_hall_id: args.hallId,
       p_start_at: args.startAt,
@@ -273,7 +276,7 @@ export const ownerApi = {
   },
 
   async cancel(bookingId: string) {
-    const { data, error } = await getSupabase().rpc('owner_cancel_booking', {
+    const { data, error } = await getSupabase().rpc("owner_cancel_booking", {
       p_booking_id: bookingId,
     });
     return unwrap(bookingSchema, data, error);
@@ -285,7 +288,7 @@ export const ownerApi = {
     durationMin: number,
     expectedVersion: number,
   ) {
-    const { data, error } = await getSupabase().rpc('owner_reschedule_booking', {
+    const { data, error } = await getSupabase().rpc("owner_reschedule_booking", {
       p_booking_id: bookingId,
       p_new_start_at: startAt,
       p_new_duration_min: durationMin,
@@ -294,31 +297,67 @@ export const ownerApi = {
     return unwrap(bookingSchema, data, error);
   },
 
-  async setStatus(bookingId: string, status: 'confirmed' | 'completed' | 'no_show') {
-    const { data, error } = await getSupabase().rpc('owner_set_booking_status', {
+  async setStatus(bookingId: string, status: "confirmed" | "completed" | "no_show") {
+    const { data, error } = await getSupabase().rpc("owner_set_booking_status", {
       p_booking_id: bookingId,
       p_status: status,
     });
     return unwrap(bookingSchema, data, error);
   },
 
-  async addPayment(
-    bookingId: string,
-    kind: 'deposit' | 'payment' | 'refund',
-    amountKopecks: number,
-    method: 'cash' | 'transfer' | 'card',
-  ) {
-    const { data, error } = await getSupabase().rpc('owner_add_payment', {
+  async addPayment(bookingId: string, amountKopecks: number, method: Method) {
+    const { data, error } = await getSupabase().rpc("owner_add_payment", {
       p_booking_id: bookingId,
-      p_kind: kind,
+      p_kind: "payment",
       p_amount: amountKopecks,
       p_method: method,
     });
     return unwrap(bookingSchema, data, error);
   },
 
+  /** Задаток — одна отметка на бронь; null снимает отметку. */
+  async setDeposit(bookingId: string, amountKopecks: number | null, method: Method) {
+    const { data, error } = await getSupabase().rpc("owner_set_deposit", {
+      p_booking_id: bookingId,
+      p_amount: amountKopecks ?? 0,
+      p_method: method,
+    });
+    return unwrap(bookingSchema, data, error);
+  },
+
+  async deleteBooking(bookingId: string) {
+    const { data, error } = await getSupabase().rpc("owner_delete_booking", {
+      p_booking_id: bookingId,
+    });
+    return unwrap(z.object({ ok: z.literal(true) }), data, error);
+  },
+
+  async markSeen(bookingId: string) {
+    const { data, error } = await getSupabase().rpc("owner_mark_seen", { p_booking_id: bookingId });
+    return unwrap(z.object({ ok: z.literal(true) }), data, error);
+  },
+
+  /** Сколько онлайн-броней ещё не открывали в кабинете. */
+  async unseenCount(tenantId: string): Promise<number> {
+    const { count, error } = await getSupabase()
+      .from("bookings")
+      .select("id", { count: "exact", head: true })
+      .eq("tenant_id", tenantId)
+      .is("seen_at", null);
+    if (error) throw new OwnerError("DB", error.message);
+    return count ?? 0;
+  },
+
+  async setDepositEnabled(tenantId: string, enabled: boolean) {
+    const { data, error } = await getSupabase().rpc("owner_set_deposit_enabled", {
+      p_tenant_id: tenantId,
+      p_enabled: enabled,
+    });
+    return unwrap(z.object({ ok: z.literal(true) }), data, error);
+  },
+
   async blockHall(tenantId: string, hallId: string, from: Date, to: Date, reason: string) {
-    const { data, error } = await getSupabase().rpc('owner_block_hall', {
+    const { data, error } = await getSupabase().rpc("owner_block_hall", {
       p_tenant_id: tenantId,
       p_hall_id: hallId,
       p_from: from.toISOString(),
@@ -329,12 +368,12 @@ export const ownerApi = {
   },
 
   async unblock(blockId: string) {
-    const { data, error } = await getSupabase().rpc('owner_unblock_hall', { p_block_id: blockId });
+    const { data, error } = await getSupabase().rpc("owner_unblock_hall", { p_block_id: blockId });
     return unwrap(z.object({ ok: z.literal(true) }), data, error);
   },
 
   async pushSubscribe(tenantId: string, sub: PushSubscriptionBody) {
-    const { data, error } = await getSupabase().rpc('owner_push_subscribe', {
+    const { data, error } = await getSupabase().rpc("owner_push_subscribe", {
       p_tenant_id: tenantId,
       p_endpoint: sub.endpoint,
       p_p256dh: sub.keys.p256dh,
@@ -344,7 +383,7 @@ export const ownerApi = {
   },
 
   async stats(tenantId: string, from: string, to: string) {
-    const { data, error } = await getSupabase().rpc('owner_stats', {
+    const { data, error } = await getSupabase().rpc("owner_stats", {
       p_tenant_id: tenantId,
       p_from: from,
       p_to: to,
@@ -354,5 +393,5 @@ export const ownerApi = {
 };
 
 export function paidAmount(b: OwnerBooking): number {
-  return b.payments.reduce((sum, p) => sum + (p.kind === 'refund' ? -p.amount : p.amount), 0);
+  return b.payments.reduce((sum, p) => sum + (p.kind === "refund" ? -p.amount : p.amount), 0);
 }

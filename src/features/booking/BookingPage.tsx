@@ -1,21 +1,21 @@
-import { AlertDialog } from '@astryxdesign/core/AlertDialog';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { EmptyState } from '@astryxdesign/core/EmptyState';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Link } from '@astryxdesign/core/Link';
-import { MetadataList, MetadataListItem } from '@astryxdesign/core/MetadataList';
-import { Skeleton } from '@astryxdesign/core/Skeleton';
-import { StatusDot } from '@astryxdesign/core/StatusDot';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import { AlertDialog } from "@astryxdesign/core/AlertDialog";
+import { Banner } from "@astryxdesign/core/Banner";
+import { Button } from "@astryxdesign/core/Button";
+import { EmptyState } from "@astryxdesign/core/EmptyState";
+import { Heading } from "@astryxdesign/core/Heading";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Link } from "@astryxdesign/core/Link";
+import { MetadataList, MetadataListItem } from "@astryxdesign/core/MetadataList";
+import { Skeleton } from "@astryxdesign/core/Skeleton";
+import { StatusDot } from "@astryxdesign/core/StatusDot";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router";
 
-import { formatDateTimeInTz, formatRangeInTz, formatRub } from '../../shared/format';
-import { PushToggle } from '../../shared/PushToggle';
+import { formatDateTimeInTz, formatRangeInTz, formatRub } from "../../shared/format";
+import { PushToggle } from "../../shared/PushToggle";
 import {
   ApiError,
   bookingIcsUrl,
@@ -24,25 +24,25 @@ import {
   type Booking,
   type Hall,
   type Tenant,
-} from './api';
-import { rememberBooking } from './myBookings';
-import { PriceLines } from './PriceLines';
-import { RescheduleSheet } from './RescheduleSheet';
-import { bookingKeys, useBooking } from './queries';
+} from "./api";
+import { rememberBooking } from "./myBookings";
+import { PriceLines } from "./PriceLines";
+import { RescheduleSheet } from "./RescheduleSheet";
+import { bookingKeys, useBooking } from "./queries";
 
 const STATUS: Record<
-  Booking['status'],
-  { title: string; variant: 'success' | 'warning' | 'error' | 'neutral' }
+  Booking["status"],
+  { title: string; variant: "success" | "warning" | "error" | "neutral" }
 > = {
-  pending: { title: 'Бронь ожидает подтверждения', variant: 'warning' },
-  confirmed: { title: 'Бронь подтверждена', variant: 'success' },
-  completed: { title: 'Визит состоялся', variant: 'neutral' },
-  cancelled: { title: 'Бронь отменена', variant: 'error' },
-  no_show: { title: 'Визит не состоялся', variant: 'neutral' },
+  pending: { title: "Бронь ожидает подтверждения", variant: "warning" },
+  confirmed: { title: "Бронь подтверждена", variant: "success" },
+  completed: { title: "Визит состоялся", variant: "neutral" },
+  cancelled: { title: "Бронь отменена", variant: "error" },
+  no_show: { title: "Визит не состоялся", variant: "neutral" },
 };
 
 export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }) {
-  const { token = '' } = useParams();
+  const { token = "" } = useParams();
   const booking = useBooking(tenant.slug, token);
   const queryClient = useQueryClient();
   const [confirmCancel, setConfirmCancel] = useState(false);
@@ -99,7 +99,7 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
 
   const b = booking.data;
   const status = STATUS[b.status];
-  const isActive = b.status === 'confirmed' || b.status === 'pending';
+  const isActive = b.status === "confirmed" || b.status === "pending";
   const canCancel = isActive && new Date(b.start_at) > new Date();
   const freeUntil = new Date(b.free_cancellation_until);
   const freeCancel = new Date() <= freeUntil;
@@ -137,11 +137,13 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
       <VStack gap={3}>
         <Heading level={2}>Стоимость</Heading>
         <PriceLines snapshot={b.price_snapshot} total={b.total_amount} deposit={b.deposit_amount} />
-        <Text color="secondary">
-          {b.paid_amount > 0
-            ? `Оплачено ${formatRub(b.paid_amount)}, осталось ${formatRub(left)}.`
-            : `Задаток вносится по договорённости с заведением.`}
-        </Text>
+        {(b.paid_amount > 0 || b.deposit_amount > 0) && (
+          <Text color="secondary">
+            {b.paid_amount > 0
+              ? `Оплачено ${formatRub(b.paid_amount)}, осталось ${formatRub(left)}.`
+              : `Задаток вносится по договорённости с заведением.`}
+          </Text>
+        )}
       </VStack>
 
       {cancel.isError && (
@@ -157,7 +159,7 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
           <Text color="secondary">
             {freeCancel
               ? `Бесплатная отмена до ${formatDateTimeInTz(b.free_cancellation_until, b.timezone)}.`
-              : 'Срок бесплатной отмены прошёл: задаток может не вернуться.'}
+              : "Срок бесплатной отмены прошёл: задаток может не вернуться."}
           </Text>
           {halls.some((h) => h.id === b.hall_id) && (
             <Button variant="secondary" label="Перенести" onClick={() => setMoving(true)} />
@@ -179,8 +181,8 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
         />
       )}
 
-      {b.status !== 'cancelled' &&
-        b.status !== 'completed' &&
+      {b.status !== "cancelled" &&
+        b.status !== "completed" &&
         bookingIcsUrl(tenant.slug, token) && (
           <VStack gap={1}>
             <Link href={bookingIcsUrl(tenant.slug, token) ?? undefined}>Добавить в календарь</Link>
@@ -192,15 +194,15 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
 
       <VStack gap={2}>
         {tenant.contacts.phone && (
-          <Link href={`tel:${tenant.contacts.phone.replace(/[^+\d]/g, '')}`}>
+          <Link href={`tel:${tenant.contacts.phone.replace(/[^+\d]/g, "")}`}>
             {`Позвонить: ${tenant.contacts.phone}`}
           </Link>
         )}
         <Button
-          variant={b.status === 'cancelled' || b.status === 'completed' ? 'primary' : 'secondary'}
+          variant={b.status === "cancelled" || b.status === "completed" ? "primary" : "secondary"}
           size="lg"
           width="100%"
-          label={b.status === 'cancelled' ? 'Выбрать другое время' : 'На главную'}
+          label={b.status === "cancelled" ? "Выбрать другое время" : "На главную"}
           href={`/s/${tenant.slug}/`}
         />
         <Text color="secondary">
@@ -224,8 +226,8 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
         title="Отменить бронь?"
         description={
           freeCancel
-            ? 'Время освободится для других гостей.'
-            : 'Срок бесплатной отмены прошёл — задаток может не вернуться.'
+            ? "Время освободится для других гостей."
+            : "Срок бесплатной отмены прошёл — задаток может не вернуться."
         }
         actionLabel="Отменить бронь"
         cancelLabel="Не отменять"

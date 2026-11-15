@@ -1,110 +1,60 @@
-import { Button } from '@astryxdesign/core/Button';
-import { NumberInput } from '@astryxdesign/core/NumberInput';
-import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
+import { Button } from "@astryxdesign/core/Button";
+import { NumberInput } from "@astryxdesign/core/NumberInput";
+import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
+import { Switch } from "@astryxdesign/core/Switch";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 
-import { formatRub } from '../../shared/format';
-import { ownerApi } from './ownerApi';
-
-type PayKind = 'deposit' | 'payment' | 'refund';
-type Method = 'cash' | 'transfer' | 'card';
-const PAY_LABEL: Record<PayKind, string> = {
-  deposit: 'задаток',
-  payment: 'оплату',
-  refund: 'возврат',
-};
+import { formatRub } from "../../shared/format";
+import { ownerApi, type Method, type OwnerBooking } from "./ownerApi";
 
 /**
- * Деньги по брони. Родитель пересоздаёт форму после каждого платежа (key = получено),
- * поэтому тип и сумма по умолчанию всегда считаются от текущего остатка: задаток →
- * остаток → «оплачено полностью». Нельзя внести больше остатка и вернуть больше полученного.
+ * Деньги по брони. Задаток — одна отметка «получен / не получен» (переключатель),
+ * оплата — не больше остатка. Родитель пересоздаёт форму после каждого изменения
+ * (key), поэтому суммы по умолчанию всегда считаются от текущих данных.
  */
 export function PaymentForm({
-  bookingId,
-  paid,
-  left,
-  deposit,
+  booking: b,
+  depositEnabled,
   onSaved,
   onError,
 }: {
-  bookingId: string;
-  paid: number;
-  left: number;
-  deposit: number;
+  booking: OwnerBooking;
+  depositEnabled: boolean;
   onSaved: () => Promise<void>;
   onError: (e: unknown) => void;
 }) {
-  const initialKind: PayKind =
-    left === 0 ? 'refund' : paid === 0 && deposit > 0 ? 'deposit' : 'payment';
-  const [kind, setKind] = useState<PayKind>(initialKind);
-  const [refundOpen, setRefundOpen] = useState(false);
-  const defaultFor = (k: PayKind) =>
-    Math.round((k === 'deposit' ? Math.min(deposit, left) : k === 'payment' ? left : paid) / 100);
-  const [amountRub, setAmountRub] = useState(defaultFor(initialKind));
-  const [method, setMethod] = useState<Method>('transfer');
+  const depositPaid = b.payments
+    .filter((p) => p.kind === "deposit")
+    .reduce((s, p) => s + p.amount, 0);
+  const paid = b.payments.reduce((s, p) => s + (p.kind === "refund" ? -p.amount : p.amount), 0);
+  const left = Math.max(0, b.total_amount - paid);
+  const depositDefault = b.price_snapshot.deposit_amount ?? 0;
 
-  const limit = kind === 'refund' ? paid : left; // копейки
-  const amount = Math.round(amountRub * 100);
-  const tooMuch = amount > limit;
+  const [depositRub, setDepositRub] = useState(Math.round(depositDefault / 100));
+  const [amountRub, setAmountRub] = useState(Math.round(left / 100));
+  const [method, setMethod] = useState<Method>("transfer");
 
+  const deposit = useMutation({
+    mutationFn: (amount: number | null) => ownerApi.setDeposit(b.id, amount, method),
+    onSuccess: () => onSaved(),
+    onError,
+  });
   const pay = useMutation({
-    mutationFn: () => ownerApi.addPayment(bookingId, kind, amount, method),
+    mutationFn: () => ownerApi.addPayment(b.id, Math.round(amountRub * 100), method),
     onSuccess: () => onSaved(),
     onError,
   });
 
-  // Оплачено полностью: вместо формы — итог и возможность оформить возврат.
-  if (left === 0 && !refundOpen) {
-    return (
-      <VStack gap={2}>
-        <Text weight="semibold">Оплачено полностью ✓</Text>
-        {paid > 0 && (
-          <Button
-            variant="ghost"
-            size="sm"
-            label="Оформить возврат"
-            onClick={() => setRefundOpen(true)}
-          />
-        )}
-      </VStack>
-    );
-  }
+  const depositAmount = Math.round(depositRub * 100);
+  const depositTooMuch = depositAmount > b.total_amount;
+  const amount = Math.round(amountRub * 100);
+  const tooMuch = amount > left;
 
   return (
-    <VStack gap={3}>
-      {left > 0 && (
-        <SegmentedControl
-          label="Тип платежа"
-          layout="fill"
-          value={kind}
-          onChange={(v) => {
-            setKind(v as PayKind);
-            setAmountRub(defaultFor(v as PayKind));
-          }}
-        >
-          <SegmentedControlItem value="deposit" label="Задаток" />
-          <SegmentedControlItem value="payment" label="Оплата" />
-          {paid > 0 && <SegmentedControlItem value="refund" label="Возврат" />}
-        </SegmentedControl>
-      )}
-      <NumberInput
-        label="Сумма, ₽"
-        value={amountRub}
-        min={1}
-        step={100}
-        onChange={(n) => setAmountRub(Math.max(0, Math.round(n)))}
-        status={
-          tooMuch
-            ? {
-                type: 'error',
-                message: `Не больше ${formatRub(limit)} (${kind === 'refund' ? 'получено' : 'осталось'})`,
-              }
-            : undefined
-        }
-      />
+    <VStack gap={4}>
       <SegmentedControl
         label="Способ"
         layout="fill"
@@ -115,13 +65,65 @@ export function PaymentForm({
         <SegmentedControlItem value="cash" label="Наличные" />
         <SegmentedControlItem value="card" label="Карта" />
       </SegmentedControl>
-      <Button
-        variant="primary"
-        label={`Отметить ${PAY_LABEL[kind]}`}
-        isLoading={pay.isPending}
-        isDisabled={amount <= 0 || tooMuch}
-        onClick={() => pay.mutate()}
-      />
+
+      {depositEnabled && (
+        <VStack gap={2}>
+          <Switch
+            label={
+              depositPaid > 0 ? `Задаток получен: ${formatRub(depositPaid)}` : "Задаток получен"
+            }
+            description={
+              depositPaid > 0
+                ? "Выключите, если отметили по ошибке"
+                : "Включите, когда гость оставил задаток"
+            }
+            value={depositPaid > 0}
+            isLoading={deposit.isPending}
+            isDisabled={depositPaid === 0 && (depositAmount <= 0 || depositTooMuch)}
+            onChange={(on) => deposit.mutate(on ? depositAmount : null)}
+          />
+          {depositPaid === 0 && (
+            <NumberInput
+              label="Сумма задатка, ₽"
+              value={depositRub}
+              min={1}
+              step={100}
+              onChange={(n) => setDepositRub(Math.max(0, Math.round(n)))}
+              status={
+                depositTooMuch
+                  ? { type: "error", message: `Не больше ${formatRub(b.total_amount)}` }
+                  : undefined
+              }
+            />
+          )}
+        </VStack>
+      )}
+
+      {left === 0 ? (
+        <Text weight="semibold">Оплачено полностью ✓</Text>
+      ) : (
+        <VStack gap={2}>
+          <NumberInput
+            label="Оплата, ₽"
+            value={amountRub}
+            min={1}
+            step={100}
+            onChange={(n) => setAmountRub(Math.max(0, Math.round(n)))}
+            status={
+              tooMuch
+                ? { type: "error", message: `Не больше ${formatRub(left)} (осталось)` }
+                : undefined
+            }
+          />
+          <Button
+            variant="primary"
+            label="Отметить оплату"
+            isLoading={pay.isPending}
+            isDisabled={amount <= 0 || tooMuch}
+            onClick={() => pay.mutate()}
+          />
+        </VStack>
+      )}
     </VStack>
   );
 }

@@ -1,21 +1,21 @@
-import { AspectRatio } from '@astryxdesign/core/AspectRatio';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Item } from '@astryxdesign/core/Item';
-import { Link } from '@astryxdesign/core/Link';
-import { List } from '@astryxdesign/core/List';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useState } from 'react';
-import { useLocation } from 'react-router';
+import { AspectRatio } from "@astryxdesign/core/AspectRatio";
+import { Button } from "@astryxdesign/core/Button";
+import { Card } from "@astryxdesign/core/Card";
+import { Heading } from "@astryxdesign/core/Heading";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Item } from "@astryxdesign/core/Item";
+import { Link } from "@astryxdesign/core/Link";
+import { List } from "@astryxdesign/core/List";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useState } from "react";
+import { useLocation } from "react-router";
 
-import { formatDateTimeInTz, formatDuration, formatRub } from '../../shared/format';
-import { assetUrl, type Catalog } from './api';
-import { BookingFlow } from './BookingFlow';
-import { Wordmark } from './Wordmark';
-import { readMyBookings } from './myBookings';
+import { formatDateTimeInTz, formatDuration, formatRub } from "../../shared/format";
+import { assetUrl, type Catalog } from "./api";
+import { BookingFlow } from "./BookingFlow";
+import { Wordmark } from "./Wordmark";
+import { readMyBookings } from "./myBookings";
 
 interface FlowStart {
   key: number;
@@ -39,10 +39,10 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         gap={2}
         padding={4}
         style={{
-          borderRadius: 'var(--radius-lg, 20px)',
-          overflow: 'hidden',
-          paddingTop: 'var(--spacing-6, 24px)',
-          background: `linear-gradient(180deg, rgb(20 11 7 / 0.35) 0%, rgb(20 11 7 / 0.7) 45%, rgb(20 11 7 / 0.92) 100%), url('${heroUrl ?? '/bg/guest.jpg'}') center / cover no-repeat`,
+          borderRadius: "var(--radius-lg, 20px)",
+          overflow: "hidden",
+          paddingTop: "var(--spacing-6, 24px)",
+          background: `linear-gradient(180deg, rgb(20 11 7 / 0.35) 0%, rgb(20 11 7 / 0.7) 45%, rgb(20 11 7 / 0.92) 100%), url('${heroUrl ?? "/bg/guest.jpg"}') center / cover no-repeat`,
         }}
       >
         <Heading level={1}>
@@ -55,9 +55,9 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
         )}
         {tenant.texts.description && <Text>{tenant.texts.description}</Text>}
         <Text color="secondary">
-          {[tenant.contacts.address, tenant.status === 'preview' ? 'демо-режим' : null]
+          {[tenant.contacts.address, tenant.status === "preview" ? "демо-режим" : null]
             .filter(Boolean)
-            .join(' · ')}
+            .join(" · ")}
         </Text>
         <Button
           variant="secondary"
@@ -76,7 +76,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
               <AspectRatio
                 ratio={16 / 10}
                 fit="cover"
-                style={{ borderRadius: 'var(--radius-lg, 16px) var(--radius-lg, 16px) 0 0' }}
+                style={{ borderRadius: "var(--radius-lg, 16px) var(--radius-lg, 16px) 0 0" }}
               >
                 <img
                   src={assetUrl(tenant, hall.photos[0]) ?? undefined}
@@ -104,7 +104,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
               </Text>
               {hall.extra_guest_price > 0 && (
                 <Text color="secondary">
-                  {`Сверх ${hall.capacity_included} гостей — ${formatRub(hall.extra_guest_price)} за человека${hall.extra_guest_unit === 'per_hour' ? ' в час' : ''}`}
+                  {`Сверх ${hall.capacity_included} гостей — ${formatRub(hall.extra_guest_price)} за человека${hall.extra_guest_unit === "per_hour" ? " в час" : ""}`}
                 </Text>
               )}
               <Button
@@ -136,7 +136,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
       <VStack gap={2}>
         <Heading level={2}>Контакты</Heading>
         {tenant.contacts.phone && (
-          <Link href={`tel:${tenant.contacts.phone.replace(/[^+\d]/g, '')}`}>
+          <Link href={`tel:${tenant.contacts.phone.replace(/[^+\d]/g, "")}`}>
             {tenant.contacts.phone}
           </Link>
         )}
@@ -146,7 +146,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
           </Link>
         )}
         <Text color="secondary">
-          {`Задаток ${tenant.deposit_percent} %. Бесплатная отмена — за ${tenant.free_cancellation_hours} ч до начала.`}
+          {`${tenant.deposit_percent > 0 ? `Задаток ${tenant.deposit_percent} %. ` : ""}Бесплатная отмена — за ${tenant.free_cancellation_hours} ч до начала.`}
         </Text>
       </VStack>
 

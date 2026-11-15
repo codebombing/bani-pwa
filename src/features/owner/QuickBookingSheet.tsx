@@ -1,17 +1,17 @@
-import { Banner } from '@astryxdesign/core/Banner';
-import { BottomSheet } from '@astryxdesign/core/BottomSheet';
-import { Button } from '@astryxdesign/core/Button';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { NumberInput } from '@astryxdesign/core/NumberInput';
-import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
-import { Skeleton } from '@astryxdesign/core/Skeleton';
-import { Text } from '@astryxdesign/core/Text';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { ToggleButton, ToggleButtonGroup } from '@astryxdesign/core/ToggleButton';
-import { VStack } from '@astryxdesign/core/VStack';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useRef, useState } from 'react';
+import { Banner } from "@astryxdesign/core/Banner";
+import { BottomSheet } from "@astryxdesign/core/BottomSheet";
+import { Button } from "@astryxdesign/core/Button";
+import { Heading } from "@astryxdesign/core/Heading";
+import { HStack } from "@astryxdesign/core/HStack";
+import { NumberInput } from "@astryxdesign/core/NumberInput";
+import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
+import { Skeleton } from "@astryxdesign/core/Skeleton";
+import { Text } from "@astryxdesign/core/Text";
+import { TextInput } from "@astryxdesign/core/TextInput";
+import { ToggleButton, ToggleButtonGroup } from "@astryxdesign/core/ToggleButton";
+import { VStack } from "@astryxdesign/core/VStack";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useRef, useState } from "react";
 
 import {
   formatDuration,
@@ -19,11 +19,11 @@ import {
   formatRub,
   formatRuPhoneInput,
   normalizeRuPhone,
-} from '../../shared/format';
-import { ownerApi, ownerErrorMessage, type OwnerHall } from './ownerApi';
-import { ownerKey, refreshOwnerData, useOwner } from './ownerContext';
+} from "../../shared/format";
+import { ownerApi, ownerErrorMessage, type OwnerHall } from "./ownerApi";
+import { ownerKey, refreshOwnerData, useOwner } from "./ownerContext";
 
-type Source = 'phone' | 'messenger' | 'walk_in';
+type Source = "phone" | "messenger" | "walk_in";
 
 /**
  * Быстрая бронь владельца: зал, время и минимальная длительность уже подставлены —
@@ -42,20 +42,20 @@ export function QuickBookingSheet({
   const queryClient = useQueryClient();
   const [duration, setDuration] = useState(hall.min_duration_min);
   const [guests, setGuests] = useState(Math.min(2, hall.capacity_max));
-  const [source, setSource] = useState<Source>('phone');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [source, setSource] = useState<Source>("phone");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const idempotencyKey = useRef(crypto.randomUUID());
 
   const endAt = new Date(new Date(startAt).getTime() + duration * 60_000).toISOString();
   const quote = useQuery({
-    queryKey: ownerKey(tenant.id, 'quote', hall.id, startAt, duration, guests),
+    queryKey: ownerKey(tenant.id, "quote", hall.id, startAt, duration, guests),
     queryFn: () => ownerApi.quote(tenant.slug, hall.id, startAt, duration, guests),
     retry: false,
   });
 
-  const phoneValue = phone.trim() === '' ? null : normalizeRuPhone(phone);
-  const phoneInvalid = phone.trim() !== '' && phoneValue === null;
+  const phoneValue = phone.trim() === "" ? null : normalizeRuPhone(phone);
+  const phoneInvalid = phone.trim() !== "" && phoneValue === null;
 
   const save = useMutation({
     mutationFn: () =>
@@ -65,7 +65,7 @@ export function QuickBookingSheet({
         startAt,
         durationMin: duration,
         guests,
-        name: name.trim() || 'Гость',
+        name: name.trim() || "Гость",
         phone: phoneValue,
         source,
         comment: null,
@@ -110,7 +110,7 @@ export function QuickBookingSheet({
           type="single"
           value={String(duration)}
           onChange={(v) => {
-            if (typeof v === 'string') setDuration(Number(v));
+            if (typeof v === "string") setDuration(Number(v));
           }}
         >
           {durations.map((d) => (
@@ -147,7 +147,7 @@ export function QuickBookingSheet({
           placeholder="+7 900 000-00-00"
           onChange={(v) => setPhone(formatRuPhoneInput(v))}
           status={
-            phoneInvalid ? { type: 'error', message: 'Номер из 10 цифр после +7' } : undefined
+            phoneInvalid ? { type: "error", message: "Номер из 10 цифр после +7" } : undefined
           }
         />
 
