@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from "react-router";
 
 import { askOwner } from "../ai/aiApi";
 import { AssistantFab } from "../ai/AssistantFab";
-import { CalendarIcon, GearIcon, ListIcon, ListIconDot } from "./icons";
+import { GearIcon, ListIcon, ListIconDot } from "./icons";
 import { ownerApi } from "./ownerApi";
 import { ownerKey, useOwner } from "./ownerContext";
 
@@ -40,7 +40,6 @@ export function OwnerShell({ children }: { children: ReactNode }) {
       label: hasNew ? "Брони, есть новые" : "Брони",
       icon: hasNew ? ListIconDot : ListIcon,
     },
-    { value: "calendar", label: "График", icon: CalendarIcon },
     { value: "settings", label: "Настройки", icon: GearIcon },
   ];
 

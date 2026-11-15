@@ -27,12 +27,12 @@ export const ownerKey = (tenantId: string, ...rest: unknown[]) =>
  * (get_availability — цена каждого слота) обновляем в фоне.
  */
 export async function refreshOwnerData(queryClient: QueryClient, tenantId: string): Promise<void> {
-  const isSlots = (key: readonly unknown[]) => key.includes("free") || key.includes("move");
+  const isSlots = (key: readonly unknown[]) => key.includes("move");
   void queryClient.invalidateQueries({
     queryKey: ownerKey(tenantId),
     predicate: (q) => isSlots(q.queryKey),
   });
-  // refetchType 'all': списки других вкладок (Брони/График) тоже перезагружаются
+  // refetchType 'all': неактивные списки (например, блокировки в Настройках) тоже перезагружаются
   // сразу, а не показывают старый статус при переключении.
   await queryClient.invalidateQueries({
     queryKey: ownerKey(tenantId),

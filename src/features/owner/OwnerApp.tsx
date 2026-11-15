@@ -10,7 +10,6 @@ import { Route, Routes, useParams } from "react-router";
 import { TenantTheme } from "../booking/TenantTheme";
 import { signOut, useSession } from "./auth";
 import { BookingsPage } from "./BookingsPage";
-import { CalendarPage } from "./CalendarPage";
 import { useTenantServiceWorker } from "../../shared/push";
 import { LoginPage } from "./LoginPage";
 import { SettingsPage } from "./SettingsPage";
@@ -120,7 +119,6 @@ export function OwnerApp() {
           <Routes>
             <Route index element={<BookingsPage />} />
             <Route path="bookings" element={<BookingsPage />} />
-            <Route path="calendar" element={<CalendarPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="*" element={<BookingsPage />} />
           </Routes>

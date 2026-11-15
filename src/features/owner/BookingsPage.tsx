@@ -66,7 +66,7 @@ export function BookingsPage() {
         />
       )}
       {list.isSuccess && groups.length === 0 && (
-        <EmptyState title="Броней пока нет" description="Новые брони появятся здесь и в графике." />
+        <EmptyState title="Броней пока нет" description="Новые брони появятся здесь." />
       )}
       {groups.map(([day, items]) => (
         <VStack key={day} gap={1}>
