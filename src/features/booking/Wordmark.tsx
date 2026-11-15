@@ -25,9 +25,10 @@ export function Wordmark({ name, wordmark }: { name: string; wordmark?: Wordmark
   const top = wordmark?.top ?? base.top;
   const main = wordmark?.main ?? base.main;
   const sub = wordmark?.sub;
-  // Длинное название — меньше кегль, чтобы влезло в ширину 300.
-  const mainSize = Math.min(54, Math.floor(300 / Math.max(1, main.length * 0.62)));
-  const topSize = top ? Math.min(28, Math.floor(260 / Math.max(1, top.length * 0.6))) : 0;
+  // Длинное название — меньше кегль, чтобы влезло в ширину 300. Буква Ruslan Display
+  // (кириллица) — 0.70 кегля в среднем, до 0.77 с широкими М/Ф (замер в браузере).
+  const mainSize = Math.min(54, Math.floor(300 / Math.max(1, main.length * 0.78)));
+  const topSize = top ? Math.min(28, Math.floor(260 / Math.max(1, top.length * 0.78))) : 0;
   const height = 120 + (top ? topSize + 6 : 0) + mainSize + (sub ? 22 : 0);
   const yTop = 120 + topSize;
   const yMain = yTop + mainSize + (top ? 6 : 0);
