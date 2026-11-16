@@ -6,8 +6,6 @@ import { Calendar, type ISODateString } from "@astryxdesign/core/Calendar";
 import { Divider } from "@astryxdesign/core/Divider";
 import { Heading } from "@astryxdesign/core/Heading";
 import { HStack } from "@astryxdesign/core/HStack";
-import { Icon } from "@astryxdesign/core/Icon";
-import { IconButton } from "@astryxdesign/core/IconButton";
 import { Item } from "@astryxdesign/core/Item";
 import { Link } from "@astryxdesign/core/Link";
 import { List } from "@astryxdesign/core/List";
@@ -23,9 +21,8 @@ import { PriceLines } from "../booking/PriceLines";
 import { ownerApi, ownerErrorMessage, type OwnerBooking } from "./ownerApi";
 import { ownerKey, refreshOwnerData, useOwner } from "./ownerContext";
 import { bookingKind, guestsLabel, SOURCE_LABEL } from "./labels";
-import { TrashIcon } from "./icons";
 
-/** Детали брони; предстоящую можно перенести, отменить или удалить, прошедшая — только просмотр. */
+/** Детали брони; предстоящую можно перенести, или отменить, прошедшая — только просмотр. */
 export function OwnerBookingSheet({
   booking: b,
   hallName,
@@ -47,7 +44,6 @@ export function OwnerBookingSheet({
   const [moving, setMoving] = useState(false);
   const [moveDate, setMoveDate] = useState(dateInTz(b.start_at, tz));
   const [confirmCancel, setConfirmCancel] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const refresh = () => refreshOwnerData(queryClient, tenant.id);
 
@@ -57,14 +53,6 @@ export function OwnerBookingSheet({
   useEffect(() => {
     if (!b.seen_at) markSeen();
   }, [b.seen_at, markSeen]);
-  const remove = useMutation({
-    mutationFn: () => ownerApi.deleteBooking(b.id),
-    onSuccess: async () => {
-      await refresh();
-      setConfirmDelete(false);
-      onClose();
-    },
-  });
   const cancel = useMutation({
     mutationFn: () => ownerApi.cancel(b.id),
     onSuccess: async () => {
@@ -87,7 +75,7 @@ export function OwnerBookingSheet({
     enabled: moving && halls.some((h) => h.id === b.hall_id),
   });
 
-  const actionError = move.error ?? cancel.error ?? remove.error;
+  const actionError = move.error ?? cancel.error;
 
   return (
     <BottomSheet
@@ -101,18 +89,7 @@ export function OwnerBookingSheet({
       <VStack gap={5}>
         <HStack justify="between" vAlign="center">
           <Text color="secondary">{isActive ? hallName : `${hallName} · прошла`}</Text>
-          <HStack gap={1} vAlign="center">
-            {isActive && (
-              <IconButton
-                variant="ghost"
-                label="Удалить бронь"
-                tooltip="Удалить бронь"
-                icon={<Icon icon={TrashIcon} />}
-                onClick={() => setConfirmDelete(true)}
-              />
-            )}
-            <Button variant="ghost" size="sm" label="Закрыть" onClick={onClose} />
-          </HStack>
+          <Button variant="ghost" size="sm" label="Закрыть" onClick={onClose} />
         </HStack>
         <VStack gap={1}>
           <Heading level={2}>{b.customer_name}</Heading>
@@ -207,16 +184,6 @@ export function OwnerBookingSheet({
         cancelLabel="Не отменять"
         isActionLoading={cancel.isPending}
         onAction={() => cancel.mutate()}
-      />
-      <AlertDialog
-        isOpen={confirmDelete}
-        onOpenChange={setConfirmDelete}
-        title="Удалить бронь навсегда?"
-        description={`${b.customer_name}, ${formatRangeInTz(b.start_at, b.end_at, tz)}. Бронь пропадёт из списка и графика. Вернуть будет нельзя.`}
-        actionLabel="Удалить"
-        cancelLabel="Не удалять"
-        isActionLoading={remove.isPending}
-        onAction={() => remove.mutate()}
       />
     </BottomSheet>
   );

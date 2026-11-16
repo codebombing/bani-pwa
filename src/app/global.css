@@ -31,6 +31,12 @@ html[data-area='owner'] body::before {
     url('/bg/owner.jpg') center / cover no-repeat,
     #140b07;
 }
+/* Страницы — колонкой по центру: на компьютере не прилипают к левому краю. */
+main {
+  margin-inline: auto;
+  width: 100%;
+}
+
 #root {
   background: transparent;
   transition: filter 0.25s ease;

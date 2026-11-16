@@ -136,12 +136,10 @@ export function BookingPage({ tenant, halls }: { tenant: Tenant; halls: Hall[] }
 
       <VStack gap={3}>
         <Heading level={2}>Стоимость</Heading>
-        <PriceLines snapshot={b.price_snapshot} total={b.total_amount} deposit={b.deposit_amount} />
-        {(b.paid_amount > 0 || b.deposit_amount > 0) && (
+        <PriceLines snapshot={b.price_snapshot} total={b.total_amount} />
+        {b.paid_amount > 0 && (
           <Text color="secondary">
-            {b.paid_amount > 0
-              ? `Оплачено ${formatRub(b.paid_amount)}, осталось ${formatRub(left)}.`
-              : `Задаток вносится по договорённости с заведением.`}
+            Оплачено {formatRub(b.paid_amount)}, осталось {formatRub(left)}.
           </Text>
         )}
       </VStack>

@@ -25,15 +25,13 @@ function Row({ label, amount, strong }: { label: string; amount: number; strong?
   );
 }
 
-/** Строки расчёта из серверного снимка цены: аренда по тарифам, доп. гости, допы, итог, задаток. */
+/** Строки расчёта из серверного снимка цены: аренда по тарифам, доп. гости, допы, итог. */
 export function PriceLines({
   snapshot,
   total,
-  deposit,
 }: {
   snapshot: Snapshot;
   total: number;
-  deposit?: number;
 }) {
   return (
     <VStack gap={2}>
@@ -56,7 +54,6 @@ export function PriceLines({
       {snapshot.manual_price && <Text color="secondary">Цена согласована с заведением.</Text>}
       <Divider />
       <Row label="Итого" amount={total} strong />
-      {deposit !== undefined && deposit > 0 && <Row label="Задаток" amount={deposit} />}
     </VStack>
   );
 }

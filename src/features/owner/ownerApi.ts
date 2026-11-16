@@ -220,13 +220,6 @@ export const ownerApi = {
     return unwrap(bookingSchema, data, error);
   },
 
-  async deleteBooking(bookingId: string) {
-    const { data, error } = await getSupabase().rpc("owner_delete_booking", {
-      p_booking_id: bookingId,
-    });
-    return unwrap(z.object({ ok: z.literal(true) }), data, error);
-  },
-
   async markSeen(bookingId: string) {
     const { data, error } = await getSupabase().rpc("owner_mark_seen", { p_booking_id: bookingId });
     return unwrap(z.object({ ok: z.literal(true) }), data, error);

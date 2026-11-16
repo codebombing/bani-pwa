@@ -62,7 +62,14 @@ export function OwnerShell({ children }: { children: ReactNode }) {
         }
         footer={
           <LayoutFooter padding={2} hasDivider label="Разделы кабинета">
-            <HStack as="nav" justify="around" vAlign="center">
+            <HStack
+              as="nav"
+              justify="around"
+              vAlign="center"
+              width="100%"
+              maxWidth={480}
+              style={{ marginInline: "auto" }}
+            >
               {tabs.map((t) => {
                 const active = current === t.value || current === t.alias;
                 return (

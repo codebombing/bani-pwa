@@ -519,11 +519,7 @@ export function ConfirmStep({
         />
       )}
       {quote.data && (
-        <PriceLines
-          snapshot={quote.data.snapshot}
-          total={quote.data.total}
-          deposit={quote.data.deposit_amount}
-        />
+        <PriceLines snapshot={quote.data.snapshot} total={quote.data.total} />
       )}
 
       {tenant.texts.booking_note && <Text color="secondary">{tenant.texts.booking_note}</Text>}

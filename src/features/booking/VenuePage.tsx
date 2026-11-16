@@ -1,6 +1,7 @@
 import { AspectRatio } from "@astryxdesign/core/AspectRatio";
 import { Button } from "@astryxdesign/core/Button";
 import { Card } from "@astryxdesign/core/Card";
+import { Grid } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
 import { HStack } from "@astryxdesign/core/HStack";
 import { Item } from "@astryxdesign/core/Item";
@@ -34,7 +35,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
   const start = (hallId?: string) => setFlow({ key: Date.now(), hallId });
 
   return (
-    <VStack as="main" padding={4} gap={6} maxWidth={640}>
+    <VStack as="main" padding={4} gap={6} maxWidth={1040}>
       <VStack
         gap={2}
         padding={4}
@@ -70,51 +71,53 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
 
       <VStack gap={3}>
         <Heading level={2}>Залы</Heading>
-        {halls.map((hall) => (
-          <Card key={hall.id} padding={0}>
-            {hall.photos[0] && assetUrl(tenant, hall.photos[0]) && (
-              <AspectRatio
-                ratio={16 / 10}
-                fit="cover"
-                style={{ borderRadius: "var(--radius-lg, 16px) var(--radius-lg, 16px) 0 0" }}
-              >
-                <img
-                  src={assetUrl(tenant, hall.photos[0]) ?? undefined}
-                  alt={`Зал «${hall.name}»`}
-                  width={1280}
-                  height={800}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </AspectRatio>
-            )}
-            <VStack gap={2} padding={4}>
-              <HStack gap={2} justify="between" vAlign="center">
-                <Heading level={3}>{hall.name}</Heading>
-                {hall.price_from !== null && (
-                  <Text
-                    weight="semibold"
-                    color="accent"
-                  >{`от ${formatRub(hall.price_from)}/ч`}</Text>
-                )}
-              </HStack>
-              {hall.description && <Text color="secondary">{hall.description}</Text>}
-              <Text>
-                {`До ${hall.capacity_max} гостей, ${hall.capacity_included} включено в цену · от ${formatDuration(hall.min_duration_min)}`}
-              </Text>
-              {hall.extra_guest_price > 0 && (
-                <Text color="secondary">
-                  {`Сверх ${hall.capacity_included} гостей — ${formatRub(hall.extra_guest_price)} за человека${hall.extra_guest_unit === "per_hour" ? " в час" : ""}`}
-                </Text>
+        <Grid columns={{ minWidth: 360, max: 2, repeat: "fit" }} gap={3}>
+          {halls.map((hall) => (
+            <Card key={hall.id} padding={0}>
+              {hall.photos[0] && assetUrl(tenant, hall.photos[0]) && (
+                <AspectRatio
+                  ratio={16 / 10}
+                  fit="cover"
+                  style={{ borderRadius: "var(--radius-lg, 16px) var(--radius-lg, 16px) 0 0" }}
+                >
+                  <img
+                    src={assetUrl(tenant, hall.photos[0]) ?? undefined}
+                    alt={`Зал «${hall.name}»`}
+                    width={1280}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </AspectRatio>
               )}
-              <Button
-                variant="secondary"
-                label={`Выбрать «${hall.name}»`}
-                onClick={() => start(hall.id)}
-              />
-            </VStack>
-          </Card>
-        ))}
+              <VStack gap={2} padding={4}>
+                <HStack gap={2} justify="between" vAlign="center">
+                  <Heading level={3}>{hall.name}</Heading>
+                  {hall.price_from !== null && (
+                    <Text
+                      weight="semibold"
+                      color="accent"
+                    >{`от ${formatRub(hall.price_from)}/ч`}</Text>
+                  )}
+                </HStack>
+                {hall.description && <Text color="secondary">{hall.description}</Text>}
+                <Text>
+                  {`До ${hall.capacity_max} гостей, ${hall.capacity_included} включено в цену · от ${formatDuration(hall.min_duration_min)}`}
+                </Text>
+                {hall.extra_guest_price > 0 && (
+                  <Text color="secondary">
+                    {`Сверх ${hall.capacity_included} гостей — ${formatRub(hall.extra_guest_price)} за человека${hall.extra_guest_unit === "per_hour" ? " в час" : ""}`}
+                  </Text>
+                )}
+                <Button
+                  variant="secondary"
+                  label={`Выбрать «${hall.name}»`}
+                  onClick={() => start(hall.id)}
+                />
+              </VStack>
+            </Card>
+          ))}
+        </Grid>
       </VStack>
 
       {myBookings.length > 0 && (
@@ -146,7 +149,7 @@ export function VenuePage({ catalog }: { catalog: Catalog }) {
           </Link>
         )}
         <Text color="secondary">
-          {`${tenant.deposit_percent > 0 ? `Задаток ${tenant.deposit_percent} %. ` : ""}Бесплатная отмена — за ${tenant.free_cancellation_hours} ч до начала.`}
+          {`Бесплатная отмена — за ${tenant.free_cancellation_hours} ч до начала.`}
         </Text>
       </VStack>
 
