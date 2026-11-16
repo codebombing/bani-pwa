@@ -37,7 +37,9 @@
     "serve:dist": "tsx scripts/tenant/serve.ts",
     "notify:setup-local": "tsx scripts/notify/setup-local.ts",
     "check:fast": "npm run typecheck && npm run lint && npm test",
-    "owner:link": "tsx scripts/owner/link.ts"
+    "owner:link": "tsx scripts/owner/link.ts",
+    "deploy:ru": "bash scripts/deploy/ru.sh",
+    "deploy:tenant": "bash scripts/deploy/ru-tenant.sh"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.13",

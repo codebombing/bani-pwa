@@ -1,0 +1,28 @@
+# Сервер в РФ: один домен — API Supabase по его путям, остальное — статика dist/ из /srv/site.
+# Правила те же, что VERCEL в scripts/tenant/lib/shell.ts. Studio наружу не открыт (только SSH-туннель).
+{$PROXY_DOMAIN} {
+	@supabase_api path /auth/v1/* /rest/v1/* /graphql/v1 /realtime/v1/* /storage/v1/* /functions/v1/*
+	handle @supabase_api {
+		reverse_proxy api-gw:8000
+	}
+
+	handle {
+		root * /srv/site
+		header /s/* Cache-Control no-cache
+		header /sw.js Cache-Control no-cache
+		header /index.html Cache-Control no-cache
+		header /assets/* Cache-Control "public, max-age=31536000, immutable"
+
+		@no_slash path_regexp no_slash ^/s/([^/]+)$
+		redir @no_slash /s/{re.no_slash.1}/ 308
+
+		# Глубокие ссылки заведения → его оболочка (сначала существующий файл).
+		@tenant path_regexp tenant ^/s/([^/]+)/
+		try_files @tenant {path} /s/{re.tenant.1}/index.html
+
+		file_server
+	}
+
+	encode zstd gzip
+	header -server
+}
