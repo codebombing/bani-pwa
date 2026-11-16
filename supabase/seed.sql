@@ -59,11 +59,6 @@ begin
   values (v_tenant, (v_ids #>> '{past,booking_id}')::uuid, 'payment', (v_ids #>> '{past,total_amount}')::bigint,
           'cash', ((v_today - 2) + time '16:00') at time zone 'Europe/Moscow', true);
 
-  -- Ближайшая онлайн-бронь: внесён задаток 30 %.
-  insert into public.payments (tenant_id, booking_id, kind, amount, method, is_demo)
-  values (v_tenant, (v_ids #>> '{soon,booking_id}')::uuid, 'deposit', (v_ids #>> '{soon,deposit_amount}')::bigint,
-          'transfer', true);
-
   -- Блокировка малого зала на уборку через 4 дня.
   with o as (
     insert into public.resource_occupancies (tenant_id, hall_id, kind, occupied)
@@ -74,10 +69,5 @@ begin
   )
   insert into public.hall_blocks (tenant_id, hall_id, occupancy_id, reason)
   select v_tenant, v_small, o.id, 'Генеральная уборка' from o;
-
-  -- Сауна: ночная онлайн-бронь с задатком 50 %.
-  insert into public.payments (tenant_id, booking_id, kind, amount, method, is_demo)
-  select t.id, (v_ids #>> '{s-night,booking_id}')::uuid, 'deposit',
-         (v_ids #>> '{s-night,deposit_amount}')::bigint, 'card', true
-  from public.tenants t where t.slug = 'demo-sauna24';
+  -- Задатка нет (миграция deposit_off): демо-платежей «задаток» тоже нет.
 end $$;

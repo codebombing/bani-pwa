@@ -28,6 +28,7 @@
 - `supabase start` · `supabase db reset` · `supabase test db` · `supabase functions serve`
 - `npm run tenant:new|validate|publish|verify|seed|placeholders -- <slug>` · `npm run demo:publish` · `npm run owner:invite -- <slug> <email>` · `npm run owner:link -- <slug> <email>` (ссылка входа без письма; облако — `ENV_FILE=.env.cloud.local`)
 - `npm run serve:dist` (dist/ на :8788 с `_redirects`) · `npm run notify:setup-local` (Vault для pg_cron → notify-worker)
+- Сервер в РФ: `npm run deploy:ru [-- <slug>...]` (всё) · `npm run deploy:tenant -- <slug>` (одна баня без пересборки) · владельцы — `ENV_FILE=.env.ru.local npm run owner:invite|owner:link -- <slug> <email>`
 
 <!-- ASTRYX:START -->
 Astryx v0.7.13 · 174 components

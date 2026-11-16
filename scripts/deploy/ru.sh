@@ -75,7 +75,7 @@ npx tsc -b
 npx vite build --mode ru
 
 step "7/8 Бани: БД, фото в Storage, оболочки dist/s/<slug>/"
-read -r -a SLUGS < <({ remote "ls /opt/site/s 2>/dev/null" || true; printf '%s\n' "$@"; } | sort -u | tr '\n' ' ')
+SLUGS=($({ remote "ls /opt/site/s 2>/dev/null" || true; printf '%s\n' "$@"; } | sort -u))
 [[ ${#SLUGS[@]} -gt 0 ]] || { echo "Нет бань: укажи slug — npm run deploy:ru -- <slug>..."; exit 1; }
 ENV_FILE="$ENV_FILE" npm run -s tenant:publish -- "${SLUGS[@]}"
 

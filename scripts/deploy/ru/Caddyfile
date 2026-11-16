@@ -17,8 +17,11 @@
 		redir @no_slash /s/{re.no_slash.1}/ 308
 
 		# Глубокие ссылки заведения → его оболочка (сначала существующий файл).
-		@tenant path_regexp tenant ^/s/([^/]+)/
-		try_files @tenant {path} /s/{re.tenant.1}/index.html
+		@tenant_deep {
+			path_regexp tenant ^/s/([^/]+)/
+			not file
+		}
+		rewrite @tenant_deep /s/{re.tenant.1}/index.html
 
 		file_server
 	}
