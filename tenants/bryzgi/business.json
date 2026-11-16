@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "bryzgi",
+  "name": "Брызги",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Брызги",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Брызги",
+    "description": "Бронь залов: Брызги"
+  },
+  "texts": {
+    "tagline": "Два зала · Басманный · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, бассейн, гидромассаж, бильярд, караоке, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 916 841-53-98",
+    "address": "Москва, Ладожская улица, 2/37",
+    "whatsapp": "+79168415398",
+    "telegram": "https://t.me/+79168415398",
+    "coords": {
+      "lat": 55.771053,
+      "lng": 37.680584
+    }
+  },
+  "halls": [
+    {
+      "key": "dzhungli",
+      "name": "Джунгли",
+      "description": "Аква зона: Бассейн (Подогрев, Противоток, Фильтрация, Подсветка, Гидромассаж)\nВид парной: Финская на 8 чел., паротермальная печь, можно с вениками, Турецкая на 6 чел.\nЗона отдыха: Современное караоке, массажное кресло, Зал для отдыха и 2 отдельные комнаты отдыха, бесплатный Wi-Fi, кабельное TV",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/dzhungli/1.jpg",
+        "halls/dzhungli/2.jpg",
+        "halls/dzhungli/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "piratskiy_korabl",
+      "name": "Пиратский Корабль",
+      "description": "Аква зона: Бассейн (Подогрев, Противоток, Фильтрация, Подсветка, Гидромассаж)\nВид парной: Финская на 8 чел., паротермальная печь, можно с вениками,\nЗона отдыха: Современное караоке, массажное кресло, Зал для отдыха и 2 отдельные комнаты отдыха, бесплатный Wi-Fi, кабельное TV",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/piratskiy_korabl/1.jpg",
+        "halls/piratskiy_korabl/2.jpg",
+        "halls/piratskiy_korabl/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

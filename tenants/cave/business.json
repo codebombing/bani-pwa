@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      },
+      "tue": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      },
+      "wed": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      },
+      "thu": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      },
+      "fri": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      },
+      "sat": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      },
+      "sun": {
+        "start_from": "11:00",
+        "start_to": "19:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "cave",
+  "name": "Cave",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Cave",
+      "sub": "баня · ежедневно 11:00–21:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Cave",
+    "description": "Бронь залов: Cave"
+  },
+  "texts": {
+    "tagline": "Один зал · Соколиная Гора · ежедневно 11:00–21:00",
+    "description": "Турецкая парная (хаммам), тёплый бассейн, камин, комната отдыха, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 903 101-23-11",
+    "address": "Москва, Малая Семёновская улица, 6 ст1",
+    "whatsapp": "+79031012311",
+    "telegram": "https://t.me/cavemoscow",
+    "coords": {
+      "lat": 55.784518,
+      "lng": 37.708201
+    }
+  },
+  "halls": [
+    {
+      "key": "nochnaya_banya",
+      "name": "Ночная баня",
+      "description": "Вместе отправимся в глубину ощущений своего тела.\n\nПогрузимся в медитативной парение под музыку, послушаем сказки и стихотворения в парной, отправимся навстречу своей душе под аккомпанемент лучших музыкантов.\n\nКак подготовиться:\n\n〰️ В парной можно быть без одежды. Советуем взять с собой халат, чтобы завернуться после парения.\n\n〰️ В пространстве уже есть все необходимое: шапочки, полотенца, шампунь, кондиционер и гель для душа.\n\n〰️ Наши бани межгендерные (кроме тех, которые мы пометили как женские).",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/nochnaya_banya/1.jpg",
+        "halls/nochnaya_banya/2.jpg",
+        "halls/nochnaya_banya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 10800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 10800
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

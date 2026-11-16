@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "zaparivanie_venikov",
+      "name": "ЗАПАРИВАНИЕ ВЕНИКОВ",
+      "description": "",
+      "price_rub": 1000,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "tazik-club",
+  "name": "Tazik club",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Tazik club",
+      "sub": "банный комплекс · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Tazik club",
+    "description": "Бронь залов: Tazik club"
+  },
+  "texts": {
+    "tagline": "Один зал · Дорогомилово · круглосуточно",
+    "description": "Русская парная, русская парная на дровах, турецкая парная (хаммам), парильщик, бассейн, гидромассаж, танцпол, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 499 340-00-40",
+    "address": "Москва, улица 1812 года, 18",
+    "whatsapp": "+79269075123",
+    "telegram": "https://t.me/tazikclub",
+    "coords": {
+      "lat": 55.743433,
+      "lng": 37.519194
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 9900
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 9900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

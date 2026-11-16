@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      },
+      "tue": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      },
+      "wed": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      },
+      "thu": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      },
+      "fri": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "22:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "vorontsovskie-bani",
+  "name": "Воронцовские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Воронцовские",
+      "sub": "баня · ежедневно 08:00–24:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Воронцовские",
+    "description": "Бронь залов: Воронцовские бани"
+  },
+  "texts": {
+    "tagline": "7 залов · Таганский · ежедневно 08:00–24:00",
+    "description": "Общественная баня, русская парная, турецкая парная (хаммам), парильщик, бассейн, гидромассаж, купели, караоке, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 632-67-64",
+    "address": "Москва, Воронцовский переулок, 5/7 ст1",
+    "email": "vorontsovskie-bani@mail.ru",
+    "coords": {
+      "lat": 55.733759,
+      "lng": 37.659669
+    }
+  },
+  "halls": [
+    {
+      "key": "russkaya_banya",
+      "name": "Русская баня",
+      "description": "Будни с 9-00 до 17-00 - 9000 руб/час.\nБудни с 17-00 до 9-00 -10000 руб/час .\nВыходные и праздники (круглосуточно) - 10000 руб/час.\n«Русская» – гордость номерного фонда Воронцовских бань. Место, где многовековые традиции парения встречаются с современным дизайном.\n\nОбразцовая русская парная с дровяной печью: загрузка чугуна в ней ¬– 800 кг, а температура в ее раскаленном сердце достигает 650 градусов. Здесь особо легкий, влажный пар, который можно дополнить ароматом целебных трав по вашему желанию.\n\nДля любителей контрастных процедур рядом с парной расположена ледяная купель 2х2 метра. А если вы сторонник комфортных температур, можно поплавать в просторном бассейне 5х3 метра. В помывочной зоне установлен стол для комфортных помывок.\n\nВ зоне отдыха можно приятно расслабиться у камина на кожаных диванах под мягким свечением оникса. Природные мотивы в дизайне, натуральные материалы мебели, фрески и витражи «Тиффани», состаренные зеркала и правильное зонирование – наше понимание эстетики и ",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russkaya_banya/1.jpg",
+        "halls/russkaya_banya/2.jpg",
+        "halls/russkaya_banya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 10000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 10000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_1",
+      "name": "Баня 1",
+      "description": "Будни с 9-00 до 17-00 - 2500 руб/час.\nБудни с 17-00 до 9-00 -3000 руб/час.\nВыходные и праздники (круглосуточно) - 3000 руб/час.\nНебольшая баня, сделанная в современном стиле. Русская парная, вместительностью для двух человек. Уютная зона отдыха, и комната отдыха со спутниковым TV. Максимальное размещение - 2 человека.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_1/1.jpg",
+        "halls/banya_1/2.jpg",
+        "halls/banya_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_2",
+      "name": "Баня 2",
+      "description": "Будни с 9-00 до 17-00 - 2500 руб/час.\nБудни с 17-00 до 9-00 - 3000 руб/час.\nВыходные и праздники (круглосуточно) - 3000 руб/час\nНебольшая баня, сделанная в современном стиле. Русская парная, вместительностью для двух человек. Уютная зона отдыха, и комната отдыха со спутниковым TV. Максимальное размещение - 2 человека.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_2/1.jpg",
+        "halls/banya_2/2.jpg",
+        "halls/banya_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_4",
+      "name": "Баня 4",
+      "description": "Будни с 9-00 до 17-00 - 2500 руб/час.\nБудни с 17-00 до 9-00 - 3000 руб/час.\nВыходные и праздники (круглосуточно) - 3000 руб/час.\nНебольшая баня, сделанная в современном стиле. Русская парная, вместительностью для двух человек. Уютная зона отдыха, и комната отдыха со спутниковым TV. Максимальное размещение - 3 человека.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_4/1.jpg",
+        "halls/banya_4/2.jpg",
+        "halls/banya_4/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_5",
+      "name": "Баня 5",
+      "description": "Будни с 9-00 до 17-00 - 4000 руб/час.\nБудни с 17-00 до 9-00 -5000 руб/час.\nВыходные и праздники (круглосуточно) - 5000 руб/час.\nНебольшая баня, сделанная в современном стиле. Русская парная, вместительностью для четырех человек. Уютная зона отдыха, и комната отдыха со спутниковым TV. Максимальное размещение - 6 человек.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_5/1.jpg",
+        "halls/banya_5/2.jpg",
+        "halls/banya_5/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zhenskiy_zal_budni",
+      "name": "Женский зал (будни)",
+      "description": "Режим работы:\nПонедельник с 16.00 до 23.00\nВторник - Пятница c 8.00 до 23.00\n1 сеанс- 4 часа",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zhenskiy_zal_budni/1.jpg",
+        "halls/zhenskiy_zal_budni/2.jpg",
+        "halls/zhenskiy_zal_budni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zhenskiy_zal_vyhodnye",
+      "name": "Женский зал (выходные)",
+      "description": "Режим работы:\nВыходные и праздники c 8.00 до 23.00\n1 сеанс- 4 часа",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zhenskiy_zal_vyhodnye/1.jpg",
+        "halls/zhenskiy_zal_vyhodnye/2.jpg",
+        "halls/zhenskiy_zal_vyhodnye/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

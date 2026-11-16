@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "15:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "ochakovskie-bani",
+  "name": "Очаковские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Очаковские",
+      "sub": "баня · пн 08:00–23:00, вт 15:00–23:00, с"
+    }
+  },
+  "pwa": {
+    "short_name": "Очаковские",
+    "description": "Бронь залов: Очаковские бани"
+  },
+  "texts": {
+    "tagline": "6 залов · Очаково-Матвеевское · пн 08:00–23:00, вт 15:00–23:00, ср 08:00–23:00, чт 08:00–23:00, пт 08:00–23:00, сб 08:00",
+    "description": "Общественная баня, русская парная, финская парная, бассейн, купели, бильярд, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 925 777-64-44",
+    "address": "Москва, Большая Очаковская улица, 35",
+    "coords": {
+      "lat": 55.677872,
+      "lng": 37.449842
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna_sibir_s_kupelyu",
+      "name": "Сауна СИБИРЬ с купелью",
+      "description": "Сауна в европейском стиле с парной, купелью, душевой, санузлом, комнатой отдыха до 5 человек. Оборудована большим плазменным телевизором, электрокамином, диванами и столом для комфортного отдыха в компании друзей. Есть WIFI доступ и \"умная колонка\".",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_sibir_s_kupelyu/1.jpg",
+        "halls/sauna_sibir_s_kupelyu/2.jpg",
+        "halls/sauna_sibir_s_kupelyu/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_vostok_s_basseynom",
+      "name": "Сауна ВОСТОК с бассейном",
+      "description": "Сауна с бассейном, душевой, санузлом, комнатой отдыха на 12 человек, с зоной отдыха и комфортабельной кроватью. Оборудована большим плазменным телевизором, музыкальным центром, WIFI доступ, умная колонка \"Алиса\" и всем необходимым для проведения торжественных мероприятий.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_vostok_s_basseynom/1.jpg",
+        "halls/sauna_vostok_s_basseynom/2.jpg",
+        "halls/sauna_vostok_s_basseynom/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_loft_s_kupelyu",
+      "name": "Сауна ЛОФТ с купелью",
+      "description": "Сауна в стиле лофт на 6 человек, оборудована купелью, душевой, санузлом, большим плазменным телевизором, зоной отдыха. Есть WIFI и \"умная колонка\".",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_loft_s_kupelyu/1.jpg",
+        "halls/sauna_loft_s_kupelyu/2.jpg",
+        "halls/sauna_loft_s_kupelyu/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_gzhel_s_bilrdom",
+      "name": "Сауна ГЖЕЛЬ с бильрдом",
+      "description": "Сауна в стиле гжель с русским бильярдом и зоной отдыха на 8 человек. Оборудована душевой с обливным устройством, санузлом, плазменным телевизором, WIFI доступ, умная колонка «Алиса».",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_gzhel_s_bilrdom/1.jpg",
+        "halls/sauna_gzhel_s_bilrdom/2.jpg",
+        "halls/sauna_gzhel_s_bilrdom/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_hay_tek_s_kupelyu",
+      "name": "Сауна ХАЙ-ТЕК с купелью",
+      "description": "Сауна в европейском стиле с финской парной, купелью, комнатой отдыха для 6 гостей, ТВ, эл. чайник, холодильник и подвесное кресло-качалка.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_hay_tek_s_kupelyu/1.jpg",
+        "halls/sauna_hay_tek_s_kupelyu/2.jpg",
+        "halls/sauna_hay_tek_s_kupelyu/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_rossiya_s_dzhakuzi",
+      "name": "Сауна РОССИЯ с джакузи",
+      "description": "Вместимость до 12 гостей. Парная с профессиональной электро-каменкой, купель с ледяной водой, джакузи с гидромассажем, комната отдыха, TV, WI-FI и лаунж зона. Отдельная комната с кроватью.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_rossiya_s_dzhakuzi/1.jpg",
+        "halls/sauna_rossiya_s_dzhakuzi/2.jpg",
+        "halls/sauna_rossiya_s_dzhakuzi/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

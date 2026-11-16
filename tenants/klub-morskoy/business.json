@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "Римские Термы, банный комплекс",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "proparka_s_venikom",
+      "name": "Пропарка с веником",
+      "description": "",
+      "price_rub": 2500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "klub-morskoy",
+  "name": "Клуб морской",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Клуб морской",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Клуб морской",
+    "description": "Бронь залов: Клуб морской"
+  },
+  "texts": {
+    "tagline": "Один зал · Беговой · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, парильщик, бассейн, гидромассаж, джакузи, бильярд, караоке, кальян, комната отдыха, tv/dvd, мангал, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 903 970-30-30",
+    "address": "Москва, Ленинградский проспект, 23",
+    "whatsapp": "+79039703030",
+    "telegram": "https://t.me/+79037291993",
+    "coords": {
+      "lat": 55.783241,
+      "lng": 37.568955
+    }
+  },
+  "halls": [
+    {
+      "key": "finskaya_parnaya",
+      "name": "Финская парная",
+      "description": "Финская парная",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finskaya_parnaya/1.jpg",
+        "halls/finskaya_parnaya/2.jpg",
+        "halls/finskaya_parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2900
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

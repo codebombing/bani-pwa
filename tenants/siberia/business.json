@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "kontrast_kvasom",
+      "name": "Контраст квасом",
+      "description": "",
+      "price_rub": 3000,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "ledyanaya_prostyn",
+      "name": "Ледяная простынь",
+      "description": "",
+      "price_rub": 2500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "siberia",
+  "name": "Siberia",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Siberia",
+      "sub": "банный СПА-комплекс · ежедневно 10:00–24"
+    }
+  },
+  "pwa": {
+    "short_name": "Siberia",
+    "description": "Бронь залов: Siberia"
+  },
+  "texts": {
+    "tagline": "Один зал · Марьина Роща · ежедневно 10:00–24:00",
+    "description": "Русская парная, русская парная на дровах, купели, камин, комната отдыха, банный чан, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 499 647-89-37",
+    "address": "Москва, улица Образцова, 31 ст3",
+    "whatsapp": "+79779917777",
+    "email": "info@siberia-spa.ru",
+    "coords": {
+      "lat": 55.792515,
+      "lng": 37.609104
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 7500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 7500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

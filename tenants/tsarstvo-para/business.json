@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "Банный комплекс",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "tsarstvo-para",
+  "name": "Царство Пара",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Царство Пара",
+      "sub": "Банный комплекс · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Царство Пара",
+    "description": "Бронь залов: Царство Пара"
+  },
+  "texts": {
+    "tagline": "Два зала · Южнопортовый · круглосуточно",
+    "description": "Русская парная, турецкая парная (хаммам), финская парная, бассейн, гидромассаж, джакузи, купели, танцпол, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 903 595-90-88",
+    "address": "Москва, улица Крутицкий Вал, 8/22",
+    "whatsapp": "+79669742288",
+    "telegram": "https://t.me/+79035959088",
+    "email": "xxx.sss@mail.ru",
+    "coords": {
+      "lat": 55.73043,
+      "lng": 37.664542
+    }
+  },
+  "halls": [
+    {
+      "key": "morskoy_zal",
+      "name": "Морской Зал",
+      "description": "Большой зал с огромным бассейном, хаммам и финская парная, караоке, бильярд, гостиная с аквариумами, комната отдыха - все это есть в Морском Зале!\n\nот 3000₽-4000 руб/час до 6 человек, свыше 6 человек 500 рублей за каждого человека",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/morskoy_zal/1.jpg",
+        "halls/morskoy_zal/2.jpg",
+        "halls/morskoy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_modern",
+      "name": "Зал Модерн",
+      "description": "Зал для небольших компаний с бассейном, караоке, финской парной, уютными комнатами отдыха и банкетным залом для отличного времяпровождения!\n\n2000 руб/час до 5 человек, свыше 5 человек 500 рублей за каждого человека",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_modern/1.jpg",
+        "halls/zal_modern/2.jpg",
+        "halls/zal_modern/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

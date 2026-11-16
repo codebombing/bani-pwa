@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "na-pervomayskoy",
+  "name": "На Первомайской",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "На Первомайской",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "На Первомайс",
+    "description": "Бронь залов: На Первомайской"
+  },
+  "texts": {
+    "tagline": "Два зала · Измайлово · круглосуточно",
+    "description": "Финская парная, бассейн, джакузи, бильярд, караоке, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 707-85-55",
+    "address": "Москва, Первомайская улица, 85",
+    "whatsapp": "+79267078555",
+    "email": "mitrofanvitalie75@gmail.com",
+    "coords": {
+      "lat": 55.793598,
+      "lng": 37.803103
+    }
+  },
+  "halls": [
+    {
+      "key": "zal_s_basseynom",
+      "name": "Зал с бассейном",
+      "description": "Идеальное место для отдыха небольшой компанией. Тёплая вода, комфортная зона для расслабления и чистая атмосфера. Стоимость зависит от количества гостей:\n\n1 гость — 1800 ₽/час\n\n2 гостя — 1900 ₽/час\n\n3 гостя — 2000 ₽/час\n\n4 гостя — 2100 ₽/час\n\n5 гостей — 2200 ₽/час\n\n6 гостей — 2300 ₽/час\n\n7 гостей — 2400 ₽/час\n\n8 гостей — 2500 ₽/час\n\nБолее 8 гостей — 3000 ₽/час\n\nМожно арендовать зал почасово или на весь день. Отлично подойдёт для праздников, семейного отдыха или уединённого релакса.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_s_basseynom/1.jpg",
+        "halls/zal_s_basseynom/2.jpg",
+        "halls/zal_s_basseynom/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_s_dzhakuzi",
+      "name": "Зал с джакузи",
+      "description": "Уютное пространство для отдыха и расслабления. Тёплая гидромассажная ванна, спокойная атмосфера и возможность провести время в компании друзей или наедине.\n\nСтоимость аренды:\n\n1 гость — 1500 ₽/час\n\n2 гостя — 1750 ₽/час\n\n3 гостя — 2000 ₽/час\n\nИдеально подойдёт для уединённого отдыха, романтического вечера или расслабляющего завершения дня.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_s_dzhakuzi/1.jpg",
+        "halls/zal_s_dzhakuzi/2.jpg",
+        "halls/zal_s_dzhakuzi/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

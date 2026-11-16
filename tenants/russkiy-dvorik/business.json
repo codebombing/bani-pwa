@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "Русский дворик, баня, Бутырского района",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "12:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "arenda_prostyni",
+      "name": "Аренда простыни",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "arenda_vafelnyy_halat",
+      "name": "Аренда вафельный халат",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "arenda_mahrovyy_halat",
+      "name": "Аренда махровый халат",
+      "description": "",
+      "price_rub": 250,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "russkiy-dvorik",
+  "name": "Русский дворик",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Русский дворик",
+      "sub": "баня · ежедневно 12:00–03:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Русский двор",
+    "description": "Бронь залов: Русский дворик"
+  },
+  "texts": {
+    "tagline": "Три зала · Бутырский · ежедневно 12:00–03:00",
+    "description": "Русская парная, финская парная, парильщик, бассейн, беседки, купели, танцпол, бильярд, караоке, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 903 725-88-83",
+    "address": "Москва, улица Милашенкова, 4 ст1",
+    "whatsapp": "+79037258883",
+    "coords": {
+      "lat": 55.822692,
+      "lng": 37.590534
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_russkoy_bani_v_chas_pn",
+      "name": "Аренда русской бани в час ( пн-ср) круглосуточно",
+      "description": "Стоимость аренды 1/2 настоящего двухэтажного деревянного банного сруба , с отдельным входом и мангальной зоной.\nЦены действительны для компании до 10 человек включительно",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_russkoy_bani_v_chas_pn/1.jpg",
+        "halls/arenda_russkoy_bani_v_chas_pn/2.jpg",
+        "halls/arenda_russkoy_bani_v_chas_pn/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_russkoy_bani_v_chas",
+      "name": "Аренда русской бани в час (чт-вс) с 10.00 до 16.00",
+      "description": "Стоимость аренды 1/2 настоящего двухэтажного деревянного банного сруба , с отдельным входом и мангальной зоной.\nЦены действительны для компании до 10 человек включительно.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_russkoy_bani_v_chas/1.jpg",
+        "halls/arenda_russkoy_bani_v_chas/2.jpg",
+        "halls/arenda_russkoy_bani_v_chas/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_russkoy_bani_v_chas-2",
+      "name": "Аренда русской бани в час (чт-вс) с 16.00 до 10.00",
+      "description": "Стоимость аренды 1/2 настоящего двухэтажного деревянного банного сруба , с отдельным входом и мангальной зоной.\nЦены действительны для компании до 10 человек включительно.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_russkoy_bani_v_chas-2/1.jpg",
+        "halls/arenda_russkoy_bani_v_chas-2/2.jpg",
+        "halls/arenda_russkoy_bani_v_chas-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

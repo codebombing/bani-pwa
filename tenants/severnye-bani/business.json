@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "15:00",
+        "start_to": "22:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "severnye-bani",
+  "name": "Северные бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Северные",
+      "sub": "баня · пн 15:00–24:00, вт 10:00–23:00, с"
+    }
+  },
+  "pwa": {
+    "short_name": "Северные",
+    "description": "Бронь залов: Северные бани"
+  },
+  "texts": {
+    "tagline": "Два зала · Северный · пн 15:00–24:00, вт 10:00–23:00, ср 10:00–23:00, чт 10:00–23:00, пт 10:00–23:00, сб 09:00–23:00, вс",
+    "description": "Общественная баня, русская парная, парильщик, бассейн, комната отдыха, веники, полотенца, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 548-84-58",
+    "address": "Москва, 3-я Северная линия, 2",
+    "telegram": "https://t.me/sbanya",
+    "email": "sekatuka@gmail.com",
+    "coords": {
+      "lat": 55.942794,
+      "lng": 37.552097
+    }
+  },
+  "halls": [
+    {
+      "key": "poseschenie_bani_budnie_dni_2",
+      "name": "Посещение бани БУДНИЕ ДНИ 2 часа",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/poseschenie_bani_budnie_dni_2/1.jpg",
+        "halls/poseschenie_bani_budnie_dni_2/2.jpg",
+        "halls/poseschenie_bani_budnie_dni_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "poseschenie_bani_vyhodnye_dni",
+      "name": "Посещение бани ВЫХОДНЫЕ ДНИ 2 часа",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/poseschenie_bani_vyhodnye_dni/1.jpg",
+        "halls/poseschenie_bani_vyhodnye_dni/2.jpg",
+        "halls/poseschenie_bani_vyhodnye_dni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

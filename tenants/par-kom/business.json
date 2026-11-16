@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "par-kom",
+  "name": "Пар.ком",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Пар.ком",
+      "sub": "банный комплекс · ежедневно 10:00–22:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Пар.ком",
+    "description": "Бронь залов: Пар.ком"
+  },
+  "texts": {
+    "tagline": "Один зал · Хамовники · ежедневно 10:00–22:00",
+    "description": "Турецкая парная (хаммам), тёплый бассейн, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 910 487-72-77",
+    "address": "Москва, улица Лужники, 24 ст4",
+    "whatsapp": "+79104877277",
+    "telegram": "https://t.me/magic_par",
+    "coords": {
+      "lat": 55.712523,
+      "lng": 37.559273
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "vyatskie-bani",
+  "name": "Вятские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Вятские",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Вятские",
+    "description": "Бронь залов: Вятские бани"
+  },
+  "texts": {
+    "tagline": "5 залов · Савёловский · круглосуточно",
+    "description": "Русская парная, русская парная на дровах, турецкая парная (хаммам), финская парная, бассейн, джакузи, купели, бильярд, караоке, камин, комната отдыха, настольный теннис, tv/dvd, веники, полотенца, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 685-29-85",
+    "address": "Москва, 4-й Вятский переулок, 10",
+    "coords": {
+      "lat": 55.801516,
+      "lng": 37.575869
+    }
+  },
+  "halls": [
+    {
+      "key": "obschee_otdelenie",
+      "name": "Общее отделение",
+      "description": "Вместимость: 40 человек.\nСтоимость указана за три часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/obschee_otdelenie/1.jpg",
+        "halls/obschee_otdelenie/2.jpg",
+        "halls/obschee_otdelenie/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "russkaya_banya_1",
+      "name": "Русская баня 1 (круглосуточно)",
+      "description": "Предлагаем попариться в настоящей русской бане в компании своих друзей. Испытайте на себе омолаживающий, целительный и расслабляющий эффект парения.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russkaya_banya_1/1.jpg",
+        "halls/russkaya_banya_1/2.jpg",
+        "halls/russkaya_banya_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "russkaya_banya_2",
+      "name": "Русская баня 2 (круглосуточно)",
+      "description": "Вместимость: 40 человек.\nСтоимость указана за три часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russkaya_banya_2/1.jpg",
+        "halls/russkaya_banya_2/2.jpg",
+        "halls/russkaya_banya_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "turetskaya_banya",
+      "name": "Турецкая баня (круглосуточно)",
+      "description": "Отдыхая в этом номере Вы окунетесь в атмосферу восточного гостеприимства и почувствуете себя султаном из сказки «Тысяча и одна ночь».",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/turetskaya_banya/1.jpg",
+        "halls/turetskaya_banya/2.jpg",
+        "halls/turetskaya_banya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "finskaya_sauna",
+      "name": "Финская сауна",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finskaya_sauna/1.jpg",
+        "halls/finskaya_sauna/2.jpg",
+        "halls/finskaya_sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

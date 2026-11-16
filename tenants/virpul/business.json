@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "proparka_2_dubovymi_venikami",
+      "name": "ПРОПАРКА 2 ДУБОВЫМИ ВЕНИКАМИ (3 х 10 мин )",
+      "description": "",
+      "price_rub": 7500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "virpul",
+  "name": "Вирпул",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Вирпул",
+      "sub": "СПА-сауна с бассейном · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Вирпул",
+    "description": "Бронь залов: Вирпул"
+  },
+  "texts": {
+    "tagline": "Два зала · Марьина Роща · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, гидромассаж, джакузи, купели, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 999 276-92-66",
+    "address": "Москва, улица Сущёвский Вал, 3/5а",
+    "coords": {
+      "lat": 55.792692,
+      "lng": 37.590952
+    }
+  },
+  "halls": [
+    {
+      "key": "malyy_zal",
+      "name": "Малый Зал",
+      "description": "Зал идеально подходит для двоих! Минимально - 2 часа.\nЧисто, тихо и по-домашнему уютно!\nКруглый, мягкий аеро-гидромассажный Джакузи (Вас будут массажировать теплые водяные струи и миллионы воздушных пузырьков).\nРусско-финская парная с лечебным камнем жадеит для мягкого и глубокого прогрева. Ароматерапия и шикарные дубовые веники.\nБар с прохладительными напитками и свежими фруктами! Это будет незабываемо!\nПолотенца, простыни и тапочки по - 150р\nПробковый сбор - 300р/чел. с алкоголем - 500р/чел.\nЗа подготовку, обслуживание и уборку зала взимается плата 10% от общего счета!\nЖдем Вас! Звоните!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malyy_zal/1.jpg",
+        "halls/malyy_zal/2.jpg",
+        "halls/malyy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bolshoy_zal",
+      "name": "Большой Зал",
+      "description": "Зал прекрасно подойдет для хорошей дружной компании!\nЦена за 6 человек. Более +150р/чел в час. Минимально 2 часа.\nИнтересный дизайн в охотничьем стиле. Чистый, теплый и не глубокий бассейн 3х6 м + Гидромассажный джакузи!\nПросторная парилка с парогенератором и лечебным камнем жадеит. В парилке пахнет мятой и хвоей!\nОбливное ведро с ледяной водой.\nДубовые веники, пропарки, пилинг и массаж!\nАвтомат караоке с большим выбором песен. Разливное пиво и другие напитки + закуски в баре!\nПолотенца, простыни и тапочки по - 150р\nПробковый сбор - 300р/чел. с алкоголем - 500р/чел.\nЗа подготовку, обслуживание и уборку зала взимается плата 10% от общего счета!\nЖдем Вас! Звоните!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal/1.jpg",
+        "halls/bolshoy_zal/2.jpg",
+        "halls/bolshoy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

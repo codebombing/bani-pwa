@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "serp-i-molot",
+  "name": "Серп и молот",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Серп и молот",
+      "sub": "банный комплекс · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Серп и молот",
+    "description": "Бронь залов: Серп и молот"
+  },
+  "texts": {
+    "tagline": "Один зал · Лефортово · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, парильщик, бассейн, гидромассаж, джакузи, тёплый бассейн, бильярд, караоке, камин, tv/dvd, полотенца, простыни, тапочки, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 458-94-99",
+    "address": "Москва, Золоторожский Вал улица, 11 ст5",
+    "whatsapp": "+79264589499",
+    "coords": {
+      "lat": 55.754863,
+      "lng": 37.694731
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 8,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

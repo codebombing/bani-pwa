@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "bryzgi-2",
+  "name": "Брызги",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Брызги",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Брызги",
+    "description": "Бронь залов: Брызги"
+  },
+  "texts": {
+    "tagline": "Два зала · Сокольники · круглосуточно",
+    "description": "Финская парная, бассейн, гидромассаж, джакузи, купели, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 897-72-30",
+    "address": "Москва, Стромынский переулок, 4",
+    "whatsapp": "+79268977230",
+    "telegram": "https://t.me/+79268977230",
+    "coords": {
+      "lat": 55.793269,
+      "lng": 37.694117
+    }
+  },
+  "halls": [
+    {
+      "key": "russkiy_zal",
+      "name": "Русский зал",
+      "description": "Аква зона: Бассейн (Подогрев, Противоток, Фильтрация, Подсветка, Гидромассаж)\nВид парной: Финская на 8 чел., паротермальная печь, можно с вениками,\nЗона отдыха: Современное караоке, массажное кресло, Зал для отдыха и 2 отдельные комнаты отдыха, роликовый массажер, бесплатный Wi-Fi, кабельное TV",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russkiy_zal/1.jpg",
+        "halls/russkiy_zal/2.jpg",
+        "halls/russkiy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_v_stile_modern",
+      "name": "Зал в стиле \"Модерн\"",
+      "description": "Аква зона: Профессиональное Джакузи (Подогрев, Противоток, Фильтрация, Подсветка, Гидромассаж)\nВид парной: Финская на 8 чел., паротермальная печь, можно с вениками, Инфракрасная кабина с гималайской солью, пол с подогревом\nЗона отдыха: Современное караоке, массажное кресло, Зал для отдыха и 2 отдельные комнаты отдыха, бесплатный Wi-Fi, кабельное TV",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_v_stile_modern/1.jpg",
+        "halls/zal_v_stile_modern/2.jpg",
+        "halls/zal_v_stile_modern/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

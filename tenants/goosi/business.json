@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "moydodyr_bannyy_myte",
+      "name": "Мойдодыр банный Мытье березовым веником и жидким ароматным банным мылом 20 мин",
+      "description": "",
+      "price_rub": 2750,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "kontrast_tsitrusovymi_kvasom",
+      "name": "Контраст цитрусовыми/ квасом/ минеральной водой/ травяными ледяными шайбами",
+      "description": "",
+      "price_rub": 1500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "rastiranie_berezovym_venikom",
+      "name": "Растирание березовым веником с алтайским медом, солью и травами",
+      "description": "",
+      "price_rub": 2500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "pomyvka_pennaya_berezovym",
+      "name": "Помывка пенная березовым веником / лыком",
+      "description": "",
+      "price_rub": 3500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "goosi",
+  "name": "Goosi",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Goosi",
+      "sub": "банный комплекс · ежедневно 10:00–22:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Goosi",
+    "description": "Бронь залов: Goosi"
+  },
+  "texts": {
+    "tagline": "Один зал · Сокольники · ежедневно 10:00–22:00",
+    "description": "Общественная баня, русская парная, джакузи, купели, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 967 033-52-52",
+    "address": "Москва, Песочная аллея, 7а",
+    "whatsapp": "+79670335252",
+    "telegram": "https://t.me/+79670335252",
+    "coords": {
+      "lat": 55.794035,
+      "lng": 37.665393
+    }
+  },
+  "halls": [
+    {
+      "key": "nabor_blek_banya_matras_valik",
+      "name": "Набор Блек баня (матрас, валик, подушка)",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/nabor_blek_banya_matras_valik/1.jpg",
+        "halls/nabor_blek_banya_matras_valik/2.jpg",
+        "halls/nabor_blek_banya_matras_valik/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

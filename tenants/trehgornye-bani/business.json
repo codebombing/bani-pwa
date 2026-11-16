@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "progrev_venikami",
+      "name": "Прогрев вениками",
+      "description": "",
+      "price_rub": 2500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "trehgornye-bani",
+  "name": "Трехгорные бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Трехгорные",
+      "sub": "банно-оздоровительный комплекс · круглос"
+    }
+  },
+  "pwa": {
+    "short_name": "Трехгорные",
+    "description": "Бронь залов: Трехгорные бани"
+  },
+  "texts": {
+    "tagline": "8 залов · Пресненский · круглосуточно",
+    "description": "Русская парная, турецкая парная (хаммам), финская парная, парильщик, купели, караоке, кальян, комната отдыха, tv/dvd, банный чан, мангал, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 340-09-09",
+    "address": "Москва, Рочдельская улица, 15 ст30",
+    "whatsapp": "+79853400909",
+    "telegram": "https://t.me/+79853400909",
+    "coords": {
+      "lat": 55.755658,
+      "lng": 37.561844
+    }
+  },
+  "halls": [
+    {
+      "key": "banya_loft_do_8_chel",
+      "name": "Баня Лофт (до 8 чел)",
+      "description": "С 10:00-16:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_loft_do_8_chel/1.jpg",
+        "halls/banya_loft_do_8_chel/2.jpg",
+        "halls/banya_loft_do_8_chel/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_loft_do_8_chel-2",
+      "name": "Баня Лофт (до 8 чел)",
+      "description": "С 16:00-10:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_loft_do_8_chel-2/1.jpg",
+        "halls/banya_loft_do_8_chel-2/2.jpg",
+        "halls/banya_loft_do_8_chel-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_eklektika_do_14_chel",
+      "name": "Баня Эклектика (до 14 чел)",
+      "description": "С 10:00-16:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_eklektika_do_14_chel/1.jpg",
+        "halls/banya_eklektika_do_14_chel/2.jpg",
+        "halls/banya_eklektika_do_14_chel/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_eklektika_do_14_chel-2",
+      "name": "Баня Эклектика (до 14 чел)",
+      "description": "С 16:00-10:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_eklektika_do_14_chel-2/1.jpg",
+        "halls/banya_eklektika_do_14_chel-2/2.jpg",
+        "halls/banya_eklektika_do_14_chel-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 7000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 7000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_folk_do_8_chel",
+      "name": "Баня Фолк (до 8 чел)",
+      "description": "С 10:00-16:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_folk_do_8_chel/1.jpg",
+        "halls/banya_folk_do_8_chel/2.jpg",
+        "halls/banya_folk_do_8_chel/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_folk_do_8_chel-2",
+      "name": "Баня Фолк (до 8 чел)",
+      "description": "С 16:00-10:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_folk_do_8_chel-2/1.jpg",
+        "halls/banya_folk_do_8_chel-2/2.jpg",
+        "halls/banya_folk_do_8_chel-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_lyuks_do_17_chel",
+      "name": "Баня Люкс (до 17 чел)",
+      "description": "С 10:00-16:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_lyuks_do_17_chel/1.jpg",
+        "halls/banya_lyuks_do_17_chel/2.jpg",
+        "halls/banya_lyuks_do_17_chel/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 7000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 7000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_lyuks_do_17_chel-2",
+      "name": "Баня Люкс (до 17 чел)",
+      "description": "С 16:00-10:00 аренда Большой перечень банных программ и процедур. Холодная и горячая купели. Разнообразие меню. 1 час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_lyuks_do_17_chel-2/1.jpg",
+        "halls/banya_lyuks_do_17_chel-2/2.jpg",
+        "halls/banya_lyuks_do_17_chel-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 8000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 8000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

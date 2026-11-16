@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "16:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "taygapar",
+  "name": "ТайгаПар",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "ТайгаПар",
+      "sub": "банный клуб · пн 16:00–23:00, вт 09:00–2"
+    }
+  },
+  "pwa": {
+    "short_name": "ТайгаПар",
+    "description": "Бронь залов: ТайгаПар"
+  },
+  "texts": {
+    "tagline": "Один зал · Пресненский · пн 16:00–23:00, вт 09:00–23:00, ср 09:00–23:00, чт 09:00–23:00, пт 09:00–23:00, сб 09:00–23:00,",
+    "description": "Общественная баня, русская парная, турецкая парная (хаммам), парильщик, бассейн, гидромассаж, купели, бильярд, комната отдыха, tv/dvd, веники, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 901 258-57-43",
+    "address": "Москва, Пресненская набережная, 4 ст1",
+    "email": "info@taigapar.ru",
+    "coords": {
+      "lat": 55.748791,
+      "lng": 37.543667
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

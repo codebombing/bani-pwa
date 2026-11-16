@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "venik_berezovyy",
+      "name": "ВЕНИК БЕРЕЗОВЫЙ",
+      "description": "",
+      "price_rub": 400,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_detskie",
+      "name": "ТАПОЧКИ ДЕТСКИЕ",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostyn_bolshaya_prokat",
+      "name": "ПРОСТЫНЬ БОЛЬШАЯ (ПРОКАТ)",
+      "description": "",
+      "price_rub": 350,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "rukavitsa_voylok",
+      "name": "РУКАВИЦА (ВОЙЛОК)",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_zhenskie",
+      "name": "ТАПОЧКИ ЖЕНСКИЕ",
+      "description": "",
+      "price_rub": 300,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_muzhskie",
+      "name": "ТАПОЧКИ МУЖСКИЕ",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_prokat",
+      "name": "ПОЛОТЕНЦЕ (ПРОКАТ)",
+      "description": "",
+      "price_rub": 300,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "shapka_voylok",
+      "name": "ШАПКА (ВОЙЛОК)",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_lipovyy",
+      "name": "ВЕНИК ЛИПОВЫЙ",
+      "description": "",
+      "price_rub": 400,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_vafelnoe_pokupka",
+      "name": "ПОЛОТЕНЦЕ ВАФЕЛЬНОЕ (ПОКУПКА)",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_pihta",
+      "name": "ВЕНИК ПИХТА",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "kovrik_voylok",
+      "name": "КОВРИК (ВОЙЛОК)",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_evkalipt",
+      "name": "ВЕНИК ЭВКАЛИПТ",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat_prokat",
+      "name": "ХАЛАТ (ПРОКАТ)",
+      "description": "",
+      "price_rub": 300,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_dubovyy",
+      "name": "ВЕНИК ДУБОВЫЙ",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "pokrovskie-bani",
+  "name": "Покровские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Покровские",
+      "sub": "баня · пн 10:00–23:00, вт 10:00–23:00, с"
+    }
+  },
+  "pwa": {
+    "short_name": "Покровские",
+    "description": "Бронь залов: Покровские бани"
+  },
+  "texts": {
+    "tagline": "Четыре зала · Филёвский парк · пн 10:00–23:00, вт 10:00–23:00, ср 10:00–23:00, чт 10:00–23:00, пт 10:00–23:00, сб 08:00–",
+    "description": "Общественная баня, русская парная, финская парная, бассейн, купели, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 499 148-26-04",
+    "address": "Москва, Багратионовский проезд, 12",
+    "coords": {
+      "lat": 55.744924,
+      "lng": 37.508491
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna_2_basseyn_do_4_chelovek",
+      "name": "САУНА №2 БАССЕЙН (ДО 4 ЧЕЛОВЕК)",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_2_basseyn_do_4_chelovek/1.jpg",
+        "halls/sauna_2_basseyn_do_4_chelovek/2.jpg",
+        "halls/sauna_2_basseyn_do_4_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_1_s_komnatoy_otdyha_do",
+      "name": "САУНА №1 С КОМНАТОЙ ОТДЫХА ( ДО 4 ЧЕЛОВЕК)",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_1_s_komnatoy_otdyha_do/1.jpg",
+        "halls/sauna_1_s_komnatoy_otdyha_do/2.jpg",
+        "halls/sauna_1_s_komnatoy_otdyha_do/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_4_basseyn_do_4_chelovek",
+      "name": "САУНА №4 БАССЕЙН (ДО 4 ЧЕЛОВЕК)",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_4_basseyn_do_4_chelovek/1.jpg",
+        "halls/sauna_4_basseyn_do_4_chelovek/2.jpg",
+        "halls/sauna_4_basseyn_do_4_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_3_basseyn_do_4_chelovek",
+      "name": "САУНА №3 БАССЕЙН (ДО 4 ЧЕЛОВЕК)",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_3_basseyn_do_4_chelovek/1.jpg",
+        "halls/sauna_3_basseyn_do_4_chelovek/2.jpg",
+        "halls/sauna_3_basseyn_do_4_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "16:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "usachevskie-bani",
+  "name": "Усачёвские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Усачёвские",
+      "sub": "баня · пн 16:00–23:00, вт 09:00–23:00, с"
+    }
+  },
+  "pwa": {
+    "short_name": "Усачёвские",
+    "description": "Бронь залов: Усачёвские бани"
+  },
+  "texts": {
+    "tagline": "6 залов · Хамовники · пн 16:00–23:00, вт 09:00–23:00, ср 09:00–23:00, чт 09:00–23:00, пт 09:00–23:00, сб 09:00–23:00, вс",
+    "description": "Общественная баня, русская парная, купели, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 740-84-36",
+    "address": "Москва, Усачёва улица, 10 ст1",
+    "whatsapp": "+79263908436",
+    "telegram": "https://t.me/usbanicc",
+    "coords": {
+      "lat": 55.728958,
+      "lng": 37.571149
+    }
+  },
+  "halls": [
+    {
+      "key": "vysshiy_muzhskoy_razryad",
+      "name": "Высший мужской разряд — столик за шторкой в общем зале на 3 часа",
+      "description": "Аренда на 3 часа. Оплачивается дополнительно к входным билетам. Продление — 1500 ₽ за час.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/vysshiy_muzhskoy_razryad/1.jpg",
+        "halls/vysshiy_muzhskoy_razryad/2.jpg",
+        "halls/vysshiy_muzhskoy_razryad/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vysshiy_muzhskoy_razryad-2",
+      "name": "Высший мужской разряд — столик за шторкой в общем зале — продление на 1 час",
+      "description": "Продление ранее оплаченной аренды. Входные билеты оплачиваются отдельно.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/vysshiy_muzhskoy_razryad-2/1.jpg",
+        "halls/vysshiy_muzhskoy_razryad-2/2.jpg",
+        "halls/vysshiy_muzhskoy_razryad-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "nomernoy_razryad_do_10_gostey",
+      "name": "Номерной разряд до 10 гостей — будни 09:00–16:00, 1 час",
+      "description": "Минимальная аренда — 3 часа. При переходе между тарифными периодами каждый час рассчитывается по действующей в это время ставке. Отдельная парная, купели и зона отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/nomernoy_razryad_do_10_gostey/1.jpg",
+        "halls/nomernoy_razryad_do_10_gostey/2.jpg",
+        "halls/nomernoy_razryad_do_10_gostey/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 12000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 12000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "nomernoy_razryad_do_10_goste-2",
+      "name": "Номерной разряд до 10 гостей — будни 16:00–21:00, 1 час",
+      "description": "Минимальная аренда — 3 часа. При переходе между тарифными периодами каждый час рассчитывается по действующей в это время ставке. Отдельная парная, купели и зона отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/nomernoy_razryad_do_10_goste-2/1.jpg",
+        "halls/nomernoy_razryad_do_10_goste-2/2.jpg",
+        "halls/nomernoy_razryad_do_10_goste-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 14000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 14000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "nomernoy_razryad_do_10_goste-3",
+      "name": "Номерной разряд до 10 гостей — будни 21:00–09:00, 1 час",
+      "description": "Минимальная аренда — 3 часа. При переходе между тарифными периодами каждый час рассчитывается по действующей в это время ставке. Отдельная парная, купели и зона отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/nomernoy_razryad_do_10_goste-3/1.jpg",
+        "halls/nomernoy_razryad_do_10_goste-3/2.jpg",
+        "halls/nomernoy_razryad_do_10_goste-3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 16000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 16000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "nomernoy_razryad_do_10_goste-4",
+      "name": "Номерной разряд до 10 гостей — выходные и праздники круглосуточно, 1 час",
+      "description": "Минимальная аренда — 3 часа. При переходе между тарифными периодами каждый час рассчитывается по действующей в это время ставке. Отдельная парная, купели и зона отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/nomernoy_razryad_do_10_goste-4/1.jpg",
+        "halls/nomernoy_razryad_do_10_goste-4/2.jpg",
+        "halls/nomernoy_razryad_do_10_goste-4/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 16000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 16000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

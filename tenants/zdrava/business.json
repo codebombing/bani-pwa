@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "22:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "med_i_par",
+      "name": "Мёд и пар",
+      "description": "",
+      "price_rub": 5900,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "mk_poznay_venik",
+      "name": "МК \"Познай ВЕНИК\"",
+      "description": "",
+      "price_rub": 10000,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "zdrava",
+  "name": "Здрава",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Здрава",
+      "sub": "баня · ежедневно 10:00–24:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Здрава",
+    "description": "Бронь залов: Здрава"
+  },
+  "texts": {
+    "tagline": "6 залов · Беговой · ежедневно 10:00–24:00",
+    "description": "Русская парная, купели, комната отдыха, веники, полотенца, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 916 527-79-97",
+    "address": "Москва, улица Правды, 24 ст3",
+    "whatsapp": "+79165277997",
+    "telegram": "https://t.me/+79165277997",
+    "coords": {
+      "lat": 55.788214,
+      "lng": 37.58285
+    }
+  },
+  "halls": [
+    {
+      "key": "banya_1",
+      "name": "Баня 1",
+      "description": "Большая баня Вместимость до 6 человек\nОтличия: купель, качели, в парной 2 полка, подходит как для индивидуального, так и коллективного отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_1/1.jpg",
+        "halls/banya_1/2.jpg",
+        "halls/banya_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_2",
+      "name": "Баня 2",
+      "description": "Маленькая баня Вместимость до 3 человек\nОтличия: капсульная баня, в парной 1 полок, идеальна для проведения индивидуальных банных и спа программ.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_2/1.jpg",
+        "halls/banya_2/2.jpg",
+        "halls/banya_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banya_3",
+      "name": "Баня 3",
+      "description": "Средняя баня Вместимость до 4 человек\nОтличия: в парной 1 большой полок, 1 маленький, есть внешний теплый полок. Подходит для индивидуального и коллективного отдыха, а так же, для обучения, так как в парной большое окно, которое позволяет видеть все, что происходит внутри.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_3/1.jpg",
+        "halls/banya_3/2.jpg",
+        "halls/banya_3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banyastilzhizni",
+      "name": "#БаняСтильЖизни",
+      "description": "ДЛЯ ЦЕНИТЕЛЕЙ РУССКОЙ БАНИ\nТолько Пар, Веники и Вы. Включает только парения и контрасты, никаких СПА.\n\nВключяет:\n- первый пар,\n- мягкое парение с воздушными контрастами,\n- интенсивное парение с водным контрастом,\n- жаркий добрев, с припарками и растирками.\n\n1 гость - 2 часа - 17 500 руб.\n2 гостя - 3 часа - 30 000 руб.\n\nВ стоимость включены веники, банные принадлежности, чай, сушки, лёгкие снеки.\nАренда бани в стоимость не входит.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banyastilzhizni/1.jpg",
+        "halls/banyastilzhizni/2.jpg",
+        "halls/banyastilzhizni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 15000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 15000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banyalyubov",
+      "name": "#БаняЛюбовь",
+      "description": "Программа для тех, кто устал и нуждается в заботе.\nДва часа программы равноценны недельному отдыху у бабушки.\n\nВключает:\n- первый пар,\n- нежная берёзовая помывка,\n- томящее парение с контрастом,\n- медовое глазирование.\n\n1 гость - 17500 руб. 2 часа\n2 гостя - 30000 руб. 3 часа\n\nВ стоимость включены веники, банные принадлежности, чай, сушки, лёгкие снеки.\nАренда бани в стоимость не входит.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banyalyubov/1.jpg",
+        "halls/banyalyubov/2.jpg",
+        "halls/banyalyubov/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 15000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 15000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "banyaperezagruzka",
+      "name": "#БаняПерезагрузка",
+      "description": "Программа для тех, кто нуждается в паузе и хочет взглянуть на обыденность под другим углом.\n\nВключает:\n- первый пар,\n- солевое выкатывание с парением спины и пролив водой,\n- интенсивное парение с водным контрастом,\n- парение-догрев\n\n1 гость - 2 часа - 17 500 руб.\n2 гостя - 3 часа - 30 000 руб.\n\nВ стоимость включены веники, банные принадлежности, чай, сушки, лёгкие снеки.\nАренда бани в стоимость не входит.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banyaperezagruzka/1.jpg",
+        "halls/banyaperezagruzka/2.jpg",
+        "halls/banyaperezagruzka/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 15000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 15000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

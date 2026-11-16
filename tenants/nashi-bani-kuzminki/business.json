@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "16:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "bannaya_pomyvka_berezovym",
+      "name": "Банная помывка березовым веником",
+      "description": "",
+      "price_rub": 2300,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prokat_prostyni",
+      "name": "Прокат простыни",
+      "description": "",
+      "price_rub": 350,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prokat_polotentsa_mahrovogo_1",
+      "name": "Прокат полотенца махрового (1 шт)",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat_h_b",
+      "name": "Халат х/б",
+      "description": "",
+      "price_rub": 5000,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat_detskiy_h_b",
+      "name": "Халат детский х/б",
+      "description": "",
+      "price_rub": 4000,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_mahrovoe",
+      "name": "Полотенце махровое",
+      "description": "",
+      "price_rub": 3000,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_dub",
+      "name": "Веник дуб",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_bereza",
+      "name": "Веник береза",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "nashi-bani-kuzminki",
+  "name": "Наши бани. Кузьминки",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Наши бани. Кузьминки",
+      "sub": "баня · пн 16:00–23:00, вт 09:00–23:00, с"
+    }
+  },
+  "pwa": {
+    "short_name": "Наши бани. К",
+    "description": "Бронь залов: Наши бани. Кузьминки"
+  },
+  "texts": {
+    "tagline": "Два зала · Кузьминки · пн 16:00–23:00, вт 09:00–23:00, ср 09:00–23:00, чт 09:00–23:00, пт 09:00–23:00, сб 08:00–23:00, в",
+    "description": "Общественная баня, русская парная, турецкая парная (хаммам), купели, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 109-33-55",
+    "address": "Москва, улица Маршала Чуйкова, 3",
+    "whatsapp": "+79311113624",
+    "telegram": "https://t.me/nashibanikuzminki",
+    "coords": {
+      "lat": 55.703803,
+      "lng": 37.765043
+    }
+  },
+  "halls": [
+    {
+      "key": "termos_nashi_bani",
+      "name": "Термос «Наши бани»",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/termos_nashi_bani/1.jpg",
+        "halls/termos_nashi_bani/2.jpg",
+        "halls/termos_nashi_bani/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "termokruzhka_nashi_bani",
+      "name": "Термокружка «Наши бани»",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/termokruzhka_nashi_bani/1.jpg",
+        "halls/termokruzhka_nashi_bani/2.jpg",
+        "halls/termokruzhka_nashi_bani/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

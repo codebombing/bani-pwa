@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "dva_zahod_pod_dubovye_veniki",
+      "name": "Два заход под дубовые веники",
+      "description": "",
+      "price_rub": 6500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "pomyvka_berezovym_venikom",
+      "name": "Помывка березовым веником",
+      "description": "",
+      "price_rub": 3000,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "ne-parsya",
+  "name": "Не парься",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Не парься",
+      "sub": "банное место · ежедневно 10:00–23:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Не парься",
+    "description": "Бронь залов: Не парься"
+  },
+  "texts": {
+    "tagline": "Один зал · Даниловский · ежедневно 10:00–23:00",
+    "description": "Русская парная, финская парная, купели, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 977 496-22-44",
+    "address": "Москва, Автозаводская улица, 23а к4",
+    "whatsapp": "+79774962244",
+    "telegram": "https://t.me/neparspa",
+    "coords": {
+      "lat": 55.70078,
+      "lng": 37.646923
+    }
+  },
+  "halls": [
+    {
+      "key": "banya_bazovaya",
+      "name": "Баня - базовая",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_bazovaya/1.jpg",
+        "halls/banya_bazovaya/2.jpg",
+        "halls/banya_bazovaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 10000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 10000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

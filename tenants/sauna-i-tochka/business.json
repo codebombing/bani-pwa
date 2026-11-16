@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "sauna-i-tochka",
+  "name": "Сауна и Точка",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Сауна и Точка",
+      "sub": "баня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Сауна и Точк",
+    "description": "Бронь залов: Сауна и Точка"
+  },
+  "texts": {
+    "tagline": "Два зала · Таганский · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, парильщик, бассейн, джакузи, комната отдыха, мангал, веники.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 903 228-77-14",
+    "address": "Москва, Гончарная улица, 38",
+    "coords": {
+      "lat": 55.741513,
+      "lng": 37.650276
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_bani_i_sauny",
+      "name": "Аренда бани и сауны",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_i_sauny/1.jpg",
+        "halls/arenda_bani_i_sauny/2.jpg",
+        "halls/arenda_bani_i_sauny/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "finsko_turetskiy_vip_zal",
+      "name": "Финско-Турецкий VIP зал",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finsko_turetskiy_vip_zal/1.jpg",
+        "halls/finsko_turetskiy_vip_zal/2.jpg",
+        "halls/finsko_turetskiy_vip_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
