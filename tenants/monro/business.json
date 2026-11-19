@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "chay_travyanoy_chaynik",
+      "name": "Чай травяной /чайник",
+      "description": "",
+      "price_rub": 350,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_odnorazovye",
+      "name": "Тапочки одноразовые",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat",
+      "name": "Халат",
+      "description": "",
+      "price_rub": 350,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "monro",
+  "name": "Монро",
+  "theme": {
+    "accent": "#C8873A",
+    "wordmark": {
+      "main": "Монро",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Монро",
+    "description": "Бронь залов: Монро"
+  },
+  "texts": {
+    "tagline": "Три зала · Марьино · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, тёплый бассейн, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 966 668-58-58",
+    "address": "Москва, Братиславская улица, 29 к1",
+    "coords": {
+      "lat": 55.653833,
+      "lng": 37.767171
+    }
+  },
+  "halls": [
+    {
+      "key": "dopolnitelnyy_chelovek",
+      "name": "Дополнительный человек",
+      "description": "Каждый человек свыше 6 оплачивается дополнительно за каждый час посещения сауны!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/dopolnitelnyy_chelovek/1.jpg",
+        "halls/dopolnitelnyy_chelovek/2.jpg",
+        "halls/dopolnitelnyy_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "servisnyy_sbor_pn_cht",
+      "name": "Сервисный сбор /пн-чт",
+      "description": "За принесенные с собой продукты оплачивается пробковый сбор.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/servisnyy_sbor_pn_cht/1.jpg",
+        "halls/servisnyy_sbor_pn_cht/2.jpg",
+        "halls/servisnyy_sbor_pn_cht/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "servisnyy_sbor_pt_vs",
+      "name": "Сервисный сбор / пт-вс",
+      "description": "За принесенные с собой продукты оплачивается пробковый сбор.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/servisnyy_sbor_pt_vs/1.jpg",
+        "halls/servisnyy_sbor_pt_vs/2.jpg",
+        "halls/servisnyy_sbor_pt_vs/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

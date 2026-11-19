@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": null,
+      "tue": {
+        "start_from": "12:00",
+        "start_to": "15:45"
+      },
+      "wed": {
+        "start_from": "12:00",
+        "start_to": "15:45"
+      },
+      "thu": {
+        "start_from": "12:00",
+        "start_to": "15:45"
+      },
+      "fri": {
+        "start_from": "12:00",
+        "start_to": "17:45"
+      },
+      "sat": {
+        "start_from": "09:00",
+        "start_to": "17:45"
+      },
+      "sun": {
+        "start_from": "09:00",
+        "start_to": "17:30"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "kosinskie-bani",
+  "name": "Косинские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Косинские",
+      "sub": "баня · пн выходной, вт 12:00–17:45, ср 1"
+    }
+  },
+  "pwa": {
+    "short_name": "Косинские",
+    "description": "Бронь залов: Косинские бани"
+  },
+  "texts": {
+    "tagline": "Один зал · Косино-Ухтомский · пн выходной, вт 12:00–17:45, ср 12:00–17:45, чт 12:00–17:45, пт 12:00–19:45, сб 09:00–19:4",
+    "description": "Русская парная на дровах, бассейн, купели, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 700-03-64",
+    "address": "Москва, Ветлужская улица, 8Б",
+    "coords": {
+      "lat": 55.720424,
+      "lng": 37.862653
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 800
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "mahrovoe_bannoe_polotentse",
+      "name": "Махровое банное полотенце",
+      "description": "",
+      "price_rub": 300,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannaya_prostynya_dlya_parnoy",
+      "name": "Банная простыня для парной",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannyy_halat_dlya_otdyha",
+      "name": "Банный халат для отдыха",
+      "description": "",
+      "price_rub": 800,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannyy_travyanoy_chay_vysokiy",
+      "name": "Банный травяной чай «Высокий пар» — 1 л",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "avtorskiy_bannyy_chay_tri",
+      "name": "Авторский банный чай «Три стихии» — 1 л",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "zhasminovyy_chay_molihua_cha",
+      "name": "Жасминовый чай Молихуа Ча — 1 л",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chay_molochnyy_ulun_1_l",
+      "name": "Чай молочный улун — 1 л",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "fruktovo_yagodnyy_chay",
+      "name": "Фруктово-ягодный чай «Нахальный фрукт» — 1 л",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chernyy_chay_assam_1_l",
+      "name": "Чёрный чай Ассам — 1 л",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "vysokiy-par",
+  "name": "Высокий пар",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Высокий пар",
+      "sub": "баня · ежедневно 10:00–02:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Высокий пар",
+    "description": "Бронь залов: Высокий пар"
+  },
+  "texts": {
+    "tagline": "Четыре зала · Хорошёво-Мнёвники · ежедневно 10:00–02:00",
+    "description": "Русская парная на дровах, парильщик, на берегу, купели, кальян, комната отдыха, tv/dvd, банный чан, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 925 084-23-82",
+    "address": "Москва",
+    "coords": {
+      "lat": 55.771222,
+      "lng": 37.46129
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_bani_na_vode_utro",
+      "name": "Аренда бани на воде — утро",
+      "description": "Стоимость — 4 990 ₽/час по тарифу «Утро» с 10:00 до 13:00 (время парения от 4 часов). Минимальное бронирование — 4 часа. Цена указана за всю баню, а не за человека. Комфортная вместимость — до 10 гостей; 11-й и 12-й гость — дополнительно 500 ₽ с человека за каждый час аренды. В аренду входят парная на дровах, зона отдыха, банные шапочки, резиновые тапочки, гель для душа, посуда, Wi-Fi, телевизор, колонка Алиса и фен. Горячий чан и услуги пармастера оплачиваются отдельно. Утренний отдых в панорамной бане на воде — возможность начать день с мягкого пара, тишины и вида на воду. «Высокий пар» — приватная плавучая баня на воде в районе Хорошёво-Мнёвники в Москве. Панорамные окна открывают вид на воду. Возможность прогулки с капитаном, маршрут и условия остановок уточняйте при бронировании. Подходит для семейного отдыха, встречи с друзьями, дня рождения или камерного праздника. Время действия утреннего тарифа уточняйте при бронировании.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_na_vode_utro/1.jpg",
+        "halls/arenda_bani_na_vode_utro/2.jpg",
+        "halls/arenda_bani_na_vode_utro/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4990
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4990
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_na_vode_budni",
+      "name": "Аренда бани на воде — будни",
+      "description": "Стоимость — 5 990 ₽/час по тарифу «Будни» с 13:00 до 24:00 (время парения от 4 часов). Минимальное бронирование — 4 часа. Цена указана за всю баню, а не за человека. Комфортная вместимость — до 10 гостей; 11-й и 12-й гость — дополнительно 500 ₽ с человека за каждый час аренды. В аренду входят парная на дровах, зона отдыха, банные шапочки, резиновые тапочки, гель для душа, посуда, Wi-Fi, телевизор, колонка Алиса и фен. Горячий чан и услуги пармастера оплачиваются отдельно. Снять баню на дровах в Москве в будний день можно для спокойного отдыха вдвоём или своей компанией без посторонних. «Высокий пар» — приватная плавучая баня на воде в районе Хорошёво-Мнёвники в Москве. Панорамные окна открывают вид на воду. Возможность прогулки с капитаном, маршрут и условия остановок уточняйте при бронировании. Подходит для семейного отдыха, встречи с друзьями, дня рождения или камерного праздника. Доступные дни и часы по тарифу уточняйте при бронировании.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_na_vode_budni/1.jpg",
+        "halls/arenda_bani_na_vode_budni/2.jpg",
+        "halls/arenda_bani_na_vode_budni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5990
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5990
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_na_vode_vyhodnye",
+      "name": "Аренда бани на воде — выходные",
+      "description": "Стоимость — 6 990 ₽/час по тарифу «Выходной» с 13:00 до 24:00 (время парения от 4 часов). Минимальное бронирование — 4 часа. Цена указана за всю баню, а не за человека. Комфортная вместимость — до 10 гостей; 11-й и 12-й гость — дополнительно 500 ₽ с человека за каждый час аренды. В аренду входят парная на дровах, зона отдыха, банные шапочки, резиновые тапочки, гель для душа, посуда, Wi-Fi, телевизор, колонка Алиса и фен. Горячий чан и услуги пармастера оплачиваются отдельно. Панорамная баня в Москве подходит для выходного с близкими: парение на дровах, просторная комната отдыха, вид на воду и возможность отдохнуть на террасе. «Высокий пар» — приватная плавучая баня на воде в районе Хорошёво-Мнёвники в Москве. Панорамные окна открывают вид на воду. Возможность прогулки с капитаном, маршрут и условия остановок уточняйте при бронировании. Подходит для семейного отдыха, встречи с друзьями, дня рождения или камерного праздника. Свободные даты и условия выходного тарифа уточняйте заранее.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_na_vode_vyhodnye/1.jpg",
+        "halls/arenda_bani_na_vode_vyhodnye/2.jpg",
+        "halls/arenda_bani_na_vode_vyhodnye/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6990
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6990
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "romanticheskoe_ukrashenie",
+      "name": "Романтическое украшение бани лепестками роз",
+      "description": "Украшение лепестками роз поможет создать романтическую атмосферу в плавучей бане с панорамными окнами и видом на воду. Дополнительную услугу можно заказать для свидания, годовщины, предложения руки и сердца или особенного вечера вдвоём. Оформление подготавливают к согласованному времени; детали и объём декора уточняйте при бронировании.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/romanticheskoe_ukrashenie/1.jpg",
+        "halls/romanticheskoe_ukrashenie/2.jpg",
+        "halls/romanticheskoe_ukrashenie/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

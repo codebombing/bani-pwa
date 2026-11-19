@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "tri-sauny",
+  "name": "Три Сауны",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Сауны",
+      "main": "Три",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Три",
+    "description": "Бронь залов: Три Сауны"
+  },
+  "texts": {
+    "tagline": "Три зала · Чертаново Южное · круглосуточно",
+    "description": "Финская парная, бассейн, купели, караоке, комната отдыха, настольный теннис, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 967 222-35-66",
+    "address": "Москва, улица Академика Янгеля, 14 к7",
+    "whatsapp": "+79672223566",
+    "coords": {
+      "lat": 55.602223,
+      "lng": 37.580886
+    }
+  },
+  "halls": [
+    {
+      "key": "bolshoy_zal",
+      "name": "Большой зал",
+      "description": "Большая сауна площадью 100м2 на 10 гостей, с доплатой до 15\n- финская парная\n- бассейн 4,5х2м\n- настольный теннис\n- банкетный зал\n- караоке\n- массажное кресло\n- комната отдыха\nПонедельник-четверг от 2200 руб./час\nПятница-воскресенье/ праздничные дни от2500 руб./час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal/1.jpg",
+        "halls/bolshoy_zal/2.jpg",
+        "halls/bolshoy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sredniy_zal",
+      "name": "Средний зал",
+      "description": "Средняя сауна площадью 60м2 на 6 гостей\n- финская парная с солевой лампой\n- обливочное ведро\n- караоке\n- массажное кресло\n- комната отдыха\n-TV\nПонедельник-четверг от 1900 руб/час\nПятница-воскресение/ праздничные дни от 2200 руб./час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sredniy_zal/1.jpg",
+        "halls/sredniy_zal/2.jpg",
+        "halls/sredniy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "malyy_zal",
+      "name": "Малый зал",
+      "description": "Малая сауна площадью 40м2 на 4 гостей\n- финская парная\n- купель 1,3х1,3м\n- комната отдыха\n-TV/муз.центр\nПонедельник-четверг от 1700 руб./час\nПятница-воскресение/праздничные дни от 2000 руб./час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malyy_zal/1.jpg",
+        "halls/malyy_zal/2.jpg",
+        "halls/malyy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

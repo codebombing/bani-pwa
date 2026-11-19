@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "venik_dubovyy",
+      "name": "Веник дубовый",
+      "description": "",
+      "price_rub": 800,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_prostyn_prokat",
+      "name": "Полотенце, простынь (прокат)",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_mahrovye",
+      "name": "Тапочки махровые",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "oazis",
+  "name": "Оазис",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Оазис",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Оазис",
+    "description": "Бронь залов: Оазис"
+  },
+  "texts": {
+    "tagline": "Два зала · Печатники · круглосуточно",
+    "description": "Финская парная, тёплый бассейн, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 970-24-49",
+    "address": "Москва, 1-я Курьяновская улица, 22 ст2",
+    "whatsapp": "+79859702449",
+    "coords": {
+      "lat": 55.654707,
+      "lng": 37.702642
+    }
+  },
+  "halls": [
+    {
+      "key": "bolshoy_zal",
+      "name": "Большой зал",
+      "description": "Караоке, бассейн, гостиная, парная, бильярд, 2-ве комнаты отдыха. Стоимость указана для 6-ти, свыше указанного количества человек доплата 150 руб/час с человека.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal/1.jpg",
+        "halls/bolshoy_zal/2.jpg",
+        "halls/bolshoy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "malyy_zal",
+      "name": "Малый зал",
+      "description": "Сутки 4500 руб.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malyy_zal/1.jpg",
+        "halls/malyy_zal/2.jpg",
+        "halls/malyy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 700
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "polotentse_1_sht",
+      "name": "полотенце 1 шт.",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chaynik_1_5_l",
+      "name": "Чайник 1,5 л.",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "shapka_1_sht",
+      "name": "шапка 1 шт.",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chaynik_0_5_l",
+      "name": "Чайник 0.5 л.",
+      "description": "",
+      "price_rub": 250,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "uborka_venika_venik_s_soboy_1",
+      "name": "Уборка веника (веник с собой)1 шт.",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostynya_1_sht",
+      "name": "простыня 1 шт.",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "parilkin-haus",
+  "name": "Парилкин Хаус",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Парилкин Хаус",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Парилкин Хау",
+    "description": "Бронь залов: Парилкин Хаус"
+  },
+  "texts": {
+    "tagline": "Один зал · Щербинка · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, гидромассаж, джакузи, купели, танцпол, бильярд, караоке, кальян, комната отдыха, tv/dvd, банный чан, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 915 000-85-12",
+    "address": "Москва, Юбилейная улица, 3а",
+    "whatsapp": "+79150008512",
+    "coords": {
+      "lat": 55.50864,
+      "lng": 37.565637
+    }
+  },
+  "halls": [
+    {
+      "key": "bavariya_bezalkogolnoe_0_5_l",
+      "name": "Бавария безалкогольное 0,5 л",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 8,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bavariya_bezalkogolnoe_0_5_l/1.jpg",
+        "halls/bavariya_bezalkogolnoe_0_5_l/2.jpg",
+        "halls/bavariya_bezalkogolnoe_0_5_l/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

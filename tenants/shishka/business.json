@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "shishka",
+  "name": "Шишка",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Шишка",
+      "sub": "банный комплекс · ежедневно 10:00–23:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Шишка",
+    "description": "Бронь залов: Шишка"
+  },
+  "texts": {
+    "tagline": "Один зал · Филимонковский · ежедневно 10:00–23:00",
+    "description": "Русская парная, русская парная на дровах, парильщик, бассейн, гидромассаж, купели, караоке, кальян, камин, комната отдыха, tv/dvd, банный чан, мангал, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 242-01-11",
+    "address": "Москва, квартал 108, 17а",
+    "whatsapp": "+79852420111",
+    "telegram": "https://t.me/+79852420111",
+    "coords": {
+      "lat": 55.568147,
+      "lng": 37.352862
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

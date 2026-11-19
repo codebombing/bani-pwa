@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "14:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "09:00",
+        "start_to": "20:00"
+      },
+      "sat": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "09:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "marinskie-bani",
+  "name": "Марьинские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Марьинские",
+      "sub": "баня · пн 09:00–23:00, вт 14:00–23:00, с"
+    }
+  },
+  "pwa": {
+    "short_name": "Марьинские",
+    "description": "Бронь залов: Марьинские бани"
+  },
+  "texts": {
+    "tagline": "5 залов · Марьино · пн 09:00–23:00, вт 14:00–23:00, ср 09:00–23:00, чт 09:00–23:00, пт 09:00–22:00, сб 09:00–23:00, вс 0",
+    "description": "Общественная баня, русская парная, караоке, комната отдыха, tv/dvd, веники, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 499 357-04-09",
+    "address": "Москва, улица Нижние Поля, 21Б ст1",
+    "coords": {
+      "lat": 55.658793,
+      "lng": 37.736625
+    }
+  },
+  "halls": [
+    {
+      "key": "marinskie_bani",
+      "name": "Марьинские бани",
+      "description": "Общественные бани. Минимальное время заказа - 3 часа.\nЕсть льготные часы - до 12:00.\nСр, вс - женские дни.\nПн-вт, чт-сб - мужские дни.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/marinskie_bani/1.jpg",
+        "halls/marinskie_bani/2.jpg",
+        "halls/marinskie_bani/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 250
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "marinskie_baninomer",
+      "name": "Марьинские баниномер",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/marinskie_baninomer/1.jpg",
+        "halls/marinskie_baninomer/2.jpg",
+        "halls/marinskie_baninomer/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "obschee_otdelenie_ot_3_chasov",
+      "name": "ОБЩЕЕ ОТДЕЛЕНИЕ от 3 часов",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/obschee_otdelenie_ot_3_chasov/1.jpg",
+        "halls/obschee_otdelenie_ot_3_chasov/2.jpg",
+        "halls/obschee_otdelenie_ot_3_chasov/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "obschee_otdelenie_pensionery",
+      "name": "Общее отделение (пенсионеры и инвалиды)",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/obschee_otdelenie_pensionery/1.jpg",
+        "halls/obschee_otdelenie_pensionery/2.jpg",
+        "halls/obschee_otdelenie_pensionery/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "otdelnye_nomera",
+      "name": "ОТДЕЛЬНЫЕ НОМЕРА",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/otdelnye_nomera/1.jpg",
+        "halls/otdelnye_nomera/2.jpg",
+        "halls/otdelnye_nomera/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

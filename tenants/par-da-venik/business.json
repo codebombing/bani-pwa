@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "venik",
+      "name": "Веник",
+      "description": "",
+      "price_rub": 800,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "par-da-venik",
+  "name": "Пар да Веник",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Пар да Веник",
+      "sub": "оздоровительный центр · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Пар да Веник",
+    "description": "Бронь залов: Пар да Веник"
+  },
+  "texts": {
+    "tagline": "5 залов · Бибирево · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, тапочки, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 901 256-59-20",
+    "address": "Москва, улица Плещеева, 7",
+    "coords": {
+      "lat": 55.887343,
+      "lng": 37.611165
+    }
+  },
+  "halls": [
+    {
+      "key": "malyy_zal_do_4_chelovek",
+      "name": "Малый зал до 4 человек",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malyy_zal_do_4_chelovek/1.jpg",
+        "halls/malyy_zal_do_4_chelovek/2.jpg",
+        "halls/malyy_zal_do_4_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "malyy_zal_ot_4_do_6_chelovek",
+      "name": "Малый зал от 4 до 6 человек",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malyy_zal_ot_4_do_6_chelovek/1.jpg",
+        "halls/malyy_zal_ot_4_do_6_chelovek/2.jpg",
+        "halls/malyy_zal_ot_4_do_6_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bolshoy_zal_do_4_chelovek",
+      "name": "Большой зал до 4 человек",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal_do_4_chelovek/1.jpg",
+        "halls/bolshoy_zal_do_4_chelovek/2.jpg",
+        "halls/bolshoy_zal_do_4_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bolshoy_zal_ot_5_do_8_chelovek",
+      "name": "Большой зал от 5 до 8 человек",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal_ot_5_do_8_chelovek/1.jpg",
+        "halls/bolshoy_zal_ot_5_do_8_chelovek/2.jpg",
+        "halls/bolshoy_zal_ot_5_do_8_chelovek/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bolshoy_zal_ot_8_do_10",
+      "name": "Большой зал от 8 до 10 человек",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal_ot_8_do_10/1.jpg",
+        "halls/bolshoy_zal_ot_8_do_10/2.jpg",
+        "halls/bolshoy_zal_ot_8_do_10/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2400
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2400
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

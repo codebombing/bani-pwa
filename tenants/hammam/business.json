@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "hammam",
+  "name": "Хаммам",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Хаммам",
+      "sub": "баня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Хаммам",
+    "description": "Бронь залов: Хаммам"
+  },
+  "texts": {
+    "tagline": "Два зала · Марфино · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, бассейн, купели, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 967 070-43-73",
+    "address": "Москва, Гостиничный проезд, 8 к1",
+    "whatsapp": "+79670704373",
+    "coords": {
+      "lat": 55.845661,
+      "lng": 37.575963
+    }
+  },
+  "halls": [
+    {
+      "key": "turetskaya_banya",
+      "name": "Турецкая баня",
+      "description": "Номер с банкетным залом, комнатой отдыха, русским бильярдом, спутниковым ТВ и караоке.\nКомната отдыха с гидромассажной душевой кабиной, жк-телевизором: 600 руб/час.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/turetskaya_banya/1.jpg",
+        "halls/turetskaya_banya/2.jpg",
+        "halls/turetskaya_banya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "finskaya_sauna",
+      "name": "Финская сауна",
+      "description": "Номер с бассейном, комнатой отдыха, русским бильярдом, банкетным залом и караоке.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finskaya_sauna/1.jpg",
+        "halls/finskaya_sauna/2.jpg",
+        "halls/finskaya_sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

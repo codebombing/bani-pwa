@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "hamovniki",
+  "name": "Хамовники",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Хамовники",
+      "sub": "клуб-сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Хамовники",
+    "description": "Бронь залов: Хамовники"
+  },
+  "texts": {
+    "tagline": "Один зал · Хамовники · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, бильярд, караоке, комната отдыха, настольный теннис, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 786-68-29",
+    "address": "Москва, улица Льва Толстого, 23/7 ст3",
+    "coords": {
+      "lat": 55.735619,
+      "lng": 37.584264
+    }
+  },
+  "halls": [
+    {
+      "key": "klub_sauna",
+      "name": "Клуб-сауна",
+      "description": "Для Вас работает просторная парная и бассейн с гидромассажем, противотоком и подогревом воды. Климат-контроль в помещении.\nСовременный HD проектор с экраном диагональю 4 метра обеспечит приятный просмотр «Триколор ТВ», спортивных программ, DVD-дисков и караоке за обеденным столом, а мощный, чистый звук и большая свободная площадь обеспечит возможность проведения веселых вечеринок.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/klub_sauna/1.jpg",
+        "halls/klub_sauna/2.jpg",
+        "halls/klub_sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

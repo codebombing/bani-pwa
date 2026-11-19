@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "sorento",
+  "name": "Соренто",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Соренто",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Соренто",
+    "description": "Бронь залов: Соренто"
+  },
+  "texts": {
+    "tagline": "Три зала · Тимирязевский · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, бассейн, купели, танцпол, детский бассейн, караоке, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 919 015-08-04",
+    "address": "Москва, Дмитровское шоссе, 27 к1",
+    "whatsapp": "+79190150804",
+    "coords": {
+      "lat": 55.826586,
+      "lng": 37.570349
+    }
+  },
+  "halls": [
+    {
+      "key": "s_dzhakuzi",
+      "name": "С джакузи",
+      "description": "Джакузи, Подсветка, Гейзер, Гидромассаж, Водопад;\nМассажный стол, Оздоровительный массаж, Расслабляющий массаж,\nБанщик, Выбор веников, Ароматерапия;\nГостиная, Кальян, Бар.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/s_dzhakuzi/1.jpg",
+        "halls/s_dzhakuzi/2.jpg",
+        "halls/s_dzhakuzi/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "finsko_russkaya",
+      "name": "Финско-Русская",
+      "description": "Бассейн (Подогрев, Противоток, Фильтрация, Подсветка, Гейзер, Гидромассаж, Водопад), Массажный стол, Оздоровительный массаж, Расслабляющий массаж, Солярий, Гидромассаж, Банщик, Выбор веников, Массаж, Ароматерапия, ароматы для парной, Аудио-видео апп., Плазменная панель, Караоке, Есть кондиционеры, Гостиная, Кальян, Бар.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finsko_russkaya/1.jpg",
+        "halls/finsko_russkaya/2.jpg",
+        "halls/finsko_russkaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "furako",
+      "name": "Фурако",
+      "description": "Фурако – это деревянная купель в виде бочки.\nДля усиления эффекта в воду фурако добавляют экстракты трав, ароматические масла, соли, лепестки роз. После фурако посетитель японской бани ложится на кушетку и отдыхает. Желательно, чтобы период покоя продолжался не менее часа – неспешные японцы знают толк в расслаблении. За это время тело расслабляется, мысли приводятся в порядок, нервы успокаиваются.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/furako/1.jpg",
+        "halls/furako/2.jpg",
+        "halls/furako/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

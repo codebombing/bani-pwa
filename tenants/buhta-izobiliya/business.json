@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "buhta-izobiliya",
+  "name": "Бухта изобилия",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Бухта изобилия",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Бухта изобил",
+    "description": "Бронь залов: Бухта изобилия"
+  },
+  "texts": {
+    "tagline": "Три зала · Преображенское · круглосуточно",
+    "description": "Финская парная, тёплый бассейн, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 901 546-49-46",
+    "address": "Москва, Большая Черкизовская улица, 5",
+    "coords": {
+      "lat": 55.798649,
+      "lng": 37.718773
+    }
+  },
+  "halls": [
+    {
+      "key": "morskaya_buhta",
+      "name": "Морская бухта",
+      "description": "Зал оформлен в морском стиле. Нежно-голубые стены украшены декором из натуральных камней и картинами с изображением морских просторов. Зона для банкета оборудована красивыми кожаными диванами и пуфами, большим столом для блюд. Гостей, которые любят попеть, порадует наличие современной системы караоке.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/morskaya_buhta/1.jpg",
+        "halls/morskaya_buhta/2.jpg",
+        "halls/morskaya_buhta/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arendy_zalov_10_00_16_00",
+      "name": "аренды залов 10:00-16:00",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arendy_zalov_10_00_16_00/1.jpg",
+        "halls/arendy_zalov_10_00_16_00/2.jpg",
+        "halls/arendy_zalov_10_00_16_00/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1400
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arendy_zalov_16_00_10_00",
+      "name": "аренды залов 16:00-10:00",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arendy_zalov_16_00_10_00/1.jpg",
+        "halls/arendy_zalov_16_00_10_00/2.jpg",
+        "halls/arendy_zalov_16_00_10_00/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

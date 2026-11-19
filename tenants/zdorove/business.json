@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "zdorove",
+  "name": "Здоровье",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Здоровье",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Здоровье",
+    "description": "Бронь залов: Здоровье"
+  },
+  "texts": {
+    "tagline": "Три зала · Измайлово · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, гидромассаж, джакузи, караоке, кальян, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 968 813-96-86",
+    "address": "Москва, Верхняя Первомайская улица, 36 ст1",
+    "whatsapp": "+79688139686",
+    "coords": {
+      "lat": 55.798995,
+      "lng": 37.797977
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_zala_basseyn_1_chas",
+      "name": "Аренда зала «Бассейн», 1 час",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_zala_basseyn_1_chas/1.jpg",
+        "halls/arenda_zala_basseyn_1_chas/2.jpg",
+        "halls/arenda_zala_basseyn_1_chas/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_zala_parizh_1_chas",
+      "name": "Аренда зала «Париж», 1 час",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_zala_parizh_1_chas/1.jpg",
+        "halls/arenda_zala_parizh_1_chas/2.jpg",
+        "halls/arenda_zala_parizh_1_chas/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "den_rozhdeniya_1_chas_sauny",
+      "name": "День рождения: 1 час сауны + колонка на час в подарок",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/den_rozhdeniya_1_chas_sauny/1.jpg",
+        "halls/den_rozhdeniya_1_chas_sauny/2.jpg",
+        "halls/den_rozhdeniya_1_chas_sauny/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

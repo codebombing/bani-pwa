@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "sauna-lyuks",
+  "name": "Сауна-люкс",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Сауна-люкс",
+      "sub": "баня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Сауна-люкс",
+    "description": "Бронь залов: Сауна-люкс"
+  },
+  "texts": {
+    "tagline": "6 залов · Восточное Измайлово · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, бассейн, джакузи, купели, бильярд, караоке, кальян, комната отдыха, tv/dvd, простыни, тапочки, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 904 567-07-32",
+    "address": "Москва, Измайловский бульвар, 69",
+    "whatsapp": "+79362627779",
+    "coords": {
+      "lat": 55.797514,
+      "lng": 37.817627
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_pomescheniya",
+      "name": "Аренда помещения",
+      "description": "Финская сауна: до 5 человек",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_pomescheniya/1.jpg",
+        "halls/arenda_pomescheniya/2.jpg",
+        "halls/arenda_pomescheniya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_pomescheniya-2",
+      "name": "Аренда помещения",
+      "description": "Финская сауна: больше 5 человек",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_pomescheniya-2/1.jpg",
+        "halls/arenda_pomescheniya-2/2.jpg",
+        "halls/arenda_pomescheniya-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_pomescheniya-3",
+      "name": "Аренда помещения",
+      "description": "Финская сауна: больше 7 человек",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_pomescheniya-3/1.jpg",
+        "halls/arenda_pomescheniya-3/2.jpg",
+        "halls/arenda_pomescheniya-3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_pomescheniya-4",
+      "name": "Аренда помещения",
+      "description": "Турецкая сауна: до 5 человек",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_pomescheniya-4/1.jpg",
+        "halls/arenda_pomescheniya-4/2.jpg",
+        "halls/arenda_pomescheniya-4/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_pomescheniya-5",
+      "name": "Аренда помещения",
+      "description": "Турецкая сауна: больше 5 человек",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_pomescheniya-5/1.jpg",
+        "halls/arenda_pomescheniya-5/2.jpg",
+        "halls/arenda_pomescheniya-5/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_pomescheniya-6",
+      "name": "Аренда помещения",
+      "description": "Турецкая сауна: больше 7 человек",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_pomescheniya-6/1.jpg",
+        "halls/arenda_pomescheniya-6/2.jpg",
+        "halls/arenda_pomescheniya-6/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

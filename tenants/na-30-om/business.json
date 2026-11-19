@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "prostynya",
+      "name": "Простыня",
+      "description": "",
+      "price_rub": 210,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "mahrovyy_halat",
+      "name": "Махровый халат",
+      "description": "",
+      "price_rub": 690,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 210,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 210,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "na-30-om",
+  "name": "На 30-ом",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "На 30-ом",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "На 30-ом",
+    "description": "Бронь залов: На 30-ом"
+  },
+  "texts": {
+    "tagline": "Один зал · Измайлово · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, бассейн, джакузи, купели, караоке, комната отдыха, tv/dvd, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 916 941-57-30",
+    "address": "Москва, Измайловское шоссе, 71 к3в",
+    "telegram": "https://t.me/+79169415730",
+    "coords": {
+      "lat": 55.790742,
+      "lng": 37.747464
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2700
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

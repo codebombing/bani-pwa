@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostyn",
+      "name": "Простынь",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat",
+      "name": "Халат",
+      "description": "",
+      "price_rub": 400,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik",
+      "name": "Веник",
+      "description": "",
+      "price_rub": 700,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "so_svoim_venikom",
+      "name": "Со своим веником",
+      "description": "",
+      "price_rub": 300,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "goa",
+  "name": "Гоа",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Гоа",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Гоа",
+    "description": "Бронь залов: Гоа"
+  },
+  "texts": {
+    "tagline": "Один зал · Коптево · круглосуточно",
+    "description": "Инфракрасная сауна, финская парная, парильщик, купели, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 903 004-13-13",
+    "address": "Москва, Михалковская улица, 13",
+    "whatsapp": "+79030041313",
+    "coords": {
+      "lat": 55.839176,
+      "lng": 37.527326
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "shokolad",
+  "name": "Шоколад",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Шоколад",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Шоколад",
+    "description": "Бронь залов: Шоколад"
+  },
+  "texts": {
+    "tagline": "Один зал · Академический · круглосуточно",
+    "description": "Финская парная, гидромассаж, джакузи, танцпол, бильярд, караоке, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 909 620-84-81",
+    "address": "Москва, улица Шверника, 13 к1",
+    "coords": {
+      "lat": 55.692136,
+      "lng": 37.588971
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna",
+      "name": "Сауна",
+      "description": "Для Вас круглосуточно круглый год:финская сауна, SPA на 6 персон, обливное устройство,банкетный зал, комнаты отдыха, бильярд, спутниковое ТВ, караоке, бар, домашняя кухня, охраняемая парковка.\nКлуб принимает заказы на проведение банкетов c различными шоу-программами.\nПри количестве отдыхающих более 6 человек цена аренды\nувеличивается на 100 руб./час с каждого дополнительного посетителя.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna/1.jpg",
+        "halls/sauna/2.jpg",
+        "halls/sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

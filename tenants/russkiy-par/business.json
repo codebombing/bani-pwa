@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "venik_dubovyy",
+      "name": "Веник дубовый",
+      "description": "",
+      "price_rub": 800,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_prostyn_prokat",
+      "name": "Полотенце, простынь (прокат)",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_mahrovye",
+      "name": "Тапочки махровые",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "russkiy-par",
+  "name": "Русский пар",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Русский пар",
+      "sub": "оздоровительный комплекс · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Русский пар",
+    "description": "Бронь залов: Русский пар"
+  },
+  "texts": {
+    "tagline": "Три зала · Люблино · круглосуточно",
+    "description": "Финская парная, бассейн, гидромассаж, джакузи, бильярд, караоке, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 880-71-03",
+    "address": "Москва, Новороссийская улица, 14 ст2",
+    "whatsapp": "+79268807103",
+    "coords": {
+      "lat": 55.67889,
+      "lng": 37.759286
+    }
+  },
+  "halls": [
+    {
+      "key": "merlin_monro",
+      "name": "Мерлин Монро",
+      "description": "Аудио-видео аппаратура, домашний кинотеатр, спутниковое ТВ НТВ+, караоке, кондиционеры, гостиная. Стоимость указана для 4-х, свыше указанного количества человек доплата 200 руб/час с человека.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/merlin_monro/1.jpg",
+        "halls/merlin_monro/2.jpg",
+        "halls/merlin_monro/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "oranzhevyy_zal",
+      "name": "Оранжевый зал",
+      "description": "Стоимость указана для компании до 6-ти человек, при превышении доплата за каждого +200 руб./час.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/oranzhevyy_zal/1.jpg",
+        "halls/oranzhevyy_zal/2.jpg",
+        "halls/oranzhevyy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "russkiy_zal",
+      "name": "Русский зал",
+      "description": "Аудио-видео аппаратура, домашний кинотеатр, спутниковое ТВ НТВ+, караоке, кондиционеры, гостиная, кальян, бильярд американский, массажное кресло.Стоимость указана для 6-ти, свыше указанного количества человек доплата 200 руб/час с человека.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russkiy_zal/1.jpg",
+        "halls/russkiy_zal/2.jpg",
+        "halls/russkiy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

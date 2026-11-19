@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "Ритм, физкультурно-оздоровительный центр",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "ritm",
+  "name": "Ритм",
+  "theme": {
+    "accent": "#C8873A",
+    "wordmark": {
+      "main": "Ритм",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Ритм",
+    "description": "Бронь залов: Ритм"
+  },
+  "texts": {
+    "tagline": "Два зала · Ярославский · круглосуточно",
+    "description": "",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 915 036-55-56",
+    "address": "Москва, Ярославское шоссе, 114 к1",
+    "whatsapp": "+79150365556",
+    "coords": {
+      "lat": 55.866053,
+      "lng": 37.708063
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna_1",
+      "name": "Сауна 1",
+      "description": "Горячая баня / сауна — великолепный тренажер кожи. А в сочетании с бассейном и караоке позволяет полезно и интересно провести время в кругу семьи или компании друзей.\nДля Вас всегда в наличии лучшие березовые веники и аромамасла.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_1/1.jpg",
+        "halls/sauna_1/2.jpg",
+        "halls/sauna_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_2",
+      "name": "Сауна 2",
+      "description": "Сауна работает круглосуточно!\nВ наших саунах разрешается париться с веником и аромамаслами.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_2/1.jpg",
+        "halls/sauna_2/2.jpg",
+        "halls/sauna_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 800
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

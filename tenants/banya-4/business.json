@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "banya-4",
+  "name": "Баня",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Баня",
+      "sub": "баня · ежедневно 10:00–23:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Баня",
+    "description": "Бронь залов: Баня"
+  },
+  "texts": {
+    "tagline": "Один зал · Краснопахорский · ежедневно 10:00–23:00",
+    "description": "Русская парная, русская парная на дровах, финская парная, беседки, купели, комната отдыха, настольный теннис, tv/dvd, веники, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 991 556-13-20",
+    "address": "Москва, деревня Пучково, 71",
+    "whatsapp": "+79915561320",
+    "coords": {
+      "lat": 55.477361,
+      "lng": 37.259076
+    }
+  },
+  "halls": [
+    {
+      "key": "banya_na_drovah",
+      "name": "Баня на дровах",
+      "description": "Баня на дровах в деревне Пучково приглашает вас отдохнуть и получить заряд чистоты и здоровья.У нас можно попариться с веничком,окунуться в прохладную купель или охладиться под обливным устройством.В комнате отдыха есть мягкий диван,телевизор,так же есть различные травы и чай.Рядом с баней есть мангал ,а в теплое время года можно позагорать на шезлонге или поиграть в настольный теннис на крытой веранде.Заказывайте баню за раннее,будем рады гостям с 11 до 23 часов каждый день без выходных. Так же доступна услуга пар мастер . Парение индивидуальное на матрасе с сеном , а так же соляно медовый пилинг с арома терапией.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_na_drovah/1.jpg",
+        "halls/banya_na_drovah/2.jpg",
+        "halls/banya_na_drovah/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2300
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

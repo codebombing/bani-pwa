@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "veniki",
+      "name": "Веники",
+      "description": "",
+      "price_rub": 1100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostyn",
+      "name": "Простынь",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat",
+      "name": "Халат",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "city-red",
+  "name": "City Red",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "City Red",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "City Red",
+    "description": "Бронь залов: City Red"
+  },
+  "texts": {
+    "tagline": "Два зала · Южное Медведково · круглосуточно",
+    "description": "Финская парная, парильщик, бассейн, джакузи, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 499 381-05-05",
+    "address": "Москва, Ясный проезд, 10",
+    "whatsapp": "+79852113334",
+    "telegram": "https://t.me/sauna_siti",
+    "coords": {
+      "lat": 55.873998,
+      "lng": 37.629152
+    }
+  },
+  "halls": [
+    {
+      "key": "zal_s_dzhakuzi",
+      "name": "Зал с джакузи",
+      "description": "Уютный зал для двоих! Акция для двоих! Жаркая парная, зона отдыха, меню и напитки, ТВ, караоке. Подарите себе незабываемый отдых!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_s_dzhakuzi/1.jpg",
+        "halls/zal_s_dzhakuzi/2.jpg",
+        "halls/zal_s_dzhakuzi/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bolshoy_zal_s_basseynom",
+      "name": "Большой зал с бассейном",
+      "description": "Зал для дружной компании и классного отдыха!\n\nПарная, бассейн, комната отдыха, бильярд, караоке, ТВ, отдельная банкетная и кальянная зоны, меню и напитки!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshoy_zal_s_basseynom/1.jpg",
+        "halls/bolshoy_zal_s_basseynom/2.jpg",
+        "halls/bolshoy_zal_s_basseynom/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1600
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

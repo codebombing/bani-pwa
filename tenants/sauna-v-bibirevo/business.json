@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostynya",
+      "name": "Простыня",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "dubovyy_venik",
+      "name": "Дубовый веник",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chay",
+      "name": "Чай",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "sauna-v-bibirevo",
+  "name": "Сауна в Бибирево",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Сауна в Бибирево",
+      "sub": "баня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Сауна в Биби",
+    "description": "Бронь залов: Сауна в Бибирево"
+  },
+  "texts": {
+    "tagline": "Один зал · Бибирево · круглосуточно",
+    "description": "Русская парная, финская парная, парильщик, бассейн, гидромассаж, джакузи, купели, танцпол, тёплый бассейн, бильярд, караоке, комната отдыха, настольный теннис, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 965 109-77-69",
+    "address": "Москва, улица Плещеева, вл1",
+    "whatsapp": "+79651097769",
+    "telegram": "https://t.me/+79651097769",
+    "coords": {
+      "lat": 55.88575,
+      "lng": 37.605967
+    }
+  },
+  "halls": [
+    {
+      "key": "zal_s_basseynom_i_bilyardom",
+      "name": "Зал с бассейном и бильярдом",
+      "description": "Большой зал (до 12 человек) - от 1200 руб./час, русский бильярд, бассейн 4х7 м с подогревом и проточной водой, гостиная с мягкой мебелью, аудио- и видеоаппаратура, караоке, спутниковое TV, комната отдыха, русская парная.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_s_basseynom_i_bilyardom/1.jpg",
+        "halls/zal_s_basseynom_i_bilyardom/2.jpg",
+        "halls/zal_s_basseynom_i_bilyardom/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

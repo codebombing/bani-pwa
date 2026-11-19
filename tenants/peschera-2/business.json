@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "Сауна",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "peschera-2",
+  "name": "Пещера",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Пещера",
+      "sub": "Сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Пещера",
+    "description": "Бронь залов: Пещера"
+  },
+  "texts": {
+    "tagline": "Один зал · Северное Измайлово · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 238-73-70",
+    "address": "Москва, Щёлковское шоссе, 6",
+    "whatsapp": "+79852387370",
+    "coords": {
+      "lat": 55.804107,
+      "lng": 37.760808
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna_na_schelkovskom_shosse",
+      "name": "Сауна на Щелковском шоссе 30",
+      "description": "Почему с самой древности почти у всех народов была популярна баня? Причин множество, и это не только бодрость, которую она дарит. Избавление от токсинов и шлаков, восстановленные мышцы, повышение тонуса — вот немногие из оздоровительных эффектов бани. В сауну на Щёлковском шоссе, 30 можно прийти с друзьями, арендовать парную на всех, пообщаться и посвятить время своему здоровью.\nСауна на Щёлковском шоссе, 30 располагается по адресу Щёлковское шоссе, 30 и работает круглосуточно.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_na_schelkovskom_shosse/1.jpg",
+        "halls/sauna_na_schelkovskom_shosse/2.jpg",
+        "halls/sauna_na_schelkovskom_shosse/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

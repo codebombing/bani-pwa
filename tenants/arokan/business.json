@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "arokan",
+  "name": "Арокан",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Арокан",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Арокан",
+    "description": "Бронь залов: Арокан"
+  },
+  "texts": {
+    "tagline": "Два зала · Можайский · круглосуточно",
+    "description": "Финская парная, парильщик, бассейн, гидромассаж, джакузи, караоке, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 925 497-28-78",
+    "address": "Москва, Барвихинская улица, 16 к3",
+    "coords": {
+      "lat": 55.719628,
+      "lng": 37.387414
+    }
+  },
+  "halls": [
+    {
+      "key": "domik_v_gorah",
+      "name": "Домик в горах",
+      "description": "Интерьер этого зала исполнен в стиле шале. Стиль шале — это, прежде всего, простота и уют, а также тепло и практичность.\nВ зале установлен большой аквариум.\nБанкетная зона представлена большим столом для трапез и удобным мягким диванчиком со стульями.\nЗал оснащен современной аудио- и видеоаппаратурой и системой караоке.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/domik_v_gorah/1.jpg",
+        "halls/domik_v_gorah/2.jpg",
+        "halls/domik_v_gorah/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "starinnyy_zamok",
+      "name": "Старинный замок",
+      "description": "В оформлении использованы натуральные материалы – древесина и камень.\nСтены украшены охотничьими трофеями, гербами, щитами, мечами и топорами – непременными атрибутами старинных замков.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/starinnyy_zamok/1.jpg",
+        "halls/starinnyy_zamok/2.jpg",
+        "halls/starinnyy_zamok/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

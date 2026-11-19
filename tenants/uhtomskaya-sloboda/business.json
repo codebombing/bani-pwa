@@ -1,0 +1,494 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "venik_dubovyy",
+      "name": "Веник дубовый",
+      "description": "",
+      "price_rub": 540,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_berezovyy",
+      "name": "Веник берёзовый",
+      "description": "",
+      "price_rub": 490,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_pihtovyy",
+      "name": "Веник пихтовый",
+      "description": "",
+      "price_rub": 480,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_mozhzhevelovyy",
+      "name": "Веник можжевеловый",
+      "description": "",
+      "price_rub": 480,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_evkaliptovyy",
+      "name": "Веник эвкалиптовый",
+      "description": "",
+      "price_rub": 460,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "shapka_s_vyshivkoy",
+      "name": "Шапка с вышивкой",
+      "description": "",
+      "price_rub": 340,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_mahrovye_odnorazovye",
+      "name": "Тапочки (махровые одноразовые)",
+      "description": "",
+      "price_rub": 260,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_rezinovye",
+      "name": "Тапочки (резиновые)",
+      "description": "",
+      "price_rub": 410,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostyn_bannaya_arenda",
+      "name": "Простынь банная (аренда)",
+      "description": "",
+      "price_rub": 210,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_mahrovoe_arenda",
+      "name": "Полотенце махровое (аренда)",
+      "description": "",
+      "price_rub": 270,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat_bannyy_arenda",
+      "name": "Халат банный (аренда)",
+      "description": "",
+      "price_rub": 460,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "uhtomskaya-sloboda",
+  "name": "Ухтомская слобода",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Ухтомская слобода",
+      "sub": "баня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Ухтомская сл",
+    "description": "Бронь залов: Ухтомская слобода"
+  },
+  "texts": {
+    "tagline": "9 залов · Косино-Ухтомский · круглосуточно",
+    "description": "Общественная баня, русская парная, русская парная на дровах, римская парная, турецкая парная (хаммам), парильщик, беседки, купели, караоке, комната отдыха, tv/dvd, банный чан, мангал, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 930 965-05-27",
+    "address": "Москва, улица Михельсона, 73/4",
+    "whatsapp": "+79309650527",
+    "telegram": "https://t.me/yxtomskaya_sloboda",
+    "coords": {
+      "lat": 55.697523,
+      "lng": 37.871075
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_bani_trofeynaya",
+      "name": "Аренда бани \"Трофейная\"",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_trofeynaya/1.jpg",
+        "halls/arenda_bani_trofeynaya/2.jpg",
+        "halls/arenda_bani_trofeynaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_hutorok",
+      "name": "Аренда бани \"Хуторок\"",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_hutorok/1.jpg",
+        "halls/arenda_bani_hutorok/2.jpg",
+        "halls/arenda_bani_hutorok/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4400
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_lesnaya",
+      "name": "Аренда бани \"Лесная\"",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_lesnaya/1.jpg",
+        "halls/arenda_bani_lesnaya/2.jpg",
+        "halls/arenda_bani_lesnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4400
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "hvoynyy_chan_na_period_arendy",
+      "name": "Хвойный чан на период аренды бани \"Трофейная\"",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/hvoynyy_chan_na_period_arendy/1.jpg",
+        "halls/hvoynyy_chan_na_period_arendy/2.jpg",
+        "halls/hvoynyy_chan_na_period_arendy/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "hvoynyy_chan_na_period_arend-2",
+      "name": "Хвойный чан на период аренды бани \"Хуторок\"",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/hvoynyy_chan_na_period_arend-2/1.jpg",
+        "halls/hvoynyy_chan_na_period_arend-2/2.jpg",
+        "halls/hvoynyy_chan_na_period_arend-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "hvoynyy_chan_na_period_arend-3",
+      "name": "Хвойный чан на период аренды бани \"Лесная\"",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/hvoynyy_chan_na_period_arend-3/1.jpg",
+        "halls/hvoynyy_chan_na_period_arend-3/2.jpg",
+        "halls/hvoynyy_chan_na_period_arend-3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zaparka_dlya_bani_v",
+      "name": "Запарка для бани в ассортименте 30 гр (пять трав, чабрец, мелисса, шалфей, полын",
+      "description": "(пять трав, чабрец, мелисса, шалфей, полынь, хвоя, мята и т.д.)",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zaparka_dlya_bani_v/1.jpg",
+        "halls/zaparka_dlya_bani_v/2.jpg",
+        "halls/zaparka_dlya_bani_v/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 240
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zaparka_dlya_bani_v-2",
+      "name": "Запарка для бани в ассортименте 300 гр (полынь лимонная, хвойная, можжевельник, ",
+      "description": "(полынь лимонная, хвойная, можжевельник, хмель-солод, мята, эвкалипт и т.д.)",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zaparka_dlya_bani_v-2/1.jpg",
+        "halls/zaparka_dlya_bani_v-2/2.jpg",
+        "halls/zaparka_dlya_bani_v-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 560
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 560
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zaparka_dlya_bani_v-3",
+      "name": "Запарка для бани в ассортименте",
+      "description": "(шалфей, эвкалипт, сосна, полынь, лаванда, мята, можжевельник)",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zaparka_dlya_bani_v-3/1.jpg",
+        "halls/zaparka_dlya_bani_v-3/2.jpg",
+        "halls/zaparka_dlya_bani_v-3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 560
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 560
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

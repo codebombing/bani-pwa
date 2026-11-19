@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "aromamaslo",
+      "name": "Аромамасло",
+      "description": "",
+      "price_rub": 170,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostynya",
+      "name": "Простыня",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_dub",
+      "name": "Веник дуб",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "vodoley",
+  "name": "Водолей",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Водолей",
+      "sub": "бильярдный клуб и сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Водолей",
+    "description": "Бронь залов: Водолей"
+  },
+  "texts": {
+    "tagline": "Два зала · Митино · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, джакузи, купели, танцпол, бильярд, караоке, комната отдыха, веники, полотенца, простыни, тапочки, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 901 259-43-10",
+    "address": "Москва, переулок Ангелов, 6 к2",
+    "whatsapp": "+79772918868",
+    "coords": {
+      "lat": 55.85503,
+      "lng": 37.347486
+    }
+  },
+  "halls": [
+    {
+      "key": "malaya_sauna",
+      "name": "Малая сауна",
+      "description": "с купелью, круглосуточно 1 час 2040 руб. от 1 до 4 человек (более 4х человек – дополнительно 240 руб. с человека в час)",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malaya_sauna/1.jpg",
+        "halls/malaya_sauna/2.jpg",
+        "halls/malaya_sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2040
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2040
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bolshaya_sauna",
+      "name": "Большая сауна",
+      "description": "с бассейном, круглосуточно 1 час 2600 руб. от 1 до 6 человек (более 6ти человек – дополнительно 240 руб. с человека в час).",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bolshaya_sauna/1.jpg",
+        "halls/bolshaya_sauna/2.jpg",
+        "halls/bolshaya_sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2600
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2600
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

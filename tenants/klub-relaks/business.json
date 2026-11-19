@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "klub-relaks",
+  "name": "Клуб Релакс",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Клуб Релакс",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Клуб Релакс",
+    "description": "Бронь залов: Клуб Релакс"
+  },
+  "texts": {
+    "tagline": "5 залов · Щербинка · круглосуточно",
+    "description": "Русская парная, турецкая парная (хаммам), финская парная, бассейн, беседки, гидромассаж, джакузи, купели, бильярд, караоке, кальян, комната отдыха, tv/dvd, банный чан, мангал, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 915 022-31-17",
+    "address": "Москва, Симферопольское шоссе, 21 ст1",
+    "whatsapp": "+79150223117",
+    "coords": {
+      "lat": 55.492656,
+      "lng": 37.582111
+    }
+  },
+  "halls": [
+    {
+      "key": "malahitovye_pn_cht",
+      "name": "Малахитовые (пн-чт)",
+      "description": "Двухэтажные апартаменты вместимость от 6 до 12 человек.\nПервый этаж – холл со столом и стульями, TV, DVD, караоке, туалетная комната, душ, купель, сауна вместимостью до 6 человек.\nВторой этаж – две спальни с кроватью и туалетной комнатой.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malahitovye_pn_cht/1.jpg",
+        "halls/malahitovye_pn_cht/2.jpg",
+        "halls/malahitovye_pn_cht/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "malahitovye_pt_vs",
+      "name": "Малахитовые (пт-вс)",
+      "description": "Двухэтажные апартаменты вместимость от 6 до 12 человек.\nПервый этаж – холл со столом и стульями, TV, DVD, караоке, туалетная комната, душ, купель, сауна вместимостью до 6 человек.\nВторой этаж – две спальни с кроватью и туалетной комнатой.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malahitovye_pt_vs/1.jpg",
+        "halls/malahitovye_pt_vs/2.jpg",
+        "halls/malahitovye_pt_vs/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "turetskaya_banya",
+      "name": "Турецкая баня",
+      "description": "Посещение хаммама настраивает вас на спокойный лад. Это отличный способ для психологической разгрузки. К концу процедур вы почувствуете умиротворение внутри себя.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/turetskaya_banya/1.jpg",
+        "halls/turetskaya_banya/2.jpg",
+        "halls/turetskaya_banya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tsarskie_pn_cht",
+      "name": "Царские (пн-чт)",
+      "description": "Двухэтажные апартаменты вместимость от 4 до 10 человек.\nПервый этаж – холл со столом и стульями, TV, DVD, караоке, туалетная комната, душ, купель, сауна вместимостью до 8 человек.\nВторой этаж – две спальни с кроватью и туалетной комнатой.\nБанные принадлежности.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/tsarskie_pn_cht/1.jpg",
+        "halls/tsarskie_pn_cht/2.jpg",
+        "halls/tsarskie_pn_cht/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tsarskie_pt_vs",
+      "name": "Царские (пт-вс)",
+      "description": "Двухэтажные апартаменты вместимость от 4 до 10 человек.\nПервый этаж – холл со столом и стульями, TV, DVD, караоке, туалетная комната, душ, купель, сауна вместимостью до 8 человек.\nВторой этаж – две спальни с кроватью и туалетной комнатой.\nБанные принадлежности.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/tsarskie_pt_vs/1.jpg",
+        "halls/tsarskie_pt_vs/2.jpg",
+        "halls/tsarskie_pt_vs/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

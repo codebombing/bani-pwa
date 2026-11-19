@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "all-seasons-spa",
+  "name": "All Seasons SPA",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "All Seasons SPA",
+      "sub": "SPA-центр · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "All Seasons",
+    "description": "Бронь залов: All Seasons SPA"
+  },
+  "texts": {
+    "tagline": "Два зала · Коньково · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, джакузи, купели, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 915 853-95-05",
+    "address": "Москва, Миклухо-Маклая улица, 18 к2",
+    "whatsapp": "+79158539505",
+    "telegram": "https://t.me/+79158539505",
+    "coords": {
+      "lat": 55.645156,
+      "lng": 37.519023
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna_vip_nomer_2",
+      "name": "Сауна VIP номер №2",
+      "description": "130 м2\nВмещает до 8 гостей.\nЗал оборудован караоке и огромным экраном 70\".\nСауна, хамам, джакузи, купель, обливное ведро\nНТВ+, Настольные игры, Кальян\n\nКомпании которые устраивают свадебные мероприятия могут провести у нас SPA-девичники или мальчишники. С различными оздоровительными процедурами (пилинги, обёртывания, травяные бочки, массажи)",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_vip_nomer_2/1.jpg",
+        "halls/sauna_vip_nomer_2/2.jpg",
+        "halls/sauna_vip_nomer_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_vip_nomer_1",
+      "name": "Сауна VIP номер №1",
+      "description": "150м2\nЗал оснащен хамам/финской сауной/джакузи / просторной гостиной и спальной комнатой\n+ бочка с ледяной водой и профессиональная караоке система ast\n\nКомпании которые устраивают свадебные мероприятия могут провести у нас SPA-девичники или мальчишники. С различными оздоровительными процедурами (пилинги, обёртывания, травяные бочки, массажи)",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_vip_nomer_1/1.jpg",
+        "halls/sauna_vip_nomer_1/2.jpg",
+        "halls/sauna_vip_nomer_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 5000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

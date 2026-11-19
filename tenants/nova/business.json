@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "myagkie_udobnye_tapochki",
+      "name": "Мягкие удобные тапочки одноразовые",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannyy_halat",
+      "name": "Банный халат",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_bannoe",
+      "name": "Полотенце банное",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostyn_standartnaya",
+      "name": "Простынь стандартная",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_dubovyy",
+      "name": "Веник (дубовый)",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chay_v_assortimente",
+      "name": "Чай в ассортименте",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "nova",
+  "name": "Нова",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Нова",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Нова",
+    "description": "Бронь залов: Нова"
+  },
+  "texts": {
+    "tagline": "6 залов · Ново-Переделкино · круглосуточно",
+    "description": "Русская парная, финская парная, бассейн, купели, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 904 568-82-46",
+    "address": "Москва, Лукинская улица, 9 к1",
+    "coords": {
+      "lat": 55.642824,
+      "lng": 37.338244
+    }
+  },
+  "halls": [
+    {
+      "key": "zal_finskoy_parnoy_1",
+      "name": "Зал финской парной №1: понедельник - четверг с 9.00 до 17.00",
+      "description": "До 4 человек. Здесь есть: Бассейн 3 на 2 м, Финская парная, Душевые, Спутниковое, телевидение, Караоке, Зона отдыха с мягкой мебелью, Комната отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_finskoy_parnoy_1/1.jpg",
+        "halls/zal_finskoy_parnoy_1/2.jpg",
+        "halls/zal_finskoy_parnoy_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_finskoy_parnoy_1-2",
+      "name": "Зал финской парной №1: понедельник - четверг с 17.00 до 9.00",
+      "description": "До 4 человек. Здесь есть: Бассейн 3 на 2 м, Финская парная, Душевые, Спутниковое, телевидение, Караоке, Зона отдыха с мягкой мебелью, Комната отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_finskoy_parnoy_1-2/1.jpg",
+        "halls/zal_finskoy_parnoy_1-2/2.jpg",
+        "halls/zal_finskoy_parnoy_1-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_finskoy_parnoy_1-3",
+      "name": "Зал финской парной №1: пятница - воскресенье и праздничные дни КРУГЛОСУТОЧНО",
+      "description": "До 4 человек. Здесь есть: Бассейн 3 на 2 м, Финская парная, Душевые, Спутниковое, телевидение, Караоке, Зона отдыха с мягкой мебелью, Комната отдыха.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_finskoy_parnoy_1-3/1.jpg",
+        "halls/zal_finskoy_parnoy_1-3/2.jpg",
+        "halls/zal_finskoy_parnoy_1-3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_finskoy_parnoy_2",
+      "name": "Зал финской парной №2: понедельник - четверг с 9.00 до 17.00",
+      "description": "До 4 человек. Бассейн 3 на 2 м, Финская парная, Душевые, Спутниковое телевидение, Караоке, Зона отдыха с мягкой мебелью. За каждого человека сверх установленной нормы - доплата 250 рублей за человека в час. Минимальный заказ от двух часов, при заказе на 1 час парная не включается.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_finskoy_parnoy_2/1.jpg",
+        "halls/zal_finskoy_parnoy_2/2.jpg",
+        "halls/zal_finskoy_parnoy_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_finskoy_parnoy_2-2",
+      "name": "Зал финской парной №2: понедельник - четверг с 17.00 до 9.00",
+      "description": "До 4 человек. Бассейн 3 на 2 м, Финская парная, Душевые, Спутниковое телевидение, Караоке, Зона отдыха с мягкой мебелью. За каждого человека сверх установленной нормы - доплата 250 рублей за человека в час. Минимальный заказ от двух часов, при заказе на 1 час парная не включается.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_finskoy_parnoy_2-2/1.jpg",
+        "halls/zal_finskoy_parnoy_2-2/2.jpg",
+        "halls/zal_finskoy_parnoy_2-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_finskoy_parnoy_2-3",
+      "name": "Зал финской парной №2: пятница - воскресенье и праздничные дни КРУГЛОСУТОЧНО",
+      "description": "До 4 человек. Бассейн 3 на 2 м, Финская парная, Душевые, Спутниковое телевидение, Караоке, Зона отдыха с мягкой мебелью. За каждого человека сверх установленной нормы - доплата 250 рублей за человека в час. Минимальный заказ от двух часов, при заказе на 1 час парная не включается.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_finskoy_parnoy_2-3/1.jpg",
+        "halls/zal_finskoy_parnoy_2-3/2.jpg",
+        "halls/zal_finskoy_parnoy_2-3/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "kiparis",
+  "name": "Кипарис",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Кипарис",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Кипарис",
+    "description": "Бронь залов: Кипарис"
+  },
+  "texts": {
+    "tagline": "Один зал · Митино · круглосуточно",
+    "description": "Турецкая парная (хаммам), финская парная, бассейн, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 893-42-32",
+    "address": "Москва, улица Барышиха, 44 к1",
+    "whatsapp": "+79268934232",
+    "coords": {
+      "lat": 55.856711,
+      "lng": 37.344599
+    }
+  },
+  "halls": [
+    {
+      "key": "finskaya_sauna",
+      "name": "Финская сауна",
+      "description": "Банный комплекс «Кипарис» приглашает вас посетить финскую сауну. Это одна из самых популярных видов парных. Ее главная особенность заключается в использовании сухого пара, чередовании горячего воздуха с охлажденной водой. Такой подход стимулирует отделение пота. Воздух в помещении прогревается до 100 градусов, а вода до 30 градусов.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finskaya_sauna/1.jpg",
+        "halls/finskaya_sauna/2.jpg",
+        "halls/finskaya_sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

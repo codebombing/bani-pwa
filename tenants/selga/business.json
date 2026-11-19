@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "selga",
+  "name": "Сельга",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Сельга",
+      "sub": "аквасауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Сельга",
+    "description": "Бронь залов: Сельга"
+  },
+  "texts": {
+    "tagline": "Два зала · Люблино · круглосуточно",
+    "description": "Финская парная, бассейн, бильярд, караоке, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 925 518-33-35",
+    "address": "Москва, Краснодарская улица, 14",
+    "coords": {
+      "lat": 55.676908,
+      "lng": 37.745227
+    }
+  },
+  "halls": [
+    {
+      "key": "zal_1",
+      "name": "Зал 1",
+      "description": "К вашим услугам финская (на 8 человек) и инфракрасная (на 2 человека) сауны, ароматерапия, бассейн с фильтрацией, противотоком, гидромассажем и подсветкой.\nРусский бильярд №10, две комнаты отдыха, аудио-видео аппаратура, спутниковое телевидение НТВ плюс, спортивные, музыкальные, караоке (несколько тысяч песен, стоимость 30 руб/песня или 300 руб/час), DVD.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_1/1.jpg",
+        "halls/zal_1/2.jpg",
+        "halls/zal_1/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zal_2",
+      "name": "Зал 2",
+      "description": "К вашим услугам русская парная (можно париться с веником-своим, или приобретённым у нас), бассейн (глубина 1,7 м) с фильтрацией. Американский пул №8, комната отдыха, аудио-видео аппаратура, спутниковое телевидение НТВ плюс, караоке (несколько тысяч песен, стоимость 30 руб/песня или 300 руб/час), DVD.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zal_2/1.jpg",
+        "halls/zal_2/2.jpg",
+        "halls/zal_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

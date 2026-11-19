@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "tapochki_rezinovye",
+      "name": "Тапочки резиновые .",
+      "description": "",
+      "price_rub": 700,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannaya_shapka_sherstyanaya",
+      "name": "Банная шапка шерстяная .",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannaya_shapka_fetrovaya",
+      "name": "Банная шапка фетровая .",
+      "description": "",
+      "price_rub": 1300,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "arenda_halata",
+      "name": "Аренда халата .",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannyy_nabor_halat_polotentse",
+      "name": "Банный набор (халат, полотенце, шапка, тапочки, набор для душа) .",
+      "description": "",
+      "price_rub": 3800,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "arenda_komplekta_polotentse",
+      "name": "Аренда комплекта (полотенце + простынь) .",
+      "description": "",
+      "price_rub": 650,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "pomyvka_venichnaya_na_1_chel",
+      "name": "Помывка «Веничная» /на 1 чел. Все тело моется при помощи березового веника.",
+      "description": "",
+      "price_rub": 3000,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "aminevskie-bani",
+  "name": "Аминьевские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Аминьевские",
+      "sub": "банный комплекс · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Аминьевские",
+    "description": "Бронь залов: Аминьевские бани"
+  },
+  "texts": {
+    "tagline": "Один зал · Очаково-Матвеевское · круглосуточно",
+    "description": "Русская парная, русская парная на дровах, парильщик, бассейн, беседки, джакузи, купели, танцпол, бильярд, караоке, кальян, камин, комната отдыха, настольный теннис, tv/dvd, банный чан, мангал, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 227-07-07",
+    "address": "Москва, Большая Очаковская улица, 2 ст23",
+    "coords": {
+      "lat": 55.691704,
+      "lng": 37.465507
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 9000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 9000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

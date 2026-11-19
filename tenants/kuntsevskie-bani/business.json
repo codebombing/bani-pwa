@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      },
+      "tue": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      },
+      "wed": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      },
+      "thu": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      },
+      "fri": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      },
+      "sat": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      },
+      "sun": {
+        "start_from": "08:45",
+        "start_to": "20:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "kuntsevskie-bani",
+  "name": "Кунцевские бани",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "top": "Бани",
+      "main": "Кунцевские",
+      "sub": "баня · ежедневно 08:45–22:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Кунцевские",
+    "description": "Бронь залов: Кунцевские бани"
+  },
+  "texts": {
+    "tagline": "Два зала · Можайский · ежедневно 08:45–22:00",
+    "description": "Общественная баня, русская парная, русская парная на дровах, купели, комната отдыха, веники, полотенца, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 832-18-03",
+    "address": "Москва, Можайское шоссе, 21 к3",
+    "telegram": "https://t.me/banivkuncevo",
+    "coords": {
+      "lat": 55.718702,
+      "lng": 37.428069
+    }
+  },
+  "halls": [
+    {
+      "key": "obschiy_razryad_budni",
+      "name": "Общий разряд (будни)",
+      "description": "Вместимость: 50 человек.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/obschiy_razryad_budni/1.jpg",
+        "halls/obschiy_razryad_budni/2.jpg",
+        "halls/obschiy_razryad_budni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "obschiy_razryad_vyhodnye",
+      "name": "Общий разряд (выходные)",
+      "description": "Вместимость: 50 человек.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/obschiy_razryad_vyhodnye/1.jpg",
+        "halls/obschiy_razryad_vyhodnye/2.jpg",
+        "halls/obschiy_razryad_vyhodnye/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 250
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 250
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ФГБОУ ВО НИУ МЭИ",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      },
+      "tue": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      },
+      "wed": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      },
+      "thu": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      },
+      "fri": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      },
+      "sat": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      },
+      "sun": {
+        "start_from": "07:30",
+        "start_to": "22:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "niu-mei",
+  "name": "НИУ МЭИ",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "НИУ МЭИ",
+      "sub": "спортивно-технический центр · ежедневно "
+    }
+  },
+  "pwa": {
+    "short_name": "НИУ МЭИ",
+    "description": "Бронь залов: НИУ МЭИ"
+  },
+  "texts": {
+    "tagline": "6 залов · Лефортово · ежедневно 07:30–24:00",
+    "description": "Финская парная, бассейн, купели, бильярд, караоке, tv/dvd, полотенца, простыни, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 362-77-76",
+    "address": "Москва, Красноказарменная улица, 13Б",
+    "coords": {
+      "lat": 55.758501,
+      "lng": 37.704339
+    }
+  },
+  "halls": [
+    {
+      "key": "malaya_komnata_otdyha_sauna_2",
+      "name": "Малая комната отдыха, сауна №2 (до 8-ми человек), без парной, без предоставления",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/malaya_komnata_otdyha_sauna_2/1.jpg",
+        "halls/malaya_komnata_otdyha_sauna_2/2.jpg",
+        "halls/malaya_komnata_otdyha_sauna_2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bezlimit",
+      "name": "Безлимит",
+      "description": "Плавание+Тренажерный зал. 6 месяцев",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bezlimit/1.jpg",
+        "halls/bezlimit/2.jpg",
+        "halls/bezlimit/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 18000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 18000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bezlimit-2",
+      "name": "Безлимит",
+      "description": "Плавание+Тренажерный зал. 1 посещение",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/bezlimit-2/1.jpg",
+        "halls/bezlimit-2/2.jpg",
+        "halls/bezlimit-2/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_2m_do_8_chelovek_malyy",
+      "name": "Сауна №2М (до 8 человек), малый вариант 1 700",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_2m_do_8_chelovek_malyy/1.jpg",
+        "halls/sauna_2m_do_8_chelovek_malyy/2.jpg",
+        "halls/sauna_2m_do_8_chelovek_malyy/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_3_do_8_chelovek_1_400",
+      "name": "Сауна № 3 (до 8 человек) 1 400",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_3_do_8_chelovek_1_400/1.jpg",
+        "halls/sauna_3_do_8_chelovek_1_400/2.jpg",
+        "halls/sauna_3_do_8_chelovek_1_400/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_1_do_10_chelovek_3_000",
+      "name": "Сауна № 1 (до 10 человек) 3 000",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_1_do_10_chelovek_3_000/1.jpg",
+        "halls/sauna_1_do_10_chelovek_3_000/2.jpg",
+        "halls/sauna_1_do_10_chelovek_3_000/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2100
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

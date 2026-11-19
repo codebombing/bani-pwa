@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "parsya-po-tsarski-2",
+  "name": "Парься по-Царски",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Парься по-Царски",
+      "sub": "VIP-сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Парься по-Ца",
+    "description": "Бронь залов: Парься по-Царски"
+  },
+  "texts": {
+    "tagline": "Два зала · Гольяново · круглосуточно",
+    "description": "Русская парная, турецкая парная (хаммам), финская парная, парильщик, бассейн, гидромассаж, бильярд, караоке, кальян, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 966 317-40-17",
+    "address": "Москва, Уральская улица, 19 к1",
+    "whatsapp": "+79663174017",
+    "coords": {
+      "lat": 55.821512,
+      "lng": 37.797034
+    }
+  },
+  "halls": [
+    {
+      "key": "russkiy_zal",
+      "name": "Русский зал",
+      "description": "до 6 человек — 2600 руб/час\nдо 10 человек — 3200 руб/час\nдо 13 человек — 3700 руб/час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/russkiy_zal/1.jpg",
+        "halls/russkiy_zal/2.jpg",
+        "halls/russkiy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1900
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1900
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "hamam_turetskiy_zal",
+      "name": "Хамам, турецкий зал",
+      "description": "до 6 человек — 2600 руб/час\nдо 10 человек — 3200 руб/час\nдо 13 человек — 3700 руб/час",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/hamam_turetskiy_zal/1.jpg",
+        "halls/hamam_turetskiy_zal/2.jpg",
+        "halls/hamam_turetskiy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1900
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

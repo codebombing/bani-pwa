@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "tue": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "wed": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "thu": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "fri": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat",
+      "name": "Халат",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_dubovyy",
+      "name": "Веник дубовый",
+      "description": "",
+      "price_rub": 950,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_berezovyy",
+      "name": "Веник березовый",
+      "description": "",
+      "price_rub": 950,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "lipovyy_venik",
+      "name": "Липовый веник",
+      "description": "",
+      "price_rub": 1500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "banya-ferd",
+  "name": "Баня Фьёрд",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Баня Фьёрд",
+      "sub": "баня · ежедневно 08:00–23:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Баня Фьёрд",
+    "description": "Бронь залов: Баня Фьёрд"
+  },
+  "texts": {
+    "tagline": "Два зала · Строгино · ежедневно 08:00–23:00",
+    "description": "Русская парная на дровах, на берегу, купели, камин, комната отдыха, мангал, веники, полотенца, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 984 704-80-27",
+    "address": "Москва, Одинцовская улица, 1в",
+    "whatsapp": "+79963679709",
+    "telegram": "https://t.me/fjerdbanya",
+    "coords": {
+      "lat": 55.786836,
+      "lng": 37.406302
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_bani_budni",
+      "name": "Аренда бани будни",
+      "description": "Аренда бани в будни - формат для тех, кто хочет устроить приватную перезагрузку у воды в Москве без поездки за город. В будние дни стоимость составляет 5000₽ в час за первые 3 часа, каждый следующий час - 5000₽. Баня рассчитана на компанию до 6 гостей и на время аренды остается только в вашем распоряжении.\n\nВ стоимость уже входят растопленная баня, дрова, кипяток, чай и угощения. Это позволяет приехать в подготовленное пространство и сосредоточиться на самом отдыхе, а не на организации базовых вещей. При желании к аренде можно добавить отдельные позиции из прайса: веник, комплект текстиля, тапочки, скрабы или лаванду.\n\nБудний формат подойдет для встречи после работы, отдыха вдвоем, спокойного вечера с друзьями или нескольких часов тишины в привычном городском графике. Главная идея проекта - дать ощущение небольшого загородного ретрита, оставаясь в Москве: рядом вода и природа, а пространство не нужно делить с другими гостями.\n\nЭто приватная баня у воды в Москве, рядом с Серебряным Боро",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_budni/1.jpg",
+        "halls/arenda_bani_budni/2.jpg",
+        "halls/arenda_bani_budni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_vyhodnye",
+      "name": "Аренда бани выходные",
+      "description": "Аренда бани в выходные - возможность провести несколько часов у воды небольшой компанией, не выезжая из Москвы. Стоимость составляет 6000₽ в час за первые 3 часа, далее - 5000₽ за каждый следующий час. Пространство рассчитано на 6 гостей и арендуется целиком: на время визита баня предназначена только для вашей компании.\n\nК приезду баня растоплена. В базовую стоимость также входят дрова, кипяток, чай и угощения. Дополнительные позиции - веник, комплект из полотенец, шапки и халата, тапочки, скрабы и лаванда - представлены в прайсе отдельно. Благодаря этому можно оставить базовый формат или дополнить его тем, что нужно именно для вашего сценария отдыха.\n\nВыходной здесь можно провести вдвоем, с друзьями или семьей. Формат строится вокруг приватности и спокойной смены состояний: парная, вода, воздух, отдых и чай. Это не большой развлекательный комплекс и не общая баня, а камерное пространство у Москвы-реки рядом с Серебряным Бором.\n\nЭто приватная баня у воды в Москве, рядом с Серебряным Бо",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_vyhodnye/1.jpg",
+        "halls/arenda_bani_vyhodnye/2.jpg",
+        "halls/arenda_bani_vyhodnye/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 6000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

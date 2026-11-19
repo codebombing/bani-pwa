@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "ostrov-2",
+  "name": "Остров",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Остров",
+      "sub": "клуб-сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Остров",
+    "description": "Бронь залов: Остров"
+  },
+  "texts": {
+    "tagline": "Три зала · Коньково · круглосуточно",
+    "description": "Финская парная, бассейн, гидромассаж, купели, бильярд, караоке, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 964 783-02-23",
+    "address": "Москва, улица Островитянова, 32а",
+    "whatsapp": "+79647830223",
+    "coords": {
+      "lat": 55.633088,
+      "lng": 37.522618
+    }
+  },
+  "halls": [
+    {
+      "key": "zamok",
+      "name": "Замок",
+      "description": "Новая сауна с финской парилкой, вместимостью до 10+4 человек.\nБассейн, 2 душа с обливными ведрами, 2 стильные комнаты отдыха, американский бильярд, домашний кинотеатр, спутниковое телевидение, караоке, бар, массажное кресло, домашняя кухня (предварительный заказ блюд).",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zamok/1.jpg",
+        "halls/zamok/2.jpg",
+        "halls/zamok/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "izba",
+      "name": "Изба",
+      "description": "Стилизованная под русскую избу, новая сауна с финской парилкой, вместимостью до 4+2 человека.\nКупель с гейзером 2х1.5 метра, душ с обливным ведром, комната отдыха, бильярд, домашний кинотеатр, спутниковое телевидение, караоке, бар, массажное кресло, домашняя кухня (предварительный заказ блюд).",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/izba/1.jpg",
+        "halls/izba/2.jpg",
+        "halls/izba/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tet_a_tet",
+      "name": "Тет-А-Тет",
+      "description": "Сауна в стиле хай-тек с парной вместимостью 2+2 человека\nДуш с обливным ведром, комната отдыха, домашний кинотеатр, плазменный телевизор, спутниковое телевидение, караоке, бар, массажное кресло, домашняя кухня (предварительный заказ блюд).",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/tet_a_tet/1.jpg",
+        "halls/tet_a_tet/2.jpg",
+        "halls/tet_a_tet/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

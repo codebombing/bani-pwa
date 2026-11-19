@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "akva-relaks",
+  "name": "Аква-Релакс",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Аква-Релакс",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Аква-Релакс",
+    "description": "Бронь залов: Аква-Релакс"
+  },
+  "texts": {
+    "tagline": "Три зала · Выхино-Жулебино · круглосуточно",
+    "description": "Инфракрасная сауна, турецкая парная (хаммам), финская парная, бассейн, купели, бильярд, караоке, камин, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 925 500-86-56",
+    "address": "Москва, улица Авиаконструктора Миля, 3",
+    "whatsapp": "+79255008656",
+    "telegram": "https://t.me/+79255008656",
+    "coords": {
+      "lat": 55.687304,
+      "lng": 37.85319
+    }
+  },
+  "halls": [
+    {
+      "key": "yantarnyy_zal",
+      "name": "Янтарный зал",
+      "description": "Янтарный зал!инфракрасная сауна ,караоке, камин, мягкая мебель, телевизор, кровать с подсветкой .",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/yantarnyy_zal/1.jpg",
+        "halls/yantarnyy_zal/2.jpg",
+        "halls/yantarnyy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "grecheskiy_zal",
+      "name": "Греческий зал",
+      "description": "Греческий зал: хаммам ,купель, бильярд, 2 комнаты отдыха, караоке, камин, телевизор, трапезный стол ,мягкая мебель, светомузыка .",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/grecheskiy_zal/1.jpg",
+        "halls/grecheskiy_zal/2.jpg",
+        "halls/grecheskiy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "finskiy_zal",
+      "name": "Финский зал",
+      "description": "Финский зал: финская сауна, бассейн, лаунж-зона, 2 комнаты отдыха, караоке, телевизор, светомузыка, бильярд, трапезный стол, мягкая мебель.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/finskiy_zal/1.jpg",
+        "halls/finskiy_zal/2.jpg",
+        "halls/finskiy_zal/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

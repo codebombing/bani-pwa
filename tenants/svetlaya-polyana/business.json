@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "berezovyy_venik",
+      "name": "Березовый веник",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "dubovyy_venik",
+      "name": "Дубовый веник",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "mozhzhevelovyy_venik",
+      "name": "Можжевеловый веник",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "evkaliptovyy_venik",
+      "name": "Эвкалиптовый веник",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "evkaliptovyy_serebristyy_venik",
+      "name": "Эвкалиптовый серебристый веник",
+      "description": "",
+      "price_rub": 700,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannaya_shapka",
+      "name": "Банная шапка",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_rezinovye",
+      "name": "Тапочки резиновые",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "bannaya_prostyn_prokat",
+      "name": "Банная простынь (прокат)",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "pihtovyy_venik",
+      "name": "Пихтовый веник",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prokatyvanie_mozhzhevelovym",
+      "name": "Прокатывание можжевеловым веником",
+      "description": "",
+      "price_rub": 950,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "svetlaya-polyana",
+  "name": "Светлая поляна",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Светлая поляна",
+      "sub": "банная деревня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Светлая поля",
+    "description": "Бронь залов: Светлая поляна"
+  },
+  "texts": {
+    "tagline": "Один зал · Троицк ГО · круглосуточно",
+    "description": "Русская парная, русская парная на дровах, парильщик, купели, караоке, кальян, камин, комната отдыха, tv/dvd, банный чан, мангал, веники, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 904 567-71-33",
+    "address": "Москва, Светлая поляна улица, 129",
+    "whatsapp": "+79778088448",
+    "telegram": "https://t.me/+79778088448",
+    "coords": {
+      "lat": 55.499958,
+      "lng": 37.263237
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

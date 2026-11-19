@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "tue": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "wed": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "thu": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "fri": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "sat": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      },
+      "sun": {
+        "start_from": "10:00",
+        "start_to": "20:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "banya-5",
+  "name": "Баня",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Баня",
+      "sub": "баня · ежедневно 10:00–22:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Баня",
+    "description": "Бронь залов: Баня"
+  },
+  "texts": {
+    "tagline": "6 залов · Краснопахорский · ежедневно 10:00–22:00",
+    "description": "Общественная баня, русская парная, русская парная на дровах, бассейн, беседки, купели, комната отдыха, банный чан, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 150-00-20",
+    "address": "Москва, микрорайон Солнечный город-2, 3",
+    "whatsapp": "+79251219086",
+    "coords": {
+      "lat": 55.42525,
+      "lng": 37.11161
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_bani_po_schuchemu",
+      "name": "Аренда бани По щучьему велению",
+      "description": "Баня из архангельской сосны.\nВместимость до 8 человек.\nКруглая парная из кедра с дровяной печью в центре, 19 м2, купель, гостиная, веранда, санузел с душем.\nГостиная с мягкой мебелью и декоративной печкой Емели\n\nСтоимость указана за 1 час. Минимальная время аренды 2 часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_po_schuchemu/1.jpg",
+        "halls/arenda_bani_po_schuchemu/2.jpg",
+        "halls/arenda_bani_po_schuchemu/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_zolotaya_rybka",
+      "name": "Аренда бани Золотая рыбка",
+      "description": "Загородный клуб «Лачи» — один из лучших банных курортов Подмосковья. Идеально подходит для семейного отдыха и отдыха на природе. В комплексе отеля 9 дровяных бань с бассейнами и купелями, spa услуги.\n\nСтоимость указана за 1 час. Минимальная время аренды 2 часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_zolotaya_rybka/1.jpg",
+        "halls/arenda_bani_zolotaya_rybka/2.jpg",
+        "halls/arenda_bani_zolotaya_rybka/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_nikita_kozhemyaka",
+      "name": "Аренда Бани Никита Кожемяка",
+      "description": "Двухэтажная баня-сруб из архангельской сосны со своим внутренним двориком Вместимость: 10 гостей.Бассейн, кедровая парная 11 м2, гостиная, массажный кабинет, санузел с душем.\n\nСтоимость указана за 1 час. Минимальная время аренды 3 часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_nikita_kozhemyaka/1.jpg",
+        "halls/arenda_bani_nikita_kozhemyaka/2.jpg",
+        "halls/arenda_bani_nikita_kozhemyaka/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_rukavichka",
+      "name": "Аренда бани Рукавичка",
+      "description": "Загородный клуб «Лачи» — один из лучших банных курортов Подмосковья. Идеально подходит для семейного отдыха и отдыха на природе. В комплексе отеля 9 дровяных бань с бассейнами и купелями, spa услуги.\n\nСтоимость указана за 1 час. Минимальная время аренды 2 часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_rukavichka/1.jpg",
+        "halls/arenda_bani_rukavichka/2.jpg",
+        "halls/arenda_bani_rukavichka/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_konek_gorbunok",
+      "name": "Аренда Бани Конек Горбунок",
+      "description": "Баня из архангельской сосны\nВместимость: 10 гостей. парная 14 м2, Холодная купель в парной, просторная гостиная, терраса, санузел с душем.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_konek_gorbunok/1.jpg",
+        "halls/arenda_bani_konek_gorbunok/2.jpg",
+        "halls/arenda_bani_konek_gorbunok/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 4200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_bani_zhar_ptitsa",
+      "name": "Аренда Бани Жар-птица",
+      "description": "Баня-сруб из кедра диаметром 80 см\nМаксимально: 5 гостей\nПросторная парная 7м2\nКедровая холодная купель\n\nСтоимость указана за 1 час. Минимальная время аренды 2 часа.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bani_zhar_ptitsa/1.jpg",
+        "halls/arenda_bani_zhar_ptitsa/2.jpg",
+        "halls/arenda_bani_zhar_ptitsa/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

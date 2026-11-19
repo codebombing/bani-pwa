@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "veniki",
+      "name": "Веники",
+      "description": "",
+      "price_rub": 650,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki",
+      "name": "Тапочки",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostynya",
+      "name": "Простыня",
+      "description": "",
+      "price_rub": 150,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "parus",
+  "name": "Парус",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Парус",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Парус",
+    "description": "Бронь залов: Парус"
+  },
+  "texts": {
+    "tagline": "Два зала · Лефортово · круглосуточно",
+    "description": "Русская парная, турецкая парная (хаммам), финская парная, бассейн, купели, тёплый бассейн, бильярд, караоке, кальян, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 980 697-87-31",
+    "address": "Москва, Лонгиновская улица, 10",
+    "whatsapp": "+79031408586",
+    "telegram": "https://t.me/+79031408586",
+    "coords": {
+      "lat": 55.768822,
+      "lng": 37.712867
+    }
+  },
+  "halls": [
+    {
+      "key": "arenda_bolshogo_zala",
+      "name": "Аренда большого зала",
+      "description": "В аренду входят: бильярд, бассейн, хамам, банкетный зал, комната отдыха. Вместимость зала - 15 человек",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_bolshogo_zala/1.jpg",
+        "halls/arenda_bolshogo_zala/2.jpg",
+        "halls/arenda_bolshogo_zala/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2100
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arenda_malogo_zala",
+      "name": "Аренда малого зала",
+      "description": "В аренду входят: купель, парная, обеденная зона, комната отдыха. Вместимость зала - 4 человека",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/arenda_malogo_zala/1.jpg",
+        "halls/arenda_malogo_zala/2.jpg",
+        "halls/arenda_malogo_zala/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1900
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

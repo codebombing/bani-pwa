@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "venik_pihtovyy",
+      "name": "веник пихтовый",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostynya_hlopok",
+      "name": "простыня хлопок",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse_hlopok",
+      "name": "полотенце хлопок",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_dubovyy",
+      "name": "веник дубовый",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_standartnyy",
+      "name": "веник стандартный",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "halat_hlopok",
+      "name": "халат хлопок",
+      "description": "",
+      "price_rub": 350,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "shapochka_voylokovaya",
+      "name": "шапочка войлоковая",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_berezovyy",
+      "name": "веник берёзовый",
+      "description": "",
+      "price_rub": 600,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "venik_mozhevelnik",
+      "name": "веник можевельник",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_odnorazovye",
+      "name": "тапочки одноразовые",
+      "description": "",
+      "price_rub": 100,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chay_v_chaynike",
+      "name": "чай в чайнике",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "koptevo",
+  "name": "Коптево",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Коптево",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Коптево",
+    "description": "Бронь залов: Коптево"
+  },
+  "texts": {
+    "tagline": "Один зал · Коптево · круглосуточно",
+    "description": "Русская парная, бассейн, караоке, кальян, комната отдыха, веники, полотенца, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 985 434-64-30",
+    "address": "Москва, Большая Академическая улица, 73 к1",
+    "whatsapp": "+79854346430",
+    "coords": {
+      "lat": 55.841396,
+      "lng": 37.550148
+    }
+  },
+  "halls": [
+    {
+      "key": "parnaya",
+      "name": "Парная",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/parnaya/1.jpg",
+        "halls/parnaya/2.jpg",
+        "halls/parnaya/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

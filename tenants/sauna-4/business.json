@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "med_altayskiy_rastoropsha",
+      "name": "Мед Алтайский расторопша",
+      "description": "",
+      "price_rub": 450,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "chernyy_listovoy_chay",
+      "name": "Черный листовой чай",
+      "description": "",
+      "price_rub": 450,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "zelenyy_listovoy_chay",
+      "name": "Зелёный листовой чай",
+      "description": "",
+      "price_rub": 450,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "grechichnyy_chay",
+      "name": "Гречичный чай",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "fruktovyy_chay",
+      "name": "Фруктовый чай",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "dubovyy_venik",
+      "name": "Дубовый веник",
+      "description": "",
+      "price_rub": 1250,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "tapochki_v_individualnoy",
+      "name": "Тапочки в индивидуальной упаковке",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "polotentse",
+      "name": "Полотенце",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "prostyn",
+      "name": "Простынь",
+      "description": "",
+      "price_rub": 200,
+      "unit": "per_booking",
+      "max_qty": 10
+    },
+    {
+      "key": "mahrovyy_halat",
+      "name": "Махровый халат",
+      "description": "",
+      "price_rub": 500,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "sauna-4",
+  "name": "Сауна",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Сауна",
+      "sub": "баня · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Сауна",
+    "description": "Бронь залов: Сауна"
+  },
+  "texts": {
+    "tagline": "Один зал · Кузьминки · круглосуточно",
+    "description": "Финская парная, бассейн, гидромассаж, джакузи, тёплый бассейн, бильярд, караоке, кальян, комната отдыха, tv/dvd, мангал, веники, полотенца, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 904 567-98-64",
+    "address": "Москва, Окская улица, 36 к1",
+    "coords": {
+      "lat": 55.715525,
+      "lng": 37.771415
+    }
+  },
+  "halls": [
+    {
+      "key": "shapka_dlya_bani",
+      "name": "Шапка для бани",
+      "description": "Защита вашего здоровья и комфортное самочувствие в условиях высокой температуры.",
+      "capacity_included": 4,
+      "capacity_max": 6,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/shapka_dlya_bani/1.jpg",
+        "halls/shapka_dlya_bani/2.jpg",
+        "halls/shapka_dlya_bani/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 300
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

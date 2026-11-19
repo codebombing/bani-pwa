@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "sima",
+  "name": "Сима",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Сима",
+      "sub": "баня · ежедневно 08:00–03:00"
+    }
+  },
+  "pwa": {
+    "short_name": "Сима",
+    "description": "Бронь залов: Сима"
+  },
+  "texts": {
+    "tagline": "Один зал · Южное Бутово · ежедневно 08:00–03:00",
+    "description": "Русская парная на дровах, комната отдыха, веники, полотенца, простыни, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 272-06-79",
+    "address": "Москва, Чечёрский проезд, вл5 к378",
+    "whatsapp": "+79262720679",
+    "telegram": "https://t.me/+79262720679",
+    "coords": {
+      "lat": 55.540844,
+      "lng": 37.550178
+    }
+  },
+  "halls": [
+    {
+      "key": "banya_1ch",
+      "name": "Баня 1ч",
+      "description": "",
+      "capacity_included": 4,
+      "capacity_max": 4,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/banya_1ch/1.jpg",
+        "halls/banya_1ch/2.jpg",
+        "halls/banya_1ch/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

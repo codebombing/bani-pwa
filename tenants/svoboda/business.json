@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [
+    {
+      "key": "bambukovyy_venik",
+      "name": "Бамбуковый веник",
+      "description": "",
+      "price_rub": 1000,
+      "unit": "per_booking",
+      "max_qty": 10
+    }
+  ],
+  "exceptions": [],
+  "slug": "svoboda",
+  "name": "Свобода",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Свобода",
+      "sub": "сауна · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Свобода",
+    "description": "Бронь залов: Свобода"
+  },
+  "texts": {
+    "tagline": "Два зала · Южное Тушино · круглосуточно",
+    "description": "Финская парная, бассейн, караоке, комната отдыха, tv/dvd, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 925 868-30-08",
+    "address": "Москва, улица Свободы, 29",
+    "whatsapp": "+79258683008",
+    "coords": {
+      "lat": 55.837322,
+      "lng": 37.452575
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna_den_10_20",
+      "name": "Сауна / день 10-20",
+      "description": "В стоимость входит посещение сауны до 4 человек.\nОчень уютная, чистая сауна с финской парилкой и бассейном ежедневно 24/7. Максимальная вместимость 10 человек. Минимальный заказ - 2 часа!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_den_10_20/1.jpg",
+        "halls/sauna_den_10_20/2.jpg",
+        "halls/sauna_den_10_20/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 2500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_noch_20_10",
+      "name": "Сауна / ночь 20-10",
+      "description": "В стоимость входит посещение сауны до 4 человек.\nОчень уютная, чистая сауна с финской парилкой и бассейном ежедневно 24/7. Максимальная вместимость 10 человек. Минимальный заказ - 2 часа!",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_noch_20_10/1.jpg",
+        "halls/sauna_noch_20_10/2.jpg",
+        "halls/sauna_noch_20_10/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 3000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

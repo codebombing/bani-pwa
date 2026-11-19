@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "tue": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "wed": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "thu": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "fri": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sat": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      },
+      "sun": {
+        "start_from": "00:00",
+        "start_to": "24:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "relax",
+  "name": "Relax",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Relax",
+      "sub": "SPA-центр · круглосуточно"
+    }
+  },
+  "pwa": {
+    "short_name": "Relax",
+    "description": "Бронь залов: Relax"
+  },
+  "texts": {
+    "tagline": "Один зал · Текстильщики · круглосуточно",
+    "description": "Финская парная, бассейн, бильярд, караоке, комната отдыха, tv/dvd, полотенца, простыни, тапочки, чай, wi-fi.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 926 725-56-38",
+    "address": "Москва, Люблинская улица, 9 к1",
+    "whatsapp": "+79267255638",
+    "coords": {
+      "lat": 55.712025,
+      "lng": 37.730776
+    }
+  },
+  "halls": [
+    {
+      "key": "sauna",
+      "name": "Сауна",
+      "description": "К Вашим услугам предоставляются различные виды массажа, spa процедуры, финская сауна, бассейн с фонтаном, гейзером и гидромассажем, бильярд, караоке-бар, TV, DVD, стерео звук, различные апартаменты с джакузи и гидромассажными душами.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna/1.jpg",
+        "halls/sauna/2.jpg",
+        "halls/sauna/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

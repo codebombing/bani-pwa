@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Moscow",
+  "locale": "ru-RU",
+  "currency": "RUB",
+  "legal": {
+    "operator_name": "ЗАГЛУШКА: оператор ПДн",
+    "privacy_policy_url": "https://example.com/privacy"
+  },
+  "policy": {
+    "deposit_percent": 0,
+    "free_cancellation_hours": 24,
+    "reschedule_pricing": "current"
+  },
+  "working_hours": {
+    "days": {
+      "mon": {
+        "start_from": "08:00",
+        "start_to": "20:00"
+      },
+      "tue": {
+        "start_from": "08:00",
+        "start_to": "20:00"
+      },
+      "wed": {
+        "start_from": "08:00",
+        "start_to": "20:00"
+      },
+      "thu": {
+        "start_from": "08:00",
+        "start_to": "20:00"
+      },
+      "fri": {
+        "start_from": "08:00",
+        "start_to": "20:00"
+      },
+      "sat": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      },
+      "sun": {
+        "start_from": "08:00",
+        "start_to": "21:00"
+      }
+    },
+    "max_end_after_close_min": 0
+  },
+  "extras": [],
+  "exceptions": [],
+  "slug": "legkiy-par",
+  "name": "Легкий пар",
+  "theme": {
+    "accent": "#C8873A",
+    "hero": "hero.jpg",
+    "wordmark": {
+      "main": "Легкий пар",
+      "sub": "банно-оздоровительный комплекс · пн 08:0"
+    }
+  },
+  "pwa": {
+    "short_name": "Легкий пар",
+    "description": "Бронь залов: Легкий пар"
+  },
+  "texts": {
+    "tagline": "5 залов · Щукино · пн 08:00–22:00, вт 08:00–22:00, ср 08:00–22:00, чт 08:00–22:00, пт 08:00–22:00, сб 08:00–23:00, вс 08",
+    "description": "Общественная баня, русская парная, турецкая парная (хаммам), финская парная, бассейн, купели, бильярд, комната отдыха, tv/dvd, веники, полотенца, простыни, тапочки, чай.",
+    "booking_note": "Баня для гостей старше 18 лет."
+  },
+  "contacts": {
+    "phone": "+7 495 947-27-69",
+    "address": "Москва, улица Рогова, 22Б",
+    "coords": {
+      "lat": 55.796857,
+      "lng": 37.454704
+    }
+  },
+  "halls": [
+    {
+      "key": "zhenskiy_razryad_budni",
+      "name": "Женский разряд (будни)",
+      "description": "Цена указана за 3 часа с одного человека.\nВ женском отделении нашего комплекса работает настоящая русская парная с мокрым паром, бассейн с прохладной водой размером и душевые.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zhenskiy_razryad_budni/1.jpg",
+        "halls/zhenskiy_razryad_budni/2.jpg",
+        "halls/zhenskiy_razryad_budni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "zhenskiy_razryad_vyhodnye",
+      "name": "Женский разряд (выходные)",
+      "description": "Цена указана за 3 часа с одного человека.\nВ женском отделении нашего комплекса работает настоящая русская парная с мокрым паром, бассейн с прохладной водой размером и душевые.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/zhenskiy_razryad_vyhodnye/1.jpg",
+        "halls/zhenskiy_razryad_vyhodnye/2.jpg",
+        "halls/zhenskiy_razryad_vyhodnye/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1400
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "muzhskoy_razryad_lyuks_budni",
+      "name": "Мужской разряд ЛЮКС (будни)",
+      "description": "Цена за 2 часа с одного человека.\nВ мужском отделении ЛЮКС работает настоящая русская парная с мокрым паром, бассейн с подсветкой и душевые кабины.\nДля переодевания и отдыха есть удобные кабинки.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/muzhskoy_razryad_lyuks_budni/1.jpg",
+        "halls/muzhskoy_razryad_lyuks_budni/2.jpg",
+        "halls/muzhskoy_razryad_lyuks_budni/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "muzhskoy_razryad_lyuks",
+      "name": "Мужской разряд ЛЮКС (выходные)",
+      "description": "Цена за 2 часа с одного человека.\nВ мужском отделении ЛЮКС работает настоящая русская парная с мокрым паром, бассейн с подсветкой и душевые кабины.\nДля переодевания и отдыха есть удобные кабинки.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/muzhskoy_razryad_lyuks/1.jpg",
+        "halls/muzhskoy_razryad_lyuks/2.jpg",
+        "halls/muzhskoy_razryad_lyuks/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sauna_bambuk",
+      "name": "Сауна \"Бамбук\"",
+      "description": "Купель фигурной формы, душевая, парная сауна, прихожая, гостиная, санузел, комната отдыха, электрический чайник, телевизор, музыкальный центр.",
+      "capacity_included": 4,
+      "capacity_max": 10,
+      "extra_guest_price_rub": 300,
+      "extra_guest_unit": "per_hour",
+      "min_duration_min": 120,
+      "slot_step_min": 60,
+      "buffer_min": 30,
+      "photos": [
+        "halls/sauna_bambuk/1.jpg",
+        "halls/sauna_bambuk/2.jpg",
+        "halls/sauna_bambuk/3.jpg"
+      ],
+      "tariffs": [
+        {
+          "effective_from": "2026-01-01",
+          "rules": [
+            {
+              "day_type": "weekday",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            },
+            {
+              "day_type": "weekend",
+              "from": "00:00",
+              "to": "24:00",
+              "price_per_hour_rub": 1800
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
