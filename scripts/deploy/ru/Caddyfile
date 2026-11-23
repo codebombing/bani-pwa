@@ -29,3 +29,7 @@
 	encode zstd gzip
 	header -server
 }
+
+# leadbombing.ru — отдельный файл, его кладёт и обновляет деплой проекта LeadBombing
+# (scripts/deploy/server.sh в репозитории leadbombing); руками не трогать.
+import leadbombing.caddy
